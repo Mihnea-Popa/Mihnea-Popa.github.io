@@ -1,0 +1,38 @@
+---
+title: "My Resume"
+---
+
+{{< pdf resume.pdf button="Download CV" width=1 height=1 >}}
+
+
+
+{{< pdf resume.pdf width=110% height=1200 >}}
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+On résout l’équation :
+
+$$
+x^2 - 4 = 0
+$$
+
+Donc :
+
+$$
+x = \pm 2
+$$
+:::
+
+
+<details>
+<summary>Voir la solution</summary>
+
+On résout :
+
+$$x^2 - 4 = 0$$
+
+Donc $$x = \pm 2$$
+
+</details>

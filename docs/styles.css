@@ -1,0 +1,20 @@
+/* css styles */
+
+/* Barre de navigation */
+.navbar {
+  background-color: #0d4ea3;   /* couleur de fond */
+}
+
+/* Tous les liens de la navbar */
+.navbar .nav-link,
+.navbar-brand {
+  color:  #e4eaf2 !important;   /* blanc pour tous */
+}
+
+/* Liens au survol */
+.navbar .nav-link:hover,
+.navbar-brand:hover {
+  color:  #9b9ea3 !important; /* jaune au hover */
+}
+
+

@@ -1,0 +1,83 @@
+TP Time series
+
+1° Visualisation avec trend ? et saisonnalité ? Si oui on différencie, Avec ACF on voit les saisonnalités  h
+	Dans le tp p=12, premier pic autocorrélation avec soi-même donc inutile
+
+Exemple: Yt = Xt + (at + b) + St avec St = St+p où p avec ACF; Xt stochastique et St déterministe
+        On pose Zt= Yt - Yt-12 = Xt - Xt-12 + at+b - (a (t - 12) + b) = Xt - Xt-12 + 12a
+        On voit que Zt pas de saisonnalité et ACF de Zt pas de pic --> Test suivant
+
+2° Stationnaire ? 
+ Oui --> ARMA
+ NON --> On réitère avec des différentielles où transform log ...
+
+On fait ACF et PACF Faut voir que les pics décroient très vite et on peut dire qu'elle est peut-être intégrée mais faut vérifier avec un test
+Pour PP H1: STationnarité ici p-value < alpha donc on rejette H0 donc Zt est stationnaire
+
+	1 |----------------------------------alpha=0.01----------------| 0
+
+	  Non rejet donc H0       	               Rejet donc H1
+
+
+(Yt) est un  ARIMA(p,d,q)        ssi (Delta^d           Yt) est un  ARMA(p,q)
+(Yt) est un SARIMA(p,d,q)(P,D,Q) ssi (Delta_s^D Delta^d Yt) est un SARMA(p,q)(P,Q)
+
+Grandes lettres diff saisoniaires
+
+Ici c'est pas 12 differencielles mais 1 diff d'ordre 12
+
+On doit choisir les paramètres p,q du modèle ARMA et faut tester toutes les combinaisons. Pour déterminier p* et q* on utilse acf et pacf.
+
+Bien regarder les deux graphiques 
+
+Exemple MA(1)  ACF pic à 0 et pic à ordre 1 puis que des petits
+	      PACF pics décroissants légèrement  car MA(1) <=> AR(inf)
+
+ACF permet en gros d'avoir q* et PACF permet d'avoir p*  (q ordre MA qui contribue au ACF et p ordre AR qui contribue au PACF)
+
+DANS un ARMA il y a des vrais pics dûs au MA et des pics décroissants dûs au AR 
+	Il peut y avoir superposition des AR et des MA donc si on prend le dernier pic pour p_test et pour q_test alors forcément p* < p_test et q* < q_test. 
+
+3° Voir les résidus du modèle ARMA pour voir est-ce que c'est un bb et après seulement on peut continuer
+Modèle valide = Résidus décoréllés 
+
+Box-Ljung test  H0: résidus décorellés Gamma_epsilon(1) = Gamma_epsilon(2) = ... = Gamma_epsilon(h) = 0 (h=6)   
+
+	Ici p-value = 0.524 et alpha 0.01 donc p-value > alpha donc non rejet donc H0 ie bien décoréllés MAIS ICI IL FAUT ALLER JUSQU'A 2x LA SAISONNALITé (genre autocorrelation saisonnaires) donc il faudrait h=2*12=24
+(Nombre de degrès liberté = lag - nb param) nb_parm=5 car ARMA (3,2)
+
+Finalement avec h=24 on est bon aussi mais avec la fonction q-test on a accès à la plus grande p-value: 
+	Avec la fonction on peut tester peu de pics et après augmenter le nombre de pics pour voir les effets avec une fenêtre petite
+	La loi de la statistique de test augmente avec les lags et donc la somme des coeff Gamma_epsilon(i) est lissée donc avec bcp de lags on voit moins les effets indivuels
+	Box test de lag=24 seulement ne suffit donc pas car l'effet du pic à 12 sera lissé 
+Ici toutes les p-values sont au-dessus de alpha donc comme test de Student(: individuellement les coefficients ne sont pas significatifs mais ensemble c'est pas possible donc on peut pas dire que c'est un BB)
+
+Ainsi, le modèle est bien valide (p-value), on peut aller au deuxième critère (significativité des coefs student). Q6 toutes les pvalues sont au-dessus de alpha donc H0 qui est coeff=0 (pas significatif)
+Donc aucun coeff n'est significatif
+
+Test de student et test Box-Ljung pour chacun des modèles --> Modèles plausibles AR3 / MA2 / AR2MA1
+	On commence par regarder les autocorellation des résidus et seulement après la nullité des coefs
+		Exemple pour AR1 résidus autocorrélés donc on jette le modèle 
+		Exemple pour AR2MA1 on regarde test de student pour le plus grand ordre
+
+AIC/BIC --> MA2
+Erreur pred (sur les dernières valeurs) --> AR2MA1
+
+
+
+
+TD 5
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+La régression des spread sur le temps n'est pas là pour faire des stats donc pas de significativité; c'est juste pour savoir quel test il va falloir faire
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Test adf (4 types : sans/avec constante sans/avec tendance) = test de racine unitaire
+regr diff sur valeur passé et diff passé   le lag est le p des slides 
+	H0 : pi=0 (slide error correction model) donc on peut pas interpréter la pvalue (garbage in garbage out)
+
+On voit résidus très très correlés donc pas d'interprétation du test adf
+On doit donc augment le p ie le lag jusqu'à ce que les résidus ne soinet plus correlés
+Q-tests commencent à 17 (alors que 13 lags) car il y en a 13 dans la somme + trend + constante + intercept (dans la regression) 
+Nouveau test ADF donc on rejette pas la présence de racine unité et donc on ne rejette pas la série non stationnaire donc la série est non stationnaire
+
+

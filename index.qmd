@@ -1,0 +1,15 @@
+---
+title: "Mihnea POPA"
+image: "files/Profile_pic_Mihnea.jpg"
+about:
+  template: jolla
+  links:
+    - icon: envelope
+      href:  mailto:mihneapopa@ucla.edu
+    - icon: linkedin
+      href: https://linkedin.com/in/mihneapopa
+      target: _blank
+---
+
+Welcome to my website!
+

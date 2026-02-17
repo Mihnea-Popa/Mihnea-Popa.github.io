@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: docs 
+
+website:
+  title: "Mihnea POPA"
+  navbar:
+    left:
+      - href: resume.qmd 
+        text: Resume
+      - href: projects.qmd  
+        text: Projects     
+  search: false
+format:
+  html:
+    theme:
+      - cosmo
+    css: styles.css
+    toc: true
+
+
+

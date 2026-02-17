@@ -1,0 +1,4 @@
+```{r}
+library(pdftools)
+pdf_convert("files/Resume.pdf", format = "png", dpi = 150)
+```

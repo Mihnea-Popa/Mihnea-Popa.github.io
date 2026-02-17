@@ -1,0 +1,26 @@
+---
+title: "Modelling a linear time series <br> by an ARIMA model and prediction"
+author: Mihnea POPA / Paul LEMOINE
+date: May 2025
+---
+
+
+The selected series corresponds to the industrial production index (base 2021) in the sector of Woodworking and manufacture of wood and cork products, except furniture, manufacture of basketry and wickerwork products. It is characterized by a monthly frequency and covers the period from January 1990 to February 2025. This is a CVS-CJO index, which means that the series is adjusted for seasonal and working day variations, so it is already pre-processed to eliminate regular seasonal effects. <a href="https://www.insee.fr/fr/statistiques/serie/010767746#Telechargement" target="_blank">INSEE - Monthly Data</a>
+
+
+{{< pdf Projet_Series_temporelles.pdf button="Download Report" width=1 height=1 >}}
+
+<details>
+<summary>Show the report</summary>
+{{< pdf Projet_Series_temporelles.pdf width=110% height=1200 >}}
+</details>
+
+<details>
+<summary>Show the code</summary>
+```{r}
+#| echo:    true
+#| warning: false
+#| message: false
+#| file: Projet_Serie_Temp.R
+```
+</details>
