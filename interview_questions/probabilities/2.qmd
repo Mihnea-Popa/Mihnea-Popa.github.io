@@ -1,0 +1,6 @@
+---
+title: "Brainteaser 2"
+author: Mihnea POPA
+---
+
+Second problem

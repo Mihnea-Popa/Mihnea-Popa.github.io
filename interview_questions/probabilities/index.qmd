@@ -1,0 +1,10 @@
+---
+title: "Probabilities"
+author: Mihnea POPA
+date: 02/16/2026
+listing:
+  contents: .  
+  type: grid
+---
+
+Let's discover some interview questions labelled as probabilities

@@ -9,7 +9,8 @@
   {
     "listing": "/interview_questions.html",
     "items": [
-      "/interview_questions/brainteasers/index.html"
+      "/interview_questions/brainteasers/index.html",
+      "/interview_questions/probabilities/index.html"
     ]
   },
   {
@@ -24,6 +25,13 @@
     "items": [
       "/interview_questions/brainteasers/1.html",
       "/interview_questions/brainteasers/2.html"
+    ]
+  },
+  {
+    "listing": "/interview_questions/probabilities/index.html",
+    "items": [
+      "/interview_questions/probabilities/1.html",
+      "/interview_questions/probabilities/2.html"
     ]
   }
 ]
