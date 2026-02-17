@@ -1,0 +1,47 @@
+---
+title: "Finding a ligher coin with minimum weightings "
+description: " "
+---
+
+Let's suppose that we have `100 coins but one is ligher that the others`. Find the `minimum number of weightings` to identify this fake coin.
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Try to think about how many outcomes can one weighting differentiate. 
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Each weighing can lead to three different outcomes: 
+
+* The left part is heavier
+* The left part is lighter
+* The left part and the right part have same weight
+
+Now we can find the strategy:
+
+* First weighting : 33 vs 33 (34 left)
+* Second weighting: 
+  * If one of the groups was lighter: 11 vs 11 (11 left)
+  * If same weight: 11 vs 11 (12 left)
+* Third weighting:
+  * If the second case led to same weight : 4 vs 4 (4 left)
+  * If not: 4 vs 4 (3 left)
+* Fourth weighting:
+  * If the second case led to same weight: 1 vs 1 (1 left) ✅
+  * If not : 1 vs 1 (2 left)
+* Fifth weighting:
+  * If the second case led to different weights: ✅
+  * If not : 1 vs 1 (0 left) ✅
+  
+So the minimum number of weighting to be sure to identify the fake coin in `n = 5`.
+:::
+
+::: {.callout-tip collapse="true"}
+## 🚨 Generalisation
+
+We can try to generalise this strategy. Let's assume that there are $N$ coins with one fake. Then since each weighting leads to $3$ different outcomes, we can identify the fake coins with $n$ weightings if $3^n>N$. We want the minimum number of weightings to be sure to identify the coin, thus $$3^{n-1}<N \le 3^n.$$ Accordingly, we have $$n = \lfloor \frac {ln(N)}{ln(3)} \rfloor + 1 .$$
+With $N=100$, we find indeed $n=5$.
+:::

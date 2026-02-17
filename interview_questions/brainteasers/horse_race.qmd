@@ -1,0 +1,43 @@
+---
+title: "Finding the fastest horses"
+description: " "
+---
+
+Let's suppose that we have `25 horses and we can race 5 horses at a time`. What is the `minimum number of races to identify the 3 fastest horses` ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+We can put them in five groups of 5 horses and within a group we will know the order. But how can we order them across the groups ?
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We start by separating the horses into five different groups and we run a race in each group. By symmetry we can denote by A, B, C, D and E the groups and by the indexes corresponding to their order. Therefore, we have 
+$$
+\begin{aligned}
+& A_1 < A_2 < A_3 < A_4 < A_5 \\
+& B_1 < B_2 < B_3 < B_4 < B_5 \\
+& C_1 < C_2 < C_3 < C_4 < C_5 \\
+& D_1 < D_2 < D_3 < D_4 < D_5 \\
+& E_1 < E_2 < E_3 < E_4 < E_5. \\
+\end{aligned}
+$$
+Now we will run a new race with the champions of each group and by symmetry, we can assume $A_1 < B_1 < C_1 < D_1 < E_1.$ And now, for each horse we find whether or not he could be in the 3 fastest. For instance, the horse $D_1$ is slower that $A_1, B_1, C_1$, so he cannot be in the three fastest. Likewise, the horse $B_3$ is slower that $A_1, B_1, B_2$, so he cannot be in the three fastest. However, the horse $B_2$ is only slower that $A_1, B_1$, so he is a possible candidate. By doing this for each horse, we find that the possible candidates are $A_1, A_2, A_3, B_1, B_2, C_1.$
+
+$$
+\begin{aligned}
+& A_1 < A_2 < A_3 < \cancel{A_4} < \cancel{A_5} \\
+& B_1 < B_2 < \cancel{B_3} < \cancel{B_4} < \cancel{B_5} \\
+& C_1 < \cancel{C_2} < \cancel{C_3} < \cancel{C_4} < \cancel{C_5} \\
+& \cancel{D_1} < \cancel{D_2} < \cancel{D_3} < \cancel{D_4} < \cancel{D_5} \\
+& \cancel{E_1} < \cancel{E_2} < \cancel{E_3} < \cancel{E_4} < \cancel{E_5}. \\
+\end{aligned}
+$$
+Now, we only have six possible candidates but we already know that $A_1$ is the fastest. So we only need to race $A_2, A_3, B_1, B_2, C_1$ and take the two fastest ones.
+
+Accordingly, the minimum number of races to identify the three fastest horses is $\boxed{5+ 1 + 1  = 7.}$
+
+
+:::

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mihnea POPA">
 
-<title>Measuring time with burning ropes – Mihnea POPA</title>
+<title>Finding a ligher coin with minimum weightings – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,19 +135,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Measuring time with burning ropes</h1>
+<h1 class="title">Finding a ligher coin with minimum weightings</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Mihnea POPA </p>
-          </div>
-  </div>
     
   
     
@@ -159,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>Let’s suppose that we have two ropes and each takes <code>one hour to burn but not uniformly.</code> How can we <code>measure 45 minutes</code> ?</p>
+<p>Let’s suppose that we have <code>100 coins but one is ligher that the others</code>. Find the <code>minimum number of weightings</code> to identify this fake coin.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -172,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Try to think about everything that you can do with the ropes and the lighter.</p>
+<p>Try to think about how many outcomes can one weighting differentiate.</p>
 </div>
 </div>
 </div>
@@ -188,24 +181,53 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>At <span class="math inline">\(t=0 \text{min}\)</span>, we burn one end of the first rope and the two ends of the second rope</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp;🔥 \rule{2cm}{0.4pt} \\
-&amp;🔥 \rule{2cm}{0.4pt}🔥
-\end{aligned}
-\]</span> After a half-hour, so at <span class="math inline">\(t=30 \text{min}\)</span>, the second rope has entirely burned and the first one has a remaining of 30 minutes. At this time, we burn the second end of the first rope.</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \rule{0.5cm}{0.01pt}🔥 \rule{1.5cm}{0.4pt}🔥 \\
-&amp; \rule{0.5cm}{0.01pt}🔥 \rule{0cm}{0.4pt}🔥
-\end{aligned}
-\]</span> Finally, the remaining part of the first rope takes 30 minutes to burn but if we burn at both ends, it only takes 15 minutes. Therefore at <span class="math inline">\(t=45 \text{min}\)</span>, the first rope will also be burned entirely. <span class="math display">\[
-\begin{aligned}
-&amp; \rule{1.25cm}{0.01pt}🔥 \rule{0.75cm}{0.4pt}🔥 \\
-&amp; \rule{0.5cm}{0.01pt}🔥 \rule{0cm}{0.4pt}🔥
-\end{aligned}
-\]</span></p>
+<p>Each weighing can lead to three different outcomes:</p>
+<ul>
+<li>The left part is heavier</li>
+<li>The left part is lighter</li>
+<li>The left part and the right part have same weight</li>
+</ul>
+<p>Now we can find the strategy:</p>
+<ul>
+<li>First weighting : 33 vs 33 (34 left)</li>
+<li>Second weighting:
+<ul>
+<li>If one of the groups was lighter: 11 vs 11 (11 left)</li>
+<li>If same weight: 11 vs 11 (12 left)</li>
+</ul></li>
+<li>Third weighting:
+<ul>
+<li>If the second case led to same weight : 4 vs 4 (4 left)</li>
+<li>If not: 4 vs 4 (3 left)</li>
+</ul></li>
+<li>Fourth weighting:
+<ul>
+<li>If the second case led to same weight: 1 vs 1 (1 left) ✅</li>
+<li>If not : 1 vs 1 (2 left)</li>
+</ul></li>
+<li>Fifth weighting:
+<ul>
+<li>If the second case led to different weights: ✅</li>
+<li>If not : 1 vs 1 (0 left) ✅</li>
+</ul></li>
+</ul>
+<p>So the minimum number of weighting to be sure to identify the fake coin in <code>n = 5</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🚨 Generalisation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can try to generalise this strategy. Let’s assume that there are <span class="math inline">\(N\)</span> coins with one fake. Then since each weighting leads to <span class="math inline">\(3\)</span> different outcomes, we can identify the fake coins with <span class="math inline">\(n\)</span> weightings if <span class="math inline">\(3^n&gt;N\)</span>. We want the minimum number of weightings to be sure to identify the coin, thus <span class="math display">\[3^{n-1}&lt;N \le 3^n.\]</span> Accordingly, we have <span class="math display">\[n = \lfloor \frac {ln(N)}{ln(3)} \rfloor + 1 .\]</span> With <span class="math inline">\(N=100\)</span>, we find indeed <span class="math inline">\(n=5\)</span>.</p>
 </div>
 </div>
 </div>

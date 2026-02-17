@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mihnea POPA">
 
-<title>Measuring time with burning ropes – Mihnea POPA</title>
+<title>Finding the fastest horses – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,19 +135,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Measuring time with burning ropes</h1>
+<h1 class="title">Finding the fastest horses</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Mihnea POPA </p>
-          </div>
-  </div>
     
   
     
@@ -159,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>Let’s suppose that we have two ropes and each takes <code>one hour to burn but not uniformly.</code> How can we <code>measure 45 minutes</code> ?</p>
+<p>Let’s suppose that we have <code>25 horses and we can race 5 horses at a time</code>. What is the <code>minimum number of races to identify the 3 fastest horses</code> ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -172,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Try to think about everything that you can do with the ropes and the lighter.</p>
+<p>We can put them in five groups of 5 horses and within a group we will know the order. But how can we order them across the groups ?</p>
 </div>
 </div>
 </div>
@@ -188,24 +181,25 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>At <span class="math inline">\(t=0 \text{min}\)</span>, we burn one end of the first rope and the two ends of the second rope</p>
+<p>We start by separating the horses into five different groups and we run a race in each group. By symmetry we can denote by A, B, C, D and E the groups and by the indexes corresponding to their order. Therefore, we have <span class="math display">\[
+\begin{aligned}
+&amp; A_1 &lt; A_2 &lt; A_3 &lt; A_4 &lt; A_5 \\
+&amp; B_1 &lt; B_2 &lt; B_3 &lt; B_4 &lt; B_5 \\
+&amp; C_1 &lt; C_2 &lt; C_3 &lt; C_4 &lt; C_5 \\
+&amp; D_1 &lt; D_2 &lt; D_3 &lt; D_4 &lt; D_5 \\
+&amp; E_1 &lt; E_2 &lt; E_3 &lt; E_4 &lt; E_5. \\
+\end{aligned}
+\]</span> Now we will run a new race with the champions of each group and by symmetry, we can assume <span class="math inline">\(A_1 &lt; B_1 &lt; C_1 &lt; D_1 &lt; E_1.\)</span> And now, for each horse we find whether or not he could be in the 3 fastest. For instance, the horse <span class="math inline">\(D_1\)</span> is slower that <span class="math inline">\(A_1, B_1, C_1\)</span>, so he cannot be in the three fastest. Likewise, the horse <span class="math inline">\(B_3\)</span> is slower that <span class="math inline">\(A_1, B_1, B_2\)</span>, so he cannot be in the three fastest. However, the horse <span class="math inline">\(B_2\)</span> is only slower that <span class="math inline">\(A_1, B_1\)</span>, so he is a possible candidate. By doing this for each horse, we find that the possible candidates are <span class="math inline">\(A_1, A_2, A_3, B_1, B_2, C_1.\)</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-&amp;🔥 \rule{2cm}{0.4pt} \\
-&amp;🔥 \rule{2cm}{0.4pt}🔥
+&amp; A_1 &lt; A_2 &lt; A_3 &lt; \cancel{A_4} &lt; \cancel{A_5} \\
+&amp; B_1 &lt; B_2 &lt; \cancel{B_3} &lt; \cancel{B_4} &lt; \cancel{B_5} \\
+&amp; C_1 &lt; \cancel{C_2} &lt; \cancel{C_3} &lt; \cancel{C_4} &lt; \cancel{C_5} \\
+&amp; \cancel{D_1} &lt; \cancel{D_2} &lt; \cancel{D_3} &lt; \cancel{D_4} &lt; \cancel{D_5} \\
+&amp; \cancel{E_1} &lt; \cancel{E_2} &lt; \cancel{E_3} &lt; \cancel{E_4} &lt; \cancel{E_5}. \\
 \end{aligned}
-\]</span> After a half-hour, so at <span class="math inline">\(t=30 \text{min}\)</span>, the second rope has entirely burned and the first one has a remaining of 30 minutes. At this time, we burn the second end of the first rope.</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; \rule{0.5cm}{0.01pt}🔥 \rule{1.5cm}{0.4pt}🔥 \\
-&amp; \rule{0.5cm}{0.01pt}🔥 \rule{0cm}{0.4pt}🔥
-\end{aligned}
-\]</span> Finally, the remaining part of the first rope takes 30 minutes to burn but if we burn at both ends, it only takes 15 minutes. Therefore at <span class="math inline">\(t=45 \text{min}\)</span>, the first rope will also be burned entirely. <span class="math display">\[
-\begin{aligned}
-&amp; \rule{1.25cm}{0.01pt}🔥 \rule{0.75cm}{0.4pt}🔥 \\
-&amp; \rule{0.5cm}{0.01pt}🔥 \rule{0cm}{0.4pt}🔥
-\end{aligned}
-\]</span></p>
+\]</span> Now, we only have six possible candidates but we already know that <span class="math inline">\(A_1\)</span> is the fastest. So we only need to race <span class="math inline">\(A_2, A_3, B_1, B_2, C_1\)</span> and take the two fastest ones.</p>
+<p>Accordingly, the minimum number of races to identify the three fastest horses is <span class="math inline">\(\boxed{5+ 1 + 1  = 7.}\)</span></p>
 </div>
 </div>
 </div>

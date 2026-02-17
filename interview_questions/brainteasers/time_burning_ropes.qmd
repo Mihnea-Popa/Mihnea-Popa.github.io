@@ -1,0 +1,40 @@
+---
+title: "Measuring time with burning ropes"
+description: " "
+---
+
+Let's suppose that we have two ropes and each takes `one hour to burn but not uniformly.` How can we `measure 45 minutes` ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Try to think about everything that you can do with the ropes and the lighter.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+At $t=0 \text{min}$, we burn one end of the first rope and the two ends of the second rope
+
+$$
+\begin{aligned}
+&🔥 \rule{2cm}{0.4pt} \\
+&🔥 \rule{2cm}{0.4pt}🔥
+\end{aligned}
+$$
+After a half-hour, so at $t=30 \text{min}$, the second rope has entirely burned and the first one has a remaining of 30 minutes. At this time, we burn the second end of the first rope.
+
+$$
+\begin{aligned}
+& \rule{0.5cm}{0.01pt}🔥 \rule{1.5cm}{0.4pt}🔥 \\
+& \rule{0.5cm}{0.01pt}🔥 \rule{0cm}{0.4pt}🔥
+\end{aligned}
+$$
+Finally, the remaining part of the first rope takes 30 minutes to burn but if we burn at both ends, it only takes 15 minutes. Therefore at $t=45 \text{min}$, the first rope will also be burned entirely.
+$$
+\begin{aligned}
+& \rule{1.25cm}{0.01pt}🔥 \rule{0cm}{0.4pt}🔥 \\
+& \rule{0.5cm}{0.01pt}🔥  \rule{0cm}{0.4pt}🔥
+\end{aligned}
+$$
+:::

@@ -1,6 +1,0 @@
----
-title: "Brainteaser 1"
-author: Mihnea POPA
----
-
-First problem
