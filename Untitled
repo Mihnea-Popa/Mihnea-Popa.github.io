@@ -2,3 +2,18 @@
 library(pdftools)
 pdf_convert("files/Resume.pdf", format = "png", dpi = 150)
 ```
+
+
+git add .
+git commit -m "Mise à jour du site"
+git push
+
+<details>
+<summary>Voir la solution</summary> 
+texte
+</details>
+
+
+::: {.callout-tip collapse="true"}
+texte
+:::
