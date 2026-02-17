@@ -8,3 +8,5 @@ listing:
 ---
 
 Let's discover some interview questions labelled as probabilities
+
+![](image.png){width=1px}

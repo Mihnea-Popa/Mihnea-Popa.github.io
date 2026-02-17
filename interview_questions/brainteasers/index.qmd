@@ -8,3 +8,6 @@ listing:
 ---
 
 Let's discover some interview questions labelled as brain teasers
+
+
+![](image.jpg){width=1px}
