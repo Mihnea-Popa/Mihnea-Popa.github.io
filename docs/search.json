@@ -86,9 +86,9 @@
   {
     "objectID": "interview_questions/project1/index.html",
     "href": "interview_questions/project1/index.html",
-    "title": "Analysis of Cars",
+    "title": "Brainteasers",
     "section": "",
-    "text": "Let’s investigate the relationship between fuel efficiency (mpg) and engine displacement (disp) from the mtcars dataset. Those variables have a correlation of -0.85.\n\n\nHere is a plot:\n\nlibrary(tidyverse)\ndata(mtcars)\nmtcars |&gt;\n  ggplot(aes(mpg, disp)) + \n  geom_point(color=\"dodgerblue4\", size=2)"
+    "text": "Let’s discover some interview questions labelled as brain teasers\n\n\n\n\n\n\n\n\n\n\n\n\nBrainteaser 1\n\n\n\n\n\n\nMihnea POPA\n\n\n\n\n\n\n\n\n\n\n\nBrainteaser 2\n\n\n\n\n\n\nMihnea POPA\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "interview_questions/project1/index.html#sub-header",
@@ -102,7 +102,7 @@
     "href": "interview_questions.html",
     "title": "My Interview questions",
     "section": "",
-    "text": "Analysis of Cars\n\n\n\n\n\n\nMihnea POPA\n\n\nFeb 16, 2026\n\n\n\n\n\n\n\n\n\n\n\nAnalysis of Cars\n\n\n\n\n\n\nMihnea POPA\n\n\nFeb 16, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Brainteasers\n\n\n\n\n\n\nMihnea POPA\n\n\nFeb 16, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "interview_questions/project2/index.html",
@@ -117,5 +117,54 @@
     "title": "Analysis of Cars",
     "section": "",
     "text": "Here is a plot:\n\nlibrary(tidyverse)\ndata(mtcars)\nmtcars |&gt;\n  ggplot(aes(mpg, disp)) + \n  geom_point(color=\"dodgerblue4\", size=2)"
+  },
+  {
+    "objectID": "interview_questions/project1/brainteaser/2/index.html",
+    "href": "interview_questions/project1/brainteaser/2/index.html",
+    "title": "Brainteaser 2",
+    "section": "",
+    "text": "Second problem"
+  },
+  {
+    "objectID": "interview_questions/project1/brainteaser/1/index.html",
+    "href": "interview_questions/project1/brainteaser/1/index.html",
+    "title": "Brainteaser 1",
+    "section": "",
+    "text": "First problem"
+  },
+  {
+    "objectID": "interview_questions/brainteasers/brainteaser/2/index.html",
+    "href": "interview_questions/brainteasers/brainteaser/2/index.html",
+    "title": "Brainteaser 2",
+    "section": "",
+    "text": "Second problem"
+  },
+  {
+    "objectID": "interview_questions/brainteasers/brainteaser/1/index.html",
+    "href": "interview_questions/brainteasers/brainteaser/1/index.html",
+    "title": "Brainteaser 1",
+    "section": "",
+    "text": "First problem"
+  },
+  {
+    "objectID": "interview_questions/brainteasers/index.html",
+    "href": "interview_questions/brainteasers/index.html",
+    "title": "Brainteasers",
+    "section": "",
+    "text": "Let’s discover some interview questions labelled as brain teasers\n\n\n\n\n\n\n\n\n\n\n\n\nBrainteaser 1\n\n\n\n\n\n\nMihnea POPA\n\n\n\n\n\n\n\n\n\n\n\nBrainteaser 2\n\n\n\n\n\n\nMihnea POPA\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "interview_questions/brainteasers/2.html",
+    "href": "interview_questions/brainteasers/2.html",
+    "title": "Brainteaser 2",
+    "section": "",
+    "text": "Second problem"
+  },
+  {
+    "objectID": "interview_questions/brainteasers/1.html",
+    "href": "interview_questions/brainteasers/1.html",
+    "title": "Brainteaser 1",
+    "section": "",
+    "text": "First problem"
   }
 ]

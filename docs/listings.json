@@ -9,8 +9,21 @@
   {
     "listing": "/interview_questions.html",
     "items": [
-      "/interview_questions/project1/index.html",
-      "/interview_questions/project2/index.html"
+      "/interview_questions/brainteasers/index.html"
+    ]
+  },
+  {
+    "listing": "/interview_questions/project1/index.html",
+    "items": [
+      "/interview_questions/project1/brainteaser/1/index.html",
+      "/interview_questions/project1/brainteaser/2/index.html"
+    ]
+  },
+  {
+    "listing": "/interview_questions/brainteasers/index.html",
+    "items": [
+      "/interview_questions/brainteasers/1.html",
+      "/interview_questions/brainteasers/2.html"
     ]
   }
 ]
