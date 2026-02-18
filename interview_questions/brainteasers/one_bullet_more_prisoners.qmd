@@ -1,0 +1,30 @@
+---
+title: "Avoiding prisoners escape"
+description: " "
+order: 4
+---
+
+Let's suppose that we are guarding a prison with `100 prisoners each with a probability p_i to try escaping` (everyone knows every probability). Assuming that we only have `1 bullet`, what is our strategy to be sure that `no prisoner will try to escape` ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Each prisoner would rather live than try to escape if he surely dies trying. Thus, the strategy uses recursion that the previous inmate will not try escaping to prove that the next one will not try either.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+
+Let's order our prisoners by their probability of trying to escape $p_1 < p_2 <...<p_n.$ This optimal strategy consists in saying `I will kill the inmate with the lowest probability among those who try to escape.` Therefore, the prisoner 1 will not try because he knows that he has the lowest probability and if he tries then he will die. Then, the prisoner 2 knows that the first one will not try and so he knows that if he tries, we will be the one with the lowest probability. This reasoning works for every prisoner, so no one will try to escape.
+
+NB: This also works if we take the highest.
+:::
+
+
+::: {.callout-tip collapse="true"}
+## 🚨 Generalisation
+
+The strategy showed before only works if we can order the probabilities strictly. Indeed, if two inmates have the same probability then the guard will not know which one to shoot since he has only one bullet. Therefore, if they try, they do not die surely (if 2 people have the same probability then there is a chance of 1/2 to survive). Accordingly, the guard will need more bullets. In fact, if there is a group with 2 people with the same probability and another with 3 people with the same probability, he will need 3 bullets to be sure that no one tries to escape. Therefore, if we suppose that there are `N prisoners` then we have,
+$\boxed{n_{bullets} = \text{max}_{1\le i \le n} \; Card(\{j \in \lbrack\!\lbrack 1,N \rbrack\!\rbrack| \; p_j = p_i\}).}$
+:::

@@ -1,10 +1,9 @@
 ---
 title: "Brainteasers"
-author: Mihnea POPA
-date: 02/16/2026
 listing:
   contents: .  
   type: grid
+  sort: "order"
 ---
 
 Let's discover some interview questions labelled as brain teasers

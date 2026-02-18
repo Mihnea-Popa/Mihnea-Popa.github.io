@@ -1,6 +1,7 @@
 ---
 title: "Measuring time with burning ropes"
 description: " "
+order: 2
 ---
 
 Let's suppose that we have two ropes and each takes `one hour to burn but not uniformly.` How can we `measure 45 minutes` ?

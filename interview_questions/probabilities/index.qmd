@@ -1,7 +1,5 @@
 ---
 title: "Probabilities"
-author: Mihnea POPA
-date: 02/16/2026
 listing:
   contents: .  
   type: grid

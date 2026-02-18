@@ -1,6 +1,7 @@
 ---
 title: "Finding a ligher coin with minimum weightings "
 description: " "
+order: 1
 ---
 
 Let's suppose that we have `100 coins but one is ligher that the others`. Find the `minimum number of weightings` to identify this fake coin.
