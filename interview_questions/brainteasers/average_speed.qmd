@@ -18,6 +18,7 @@ This should be pretty straightforward when you introduce the good notations. I c
 Let $v_1 = 60 \; mph$ and $v_2 = 40 \; mph$. Moreover, we introduce the distance $d$ between the points A et B. 
 
 Then, the average speed follows $\bar{v} = \frac{d+d}{t_1 + t_2}$ where $t_1 = \frac{d}{v_1}$ and  $t_2 = \frac{d}{v_2}$. Thus we have $\boxed{\bar{v}=\frac{2}{1/v_1 +1/v_2}.}$ We find $\bar{v}= 48 \; mph$
+:::
 
 
 ::: {.callout-tip collapse="true"}

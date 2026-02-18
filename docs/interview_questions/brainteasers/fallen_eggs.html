@@ -152,6 +152,7 @@ window.Quarto = {
 </header>
 
 
+<p><img src="images/eggbuilding.jpg" class="img-fluid" width="1"></p>
 <p>We have a building with <code>100 floors and 2 eggs.</code> What is the optimal strategy in order to <code>find the floor where the eggs break</code> by minimizing the worst case scenario ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -201,11 +202,11 @@ window.Quarto = {
 <p>The idea is that if the egg breaks at 50 then we don’t have enough information, thus let’s try the floor 10 and add 10 each time. If the egg breaks at 50 (5 drops of the first egg to get there), then in the worst-case scenario we have to try all floors from 41 to 49 so we would need 9 additional drops. Accordingly, <span class="math inline">\(WC_{\text{constant}} = 5 + 9 = 14 &lt; WC_{\text{half}}.\)</span> We already have a better strategy than the first one. However, if instead of breaking at 50, the first egg breaks at 90, we would still need to test 9 values in the worst-case scenario (81, …, 89). So the total number of drops will raise to 18. Therefore, <code>we need a strategy where every successful drop of the first egg, leeds to a smaller uncertainty of the second egg by one unit.</code></p>
 <p>This optimal strategy would be that at the first drop we try the floor <span class="math inline">\(n\)</span>. If it does not succeed then in the worst scenario, we would add n-1 drops (1,2, …, n-1) so the total amount would be n.&nbsp;If the first drop is a success then we try the floor <span class="math inline">\(n + (n-1) = 2n-1\)</span>. If this one does not succeed then in the worst scenario, we would add n-2 drops (n+1, …, 2n-2) so the total will remain n.&nbsp;Accordingly, we need to find n such that <span class="math inline">\(n + (n-1) + (n-2) + ... + 1\ge100\)</span> (the sum needs to end at 1 because let’s say we are at 97 and we try 99 and it fails we don’t know if it breaks at 98 or 99). The condition is the same as <span class="math inline">\(n(n+1)\ge200.\)</span> By testing, a few values we find <span class="math inline">\(\boxed{n_{\text{optimal}} = 14.}\)</span></p>
 <p><code>Therefore, we are trying the floors 14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99 and the number of total drops in the worst-case scenario is always 14.</code></p>
+</div>
+</div>
+</div>
 
 
-</div>
-</div>
-</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
