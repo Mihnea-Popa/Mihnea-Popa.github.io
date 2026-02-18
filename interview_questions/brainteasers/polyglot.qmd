@@ -1,0 +1,23 @@
+---
+title: "Polyglots in society"
+description: " "
+order: 17
+---
+
+There are 70 people in a city. If we take any pair of people (X,Y), there is at least one language spoken by X and not spoken by Y and at least one language spoken by Y and not spoken by X. `What is the minimum number of languages spoken in this town ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+How many languages speak the person with most languages and how many languages speak the person with least languages ? 
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+The condition about the pair (X,Y) indicates that the subsets of languages spoken by each person are not comparable for the inclusion. Indeed, every person has to speak the same number of languages (If there is one person with one language more, we can find one speaking all the same except for one and the condition is not fulfilled anymore). 
+
+Now, if there are $n$ languages spoken and each person speaks $k$ languages, then the number of different subsets that we can make is $\binom{n}{k}$. In order to maximize this number when $n$ is fixed, we can use the Pascal's triangle and prove that the maximum is for $k = \lfloor n/2 \rfloor$. Accordingly we search for $\boxed{n^* = min \{n \in \mathbb{N} \,| \binom{n}{\lfloor n/2 \rfloor}>70 \}=8.} $
+
+Thus, the minimum number of languages is 8 and each person speaks 4 languages.
+:::

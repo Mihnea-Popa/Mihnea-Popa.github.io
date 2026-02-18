@@ -1,0 +1,55 @@
+---
+title: "Creating 2 groups with equal heads"
+description: " "
+order: 10
+---
+
+Imagine that we have 100 coins and among them there are 20 heads. `Create two groups of coins with the same number of heads.`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+What can we do with those coins ? We can only regroup them and flip them.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Make a group with 20 coins (k Heads unknown), therefore on the remaining 80 there are 20-k Heads. Now just flip each coin of the first group. Now, both groups have exactly the same number of coins. We can prove this result more generally in the next section.
+:::
+
+::: {.callout-tip collapse="true"}
+## 🚨 Generalisation
+
+Let $N$ be the total number of coins and $n$ the number of heads. We will make a group with $m$ coins and try to find the value of m.
+
+
+| Group 1 | Group 2 | 
+|---------------|-------|
+| Number coins: m | N - m |
+| Number heads: k | n - k |
+| Number tails: m-k | N-m-n+k | 
+
+**If we flip the first group**
+
+| Group 1 | Group 2 | 
+|---------------|-------|
+| Number coins: m | N - m |
+| Number heads: m-k | n - k |
+| Number tails: k | N-m-n+k | 
+
+We want $m - k = n-k$ thus $\boxed{m=n.}$
+
+
+**If we flip the second group**
+
+| Group 1 | Group 2 | 
+|---------------|-------|
+| Number coins: m | N - m |
+| Number heads: k | N-m-n+k |
+| Number tails: m-k | n-k | 
+We want $k=N-m-n+k$ thus $\boxed{m=N-n.}$
+
+Finally, we find the same solution, we just always have to flip the small group (it is logical since if we flip the big group we would have more heads than 20)
+
+:::

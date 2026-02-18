@@ -1,0 +1,23 @@
+---
+title: "Wind effect on a plane"
+description: " "
+order: 9
+---
+
+One plane does a round trip from A to B in a straight line. `Compare the time of the round trip if there is no wind and if there is a constant wind.`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+You can either use intuition about the effect of the wind during the trip A-B and during the trip B-A or you can use basic physics by introducing the speed of the plane and the speed of the wind.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let's assume a constant wind in the direction A towards B.
+
+For the intuition part, the wind will make the plane go faster on the trip A-B but slower on the trip B-A. Thus, the trip A-B will take less time than the trip B-A and the advantage of being in the same direction as the wind will weight less than the disadvantage of facing the wind. Therefore, the round trip will take more time if there is wind.
+
+Mathematically, let $s$ be the speed of the plane without wind, $w$ be the speed of the wind and $d$ the distance AB. Since time is additive, if no wind we have $t_{\text{no wind}}=t_{AB} + t_{BA} = \frac{d}{s} + \frac{d}{s} = \frac{2d}{s}.$ Now, in there is wind in the direction A to B, then the speed on the trip A-B will be $s+w$ and the speed on the trip B-A will be $s-w$. Thus, we have $t_{\text{wind}}=t_{AB} + t_{BA} = \frac{d}{s+w} + \frac{d}{s-w} = \frac{2ds}{s^2-w^2} = \frac{2d}{s-w^2/s}.$ Since $w^2/s>0$, we have $\boxed{t_{\text{wind}} > t_{\text{no wind}}.}$
+:::

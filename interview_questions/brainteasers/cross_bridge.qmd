@@ -1,0 +1,25 @@
+---
+title: "Crossing a bridge in minimum time"
+description: " "
+order: 12
+---
+
+Assume we are during the night and four people need to cross a bridge allowing at most two people to cross at the same time and there is only one flashlight. Knowing that there is `one person crossing in 1 minute, one person in 2 minutes, one person in 5 minutes and one person in 10 minutes.` What is your strategy so that everyone crosses the bridge in a `minimum of time ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+The fastest need to cross together and the slowest need to cross together.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+* 1 and 2 cross the bridge (+2 min)
+* 1 returns (+1 min)
+* 5 and 10 cross the bridge (+10 min)
+* 2 returns (+2 min)
+* 1 and 2 cross the bridge (+2 min)
+
+Total amount of time `17 minutes.`
+:::

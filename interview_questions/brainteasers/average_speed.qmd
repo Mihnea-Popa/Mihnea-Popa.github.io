@@ -1,0 +1,29 @@
+---
+title: "Average"
+description: " "
+order: 15
+---
+
+A train travels at `60 mph` on the trip from `A to B` and `40 mph` on the trip from `B to A`. What is the `average speed ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+This should be pretty straightforward when you introduce the good notations. I can only tell that the average speed is not the average of both speeds (the first trip is faster and will contribute less to the total time).
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let $v_1 = 60 \; mph$ and $v_2 = 40 \; mph$. Moreover, we introduce the distance $d$ between the points A et B. 
+
+Then, the average speed follows $\bar{v} = \frac{d+d}{t_1 + t_2}$ where $t_1 = \frac{d}{v_1}$ and  $t_2 = \frac{d}{v_2}$. Thus we have $\boxed{\bar{v}=\frac{2}{1/v_1 +1/v_2}.}$ We find $\bar{v}= 48 \; mph$
+
+
+::: {.callout-tip collapse="true"}
+## 🚨 Average speed paradox
+
+Let's assume that a runner does a lap at a speed v. At what speed does he have to run on the second lap to have an average speed of 2v ?
+
+The answers lays in the fact that we want $\bar{v}=2*v_1$. Accordingly, the formula seen before leads to $2v_1 = \frac{2}{1/v_1 +1/v_2}$, the only solution would be that $\boxed{v_2 \rightarrow + \infty.}$
+:::

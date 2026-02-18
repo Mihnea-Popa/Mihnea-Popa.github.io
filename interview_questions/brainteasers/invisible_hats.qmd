@@ -1,0 +1,27 @@
+---
+title: "Prisoners random hat"
+description: " "
+order: 14
+---
+
+We have `100 prisoners` facing a wall forming a line each wearing a hat `either blue or red`. The prisoners have to call the color of their hat knowing that they can see those in front of them but not theirs and they can hear the calls of everyone. If a inmate calls the wrong color then he dies. What is the best strategy to `save as many prisoners as possible ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+You cannot be sure that everyone is safe.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+The best strategy is the following:
+
+* The first one counts the number of red hats in front of him. If this number is even, he calls red. If not, he calls blue. Assuming purely randomness, the probability that this inmate dies is 1/2.
+
+* The second one knows if the number of red hats (including himself) is even or odd. Then, we counts the number of red hats in front of him. If the parity is the same, he has a blue hat. Otherwise, he has a red hat. This inmate will surely live.
+
+* The third one will be exactly has the second one. Indeed, based on the call of the second one (if second calls red then one red hat less), he will know the parity of the number of red hats (including himself), he just need to count the ones in front of him to live.
+
+Finally, `this strategy surely saves 99 prisoners and lets the final with a probability of 1/2 to live.` 
+:::

@@ -1,0 +1,27 @@
+---
+title: "Cube explosion"
+description: " "
+order: 7
+---
+
+Let's suppose that we `paint a cube` on all of its faces. Then we decompose this cube into `27 small cubes. How many small cubes has two faces painted ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+For every possible number of painted faces, try to count the number of small cubes with that number of painted faces.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+One small cube cannot have more that 3 faces painted so we will count how many small cube have 0, 1, 2 and 3 painted faces.
+
+| Number of painted faces | Number of cubes | Explanation |
+|---------------|-------|------------|
+| 0 | 1 | Center of the original cube |
+| 1 | 6 | Center of each face of the original cube |
+| 3 | 8 | All the vertices of the original cube |
+| 2 | 12 | On the edge of every face but not on the vertices of the cube |
+:::
+

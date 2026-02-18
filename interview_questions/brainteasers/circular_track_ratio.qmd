@@ -1,0 +1,31 @@
+---
+title: "Computing ratio speed on a circular track"
+description: " "
+order: 13
+---
+
+Assume that two runners are on a circular track. If they run in opposite direction, they meet in 10 minutes. If they run in the same direction, they meet in 60 minutes. What is the ratio of their speed ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Since you know the times, computing the speed should be easy if you know the distance in each case.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let's denote by $v_1$ the speed of the fastest and $v_2$ the speed of the other runner. Also, let $t_1= 10 \; \text{minutes}$, $t_2= 60 \; \text{minutes}$ and $d$ the distance of the track.
+
+* If they run in opposite direction, then when they meet, the distance remaining for one runner is exactly the distance ran by the other. Thus, $v_1*t_1 + v_2*t_1 = d$.
+* If they run in the same direction, then when they meet, the fastest one will have made one more lap that the other. Thus $v_1*t_2 = d +  v_2*t_2 .$
+
+Therefore, we have 
+$$\begin{cases}
+(v_1 + v_2) t_1= d\\
+(v_1 - v_2) t_2= d 
+\end{cases}.$$
+
+We then get $v_1(t_2-t_1)=v_2(t_1+t_2)$, accordingly, $\boxed{\frac{v_1}{v_2}=\frac{t_1+t_2}{t_2-t_1}=\frac{7}{5}.}$
+
+:::

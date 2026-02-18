@@ -1,0 +1,25 @@
+---
+title: "Catching a furtive spy"
+description: " "
+order: 18
+---
+
+Assume a 1D-axis and a spy that is `currently at A>0`, and `each period of time, he moves by an amount B>0`, where A and B are unknown. What is your strategy to be sure to `capture the spy ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Make sure that, over time, you systematically try every possible starting position and every possible step size — so that whatever the spy’s (A,B) are, your strategy will eventually match them.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We will use a mapping $\mathbb{N} \rightarrow \mathbb{N} *\mathbb{N}$. More precisely, by induction, we prove that $\forall n \in \mathbb{N}, \exists! \;(p,q)\in  \mathbb{N} *\mathbb{N}, n=2^p(2q+1).$
+Therefore, for each time step $n$, we compute the corresponding $p$ and $q$ and we position ourselves at $\text{Position} = p + n*q$.
+
+
+For $p=A$ and $q=B$, we have $n_0 = 2^A(2B+1)$ and at that time, our position is $\text{Position} = p + n_0*q = A + n_0*B$ which is exactly the position of the spy.
+:::
+
+What happens if we don't assume anymore that the coefficients are positive ?

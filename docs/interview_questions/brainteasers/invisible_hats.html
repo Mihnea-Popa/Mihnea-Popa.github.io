@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Fallen eggs – Mihnea POPA</title>
+<title>Prisoners random hat – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,35 +53,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -135,7 +106,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fallen eggs</h1>
+<h1 class="title">Prisoners random hat</h1>
 </div>
 
 
@@ -152,20 +123,20 @@ window.Quarto = {
 </header>
 
 
-<p>We have a building with <code>100 floors and 2 eggs.</code> What is the optimal strategy in order to <code>find the floor where the eggs break</code> by minimizing the worst case scenario ?</p>
+<p>We have <code>100 prisoners</code> facing a wall forming a line each wearing a hat <code>either blue or red</code>. The prisoners have to call the color of their hat knowing that they can see those in front of them but not theirs and they can hear the calls of everyone. If a inmate calls the wrong color then he dies. What is the best strategy to <code>save as many prisoners as possible ?</code></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint (1)
+<span class="screen-reader-only">Tip</span>💡 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If we try the floor n for the first drop and it breaks then the worst case scenario for the second is to try every floor from 1 to n-1, so the total number of drops would be n.</p>
+<p>You cannot be sure that everyone is safe.</p>
 </div>
 </div>
 </div>
@@ -175,37 +146,24 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint (2)
+<span class="screen-reader-only">Tip</span>💡 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If we try the floor n for the first drop and it does not break and then we try the floor 2n and it breaks then the worst case scenario for the second egg is to try every floor from n+1 to 2n-1, so the total number of drops would be n+1. So we need a strategy where for each successful drop of the first egg, we reduce by one unit the worst-case scenario for the second one.</p>
+<p>The best strategy is the following:</p>
+<ul>
+<li><p>The first one counts the number of red hats in front of him. If this number is even, he calls red. If not, he calls blue. Assuming purely randomness, the probability that this inmate dies is 1/2.</p></li>
+<li><p>The second one knows if the number of red hats (including himself) is even or odd. Then, we counts the number of red hats in front of him. If the parity is the same, he has a blue hat. Otherwise, he has a red hat. This inmate will surely live.</p></li>
+<li><p>The third one will be exactly has the second one. Indeed, based on the call of the second one (if second calls red then one red hat less), he will know the parity of the number of red hats (including himself), he just need to count the ones in front of him to live.</p></li>
+</ul>
+<p>Finally, <code>this strategy surely saves 99 prisoners and lets the final with a probability of 1/2 to live.</code></p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Naively, if we try a drop at the floor 50 (100/2) and it breaks then in the worst-case scenario we have to try all floors from 1 to 49 so we would need 49 drops for the second egg (in that case, the floor where the egg starts to break is either 49 or 50). So the worst-case scenario would be <span class="math inline">\(WC_{\text{half}} = 1 + 49 = 50 \; \text{drops}.\)</span></p>
-<p>The idea is that if the egg breaks at 50 then we don’t have enough information, thus let’s try the floor 10 and add 10 each time. If the egg breaks at 50 (5 drops of the first egg to get there), then in the worst-case scenario we have to try all floors from 41 to 49 so we would need 9 additional drops. Accordingly, <span class="math inline">\(WC_{\text{constant}} = 5 + 9 = 14 &lt; WC_{\text{half}}.\)</span> We already have a better strategy than the first one. However, if instead of breaking at 50, the first egg breaks at 90, we would still need to test 9 values in the worst-case scenario (81, …, 89). So the total number of drops will raise to 18. Therefore, <code>we need a strategy where every successful drop of the first egg, leeds to a smaller uncertainty of the second egg by one unit.</code></p>
-<p>This optimal strategy would be that at the first drop we try the floor <span class="math inline">\(n\)</span>. If it does not succeed then in the worst scenario, we would add n-1 drops (1,2, …, n-1) so the total amount would be n.&nbsp;If the first drop is a success then we try the floor <span class="math inline">\(n + (n-1) = 2n-1\)</span>. If this one does not succeed then in the worst scenario, we would add n-2 drops (n+1, …, 2n-2) so the total will remain n.&nbsp;Accordingly, we need to find n such that <span class="math inline">\(n + (n-1) + (n-2) + ... + 1\ge100\)</span> (the sum needs to end at 1 because let’s say we are at 97 and we try 99 and it fails we don’t know if it breaks at 98 or 99). The condition is the same as <span class="math inline">\(n(n+1)\ge200.\)</span> By testing, a few values we find <span class="math inline">\(\boxed{n_{\text{optimal}} = 14.}\)</span></p>
-<p><code>Therefore, we are trying the floors 14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99 and the number of total drops in the worst-case scenario is always 14.</code></p>
 
 
-</div>
-</div>
-</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

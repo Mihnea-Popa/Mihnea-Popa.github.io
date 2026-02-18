@@ -1,0 +1,28 @@
+---
+title: "Counting squares in a grid"
+description: " "
+order: 11
+---
+
+Assume we have a $n\times n$ grid, `how many squares are there ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Separate all the squares by their size.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+
+| Size | Number | Explanation
+|---------------|-------|-------
+| $n\times n$ | 1 | The all grid
+| $n-1\times n-1$ | 4 | Leaving one row and one column 2*2 possibilites
+| $n-2\times n-2$| 9 | Leaving two rows and two columns 3*3 possibilities
+| ...|...|...
+|$1\times1$| $n^2$| All little squares
+
+Finally, $N = \sum_{k=1}^n k^2 = \frac{N(N+1)(2N+1)}{6}$
+:::

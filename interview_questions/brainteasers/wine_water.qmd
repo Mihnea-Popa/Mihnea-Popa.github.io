@@ -1,0 +1,31 @@
+---
+title: "Wine in water or water in wine ?"
+description: " "
+order: 16
+---
+
+We have two jars with the same capacity. We take a small volume from the water and pour it into the wine. Then, we take the same volume from the jar with the wine and pour it back into the one with the water. `Is there more wine in the water or more water in the wine ?` 
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Your chemistry class might save you.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+The intuition is that if there was more wine then the concentration of the wine would be higher in the small volume so it would be more wine in the water. Since the two jars have the same capacity, the answer is none.
+
+Let's prove that mathematically. We will denote by $E$ the volume of the water (Eau in French) and by $V$ the volume of the wine (Vin in French).
+
+* First, we do nothing and we compute the proportion of wine in both jars: $p_{E_V} = \frac{0}{E}=0$, and $p_{V_V} = \frac{V}{V}= 1.$
+
+* We take a volume $v$ from the water and pour it into the wine: $p_{E_V} = \frac{0}{E-v}=0$, and $p_{V_V} = \frac{V}{V+v}.$
+
+* We take the same volume $v$ from the jar with the wine and pour it back into the water: $p_{E_V} = \frac{\frac{V}{V+v}*v}{E}=\frac{Vv}{E(V+v)}$, and $p_{V_V} = \frac{V}{V+v}.$ 
+
+Finally we compute the proportion of the water in the wine knowing that the sum of both proportions is equal to one: $p^*_{E_V} = \frac{Vv}{E(V+v)}$ and $p^*_{V_E} = 1 - \frac{V}{V+v} = \frac{v}{V+v}$. Therefore $\boxed{\frac{p^*_{E_V}}{p^*_{V_E}}=\frac{V}{E}.}$
+
+`The ratio between the proportion of wine in the water by the proportion of water in the wine is equal to the ratio of the capacity of the jar of wine by the capacity of the jar of water.`
+:::

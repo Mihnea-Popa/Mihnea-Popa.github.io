@@ -1,0 +1,20 @@
+---
+title: "Poisened Wine"
+description: " "
+order: 8
+---
+
+Let's suppose that we `have 1000 bottle of wine but one is poisened.` Knowing that the poison takes 24h to be effective and that we need to know which bottle is poisoned in 24 hours, `what is the minimum number of mice to find the poisened bottle ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+One mouse can drink from multiple wines (make a mix).
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Each mouse can either drink from a specific bottle of wine or not, thus, there are 2 outcomes. If there are $n$ mice, then the total number of outcome covered is $2^n$. Since, we want the minimum number of mice, we have $2^{n-1}<1000\le 2^n$, thus, $\boxed{n=\lfloor \frac{ln(1000)}{ln(2)} \rfloor} + 1 = 10.$
+:::
+
