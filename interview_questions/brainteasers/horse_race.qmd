@@ -4,6 +4,7 @@ description: " "
 order: 3
 ---
 
+![](images/horserace.jpg){width=1px}
 Let's suppose that we have `25 horses and we can race 5 horses at a time`. What is the `minimum number of races to identify the 3 fastest horses` ?
 
 ::: {.callout-tip collapse="true"}

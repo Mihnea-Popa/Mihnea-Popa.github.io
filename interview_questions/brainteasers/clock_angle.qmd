@@ -22,7 +22,7 @@ The hour hand made an angle of 90° at 3:00. One hour after, at 4:00, it should 
 
 Thus, at `3:15, the angle between the two hands is 7.5°`.
 
-![](clocks.png){width=900px}
+![](images/clocks.png){width=900px}
 :::
 
 

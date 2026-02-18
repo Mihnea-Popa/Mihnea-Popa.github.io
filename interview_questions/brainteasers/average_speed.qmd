@@ -1,5 +1,5 @@
 ---
-title: "Average"
+title: "Average Speed of a train travel"
 description: " "
 order: 15
 ---

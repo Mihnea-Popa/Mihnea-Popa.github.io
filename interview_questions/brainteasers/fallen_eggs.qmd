@@ -4,6 +4,8 @@ description: " "
 order: 8
 ---
 
+![](images/eggbuilding.jpg){width=1px}
+
 We have a building with `100 floors and 2 eggs.` What is the optimal strategy in order to `find the floor where the eggs break` by minimizing the worst case scenario ?
 
 ::: {.callout-tip collapse="true"}

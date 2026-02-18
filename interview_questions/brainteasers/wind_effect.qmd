@@ -4,6 +4,8 @@ description: " "
 order: 9
 ---
 
+![](images/windplane.jpg){width=1px}
+
 One plane does a round trip from A to B in a straight line. `Compare the time of the round trip if there is no wind and if there is a constant wind.`
 
 ::: {.callout-tip collapse="true"}

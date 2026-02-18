@@ -4,6 +4,8 @@ description: " "
 order: 4
 ---
 
+![](images/prisonescape.jpg){width=1px}
+
 Let's suppose that we are guarding a prison with `100 prisoners each with a probability p_i to try escaping` (everyone knows every probability). Assuming that we only have `1 bullet`, what is our strategy to be sure that `no prisoner will try to escape` ?
 
 ::: {.callout-tip collapse="true"}

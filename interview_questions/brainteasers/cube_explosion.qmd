@@ -4,6 +4,8 @@ description: " "
 order: 7
 ---
 
+![](images/shattercube.jpg){width=1px}
+
 Let's suppose that we `paint a cube` on all of its faces. Then we decompose this cube into `27 small cubes. How many small cubes has two faces painted ?`
 
 ::: {.callout-tip collapse="true"}

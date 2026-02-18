@@ -4,6 +4,8 @@ description: " "
 order: 2
 ---
 
+![](images/ropefire.jpg){width=1px}
+
 Let's suppose that we have two ropes and each takes `one hour to burn but not uniformly.` How can we `measure 45 minutes` ?
 
 ::: {.callout-tip collapse="true"}

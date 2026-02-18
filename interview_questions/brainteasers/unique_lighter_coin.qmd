@@ -1,10 +1,12 @@
 ---
-title: "Finding a ligher coin with minimum weightings "
+title: "Finding a lighter coin with minimum weightings "
 description: " "
 order: 1
 ---
 
-Let's suppose that we have `100 coins but one is ligher that the others`. Find the `minimum number of weightings` to identify this fake coin.
+![](images/coins_balance.jpg){width=1px}
+
+Let's suppose that we have `100 coins but one is lighter that the others`. Find the `minimum number of weightings` to identify this fake coin.
 
 ::: {.callout-tip collapse="true"}
 ## 💡 Hint
