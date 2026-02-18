@@ -4,6 +4,8 @@ description: " "
 order: 15
 ---
 
+![](images/train.jpg){width=1px}
+
 A train travels at `60 mph` on the trip from `A to B` and `40 mph` on the trip from `B to A`. What is the `average speed ?`
 
 ::: {.callout-tip collapse="true"}

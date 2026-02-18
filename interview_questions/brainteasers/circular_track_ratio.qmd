@@ -4,6 +4,8 @@ description: " "
 order: 13
 ---
 
+![](images/circular_track.jpg){width=1px}
+
 Assume that two runners are on a circular track. If they run in opposite direction, they meet in 10 minutes. If they run in the same direction, they meet in 60 minutes. What is the ratio of their speed ?
 
 ::: {.callout-tip collapse="true"}

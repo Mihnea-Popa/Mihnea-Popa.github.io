@@ -3,6 +3,7 @@ title: "Prisoners random hat"
 description: " "
 order: 14
 ---
+![](images/hats.jpg){width=1px}
 
 We have `100 prisoners` facing a wall forming a line each wearing a hat `either blue or red`. The prisoners have to call the color of their hat knowing that they can see those in front of them but not theirs and they can hear the calls of everyone. If a inmate calls the wrong color then he dies. What is the best strategy to `save as many prisoners as possible ?`
 

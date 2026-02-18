@@ -4,6 +4,8 @@ description: " "
 order: 10
 ---
 
+![](images/coins_separation.jpg){width=1px}
+
 Imagine that we have 100 coins and among them there are 20 heads. `Create two groups of coins with the same number of heads.`
 
 ::: {.callout-tip collapse="true"}

@@ -4,6 +4,8 @@ description: " "
 order: 17
 ---
 
+![](images/polyglot.jpg){width=1px}
+
 There are 70 people in a city. If we take any pair of people (X,Y), there is at least one language spoken by X and not spoken by Y and at least one language spoken by Y and not spoken by X. `What is the minimum number of languages spoken in this town ?`
 
 ::: {.callout-tip collapse="true"}

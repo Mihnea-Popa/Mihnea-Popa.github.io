@@ -4,6 +4,8 @@ description: " "
 order: 12
 ---
 
+![](images/bridge.png){width=1px}
+
 Assume we are during the night and four people need to cross a bridge allowing at most two people to cross at the same time and there is only one flashlight. Knowing that there is `one person crossing in 1 minute, one person in 2 minutes, one person in 5 minutes and one person in 10 minutes.` What is your strategy so that everyone crosses the bridge in a `minimum of time ?`
 
 ::: {.callout-tip collapse="true"}

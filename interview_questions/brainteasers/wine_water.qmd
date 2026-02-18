@@ -4,6 +4,8 @@ description: " "
 order: 16
 ---
 
+![](images/wine_water.jpg){width=1px}
+
 We have two jars with the same capacity. We take a small volume from the water and pour it into the wine. Then, we take the same volume from the jar with the wine and pour it back into the one with the water. `Is there more wine in the water or more water in the wine ?` 
 
 ::: {.callout-tip collapse="true"}

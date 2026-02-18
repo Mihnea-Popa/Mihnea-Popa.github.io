@@ -4,6 +4,8 @@ description: " "
 order: 18
 ---
 
+![](images/spy.jpg){width=1px}
+
 Assume a 1D-axis and a spy that is `currently at A>0`, and `each period of time, he moves by an amount B>0`, where A and B are unknown. What is your strategy to be sure to `capture the spy ?`
 
 ::: {.callout-tip collapse="true"}
