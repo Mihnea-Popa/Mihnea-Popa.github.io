@@ -46,10 +46,3 @@ pickle_out.close()
 pickle_out = open("label_list.pickle","wb")
 pickle.dump(label_list, pickle_out)
 pickle_out.close()
-
-
-
-
-
-
-

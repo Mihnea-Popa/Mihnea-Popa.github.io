@@ -51,7 +51,7 @@ Once I tried every model, I tested it on 1000 images not in the dataset used for
 ![](epoch_loss.jpg){width=800px}
 
 <details>
-<summary>Show the training of the neural networks </summary>
+<summary>Show the use of the neural network with a webcam </summary>
 
 ```python
 {{< include webcam.py >}}
