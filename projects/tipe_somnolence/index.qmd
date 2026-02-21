@@ -1,0 +1,59 @@
+---
+title: "Detecting the drowsiness at the wheel"
+author: Mihnea POPA 
+date: May 2022
+---
+
+
+Made for the national competitive exam to enter the French Engineering Schools, this project is a research on the theme "Health and Prevention" and presents two methods to monitor drivers' drowsiness. The first method uses an ECG sensor to measure the heart rate of the driver and the second implements a CNN to detect if the eyes are open or closed. The data used for this second method is the MRL Eye dataset and can be found here <a href="https://mrl.cs.vsb.cz/eyedataset.html" target="_blank">MRL Eye Dataset</a>
+
+
+<details>
+<summary>Show the presentation of the project</summary>
+{{< pdf MCOT_2022.pdf width=100% height=1200 >}}
+</details>
+
+<details>
+<summary>Show the slides for the restitution</summary>
+{{< pdf Présentation.pdf width=100% height=1200 >}}
+</details>
+
+### Import of the dataset
+
+The first tasks in order to create the neural network capable to detect the state of the eyes was to download the MRL Eye Dataset and to convert it into a binary format. Indeed, the dataset came with two folders each with each picture of eyes open or closed (in the .jpg format), but, for practical reasons, I wanted to have a unique file with all the pictures. Since, an array with all the images was to heavy, I decided to use the .pickle format in order to store the dataset. 
+
+<details>
+<summary>Show the dataset creation in the pickle format </summary>
+
+```python
+{{< include creation_base_de_donnees.py >}}
+```
+</details>
+
+### Training of the neural networks
+
+Once I have my dataset stored in the right format, I can upload it to implement the training of various neural networks. I tried several different structures for the neural network, varying the number of layers in the `convolutional layers`, the number of neurons per `fully-connected layer`, the `batch_size` of the training and finally the number of `epochs`. What remained constant across all trainings was the `kernel of the convolution layers (3x3), the activation function relu, the kernel of the maximum pooling (2x2), the loss function binary_crossentropy, the optimizer sgg and the metric accuracy.`
+
+<details>
+<summary>Show the training of the neural networks </summary>
+
+```python
+{{< include entrainement.py >}}
+```
+</details>
+
+### Test of the final neural network
+
+Once I tried every model, I tested it on 1000 images not in the dataset used for training (either the training dataset or the validation dataset) to keep the models with the best accuracy on unseen data. Finally, I came up with this model: `Convolution layers: 32, 32, 64, Fully-Connected Layers:  256, 256, 128, 128, Batch_size: 8, Epoch: 5.` Then, I used this neural network to predict if my own eyes were open or closed using my webcam, since that method can be implemented in a car by using a camera focusing on the driver's face. However, since the MRL Eye Dataset was only focused on the eyes, predicted on the whole face did not give a good result. If this project were to be deepen, either the dataset should be changed or a function to isolate the eyes from the face should be created.
+
+![](neural_network_arch.png){width=800px}
+
+![](epoch_loss.jpg){width=800px}
+
+<details>
+<summary>Show the training of the neural networks </summary>
+
+```python
+{{< include webcam.py >}}
+```
+</details>
