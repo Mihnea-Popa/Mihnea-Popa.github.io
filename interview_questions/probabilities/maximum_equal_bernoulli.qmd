@@ -1,0 +1,35 @@
+---
+title: "Maximum of probability equality two Bernoulli"
+description: " "
+order: 5
+---
+
+
+If $X \sim \mathcal{B}(p)$ and $Y \sim \mathcal{B}(q)$, what is the maximum value of $\mathbb{P}(X=Y)$ ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+If the random variables would be independant, it would trivial. Also, fix $a = \mathbb{P}(X = 1 \cap Y = 1)$, to compute all the probabilities. 
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+If $X \perp Y$, then $\mathbb{P}(X=Y) =  \mathbb{P}(X=1)\mathbb{P}(Y=1)+\mathbb{P}(X=0)\mathbb{P}(Y=0) = qp + (1-p)(1-q) = 1 - p - q.$
+
+Now, let's suppose that $X \not\perp Y$ and let $a = \mathbb{P}(X = 1 \cap Y = 1)$.
+
+We have 
+
+* $\mathbb{P}(X = 1 \cap Y = 1) = a$
+* $\mathbb{P}(X = 1 \cap Y = 0) = \mathbb{P}(X = 1) - \mathbb{P}(X = 1 \cap Y = 1) = p - a$
+* $\mathbb{P}(X = 0 \cap Y = 1) = \mathbb{P}(Y = 1) - \mathbb{P}(X = 1 \cap Y = 1) = q - a$
+* $\mathbb{P}(X = 0 \cap Y = 0) = 1 - a - (p-a) - (q-a) = 1 - p - q + a$
+
+Thus, $\boxed{\mathbb{P}(X=Y) = 1 - p - q + 2a}$, this function is increasing in $a$ so the maximum value is obtained for the maximum value of $a$. Since all the probabilities are positive, we have $$\begin{cases}a \le p \\ a \le q \\ a \ge 0 \\ a \ge (p+q)-1 \end{cases}.$$ Thus we have  
+$$\boxed{\begin{cases} a \le min(p, q) \\ a \ge max(0, p+q-1) \end{cases}.}$$
+
+Accordingly, $$\boxed{max \mathbb{P}(X=Y) = 1 - (p+q)+2\, min(p,q) = 1 - |p-q|.}$$
+:::
+

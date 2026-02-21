@@ -1,0 +1,42 @@
+---
+title: "Knight of Mere"
+description: " "
+order: 3
+---
+
+
+What is the most probable `draw at least one 6 in 4 throws with one dice` or `draw at least a double 6 in 24 throws with two dice` ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Try to go backwards by supposing one inequality and use the concavity of the logarithm function to prove it.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let A "Have at least one 6 in 4 throws with 1 dice" and B "Have at least a double 6 in 24 throws with 2 dice". 
+
+We have 
+
+$$\begin{align*}
+\mathbb{P}(A)>\mathbb{P}(B)
+&\iff 1-\left(\frac{5}{6}\right)^4>1-\left(\frac{35}{36}\right)^{24} \\
+&\iff \left(\frac{5}{6}\right)^4 < \left(\frac{35}{36}\right)^{24} \\
+&\iff 36^{24}5^4 < 35^{24}6^4 \\
+&\iff 6^{48}5^4 < 5^{24}7^{24} \\
+&\iff 6^{44}<5^{20}7^{24} \\
+&\iff 6^{11} < 5^57^6 \\
+&\iff \left(\frac{6}{5}\right)^5 < \left(\frac{7}{6}\right)^6 \\
+&\iff 5\ln\left(\frac{6}{5}\right) < 6\ln\left(\frac{7}{6}\right) \\
+&\iff \frac{5}{6}\ln\left(\frac{6}{5}\right)-\ln\left(\frac{7}{6}\right) < 0.
+\end{align*}$$
+
+Now, using the concavity of the ln, we have $$\forall (x,y) \in \mathbb{R}_+^* \times \mathbb{R}_+^*, \forall \lambda \in (0, 1), ln(\lambda x + (1 - \lambda) y )\ge \lambda ln(x) + (1 - \lambda) ln(y).$$
+
+With $\lambda = \frac{5}{6}, x = \frac{6}{5}, y=1$, the inequality becomes $ln(\frac{5}{6} * \frac{6}{5} + \frac{1}{6}*1)= ln(\frac{7}{6}) > \frac{5}{6}ln(\frac{6}{5}) + \frac{1}{6}*ln(1).$
+
+Accordingly, thanks to the concavity inequality `drawing at least one 6 in 4 throws with one dice is more likely than drawing at least a double 6 in 24 throws with two dice.`
+:::
+

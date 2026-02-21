@@ -299,7 +299,7 @@ Show the BSM class
 <p>Likewise, this class inherits from the first one and implements the price() function using Brownian Motion simulation. Indeed, we add an attributes which is the number of simulations that we do, and for each simulation we compute the final value of the Stochastic process of the stock following the dynamics of a Geometric Brownian Motion : <span class="math inline">\(\frac{dS_t}{S_t} = \mu dt + \sigma dW_t\)</span>, which leads under the risk-neutral measure to <span class="math display">\[\boxed{S_T = S_te^{(r-\sigma^2/2)(T-t) + \sigma (W_T - W_t)}.}\]</span> Therefore, we are not generating the whole path of the stock but only its final value thanks to a draw of a normal distribution <span class="math inline">\(\mathcal{N}(0,T-t).\)</span> Then, we compute the payoff of the option and discount it to take the average as the option’s price.</p>
 <details>
 <summary>
-Show the BSM class
+Show the MC class
 </summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Monte_Carlo <span class="op">:</span> <span class="kw">public</span> Class_Option <span class="op">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>

@@ -1,0 +1,32 @@
+---
+title: "Modes of a Poisson distribution"
+description: " "
+order: 4
+---
+
+
+What is the mode of $\mathcal{P}(\lambda)$?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Let $X \sim \mathcal{P}(\lambda)$ and compute the ratio $\frac{\mathbb{P}(X = k+1)}{\mathbb{P}(X=k)}.$
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $\frac{\mathbb{P}(X = k+1)}{\mathbb{P}(X=k)} = \frac{\lambda^{k+1}e^{-\lambda}}{(k+1)!} * \frac{k!}{\lambda^{k}e^{-\lambda}} = \frac{\lambda}{k+1}$
+
+Therefore, we get
+
+* If $\lambda < k+1$, then $\mathbb{P}(X = k+1)<\mathbb{P}(X = k)$
+
+* If $\lambda > k+1$, then $\mathbb{P}(X = k+1)>\mathbb{P}(X = k)$
+
+* If $\lambda = k+1$, then $\mathbb{P}(X = k+1)=\mathbb{P}(X = k)$
+
+Accordingly, if $\lambda \in \mathbb{N},$ then the mode is $\lambda$ and $\lambda -1$ (they have the same probability) and if $\lambda \notin \mathbb{N},$ then the mode is $\lfloor \lambda \rfloor.$
+
+:::
+

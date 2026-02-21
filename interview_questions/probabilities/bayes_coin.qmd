@@ -1,0 +1,25 @@
+---
+title: "Fake coin probability"
+description: " "
+order: 2
+---
+
+
+We have `3 fair coins and 1 double-headed coin.` We take one coin randomly, then we flip it and we `get head.` What is the probability that we picked `the double-headed coin ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Use Bayes formula $\mathbb{P}(A|B) = \frac{\mathbb{P}(A)}{\mathbb{P}(B)}*\mathbb{P}(B|A),$ with the right events.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let D the event "We have the double-headed coin" and H the event "We drew a head". We want to find $\mathbb{P}(D|H).$
+
+By the Bayes formula we have $$\mathbb{P}(D|H) = \frac{\mathbb{P}(D)*\mathbb{P}(H|D)}{\mathbb{P}(H)} = \frac{\mathbb{P}(D)*\mathbb{P}(H|D)}{\mathbb{P}(D)*\mathbb{P}(H|D) + \mathbb{P}(\bar{D})*\mathbb{P}(H|\bar{D})}.$$
+
+Therefore, we get $$\mathbb{P}(D|H) = \frac{\frac{1}{4}*1}{\frac{1}{4}*1 + \frac{3}{4}*\frac{1}{2}} = \frac{\frac{1}{4}}{\frac{5}{8}}=\frac{2}{5}.$$
+:::
+
