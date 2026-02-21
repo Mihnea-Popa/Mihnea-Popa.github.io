@@ -1,0 +1,52 @@
+---
+title: "Operation on Uniform distributions"
+description: " "
+order: 10
+---
+
+Let's suppose that we have two fair dices ( $U_1 \sim \mathcal{U}(\{1,...,6\}), U_2 \sim \mathcal{U}(\{1,...,6\}), U_1 \perp U_2$). Let $X = min(U_1, U_2) \; \text{and} \; Y = max(U_1, U_2).$
+
+### $\mathbb{E}[X]$ ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Find $\mathbb{P}(X=k)$ and compute the expectation
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let $1 \le k\le6$, we have $(X=k) = (U_1 = k \; \cap \; U_2 = k) \cup (U_1 = k \; \cap \; U_2 > k) \cup (U_1 > k \; \cap \; U_2 = k).$ Out of the 36 possible outcomes, the first event happens $6$ times, the second $6-k$ times and the third also $6-k$ times. Thus $\boxed{\mathbb{P}(X=k) = \frac{1}{36}+ \frac{6-i}{36}+ \frac{6-i}{36}=\frac{13-2i}{36}}.$
+
+Finally, we compute $$\boxed{\mathbb{E}[X] = \sum k\mathbb{P}(X=k) = \frac{11}{36}+2*\frac{9}{36}+3*\frac{7}{36}+4*\frac{5}{36}+5*\frac{3}{36}+6*\frac{1}{36} = \frac{91}{36}\approx 2.52}$$
+:::
+
+### $\mathbb{E}[Y]$ ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+We don't need to do the same as in the first question.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $X + Y =U_1 + U_2$, thus by linearity of the expectation, $$\boxed{\mathbb{E}[Y] = \mathbb{E}[U_1] + \mathbb{E}[U_2]-\mathbb{E}[X] = \frac{7}{2} + \frac{7}{2} - \frac{91}{36} = \frac{161}{36}}$$
+:::
+
+### $cov(X,Y)$ ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+ Use a similar trick as in the second question.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $cov(X,Y) = \mathbb{E}[XY] -\mathbb{E}[X]\mathbb{E}[Y] = \mathbb{E}[U_1U_2] -\mathbb{E}[X]\mathbb{E}[Y] = \mathbb{E}[U_1]\mathbb{E}[U_2] -\mathbb{E}[X]\mathbb{E}[Y].$
+
+Thus, $$\boxed{cov(X,Y) = \frac{7}{2} \frac{7}{2} - \frac{91}{36} \frac{161}{36} = \frac{1225}{1296}.}$$
+:::

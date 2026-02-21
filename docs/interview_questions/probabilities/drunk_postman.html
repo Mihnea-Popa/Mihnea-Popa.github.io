@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Maximum of probability equality two Bernoulli – Mihnea POPA</title>
+<title>Drunk postman – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,23 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question-1-right-permutation" id="toc-question-1-right-permutation" class="nav-link active" data-scroll-target="#question-1-right-permutation">Question 1: Right permutation</a></li>
+  <li><a href="#question-2-at-least-one-letter-right" id="toc-question-2-at-least-one-letter-right" class="nav-link" data-scroll-target="#question-2-at-least-one-letter-right">Question 2: At least one letter right</a></li>
+  <li><a href="#question-3-no-right-letter" id="toc-question-3-no-right-letter" class="nav-link" data-scroll-target="#question-3-no-right-letter">Question 3: No right letter</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maximum of probability equality two Bernoulli</h1>
+<h1 class="title">Drunk postman</h1>
 </div>
 
 
@@ -152,25 +160,12 @@ window.Quarto = {
 </header>
 
 
-<p>If <span class="math inline">\(X \sim \mathcal{B}(p)\)</span> and <span class="math inline">\(Y \sim \mathcal{B}(q)\)</span>, what is the maximum value of <span class="math inline">\(\mathbb{P}(X=Y)\)</span> ?</p>
+<p>This problem studies the case of a drunk postman who has to deliver <span class="math inline">\(n\)</span> letter and <span class="math inline">\(n\)</span> boxes but assigns each letter randomly.</p>
+<section id="question-1-right-permutation" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-right-permutation">Question 1: Right permutation</h3>
+<p>What is the probability that each letter goes to the right box ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If the random variables would be independant, it would trivial. Also, fix <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>, to compute all the probabilities.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -179,25 +174,75 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since <span class="math inline">\(Card(\mathcal{S}_n) = n!\)</span>, we have <span class="math inline">\(\boxed{\mathbb{P}( \sigma=id)=\frac{1}{n!}}\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-at-least-one-letter-right" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-at-least-one-letter-right">Question 2: At least one letter right</h3>
+<p>What is the probability that at least one letter goes to the right box ?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(X \perp Y\)</span>, then <span class="math inline">\(\mathbb{P}(X=Y) =  \mathbb{P}(X=1)\mathbb{P}(Y=1)+\mathbb{P}(X=0)\mathbb{P}(Y=0) = qp + (1-p)(1-q) = 1 - p - q.\)</span></p>
-<p>Now, let’s suppose that <span class="math inline">\(X \not\perp Y\)</span> and let <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>.</p>
-<p>We have</p>
-<ul>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 1) = a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 0) = \mathbb{P}(X = 1) - \mathbb{P}(X = 1 \cap Y = 1) = p - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 1) = \mathbb{P}(Y = 1) - \mathbb{P}(X = 1 \cap Y = 1) = q - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 0) = 1 - a - (p-a) - (q-a) = 1 - p - q + a\)</span></li>
-</ul>
-<p>Thus, <span class="math inline">\(\boxed{\mathbb{P}(X=Y) = 1 - p - q + 2a}\)</span>, this function is increasing in <span class="math inline">\(a\)</span> so the maximum value is obtained for the maximum value of <span class="math inline">\(a\)</span>. Since all the probabilities are positive, we have <span class="math display">\[\begin{cases}a \le p \\ a \le q \\ a \ge 0 \\ a \ge (p+q)-1 \end{cases}.\]</span> Thus we have<br>
-<span class="math display">\[\boxed{\begin{cases} a \le min(p, q) \\ a \ge max(0, p+q-1) \end{cases}.}\]</span></p>
-<p>Accordingly, <span class="math display">\[\boxed{max \mathbb{P}(X=Y) = 1 - (p+q)+2\, min(p,q) = 1 - |p-q|.}\]</span></p>
+<p>Define the event <span class="math inline">\(A_i\)</span> : “The letter i goes to the box i” and use the Poincare formula for the probability of the union.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Define the event <span class="math inline">\(A_i\)</span> : “The letter i goes to the box i, since a good permutation let’s i unchanged and randomly permutes the others, we get <span class="math inline">\(\mathbb{P}(A_i) = \frac{(n-1)!}{n!} = \frac{1}{n}\)</span></p>
+<p>By the Poincare formula, we find<br>
+<span class="math inline">\(\mathbb{P}(\bigcup_{i=1}^n A_i) = \sum_{k=1}^n (-1)^{k-1} \sum_{1\le i_1 &lt; ... &lt; i_k  \le n} \mathbb{P}(A_{i_1} \cap ... \cap A_{i_k})=\sum_{k=1}^n (-1)^{k-1}\binom{n}{k}\frac{(n-k)!}{n!} = \sum_{k=1}^n \frac{(-1)^{k-1}}{k!}.\)</span></p>
+<p>Accordingly, we have <span class="math display">\[\boxed{\mathbb{P}(\text{at least one good letter})=1-\sum_{k=0}^n \frac{(-1)^{k}}{k!} \rightarrow_{n\to\infty} 1-e^{-1}\approx0.632.}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="question-3-no-right-letter" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-no-right-letter">Question 3: No right letter</h3>
+<p>What is the probability that no letters are delivered to the right box ?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math display">\[\boxed{\mathbb{P}(\text{no good letter})= 1-\mathbb{P}(\text{at least one good letter})=e^{-1} \approx 0.368.}\]</span></p>
+<p>We can find the number of ways that no letter are right delivered: probability one permutation leeds to no good letter * number of permutations : <span class="math inline">\(d_n = n!e^{-1}.\)</span></p>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

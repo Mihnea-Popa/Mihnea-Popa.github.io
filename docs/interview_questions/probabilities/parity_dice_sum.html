@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Maximum of probability equality two Bernoulli – Mihnea POPA</title>
+<title>Parity of the sum of dices – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maximum of probability equality two Bernoulli</h1>
+<h1 class="title">Parity of the sum of dices</h1>
 </div>
 
 
@@ -152,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>If <span class="math inline">\(X \sim \mathcal{B}(p)\)</span> and <span class="math inline">\(Y \sim \mathcal{B}(q)\)</span>, what is the maximum value of <span class="math inline">\(\mathbb{P}(X=Y)\)</span> ?</p>
+<p>Assume that we have <span class="math inline">\(n\)</span> different dices each with <span class="math inline">\(20\)</span> faces. What is <code>the probability that the sum is even ?</code></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If the random variables would be independant, it would trivial. Also, fix <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>, to compute all the probabilities.</p>
+<p>What is the probability that one dice shows an even number ? Then, for <span class="math inline">\(n\)</span> independant draws ?</p>
 </div>
 </div>
 </div>
@@ -181,18 +181,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(X \perp Y\)</span>, then <span class="math inline">\(\mathbb{P}(X=Y) =  \mathbb{P}(X=1)\mathbb{P}(Y=1)+\mathbb{P}(X=0)\mathbb{P}(Y=0) = qp + (1-p)(1-q) = 1 - p - q.\)</span></p>
-<p>Now, let’s suppose that <span class="math inline">\(X \not\perp Y\)</span> and let <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>.</p>
-<p>We have</p>
-<ul>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 1) = a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 0) = \mathbb{P}(X = 1) - \mathbb{P}(X = 1 \cap Y = 1) = p - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 1) = \mathbb{P}(Y = 1) - \mathbb{P}(X = 1 \cap Y = 1) = q - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 0) = 1 - a - (p-a) - (q-a) = 1 - p - q + a\)</span></li>
-</ul>
-<p>Thus, <span class="math inline">\(\boxed{\mathbb{P}(X=Y) = 1 - p - q + 2a}\)</span>, this function is increasing in <span class="math inline">\(a\)</span> so the maximum value is obtained for the maximum value of <span class="math inline">\(a\)</span>. Since all the probabilities are positive, we have <span class="math display">\[\begin{cases}a \le p \\ a \le q \\ a \ge 0 \\ a \ge (p+q)-1 \end{cases}.\]</span> Thus we have<br>
-<span class="math display">\[\boxed{\begin{cases} a \le min(p, q) \\ a \ge max(0, p+q-1) \end{cases}.}\]</span></p>
-<p>Accordingly, <span class="math display">\[\boxed{max \mathbb{P}(X=Y) = 1 - (p+q)+2\, min(p,q) = 1 - |p-q|.}\]</span></p>
+<p>Let the final sum be <span class="math inline">\(S_n = \sum_{i=1}^n X_i\)</span> with <span class="math inline">\(\mathbb{P}(X_i=1) = \mathbb{P}(D_i \in 2\mathbb{N}) = 1/2\)</span> and <span class="math inline">\(\mathbb{P}(X_i=0) = \mathbb{P}(D_i \in 2\mathbb{N}+1) = 1/2.\)</span> Therefore, <span class="math inline">\(\boxed{\mathbb{P}(S_n \in 2\mathbb{N}) = \sum_{i \; \text{even}} \binom{n}{i}*2^{-n}= 1/2.}\)</span></p>
 </div>
 </div>
 </div>

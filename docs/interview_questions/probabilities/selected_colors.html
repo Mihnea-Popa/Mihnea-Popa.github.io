@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Maximum of probability equality two Bernoulli – Mihnea POPA</title>
+<title>Polya’s urn – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maximum of probability equality two Bernoulli</h1>
+<h1 class="title">Polya’s urn</h1>
 </div>
 
 
@@ -152,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>If <span class="math inline">\(X \sim \mathcal{B}(p)\)</span> and <span class="math inline">\(Y \sim \mathcal{B}(q)\)</span>, what is the maximum value of <span class="math inline">\(\mathbb{P}(X=Y)\)</span> ?</p>
+<p>An urn initially contains <code>b white</code> balls and <code>r red</code> balls. The following experiment is carried out: * A ball is drawn from the urn at random, and its color is noted. * The ball is returned to the urn, and <code>d balls of the same color</code> are added. The experiment is repeated as many times as desired. Let <span class="math inline">\(n \ge 1\)</span>. Determine the <code>probability that the ball drawn will be white on the nth draw.</code></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If the random variables would be independant, it would trivial. Also, fix <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>, to compute all the probabilities.</p>
+<p>Compute the probability for the first draw, the second, the third. Then make a guess for the general formula and prove it by induction.</p>
 </div>
 </div>
 </div>
@@ -181,18 +181,12 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(X \perp Y\)</span>, then <span class="math inline">\(\mathbb{P}(X=Y) =  \mathbb{P}(X=1)\mathbb{P}(Y=1)+\mathbb{P}(X=0)\mathbb{P}(Y=0) = qp + (1-p)(1-q) = 1 - p - q.\)</span></p>
-<p>Now, let’s suppose that <span class="math inline">\(X \not\perp Y\)</span> and let <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>.</p>
-<p>We have</p>
+<p>We denote by <span class="math inline">\(W_n\)</span> the event the a white ball is drew from the nth draw. Let <span class="math inline">\(P_n : \mathbb{P}(W_n)=\frac{b}{b+r}\)</span></p>
 <ul>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 1) = a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 0) = \mathbb{P}(X = 1) - \mathbb{P}(X = 1 \cap Y = 1) = p - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 1) = \mathbb{P}(Y = 1) - \mathbb{P}(X = 1 \cap Y = 1) = q - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 0) = 1 - a - (p-a) - (q-a) = 1 - p - q + a\)</span></li>
+<li><p>Initialisation : for <span class="math inline">\(n=1\)</span>, there are <span class="math inline">\(b\)</span> white balls among the <span class="math inline">\(b+r\)</span> total balls so the formula is correct at the step 1</p></li>
+<li><p>Heredity: Let <span class="math inline">\(n \ge 1\)</span>. Assume that the result is true for <span class="math inline">\(n \ge 1\)</span>.We cannot use <span class="math inline">\(\mathbb{P}(W_{n+1}  | W_n)\)</span> in our calculations, because we do not know exactly how many balls are in the urn when <span class="math inline">\(W_n\)</span> is true. Except for <span class="math inline">\(W_1\)</span>. After one draw, if <span class="math inline">\(W_1\)</span> is true, we have $ b + d $ white balls and $ r$ red balls. To reach <span class="math inline">\(n + 1\)</span> draws, there remain <span class="math inline">\(n\)</span> draws to perform. This is exactly equivalent to performing <span class="math inline">\(n\)</span> draws starting with <span class="math inline">\(b_0 = b + d\)</span> white balls and <span class="math inline">\(r_0 = r\)</span> red balls. Thus, by the induction hypothesis, we deduce: <span class="math inline">\(\mathbb{P}(W_{n+1} | W_1) = \frac{b_0}{b_0 + r_0} = \frac{b + d}{b + d + r}\)</span>. Likewise, in the other case, we have <span class="math inline">\(\mathbb{P}(W_{n+1} | \bar{W_1}) = \frac{b}{b + d + r}.\)</span> Accordingly, <span class="math inline">\(\mathbb{P}(W_{n+1}) = \mathbb{P}(W_{n+1} \mid W_1)\mathbb{P}(W_1) + \mathbb{P}(W_{n+1} \mid \bar{W_1})\mathbb{P}(\bar{W_1})] = \frac{b + d}{b + d + r} \times \frac{b}{b + r} + \frac{b}{b + d + r} \times \frac{r}{b + r}.\)</span> Finally, <span class="math inline">\(\mathbb{P}(W_{n+1})=\frac{b}{b+r}\)</span></p></li>
 </ul>
-<p>Thus, <span class="math inline">\(\boxed{\mathbb{P}(X=Y) = 1 - p - q + 2a}\)</span>, this function is increasing in <span class="math inline">\(a\)</span> so the maximum value is obtained for the maximum value of <span class="math inline">\(a\)</span>. Since all the probabilities are positive, we have <span class="math display">\[\begin{cases}a \le p \\ a \le q \\ a \ge 0 \\ a \ge (p+q)-1 \end{cases}.\]</span> Thus we have<br>
-<span class="math display">\[\boxed{\begin{cases} a \le min(p, q) \\ a \ge max(0, p+q-1) \end{cases}.}\]</span></p>
-<p>Accordingly, <span class="math display">\[\boxed{max \mathbb{P}(X=Y) = 1 - (p+q)+2\, min(p,q) = 1 - |p-q|.}\]</span></p>
+<p>By the principle of the induction proof, <span class="math inline">\(\boxed{\forall n \in \mathbb{N}^*, \mathbb{P}(W_n)=\frac{b}{b+r}}\)</span></p>
 </div>
 </div>
 </div>

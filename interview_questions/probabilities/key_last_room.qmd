@@ -1,0 +1,34 @@
+---
+title: "Lost key in the last classroom"
+description: " "
+order: 7
+---
+
+
+The keeper of a high school lost the key of the school in one of the 123 rooms with a probability $p$. He already searched the key in 122 rooms and it wasn't there. What is the `probability that the lost key is in the last room ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+If we were sure that the key was in the high school then it will surely be in the last classroom. But, what happens if we are not sure that the key is even in the school. 
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let's denote three different events:
+
+* A: "The key is in the school" $\mathbb{P}(A) = p$
+
+* B: "The key is in the last classroom" $\mathbb{P}(B) = \mathbb{P}(A)*\mathbb{P}(B|A) + \mathbb{P}(\bar{A})*\mathbb{P}(B|\bar{A}) = p*\frac{1}{123}+(1-p)*0 = \frac{p}{123}$
+
+* C: "The key is not found in the first 122 rooms": $\mathbb{P}(C) = \mathbb{P}(A)*\mathbb{P}(C|A) + \mathbb{P}(\bar{A})*\mathbb{P}(C|\bar{A}) = p*\frac{1}{123}+(1-p)*1 = 1-p+\frac{p}{123}$
+
+The problem asks for $\mathbb{P}(B|C).$
+
+By Bayes's theorem, we have $\mathbb{P}(B|C) = \mathbb{P}(C|B)\frac{\mathbb{P}(B)}{\mathbb{P}(C)}.$
+
+Accordingly, we get $\boxed{\mathbb{P}(B|C) = 1*\frac{\frac{p}{123}}{1-p+\frac{p}{123}}=\frac{p}{123-122p}.}$
+
+If we are sure that the keeper lost his key in the school (ie $p=1$), then we find that the key is surely in the last classroom $\mathbb{P}(B|C) = 1.$
+:::

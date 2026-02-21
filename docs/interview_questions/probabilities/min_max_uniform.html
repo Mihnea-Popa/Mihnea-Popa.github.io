@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Maximum of probability equality two Bernoulli – Mihnea POPA</title>
+<title>Operation on Uniform distributions – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,23 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mathbbex" id="toc-mathbbex" class="nav-link active" data-scroll-target="#mathbbex"><span class="math inline">\(\mathbb{E}[X]\)</span> ?</a></li>
+  <li><a href="#mathbbey" id="toc-mathbbey" class="nav-link" data-scroll-target="#mathbbey"><span class="math inline">\(\mathbb{E}[Y]\)</span> ?</a></li>
+  <li><a href="#covxy" id="toc-covxy" class="nav-link" data-scroll-target="#covxy"><span class="math inline">\(cov(X,Y)\)</span> ?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maximum of probability equality two Bernoulli</h1>
+<h1 class="title">Operation on Uniform distributions</h1>
 </div>
 
 
@@ -152,7 +160,9 @@ window.Quarto = {
 </header>
 
 
-<p>If <span class="math inline">\(X \sim \mathcal{B}(p)\)</span> and <span class="math inline">\(Y \sim \mathcal{B}(q)\)</span>, what is the maximum value of <span class="math inline">\(\mathbb{P}(X=Y)\)</span> ?</p>
+<p>Let’s suppose that we have two fair dices ( <span class="math inline">\(U_1 \sim \mathcal{U}(\{1,...,6\}), U_2 \sim \mathcal{U}(\{1,...,6\}), U_1 \perp U_2\)</span>). Let <span class="math inline">\(X = min(U_1, U_2) \; \text{and} \; Y = max(U_1, U_2).\)</span></p>
+<section id="mathbbex" class="level3">
+<h3 class="anchored" data-anchor-id="mathbbex"><span class="math inline">\(\mathbb{E}[X]\)</span> ?</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +175,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If the random variables would be independant, it would trivial. Also, fix <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>, to compute all the probabilities.</p>
+<p>Find <span class="math inline">\(\mathbb{P}(X=k)\)</span> and compute the expectation</p>
 </div>
 </div>
 </div>
@@ -181,23 +191,85 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(X \perp Y\)</span>, then <span class="math inline">\(\mathbb{P}(X=Y) =  \mathbb{P}(X=1)\mathbb{P}(Y=1)+\mathbb{P}(X=0)\mathbb{P}(Y=0) = qp + (1-p)(1-q) = 1 - p - q.\)</span></p>
-<p>Now, let’s suppose that <span class="math inline">\(X \not\perp Y\)</span> and let <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>.</p>
-<p>We have</p>
-<ul>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 1) = a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 0) = \mathbb{P}(X = 1) - \mathbb{P}(X = 1 \cap Y = 1) = p - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 1) = \mathbb{P}(Y = 1) - \mathbb{P}(X = 1 \cap Y = 1) = q - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 0) = 1 - a - (p-a) - (q-a) = 1 - p - q + a\)</span></li>
-</ul>
-<p>Thus, <span class="math inline">\(\boxed{\mathbb{P}(X=Y) = 1 - p - q + 2a}\)</span>, this function is increasing in <span class="math inline">\(a\)</span> so the maximum value is obtained for the maximum value of <span class="math inline">\(a\)</span>. Since all the probabilities are positive, we have <span class="math display">\[\begin{cases}a \le p \\ a \le q \\ a \ge 0 \\ a \ge (p+q)-1 \end{cases}.\]</span> Thus we have<br>
-<span class="math display">\[\boxed{\begin{cases} a \le min(p, q) \\ a \ge max(0, p+q-1) \end{cases}.}\]</span></p>
-<p>Accordingly, <span class="math display">\[\boxed{max \mathbb{P}(X=Y) = 1 - (p+q)+2\, min(p,q) = 1 - |p-q|.}\]</span></p>
+<p>Let <span class="math inline">\(1 \le k\le6\)</span>, we have <span class="math inline">\((X=k) = (U_1 = k \; \cap \; U_2 = k) \cup (U_1 = k \; \cap \; U_2 &gt; k) \cup (U_1 &gt; k \; \cap \; U_2 = k).\)</span> Out of the 36 possible outcomes, the first event happens <span class="math inline">\(6\)</span> times, the second <span class="math inline">\(6-k\)</span> times and the third also <span class="math inline">\(6-k\)</span> times. Thus <span class="math inline">\(\boxed{\mathbb{P}(X=k) = \frac{1}{36}+ \frac{6-i}{36}+ \frac{6-i}{36}=\frac{13-2i}{36}}.\)</span></p>
+<p>Finally, we compute <span class="math display">\[\boxed{\mathbb{E}[X] = \sum k\mathbb{P}(X=k) = \frac{11}{36}+2*\frac{9}{36}+3*\frac{7}{36}+4*\frac{5}{36}+5*\frac{3}{36}+6*\frac{1}{36} = \frac{91}{36}\approx 2.52}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="mathbbey" class="level3">
+<h3 class="anchored" data-anchor-id="mathbbey"><span class="math inline">\(\mathbb{E}[Y]\)</span> ?</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We don’t need to do the same as in the first question.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math inline">\(X + Y =U_1 + U_2\)</span>, thus by linearity of the expectation, <span class="math display">\[\boxed{\mathbb{E}[Y] = \mathbb{E}[U_1] + \mathbb{E}[U_2]-\mathbb{E}[X] = \frac{7}{2} + \frac{7}{2} - \frac{91}{36} = \frac{161}{36}}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="covxy" class="level3">
+<h3 class="anchored" data-anchor-id="covxy"><span class="math inline">\(cov(X,Y)\)</span> ?</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use a similar trick as in the second question.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have <span class="math inline">\(cov(X,Y) = \mathbb{E}[XY] -\mathbb{E}[X]\mathbb{E}[Y] = \mathbb{E}[U_1U_2] -\mathbb{E}[X]\mathbb{E}[Y] = \mathbb{E}[U_1]\mathbb{E}[U_2] -\mathbb{E}[X]\mathbb{E}[Y].\)</span></p>
+<p>Thus, <span class="math display">\[\boxed{cov(X,Y) = \frac{7}{2} \frac{7}{2} - \frac{91}{36} \frac{161}{36} = \frac{1225}{1296}.}\]</span></p>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

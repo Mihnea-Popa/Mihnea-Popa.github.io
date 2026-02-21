@@ -1,0 +1,50 @@
+---
+title: "Drunk postman"
+description: " "
+order: 8
+---
+
+
+This problem studies the case of a drunk postman who has to deliver $n$ letter and $n$ boxes but assigns each letter randomly.
+
+### Question 1: Right permutation
+
+What is the probability that each letter goes to the right box ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+Since $Card(\mathcal{S}_n) = n!$, we have $\boxed{\mathbb{P}( \sigma=id)=\frac{1}{n!}}$
+:::
+
+### Question 2: At least one letter right
+
+What is the probability that at least one letter goes to the right box ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+Define the event $A_i$ : "The letter i goes to the box i" and use the Poincare formula for the probability of the union.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Define the event $A_i$ : "The letter i goes to the box i, since a good permutation let's i unchanged and randomly permutes the others, we get $\mathbb{P}(A_i) = \frac{(n-1)!}{n!} = \frac{1}{n}$
+
+By the Poincare formula, we find  
+$\mathbb{P}(\bigcup_{i=1}^n A_i) = \sum_{k=1}^n (-1)^{k-1} \sum_{1\le i_1 < ... < i_k  \le n} \mathbb{P}(A_{i_1} \cap ... \cap A_{i_k})=\sum_{k=1}^n (-1)^{k-1}\binom{n}{k}\frac{(n-k)!}{n!} = \sum_{k=1}^n \frac{(-1)^{k-1}}{k!}.$
+
+Accordingly, we have
+$$\boxed{\mathbb{P}(\text{at least one good letter})=1-\sum_{k=0}^n \frac{(-1)^{k}}{k!} \rightarrow_{n\to\infty} 1-e^{-1}\approx0.632.}$$
+:::
+
+### Question 3: No right letter
+
+What is the probability that no letters are delivered to the right box ?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $$\boxed{\mathbb{P}(\text{no good letter})= 1-\mathbb{P}(\text{at least one good letter})=e^{-1} \approx 0.368.}$$
+
+We can find the number of ways that no letter are right delivered: probability one permutation leeds to no good letter * number of permutations : $d_n = n!e^{-1}.$
+:::

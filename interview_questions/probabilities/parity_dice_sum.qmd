@@ -1,0 +1,20 @@
+---
+title: "Parity of the sum of dices"
+description: " "
+order: 6
+---
+
+
+Assume that we have $n$ different dices each with $20$ faces. What is `the probability that the sum is even ?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+What is the probability that one dice shows an even number ? Then, for $n$ independant draws ?
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let the final sum be $S_n = \sum_{i=1}^n X_i$ with $\mathbb{P}(X_i=1) = \mathbb{P}(D_i \in 2\mathbb{N}) = 1/2$ and $\mathbb{P}(X_i=0) = \mathbb{P}(D_i \in 2\mathbb{N}+1) = 1/2.$ Therefore, $\boxed{\mathbb{P}(S_n \in 2\mathbb{N}) = \sum_{i \; \text{even}} \binom{n}{i}*2^{-n}= 1/2.}$
+:::

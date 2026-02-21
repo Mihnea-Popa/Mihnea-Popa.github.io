@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Maximum of probability equality two Bernoulli – Mihnea POPA</title>
+<title>Lost key in the last classroom – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maximum of probability equality two Bernoulli</h1>
+<h1 class="title">Lost key in the last classroom</h1>
 </div>
 
 
@@ -152,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>If <span class="math inline">\(X \sim \mathcal{B}(p)\)</span> and <span class="math inline">\(Y \sim \mathcal{B}(q)\)</span>, what is the maximum value of <span class="math inline">\(\mathbb{P}(X=Y)\)</span> ?</p>
+<p>The keeper of a high school lost the key of the school in one of the 123 rooms with a probability <span class="math inline">\(p\)</span>. He already searched the key in 122 rooms and it wasn’t there. What is the <code>probability that the lost key is in the last room ?</code></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If the random variables would be independant, it would trivial. Also, fix <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>, to compute all the probabilities.</p>
+<p>If we were sure that the key was in the high school then it will surely be in the last classroom. But, what happens if we are not sure that the key is even in the school.</p>
 </div>
 </div>
 </div>
@@ -181,18 +181,16 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(X \perp Y\)</span>, then <span class="math inline">\(\mathbb{P}(X=Y) =  \mathbb{P}(X=1)\mathbb{P}(Y=1)+\mathbb{P}(X=0)\mathbb{P}(Y=0) = qp + (1-p)(1-q) = 1 - p - q.\)</span></p>
-<p>Now, let’s suppose that <span class="math inline">\(X \not\perp Y\)</span> and let <span class="math inline">\(a = \mathbb{P}(X = 1 \cap Y = 1)\)</span>.</p>
-<p>We have</p>
+<p>Let’s denote three different events:</p>
 <ul>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 1) = a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 1 \cap Y = 0) = \mathbb{P}(X = 1) - \mathbb{P}(X = 1 \cap Y = 1) = p - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 1) = \mathbb{P}(Y = 1) - \mathbb{P}(X = 1 \cap Y = 1) = q - a\)</span></li>
-<li><span class="math inline">\(\mathbb{P}(X = 0 \cap Y = 0) = 1 - a - (p-a) - (q-a) = 1 - p - q + a\)</span></li>
+<li><p>A: “The key is in the school” <span class="math inline">\(\mathbb{P}(A) = p\)</span></p></li>
+<li><p>B: “The key is in the last classroom” <span class="math inline">\(\mathbb{P}(B) = \mathbb{P}(A)*\mathbb{P}(B|A) + \mathbb{P}(\bar{A})*\mathbb{P}(B|\bar{A}) = p*\frac{1}{123}+(1-p)*0 = \frac{p}{123}\)</span></p></li>
+<li><p>C: “The key is not found in the first 122 rooms”: <span class="math inline">\(\mathbb{P}(C) = \mathbb{P}(A)*\mathbb{P}(C|A) + \mathbb{P}(\bar{A})*\mathbb{P}(C|\bar{A}) = p*\frac{1}{123}+(1-p)*1 = 1-p+\frac{p}{123}\)</span></p></li>
 </ul>
-<p>Thus, <span class="math inline">\(\boxed{\mathbb{P}(X=Y) = 1 - p - q + 2a}\)</span>, this function is increasing in <span class="math inline">\(a\)</span> so the maximum value is obtained for the maximum value of <span class="math inline">\(a\)</span>. Since all the probabilities are positive, we have <span class="math display">\[\begin{cases}a \le p \\ a \le q \\ a \ge 0 \\ a \ge (p+q)-1 \end{cases}.\]</span> Thus we have<br>
-<span class="math display">\[\boxed{\begin{cases} a \le min(p, q) \\ a \ge max(0, p+q-1) \end{cases}.}\]</span></p>
-<p>Accordingly, <span class="math display">\[\boxed{max \mathbb{P}(X=Y) = 1 - (p+q)+2\, min(p,q) = 1 - |p-q|.}\]</span></p>
+<p>The problem asks for <span class="math inline">\(\mathbb{P}(B|C).\)</span></p>
+<p>By Bayes’s theorem, we have <span class="math inline">\(\mathbb{P}(B|C) = \mathbb{P}(C|B)\frac{\mathbb{P}(B)}{\mathbb{P}(C)}.\)</span></p>
+<p>Accordingly, we get <span class="math inline">\(\boxed{\mathbb{P}(B|C) = 1*\frac{\frac{p}{123}}{1-p+\frac{p}{123}}=\frac{p}{123-122p}.}\)</span></p>
+<p>If we are sure that the keeper lost his key in the school (ie <span class="math inline">\(p=1\)</span>), then we find that the key is surely in the last classroom <span class="math inline">\(\mathbb{P}(B|C) = 1.\)</span></p>
 </div>
 </div>
 </div>
