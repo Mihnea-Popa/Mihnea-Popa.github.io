@@ -1,0 +1,60 @@
+---
+title: "Uncertain Meeting"
+description: " "
+order: 16
+---
+
+Two people agreed to meet between 1 PM and 2 PM. Each one comes randomly in this interval and stays for 30 minutes. What is the probability that they actually meet ?
+
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Parametrize the problem using two uniform distributions and compute the partial area corresponding to the meeting.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let $X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y$ be the time or arrival of the two people. We want to compute $\mathbb{P}(|X-Y| \le 1/2)$
+
+Since the two uniforms are positive, the possible region is $$\begin{cases} x \ge 0 \\ y \ge 0\end{cases}.$$
+
+The meeting happens if  
+$$\begin{cases} x - y\le 1/2\\  y -x \le 1/2  \end{cases} \sim \begin{cases} y \ge x-1/2 \\  y \le x +1/2  \end{cases}.$$
+
+We can plot the regions and we find $\boxed{\mathbb{P}(\text{Meet}) = \frac{1-2*\frac{1/2*1/2}{2}}{1}= 3/4.}$
+
+```{python}
+#| echo: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 1000
+x = np.linspace(0, 1, n)
+y = np.linspace(0, 1, n)
+X, Y = np.meshgrid(x, y)
+
+possible = (X >= 0) & (Y >= 0) & (X <= 1) & (Y <= 1)
+
+meeting = (
+    possible &
+    (Y <= X + 0.5) &
+    (Y >= X - 0.5) )
+
+plt.figure(figsize=(6,6))
+plt.contourf(X, Y, possible, levels=[0.5,1], colors=["red"], alpha=0.5)
+plt.contourf(X, Y, meeting, levels=[0.5,1], colors=["blue"], alpha=0.8)
+
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Meeting Region for Arrivals x, y")
+plt.xlim(0,1)
+plt.ylim(0,1)
+plt.gca().set_aspect('equal')
+plt.show()
+```
+:::
+

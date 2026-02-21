@@ -1,6 +1,7 @@
 ---
 title: "Pricing options with Black-Sholes-Merton and Monte Carlo in C++"
 author: Mihnea POPA 
+description: " "
 date: December 2024
 ---
 

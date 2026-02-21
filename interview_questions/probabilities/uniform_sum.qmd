@@ -1,0 +1,26 @@
+---
+title: "Uniform Sum"
+description: " "
+order: 15
+---
+
+You have a fair dice and a loaded dice such that the sum leads to an uniform distribution. `How your dice is fake ?`
+
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Use the edge cases.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $X \sim \mathcal{U}\{1,...,6\}$ and $Y$ such that $X +Y \sim \mathcal{U}\{1,...,12\}.$ 
+
+That means that $\forall 1 \le k \le 12, \mathbb{P}(X+Y=k) = 1/12.$ For $k=1$, since the lowest value for X is 1, we know that Y has to be 0. Moreover, $\mathbb{P}(X+Y=1) = \mathbb{P}(X=1)*\mathbb{P}(Y=0)$ so $\boxed{\mathbb{P}(Y=0)=\frac{1/12}{1/6}=1/2.}$ Likewise, since the highest value for X is 6, if X+Y is 12 then Y has to be 6. Thus, $\mathbb{P}(X+Y=12) = \mathbb{P}(X=6)*\mathbb{P}(Y=6)$ so $\boxed{\mathbb{P}(Y=6)=\frac{1/12}{1/6}=1/2.}$
+
+Finally, the faces of the fake dice are `(0, 0, 0, 6, 6, 6).`
+:::
+

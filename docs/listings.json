@@ -48,7 +48,19 @@
   {
     "listing": "/interview_questions/probabilities/index.html",
     "items": [
-      "/interview_questions/probabilities/local_minima.html"
+      "/interview_questions/probabilities/local_minima.html",
+      "/interview_questions/probabilities/bayes_coin.html",
+      "/interview_questions/probabilities/chevalier_mere.html",
+      "/interview_questions/probabilities/modes_poisson.html",
+      "/interview_questions/probabilities/maximum_equal_bernoulli.html",
+      "/interview_questions/probabilities/parity_dice_sum.html",
+      "/interview_questions/probabilities/key_last_room.html",
+      "/interview_questions/probabilities/drunk_postman.html",
+      "/interview_questions/probabilities/selected_colors.html",
+      "/interview_questions/probabilities/min_max_uniform.html",
+      "/interview_questions/probabilities/expected_flips_different.html",
+      "/interview_questions/probabilities/random_boxes.html",
+      "/interview_questions/probabilities/stick_triangle.html"
     ]
   }
 ]

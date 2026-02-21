@@ -1,6 +1,7 @@
 ---
 title: "Detecting the drowsiness at the wheel"
-author: Mihnea POPA 
+author: Mihnea POPA
+description: " "
 date: May 2022
 ---
 

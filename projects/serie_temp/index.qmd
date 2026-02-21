@@ -1,6 +1,7 @@
 ---
 title: "Modelling a linear time series by an ARIMA model and prediction"
 author: Mihnea POPA / Paul LEMOINE
+description: " "
 date: May 2025
 ---
 

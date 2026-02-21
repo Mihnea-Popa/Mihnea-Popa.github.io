@@ -1,0 +1,21 @@
+---
+title: "Russian bullet cylinder"
+description: " "
+order: 14
+---
+
+A criminal but two bullets in a row in a six bullet cylinder. He shuffles it and shot once, nothing happens. Is it better for you to reshuffle or not ?
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Imagine that the bullets are in slot 1 and 2 and that the cylinder goes increasingly, the cycle is therefore (1, 2, 3, 4, 5, 6).
+
+* If you reshuffle, every slot is equally plausible and $\mathbb{P}(\text{death | shuffle)} = 1/3$.
+
+* If you don't reshuffle, since the first shot was blank, you know that you are not in slots 1 nor 2. Among the 4 slots left, only the slot 6 would lead to a bullet at the next shot. Therefore, $\mathbb{P}(\text{death | no shuffle)} = 1/4.$
+
+Thus, `it is better to not reshuffle.`
+:::
+
