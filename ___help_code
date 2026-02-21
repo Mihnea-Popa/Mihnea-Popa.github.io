@@ -3,7 +3,7 @@ library(pdftools)
 pdf_convert("files/Resume.pdf", format = "png", dpi = 150)
 ```
 
-
+quarto render
 git add .
 git commit -m "Mise à jour du site"
 git push
