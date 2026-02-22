@@ -1,0 +1,54 @@
+---
+title: "Tournament between two divisions"
+description: " "
+order: 23
+---
+
+Suppose we have n teams in the division 1 and n teams in the division 2 and we create a a tournament across those teams (only 1 match). 
+
+
+### Question 1: Different division for all
+
+What is the probability that each in each match all teams compete against a team from the other division (let's denote the probability by $a_n$). Also, give a equivalent as $n \to + \infty$ using Stirling formula: $n! \sim_{+\infty} \sqrt{2\pi n} (\frac{n}{e})^n.$ 
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Try to associate sequentially each team from division 1 to a team from division 2
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+* In order to create matches in different divisions, for the first team in the division 1 we have n choices then, for the second team in division 1 we only have n-1 choices. 
+
+* The total number of possible matches is created by associated to the first team in division 1 any of the other 2n-1 teams. Then, for the second team in division 1 (suppose it was not the one chosen), we have to assign one of the 2n-3 teams remaining (the total number of teams - the two from the first match - itself).
+
+Thus, we have $\boxed{\mathbb{P}(a_n)=\frac{n(n-1)...1}{(2n-1)(2n-3)...1}= \frac{n!}{\frac{(2n)!}{(2n)(2n-2)...2}} = \frac{2^n(n!)^2}{(2n)!}.}$
+
+For the equivalent in $+\infty$, we get from the Stirling's formula $\mathbb{P}(a_n) \sim_{+\infty} \frac{2^n * (\sqrt{2\pi n} (\frac{n}{e})^n)^2}{\sqrt{2\pi 2n} (\frac{2n}{e})^{2n}}= \frac{\frac{n^{2n}}{e^{2n}}}{\frac{n^{2n}}{e^{2n}}}\times \frac{2^n}{2^{2n}} \times \frac{2\pi n}{2\sqrt{\pi n}} = \frac{\sqrt{\pi n}}{2^n}.$
+:::
+
+
+### Question 2: Same division for all
+
+What is the probability that each in each match all teams compete against a team from the same division (let's denote the probability by $b_n$). Also, give a equivalent as $n \to + \infty$ using Stirling formula: $n! \sim_{+\infty} \sqrt{2\pi n} (\frac{n}{e})^n.$ 
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Since, we can create matches for all teams in the same division, that means that $n \in 2\mathbb{N}$. Try to associate sequentially each team to a team from the same division. 
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+Since, we can create matches for all teams in the same division, that means that n is even so we will have that we have `2n teams in division 1 and 2n teams in division 2.`
+
+* In order to create matches in same division, for the first team in the division 1 we have 2n-1 choices then, for the third team in division 1 we only have 2n-3 choices. But the same happens in the division 2. 
+
+* The total number of possible matches is created by associated to the first team in division 1 any of the other 4n-1 teams. Then, for the second team in division 1 (suppose it was not the one chosen), we have to assign one of the 4n-3 teams remaining (the total number of teams - the two from the first match - itself).
+
+Thus, we have $\boxed{\mathbb{P}(b_{2n})=\frac{(2n-1)(2n-3)...1 * (2n-1)(2n-3)...1}{(4n-1)(4n-3)...1}= \frac{\frac{(2n)!}{2^n n!}\times \frac{(2n)!}{2^nn!}}{\frac{(4n)!}{2^{2n}(2n)!}} = \frac{(2n)!^3}{(4n)!n!^2}.}$
+
+For the equivalent in $+\infty$, we get from the Stirling's formula $\mathbb{P}(b_{2n}) \sim_{+\infty} \frac{(\sqrt{2\pi 2n} (\frac{2n}{e})^{2n})^3}{\sqrt{2\pi 4n} (\frac{4n}{e})^{4n} \times(\sqrt{2\pi n} (\frac{n}{e})^n)^2}= \frac{(\frac{n}{e})^{6n}}{(\frac{n}{e})^{6n}} \times \frac{2^{6n}}{2^{8n}} \times \frac{8(\pi n)^{3/2}}{2(2 \pi n)^{1/2}*2 \pi n}=\frac{2}{\sqrt{2}*2^{2n}} = \sqrt{2} * 2^{-2n}$
+:::

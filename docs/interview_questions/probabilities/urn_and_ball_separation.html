@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Uniform Ratio – Mihnea POPA</title>
+<title>Separation of the balls into urns – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uniform Ratio</h1>
+<h1 class="title">Separation of the balls into urns</h1>
 </div>
 
 
@@ -152,7 +152,8 @@ window.Quarto = {
 </header>
 
 
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span>, what is <span class="math inline">\(\mathbb{P}(1 \le X/Y \le2)\)</span> ?</p>
+<p>Suppose we have r balls indiscernible and n urns (<span class="math inline">\(r \le n\)</span>).</p>
+<p>What is the probability that each urn has at most one ball ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +166,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Compute the partial area corresponding to the meeting.</p>
+<p>Try to compute the number of different sequences of ball / urn separation that we can do.</p>
 </div>
 </div>
 </div>
@@ -181,19 +182,12 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} 0 \le x \le 1 \\ 0\le y \le 1\end{cases}.\]</span></p>
-<p>The condition if fulfilled if<br>
-<span class="math display">\[\begin{cases} x / y\le 2\\  x/y \ge 1  \end{cases} \sim \begin{cases} y \le x \\  y \le x/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(1 \le X/Y \le2) = \frac{1-\frac{1*1}{2}-\frac{1*1/2}{2}}{1}= 1/4.}\)</span></p>
-<div id="576d001b" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uniform_ratio_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Let’s denote by <code>*</code> the balls and by <code>|</code> the separation of the different urns. Therefore, one possibility to dispach the balls is the following <code>"*|*|...|*"</code>. Accordingly, we need to choose the right place for the separators within the sequence.</p>
+<ul>
+<li><p>The total number of sequence that we can do is <span class="math inline">\(\binom{n+r-1}{n-1}\)</span> (we choose the place of the separators)</p></li>
+<li><p>The total number of sequence verifying that all urns have at most one ball is <span class="math inline">\(\binom {n}{r}\)</span> (we choose the urns that have exactly one ball).</p></li>
+</ul>
+<p>Thus <span class="math inline">\(\boxed{\mathbb{P}(\text{All urns have at most one ball}) = \frac{\binom {n}{r}}{\binom{n+r-1}{n-1}}= \frac{(n-1)...(n-r+1)}{(n+r-1)...(n+1)}.}\)</span></p>
 </div>
 </div>
 </div>
@@ -203,14 +197,14 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
+<span class="screen-reader-only">Tip</span>🚨 Follow up
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>What if we wanted a ratio between p and q ?</p>
-<p>Thus, <span class="math display">\[\boxed{\mathbb{P}(p \le X/Y \le q) = 1-\frac{1*p}{2} -\frac{1*1/q}{2} = 1-\frac{p+1/q}{2}.}\]</span></p>
+<p>The probability that there exist one urn with at least two balls is thus <span class="math inline">\(1-\mathbb{P}(\text{All urns have at most one ball}).\)</span></p>
+<p>Moreover, if the balls were discernible, for each ball we could choose an urn with no ball yet. We will get a different probability : <span class="math inline">\(\mathbb{P}(\text{All urns have at most one ball})=\frac{n(n-1)...(n-r+1)}{n^r}.\)</span></p>
 </div>
 </div>
 </div>

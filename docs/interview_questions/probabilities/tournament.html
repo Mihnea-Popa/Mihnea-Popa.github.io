@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Uniform Ratio – Mihnea POPA</title>
+<title>Tournament between two divisions – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,22 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question-1-different-division-for-all" id="toc-question-1-different-division-for-all" class="nav-link active" data-scroll-target="#question-1-different-division-for-all">Question 1: Different division for all</a></li>
+  <li><a href="#question-2-same-division-for-all" id="toc-question-2-same-division-for-all" class="nav-link" data-scroll-target="#question-2-same-division-for-all">Question 2: Same division for all</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uniform Ratio</h1>
+<h1 class="title">Tournament between two divisions</h1>
 </div>
 
 
@@ -152,7 +159,10 @@ window.Quarto = {
 </header>
 
 
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span>, what is <span class="math inline">\(\mathbb{P}(1 \le X/Y \le2)\)</span> ?</p>
+<p>Suppose we have n teams in the division 1 and n teams in the division 2 and we create a a tournament across those teams (only 1 match).</p>
+<section id="question-1-different-division-for-all" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-different-division-for-all">Question 1: Different division for all</h3>
+<p>What is the probability that each in each match all teams compete against a team from the other division (let’s denote the probability by <span class="math inline">\(a_n\)</span>). Also, give a equivalent as <span class="math inline">\(n \to + \infty\)</span> using Stirling formula: <span class="math inline">\(n! \sim_{+\infty} \sqrt{2\pi n} (\frac{n}{e})^n.\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +175,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Compute the partial area corresponding to the meeting.</p>
+<p>Try to associate sequentially each team from division 1 to a team from division 2</p>
 </div>
 </div>
 </div>
@@ -181,41 +191,60 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} 0 \le x \le 1 \\ 0\le y \le 1\end{cases}.\]</span></p>
-<p>The condition if fulfilled if<br>
-<span class="math display">\[\begin{cases} x / y\le 2\\  x/y \ge 1  \end{cases} \sim \begin{cases} y \le x \\  y \le x/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(1 \le X/Y \le2) = \frac{1-\frac{1*1}{2}-\frac{1*1/2}{2}}{1}= 1/4.}\)</span></p>
-<div id="576d001b" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uniform_ratio_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
+<ul>
+<li><p>In order to create matches in different divisions, for the first team in the division 1 we have n choices then, for the second team in division 1 we only have n-1 choices.</p></li>
+<li><p>The total number of possible matches is created by associated to the first team in division 1 any of the other 2n-1 teams. Then, for the second team in division 1 (suppose it was not the one chosen), we have to assign one of the 2n-3 teams remaining (the total number of teams - the two from the first match - itself).</p></li>
+</ul>
+<p>Thus, we have <span class="math inline">\(\boxed{\mathbb{P}(a_n)=\frac{n(n-1)...1}{(2n-1)(2n-3)...1}= \frac{n!}{\frac{(2n)!}{(2n)(2n-2)...2}} = \frac{2^n(n!)^2}{(2n)!}.}\)</span></p>
+<p>For the equivalent in <span class="math inline">\(+\infty\)</span>, we get from the Stirling’s formula <span class="math inline">\(\mathbb{P}(a_n) \sim_{+\infty} \frac{2^n * (\sqrt{2\pi n} (\frac{n}{e})^n)^2}{\sqrt{2\pi 2n} (\frac{2n}{e})^{2n}}= \frac{\frac{n^{2n}}{e^{2n}}}{\frac{n^{2n}}{e^{2n}}}\times \frac{2^n}{2^{2n}} \times \frac{2\pi n}{2\sqrt{\pi n}} = \frac{\sqrt{\pi n}}{2^n}.\)</span></p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+<section id="question-2-same-division-for-all" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-same-division-for-all">Question 2: Same division for all</h3>
+<p>What is the probability that each in each match all teams compete against a team from the same division (let’s denote the probability by <span class="math inline">\(b_n\)</span>). Also, give a equivalent as <span class="math inline">\(n \to + \infty\)</span> using Stirling formula: <span class="math inline">\(n! \sim_{+\infty} \sqrt{2\pi n} (\frac{n}{e})^n.\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
+<span class="screen-reader-only">Tip</span>💡 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>What if we wanted a ratio between p and q ?</p>
-<p>Thus, <span class="math display">\[\boxed{\mathbb{P}(p \le X/Y \le q) = 1-\frac{1*p}{2} -\frac{1*1/q}{2} = 1-\frac{p+1/q}{2}.}\]</span></p>
+<p>Since, we can create matches for all teams in the same division, that means that <span class="math inline">\(n \in 2\mathbb{N}\)</span>. Try to associate sequentially each team to a team from the same division.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since, we can create matches for all teams in the same division, that means that n is even so we will have that we have <code>2n teams in division 1 and 2n teams in division 2.</code></p>
+<ul>
+<li><p>In order to create matches in same division, for the first team in the division 1 we have 2n-1 choices then, for the third team in division 1 we only have 2n-3 choices. But the same happens in the division 2.</p></li>
+<li><p>The total number of possible matches is created by associated to the first team in division 1 any of the other 4n-1 teams. Then, for the second team in division 1 (suppose it was not the one chosen), we have to assign one of the 4n-3 teams remaining (the total number of teams - the two from the first match - itself).</p></li>
+</ul>
+<p>Thus, we have <span class="math inline">\(\boxed{\mathbb{P}(b_{2n})=\frac{(2n-1)(2n-3)...1 * (2n-1)(2n-3)...1}{(4n-1)(4n-3)...1}= \frac{\frac{(2n)!}{2^n n!}\times \frac{(2n)!}{2^nn!}}{\frac{(4n)!}{2^{2n}(2n)!}} = \frac{(2n)!^3}{(4n)!n!^2}.}\)</span></p>
+<p>For the equivalent in <span class="math inline">\(+\infty\)</span>, we get from the Stirling’s formula <span class="math inline">\(\mathbb{P}(b_{2n}) \sim_{+\infty} \frac{(\sqrt{2\pi 2n} (\frac{2n}{e})^{2n})^3}{\sqrt{2\pi 4n} (\frac{4n}{e})^{4n} \times(\sqrt{2\pi n} (\frac{n}{e})^n)^2}= \frac{(\frac{n}{e})^{6n}}{(\frac{n}{e})^{6n}} \times \frac{2^{6n}}{2^{8n}} \times \frac{8(\pi n)^{3/2}}{2(2 \pi n)^{1/2}*2 \pi n}=\frac{2}{\sqrt{2}*2^{2n}} = \sqrt{2} * 2^{-2n}\)</span></p>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
