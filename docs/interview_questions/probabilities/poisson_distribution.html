@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Uncertain Meeting – Mihnea POPA</title>
+<title>Poisson distribution – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,22 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question-1-mathbbex-x-0" id="toc-question-1-mathbbex-x-0" class="nav-link active" data-scroll-target="#question-1-mathbbex-x-0">Question 1: <span class="math inline">\(\mathbb{E}[X | X &gt;0]\)</span> ?</a></li>
+  <li><a href="#question-2-mathbbpx-in-2mathbbn" id="toc-question-2-mathbbpx-in-2mathbbn" class="nav-link" data-scroll-target="#question-2-mathbbpx-in-2mathbbn">Question 2: <span class="math inline">\(\mathbb{P}(X \in 2\mathbb{N})\)</span></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uncertain Meeting</h1>
+<h1 class="title">Poisson distribution</h1>
 </div>
 
 
@@ -152,23 +159,28 @@ window.Quarto = {
 </header>
 
 
-<p>Two people agreed to meet between 1 PM and 2 PM. Each one comes randomly in this interval and stays for 30 minutes. What is the probability that they actually meet ?</p>
+<p>Suppose <span class="math inline">\(X\sim \mathcal{P}(\lambda)\)</span></p>
+<section id="question-1-mathbbex-x-0" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-mathbbex-x-0">Question 1: <span class="math inline">\(\mathbb{E}[X | X &gt;0]\)</span> ?</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
+<span class="screen-reader-only">Tip</span>💡 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Parametrize the problem using two uniform distributions and compute the partial area corresponding to the meeting.</p>
+<p>We have <span class="math inline">\(\mathbb{E}[X | X &gt;0] = \sum_{k=0}^{+\infty} k\mathbb{P}(X=k | X&gt;0) = \sum_{k=0}^{+\infty} k\frac{\mathbb{P}(X=k \cap X&gt;0)}{\mathbb{P}(X&gt;0)} = \sum_{k=1}^{+\infty} k \frac{\lambda^k e^{-\lambda}}{k!(1-e^{-\lambda})} = \frac{e^{-\lambda}}{1-e^{-\lambda}}\sum_{k=0}^{+\infty} \frac{\lambda^{k+1}}{k!} = \frac{\lambda}{1-e^{-\lambda}}.\)</span> Thus <span class="math display">\[\boxed{\mathbb{E}[X | X &gt;0] = \frac{\lambda}{1-e^{-\lambda}}.}\]</span></p>
 </div>
 </div>
 </div>
+</section>
+<section id="question-2-mathbbpx-in-2mathbbn" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-mathbbpx-in-2mathbbn">Question 2: <span class="math inline">\(\mathbb{P}(X \in 2\mathbb{N})\)</span></h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -181,42 +193,13 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span> be the time or arrival of the two people. We want to compute <span class="math inline">\(\mathbb{P}(|X-Y| \le 1/2)\)</span></p>
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0\end{cases}.\]</span></p>
-<p>The meeting happens if<br>
-<span class="math display">\[\begin{cases} x - y\le 1/2\\  y -x \le 1/2  \end{cases} \sim \begin{cases} y \ge x-1/2 \\  y \le x +1/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Meet}) = \frac{1-2*\frac{1/2*1/2}{2}}{1}= 3/4.}\)</span></p>
-<div id="feb65d5d" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uncertain_meeting_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>What if instead of staying 30 minutes they stay for 15 minutes ? For an amount dt ?</p>
-<p>We need to be sure that dt is in hour and we just need to change 1/2 by dt in the system. The two triangles make a square of side (1-dt). Thus, <span class="math display">\[\boxed{\mathbb{P}(\text{Meet}) = 1-(1-dt)^2.}\]</span></p>
+<p>We have <span class="math inline">\(\mathbb{P}(X \in 2\mathbb{N}) = \sum_{k=0}^{+\infty} \frac{\lambda^{2k} e^{-\lambda}}{(2k)!}.\)</span> From the power series expansions, we know <span class="math inline">\(e^x =  \sum_{k=0}^{+\infty} \frac{x^k}{k!},\)</span> thus <span class="math inline">\(e^x + e^{-x} =  \sum_{k=0}^{+\infty} \frac{x^k}{k!} +  \sum_{k=0}^{+\infty} (-1)^k \frac{x^k}{k!} =2 \sum_{k=0}^{+\infty} \frac{x^{2k}}{(2k)!}.\)</span> Therefore, <span class="math display">\[\boxed{\mathbb{P}(X \in 2\mathbb{N}) = e^{-\lambda}\frac{e^{-\lambda} + e^{\lambda}}{2}=\frac{1+e^{-2\lambda}}{2}.}\]</span></p>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

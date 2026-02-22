@@ -1,0 +1,27 @@
+---
+title: "Poisson distribution"
+description: " "
+order: 24
+---
+
+Suppose $X\sim \mathcal{P}(\lambda)$
+
+
+### Question 1: $\mathbb{E}[X | X >0]$ ?
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $\mathbb{E}[X | X >0] = \sum_{k=0}^{+\infty} k\mathbb{P}(X=k | X>0) = \sum_{k=0}^{+\infty} k\frac{\mathbb{P}(X=k \cap X>0)}{\mathbb{P}(X>0)} = \sum_{k=1}^{+\infty} k \frac{\lambda^k e^{-\lambda}}{k!(1-e^{-\lambda})} = \frac{e^{-\lambda}}{1-e^{-\lambda}}\sum_{k=0}^{+\infty} \frac{\lambda^{k+1}}{k!} = \frac{\lambda}{1-e^{-\lambda}}.$ Thus $$\boxed{\mathbb{E}[X | X >0] = \frac{\lambda}{1-e^{-\lambda}}.}$$
+:::
+
+
+### Question 2: $\mathbb{P}(X \in 2\mathbb{N})$
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We have $\mathbb{P}(X \in 2\mathbb{N}) = \sum_{k=0}^{+\infty} \frac{\lambda^{2k} e^{-\lambda}}{(2k)!}.$ From the power series expansions, we know $e^x =  \sum_{k=0}^{+\infty} \frac{x^k}{k!},$ thus $e^x + e^{-x} =  \sum_{k=0}^{+\infty} \frac{x^k}{k!} +  \sum_{k=0}^{+\infty} (-1)^k \frac{x^k}{k!} =2 \sum_{k=0}^{+\infty} \frac{x^{2k}}{(2k)!}.$ Therefore, $$\boxed{\mathbb{P}(X \in 2\mathbb{N}) = e^{-\lambda}\frac{e^{-\lambda} + e^{\lambda}}{2}=\frac{1+e^{-2\lambda}}{2}.}$$
+:::
