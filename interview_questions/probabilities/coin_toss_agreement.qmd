@@ -3,6 +3,7 @@ title: "Coin toss agreement"
 description: " "
 order: 19
 ---
+![](images/coin_toss_agreement.png){width=1px}
 
 You and your friend are in two separate rooms. Each of you flips a coin and need to call the outcome of the other flip. If both calls were good you win \$ 2 and if not you lose \$ 1. Do you enter the game or not ?
 

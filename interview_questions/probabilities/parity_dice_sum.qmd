@@ -3,7 +3,7 @@ title: "Parity of the sum of dices"
 description: " "
 order: 6
 ---
-
+![](images/20_sided_dice.jpg){width=1px}
 
 Assume that we have $n$ different dices each with $20$ faces. What is `the probability that the sum is even ?`
 

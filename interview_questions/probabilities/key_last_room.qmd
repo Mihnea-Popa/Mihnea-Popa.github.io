@@ -3,7 +3,7 @@ title: "Lost key in the last classroom"
 description: " "
 order: 7
 ---
-
+![](images/lost_key.jpg){width=1px}
 
 The keeper of a high school lost the key of the school in one of the 123 rooms with a probability $p$. He already searched the key in 122 rooms and it wasn't there. What is the `probability that the lost key is in the last room ?`
 

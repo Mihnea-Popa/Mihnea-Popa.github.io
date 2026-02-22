@@ -4,7 +4,7 @@ description: " "
 order: 3
 ---
 
-
+![](images/mere_knight.jpg){width=1px}
 What is the most probable `draw at least one 6 in 4 throws with one dice` or `draw at least a double 6 in 24 throws with two dice` ?
 
 ::: {.callout-tip collapse="true"}

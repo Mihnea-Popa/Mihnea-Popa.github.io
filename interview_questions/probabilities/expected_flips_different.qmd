@@ -3,6 +3,7 @@ title: "Expected coin flips until different result"
 description: " "
 order: 11
 ---
+![](images/coin_toss.jpg){width=1px}
 
 We have a fair coin and we flip it until we find a different outcome from the previous one. What is the expected number of flips that we need to do ?
 

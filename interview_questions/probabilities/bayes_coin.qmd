@@ -4,6 +4,7 @@ description: " "
 order: 2
 ---
 
+![](images/fake_coin_bayes.jpg){width=1px}
 
 We have `3 fair coins and 1 double-headed coin.` We take one coin randomly, then we flip it and we `get head.` What is the probability that we picked `the double-headed coin ?`
 

@@ -3,6 +3,7 @@ title: "Triangle from a broken stick"
 description: " "
 order: 13
 ---
+![](images/broken_stick.jpg){width=1px}
 
 We have a stick of length 1 and it breaks. What is the probability that the broken pieces form a triangle ?
 

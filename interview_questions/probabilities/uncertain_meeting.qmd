@@ -4,6 +4,8 @@ description: " "
 order: 16
 ---
 
+![](images/meeting_uncertain.jpg){width=1px}
+
 Two people agreed to meet between 1 PM and 2 PM. Each one comes randomly in this interval and stays for 30 minutes. What is the probability that they actually meet ?
 
 
