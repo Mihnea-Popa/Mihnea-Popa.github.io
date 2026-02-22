@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Triangle from a broken stick – Mihnea POPA</title>
+<title>Coin toss agreement – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Triangle from a broken stick</h1>
+<h1 class="title">Coin toss agreement</h1>
 </div>
 
 
@@ -152,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>We have a stick of length 1 and it breaks. What is the probability that the broken pieces form a triangle ?</p>
+<p>You and your friend are in two separate rooms. Each of you flips a coin and need to call the outcome of the other flip. If both calls were good you win $ 2 and if not you lose $ 1. Do you enter the game or not ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Parametrize the problem with the length of the broken pieces and compute the partial area corresponding to a triangle.</p>
+<p>The calls need to not be independent, that means that your call will depend on your flip.</p>
 </div>
 </div>
 </div>
@@ -181,19 +181,9 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(x\)</span> be the length of the first piece and <span class="math inline">\(y\)</span> the second piece (thus the final length is <span class="math inline">\(1-x-y\)</span>)</p>
-<p>Since all length are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0 \\ y \le 1 -x \end{cases}.\]</span></p>
-<p>The broken pieces form a triangle if and only if all length are lower than the sum of the other sides. Thus we have <span class="math display">\[\begin{cases} x \le y + 1 -x -y \\  y \le y + 1 -x -y \\ 1 -x - y \le x + y  \end{cases} \sim \begin{cases} x \le 1/2 \\  y \le 1/2 \\ y \ge 1/2 -x   \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Triangle}) = \frac{A_{tri}}{A_{tot}}=\frac{1/8}{1/2}=1/4.}\)</span></p>
-<div id="226c004d" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stick_triangle_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>If we assume fully randomness, ie if the call is random from your flip, you have 1/2 chances of guessing the outcome, which means that the two guesses are right with a probability 1/4. Thus, the expected net cash flow is: <span class="math inline">\(\mathbb{E}[X] = \frac{1}{4}*2 + \frac{3}{4}*-1 = \frac{-1}{4}&lt;0.\)</span> In this case, you’ll expect to lose money.</p>
+<p>Therefore, you need a strategy where you increase the probability that both calls were right. If you always call the same thing, the probability does not change. However, if the flip and the call are perfectly correlated, which means that you always <code>call your own outcome</code>, then out of the four cases (HH, HT, TH, TT) two of them are good. Thus the two guesses are right with a probability 1/2. Thus, the expected net cash flow is: <span class="math inline">\(\mathbb{E}[X] = \frac{1}{2}*2 + \frac{1}{2}*-1 = \frac{1}{2}&gt;0.\)</span> In this case, you’ll expect to win money.</p>
+<p>Therefore, <code>you should enter the game but with the startegy of always calling the outcome of your flip.</code></p>
 </div>
 </div>
 </div>

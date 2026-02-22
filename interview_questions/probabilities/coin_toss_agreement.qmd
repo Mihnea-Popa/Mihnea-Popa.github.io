@@ -1,0 +1,26 @@
+---
+title: "Coin toss agreement"
+description: " "
+order: 19
+---
+
+You and your friend are in two separate rooms. Each of you flips a coin and need to call the outcome of the other flip. If both calls were good you win \$ 2 and if not you lose \$ 1. Do you enter the game or not ?
+
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+The calls need to not be independent, that means that your call will depend on your flip.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+If we assume fully randomness, ie if the call is random from your flip, you have 1/2 chances of guessing the outcome, which means that the two guesses are right with a probability 1/4. Thus, the expected net cash flow is: $\mathbb{E}[X] = \frac{1}{4}*2 + \frac{3}{4}*-1 = \frac{-1}{4}<0.$ In this case, you'll expect to lose money.
+
+Therefore, you need a strategy where you increase the probability that both calls were right. If you always call the same thing, the probability does not change. However, if the flip and the call are perfectly correlated, which means that you always `call your own outcome`, then out of the four cases (HH, HT, TH, TT) two of them are good. Thus the two guesses are right with a probability 1/2. Thus, the expected net cash flow is: $\mathbb{E}[X] = \frac{1}{2}*2 + \frac{1}{2}*-1 = \frac{1}{2}>0.$ In this case, you'll expect to win money.
+
+Therefore, `you should enter the game but with the startegy of always calling the outcome of your flip.`
+:::
+

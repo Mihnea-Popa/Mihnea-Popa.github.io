@@ -58,3 +58,11 @@ plt.show()
 ```
 :::
 
+
+::: {.callout-tip collapse="true"}
+## 🚨 Generalisation
+
+What if instead of staying 30 minutes they stay for 15 minutes ? For an amount dt ?
+
+We need to be sure that dt is in hour and we just need to change 1/2 by dt in the system. The two triangles make a square of side (1-dt). Thus, $$\boxed{\mathbb{P}(\text{Meet}) = 1-(1-dt)^2.}$$
+:::

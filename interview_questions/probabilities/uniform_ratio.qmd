@@ -1,0 +1,66 @@
+---
+title: "Uniform Ratio"
+description: " "
+order: 17
+---
+
+Let $X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y$, what is $\mathbb{P}(1 \le X/Y \le2)$ ?
+
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+Compute the partial area corresponding to the meeting.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Since the two uniforms are positive, the possible region is $$\begin{cases} 0 \le x \le 1 \\ 0\le y \le 1\end{cases}.$$
+
+The condition if fulfilled if  
+$$\begin{cases} x / y\le 2\\  x/y \ge 1  \end{cases} \sim \begin{cases} y \le x \\  y \le x/2  \end{cases}.$$
+
+We can plot the regions and we find $\boxed{\mathbb{P}(1 \le X/Y \le2) = \frac{1-\frac{1*1}{2}-\frac{1*1/2}{2}}{1}= 1/4.}$
+
+```{python}
+#| echo: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 1000
+x = np.linspace(0, 1, n)
+y = np.linspace(0, 1, n)
+X, Y = np.meshgrid(x, y)
+
+possible = (X >= 0) & (Y >= 0) & (X <= 1) & (Y <= 1)
+
+meeting = (
+    possible &
+    (Y <= X) &
+    (Y >= X/2) )
+
+plt.figure(figsize=(6,6))
+plt.contourf(X, Y, possible, levels=[0.5,1], colors=["red"], alpha=0.5)
+plt.contourf(X, Y, meeting, levels=[0.5,1], colors=["blue"], alpha=0.8)
+
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Ratio Region for uniform x, y")
+plt.xlim(0,1)
+plt.ylim(0,1)
+plt.gca().set_aspect('equal')
+plt.show()
+```
+:::
+
+
+::: {.callout-tip collapse="true"}
+## 🚨 Generalisation
+
+What if we wanted a ratio between p and q ?
+
+Thus, $$\boxed{\mathbb{P}(p \le X/Y \le q) = 1-\frac{1*p}{2} -\frac{1*1/q}{2} = 1-\frac{p+1/q}{2}.}$$
+:::

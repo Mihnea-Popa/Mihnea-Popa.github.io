@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Triangle from a broken stick – Mihnea POPA</title>
+<title>Left or Right ? – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Triangle from a broken stick</h1>
+<h1 class="title">Left or Right ?</h1>
 </div>
 
 
@@ -152,7 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p>We have a stick of length 1 and it breaks. What is the probability that the broken pieces form a triangle ?</p>
+<p>Let’s start at the position 0 and suppose you have two integers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. You can go by one unit to the left or to the right with the same probability and the game ends when you reach one of the two position <span class="math inline">\(a\)</span> or <span class="math inline">\(-b\)</span>. What is the probability that you end in a ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -165,7 +165,7 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Parametrize the problem with the length of the broken pieces and compute the partial area corresponding to a triangle.</p>
+<p>Let <span class="math inline">\(X\)</span> be the random variable with your end position, find two values for <span class="math inline">\(\mathbb{E}[X]\)</span>.</p>
 </div>
 </div>
 </div>
@@ -181,19 +181,10 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(x\)</span> be the length of the first piece and <span class="math inline">\(y\)</span> the second piece (thus the final length is <span class="math inline">\(1-x-y\)</span>)</p>
-<p>Since all length are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0 \\ y \le 1 -x \end{cases}.\]</span></p>
-<p>The broken pieces form a triangle if and only if all length are lower than the sum of the other sides. Thus we have <span class="math display">\[\begin{cases} x \le y + 1 -x -y \\  y \le y + 1 -x -y \\ 1 -x - y \le x + y  \end{cases} \sim \begin{cases} x \le 1/2 \\  y \le 1/2 \\ y \ge 1/2 -x   \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Triangle}) = \frac{A_{tri}}{A_{tot}}=\frac{1/8}{1/2}=1/4.}\)</span></p>
-<div id="226c004d" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stick_triangle_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Let <span class="math inline">\(X\)</span> be the random variable with your end position and <span class="math inline">\(p_a\)</span> the probability to end at a.</p>
+<p>On the one hand, we have <span class="math inline">\(\mathbb{E}[X] = p_aa+(1-p_a)(-b) = p_a(a+b)-b.\)</span></p>
+<p>On the other hand, by symmetry between going to the left or the right, we have <span class="math inline">\(\mathbb{E}[X] =0.\)</span></p>
+<p>Therefore, <span class="math display">\[\boxed{p_a=\frac{b}{a+b}.}\]</span> It is the normalized distance from 0 to -b within the range -b to a</p>
 </div>
 </div>
 </div>

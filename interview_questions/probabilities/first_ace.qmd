@@ -1,0 +1,27 @@
+---
+title: "Where are the Aces ?"
+description: " "
+order: 21
+---
+
+What is the expected number of cards that we need to draw from a standard card pack before the first ace to appear (including that ace) ?
+
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+For each of the remaining cards, account the different possibilities.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let $N$ be the random variable that counts the number of cards. Therefore, we have $\mathbb{E}[N] = 1+\sum_{k=1}^{48} \mathbb{P}(\text{card k before first ace}).$
+
+For each of the 48 remaining cards, we only have 5 possibilities of the order respect to the Aces: 1 A 2 A 3 A 4 A 5. The only possibility that counts for us is the first one. Since all the cards are drawn with the same probability, $\mathbb{P}(\text{card k before first ace}) = 1/5$. 
+
+Thus, $\mathbb{E}[N] = 1 +\frac{48}{5} = \frac{53}{5}=10.6.$
+
+:::
+
