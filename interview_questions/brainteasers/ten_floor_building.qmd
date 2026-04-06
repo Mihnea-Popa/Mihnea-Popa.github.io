@@ -1,0 +1,25 @@
+---
+title: "Ten Floor Building"
+description: " "
+order: 21
+---
+
+
+A building has 10 floors above the basement. If 12 people get into an elevator at the basement, and each chooses a floor at random to get out, independently of the others, at how many floors do you expect the elevator to make a stop to let out one or more of these 12 people?
+
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+We can solve this problem through the use of indicator random variables. For a quick recap, indicator random variables are often used to decompose a larger random variable, into smaller, binary constituents. The application of binary random variables in this problem would be breaking down the 10 floors into solitary floors.
+
+For example, let $S$ be the random variable indicating the number of floors the elevator stopped at. The question is asking for the expectation of $\mathbb{E}[S]$. However, we can break down $S$ into the sum of 10 indicator random variables; we’ll denote them $X_i$ . Each $X_i$ is an indicator random variable for floor i.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Since each floor is indistinguishable from the others and has identical distribution, we get $\mathbb{E}(S)=\sum_{i=1}^{10}\mathbb{E}(X_i)=10\mathbb{E}(X_1)= 10*\mathbb{P}(X_1=1) = 10 (1- \mathbb{P}(X_1=0)).$
+
+Thus, $\boxed{\mathbb{E}(S)= 10 (1 - \frac{9}{10}^{12})\sim 7.17.}$
+:::

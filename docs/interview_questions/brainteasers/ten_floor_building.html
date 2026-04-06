@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Uncertain Meeting – Mihnea POPA</title>
+<title>Ten Floor Building – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uncertain Meeting</h1>
+<h1 class="title">Ten Floor Building</h1>
 </div>
 
 
@@ -152,8 +152,7 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/meeting_uncertain.jpg" class="img-fluid" width="1"></p>
-<p>Two people agreed to meet between 1 PM and 2 PM. Each one comes randomly in this interval and stays for 30 minutes. What is the probability that they actually meet ?</p>
+<p>A building has 10 floors above the basement. If 12 people get into an elevator at the basement, and each chooses a floor at random to get out, independently of the others, at how many floors do you expect the elevator to make a stop to let out one or more of these 12 people?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -166,7 +165,8 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Parametrize the problem using two uniform distributions and compute the partial area corresponding to the meeting.</p>
+<p>We can solve this problem through the use of indicator random variables. For a quick recap, indicator random variables are often used to decompose a larger random variable, into smaller, binary constituents. The application of binary random variables in this problem would be breaking down the 10 floors into solitary floors.</p>
+<p>For example, let <span class="math inline">\(S\)</span> be the random variable indicating the number of floors the elevator stopped at. The question is asking for the expectation of <span class="math inline">\(\mathbb{E}[S]\)</span>. However, we can break down <span class="math inline">\(S\)</span> into the sum of 10 indicator random variables; we’ll denote them <span class="math inline">\(X_i\)</span> . Each <span class="math inline">\(X_i\)</span> is an indicator random variable for floor i.</p>
 </div>
 </div>
 </div>
@@ -182,37 +182,8 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span> be the time or arrival of the two people. We want to compute <span class="math inline">\(\mathbb{P}(|X-Y| \le 1/2)\)</span></p>
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0\end{cases}.\]</span></p>
-<p>The meeting happens if<br>
-<span class="math display">\[\begin{cases} x - y\le 1/2\\  y -x \le 1/2  \end{cases} \sim \begin{cases} y \ge x-1/2 \\  y \le x +1/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Meet}) = \frac{1-2*\frac{1/2*1/2}{2}}{1}= 3/4.}\)</span></p>
-<div id="4096d656" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uncertain_meeting_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>What if instead of staying 30 minutes they stay for 15 minutes ? For an amount dt ?</p>
-<p>We need to be sure that dt is in hour and we just need to change 1/2 by dt in the system. The two triangles make a square of side (1-dt). Thus, <span class="math display">\[\boxed{\mathbb{P}(\text{Meet}) = 1-(1-dt)^2.}\]</span></p>
+<p>Since each floor is indistinguishable from the others and has identical distribution, we get <span class="math inline">\(\mathbb{E}(S)=\sum_{i=1}^{10}\mathbb{E}(X_i)=10\mathbb{E}(X_1)= 10*\mathbb{P}(X_1=1) = 10 (1- \mathbb{P}(X_1=0)).\)</span></p>
+<p>Thus, <span class="math inline">\(\boxed{\mathbb{E}(S)= 10 (1 - \frac{9}{10}^{12})\sim 7.17.}\)</span></p>
 </div>
 </div>
 </div>

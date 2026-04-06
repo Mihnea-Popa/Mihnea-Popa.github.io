@@ -1,0 +1,24 @@
+---
+title: "Even Before Odd"
+description: " "
+order: 19
+---
+
+
+Suppose you roll a fair 6-sided die until you've seen all 6 faces. What is the `probability you won't see an odd numbered face until you have seen all even numbered faces?`
+
+::: {.callout-tip collapse="true"}
+## 💡 Hint
+
+It's important to realize that you should not focus on the number of rolls in this question, but rather the ways to order when a face has been seen. ie) The sequence 2,5,3,1,4,6 represents your first unique sighting being a 2, second being a 5, third being 3, and so on. This would be an invalid sequence as we have seen an odd numbered face before seeing all the even numbered faces. 
+
+Now, compute the total number of such ordering and how many of them are valid.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+There are 6! total orderings. We can use this as our denominator. For our numerator, we want to group only even numbers for the first 3 sightings, and the remaining odd numbers for the last 3. There are 3! ways to order the odd numbers as well as 3! ways to order the even numbers.
+
+Thus, $\boxed{\mathbb{P}(\text{Even before Odd})=\frac{3!3!}{6!} = \frac{1}{20}.}$
+:::
