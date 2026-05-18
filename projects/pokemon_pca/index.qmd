@@ -3,6 +3,8 @@ title: "PCA on the Pokemon stats"
 author: Mihnea POPA
 description: " "
 date: April 2026
+resources:
+  - _pokemon_pca_notebook.ipynb
 ---
 
 In this project, I apply a `Principal Component Analysis (PCA)` to the six battle statistics of Pokemon — `HP, Attack, Defense, Special Attack, Special Defense and Speed` — and explore how the full Pokédex sits in the resulting 2D spaces. The analysis covers all `six generations` of the CSV (~721 species), with a specific pass on the subset of `final evolutions` and a final view with `legendaries` highlighted against the rest.
@@ -55,4 +57,4 @@ Finally, the full population again — non-legendaries drawn dim so they act as 
 
 ### Trying it yourself
 
-To run the full pipeline in one place, I aggregated every `.py` into a single Jupyter notebook. Download it here: <a href="pokemon_pca_notebook.ipynb" target="_blank">pokemon_pca_notebook.ipynb</a>. The only requirements are `pandas`, `scikit-learn` and `plotly`.
+To run the full pipeline in one place, I aggregated every `.py` into a single Jupyter notebook. Download it here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are `pandas`, `scikit-learn` and `plotly`.
