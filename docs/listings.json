@@ -71,11 +71,11 @@
   {
     "listing": "/projects.html",
     "items": [
-      "/projects/tipe_somnolence/index.html",
       "/projects/serie_temp/index.html",
       "/projects/pokemon_pca/index.html",
       "/projects/bsm_monte_carlo/index.html",
-      "/projects/fiscalite/index.html"
+      "/projects/fiscalite/index.html",
+      "/projects/tipe_somnolence/index.html"
     ]
   }
 ]
