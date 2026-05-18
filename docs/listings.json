@@ -7,33 +7,6 @@
     ]
   },
   {
-    "listing": "/interview_questions/brainteasers/index.html",
-    "items": [
-      "/interview_questions/brainteasers/unique_lighter_coin.html",
-      "/interview_questions/brainteasers/time_burning_ropes.html",
-      "/interview_questions/brainteasers/horse_race.html",
-      "/interview_questions/brainteasers/one_bullet_more_prisoners.html",
-      "/interview_questions/brainteasers/clock_angle.html",
-      "/interview_questions/brainteasers/cube_explosion.html",
-      "/interview_questions/brainteasers/fallen_eggs.html",
-      "/interview_questions/brainteasers/poisened_wine.html",
-      "/interview_questions/brainteasers/wind_effect.html",
-      "/interview_questions/brainteasers/groups_equal_heads.html",
-      "/interview_questions/brainteasers/squares_grid.html",
-      "/interview_questions/brainteasers/cross_bridge.html",
-      "/interview_questions/brainteasers/circular_track_ratio.html",
-      "/interview_questions/brainteasers/invisible_hats.html",
-      "/interview_questions/brainteasers/average_speed.html",
-      "/interview_questions/brainteasers/wine_water.html",
-      "/interview_questions/brainteasers/polyglot.html",
-      "/interview_questions/brainteasers/furtive_spy.html",
-      "/interview_questions/brainteasers/even_before_odd.html",
-      "/interview_questions/brainteasers/highest_Roll.html",
-      "/interview_questions/brainteasers/ten_floor_building.html",
-      "/interview_questions/brainteasers/statistics_arrangement.html"
-    ]
-  },
-  {
     "listing": "/interview_questions/probabilities/index.html",
     "items": [
       "/interview_questions/probabilities/local_minima.html",
@@ -63,7 +36,36 @@
       "/interview_questions/probabilities/circular_table.html",
       "/interview_questions/probabilities/sum_10_dice.html",
       "/interview_questions/probabilities/stopping_time_HH_TT.html",
-      "/interview_questions/probabilities/avg_integers.html"
+      "/interview_questions/probabilities/avg_integers.html",
+      "/interview_questions/probabilities/dice_game.html",
+      "/interview_questions/probabilities/muffin_croissant.html"
+    ]
+  },
+  {
+    "listing": "/interview_questions/brainteasers/index.html",
+    "items": [
+      "/interview_questions/brainteasers/unique_lighter_coin.html",
+      "/interview_questions/brainteasers/time_burning_ropes.html",
+      "/interview_questions/brainteasers/horse_race.html",
+      "/interview_questions/brainteasers/one_bullet_more_prisoners.html",
+      "/interview_questions/brainteasers/clock_angle.html",
+      "/interview_questions/brainteasers/cube_explosion.html",
+      "/interview_questions/brainteasers/fallen_eggs.html",
+      "/interview_questions/brainteasers/poisened_wine.html",
+      "/interview_questions/brainteasers/wind_effect.html",
+      "/interview_questions/brainteasers/groups_equal_heads.html",
+      "/interview_questions/brainteasers/squares_grid.html",
+      "/interview_questions/brainteasers/cross_bridge.html",
+      "/interview_questions/brainteasers/circular_track_ratio.html",
+      "/interview_questions/brainteasers/invisible_hats.html",
+      "/interview_questions/brainteasers/average_speed.html",
+      "/interview_questions/brainteasers/wine_water.html",
+      "/interview_questions/brainteasers/polyglot.html",
+      "/interview_questions/brainteasers/furtive_spy.html",
+      "/interview_questions/brainteasers/even_before_odd.html",
+      "/interview_questions/brainteasers/highest_Roll.html",
+      "/interview_questions/brainteasers/ten_floor_building.html",
+      "/interview_questions/brainteasers/statistics_arrangement.html"
     ]
   },
   {

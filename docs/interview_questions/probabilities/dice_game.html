@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Uncertain Meeting – Mihnea POPA</title>
+<title>Expected value of a dice game – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question">Question</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uncertain Meeting</h1>
+<h1 class="title">Expected value of a dice game</h1>
 </div>
 
 
@@ -152,26 +158,11 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/meeting_uncertain.jpg" class="img-fluid" width="1"></p>
-<p>Two people agreed to meet between 1 PM and 2 PM. Each one comes randomly in this interval and stays for 30 minutes. What is the probability that they actually meet ?</p>
+<section id="question" class="level3">
+<h3 class="anchored" data-anchor-id="question">Question</h3>
+<p>We roll 3 fair six-sided dice. If all three numbers are the same, we win $20. If exactly two numbers are the same, we win $10. If all three numbers are different, we lose $2. What is the expected return per roll?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Parametrize the problem using two uniform distributions and compute the partial area corresponding to the meeting.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -180,44 +171,70 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span> be the time or arrival of the two people. We want to compute <span class="math inline">\(\mathbb{P}(|X-Y| \le 1/2)\)</span></p>
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0\end{cases}.\]</span></p>
-<p>The meeting happens if<br>
-<span class="math display">\[\begin{cases} x - y\le 1/2\\  y -x \le 1/2  \end{cases} \sim \begin{cases} y \ge x-1/2 \\  y \le x +1/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Meet}) = \frac{1-2*\frac{1/2*1/2}{2}}{1}= 3/4.}\)</span></p>
-<div id="0fcaafbf" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uncertain_meeting_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>What if instead of staying 30 minutes they stay for 15 minutes ? For an amount dt ?</p>
-<p>We need to be sure that dt is in hour and we just need to change 1/2 by dt in the system. The two triangles make a square of side (1-dt). Thus, <span class="math display">\[\boxed{\mathbb{P}(\text{Meet}) = 1-(1-dt)^2.}\]</span></p>
+<p>Total number of outcomes when rolling 3 dice is</p>
+<p><span class="math inline">\(6^3 = 216\)</span></p>
+<hr>
+<section id="step-1-compute-probabilities" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-compute-probabilities">Step 1: Compute probabilities</h3>
+<section id="case-1-all-three-the-same" class="level4">
+<h4 class="anchored" data-anchor-id="case-1-all-three-the-same">Case 1: All three the same</h4>
+<p>There are 6 outcomes: <span class="math inline">\((1,1,1)\)</span> to <span class="math inline">\((6,6,6)\)</span></p>
+<p>Probability:</p>
+<p><span class="math inline">\(\frac{6}{216} = \frac{1}{36}\)</span></p>
+<hr>
+</section>
+<section id="case-2-exactly-two-the-same" class="level4">
+<h4 class="anchored" data-anchor-id="case-2-exactly-two-the-same">Case 2: Exactly two the same</h4>
+<p>Choose the repeated number: <span class="math inline">\(6\)</span> ways<br>
+Choose the different number: <span class="math inline">\(5\)</span> ways<br>
+Choose position of different die: <span class="math inline">\(3\)</span> ways</p>
+<p>Total:</p>
+<p><span class="math inline">\(6 \cdot 5 \cdot 3 = 90\)</span></p>
+<p>Probability:</p>
+<p><span class="math inline">\(\frac{90}{216} = \frac{5}{12}\)</span></p>
+<hr>
+</section>
+<section id="case-3-all-different" class="level4">
+<h4 class="anchored" data-anchor-id="case-3-all-different">Case 3: All different</h4>
+<p>Remaining outcomes:</p>
+<p><span class="math inline">\(216 - 6 - 90 = 120\)</span></p>
+<p>Probability:</p>
+<p><span class="math inline">\(\frac{120}{216} = \frac{5}{9}\)</span></p>
+<hr>
+</section>
+</section>
+<section id="step-2-expected-value" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-expected-value">Step 2: Expected value</h3>
+<p>Expected return is</p>
+<p><span class="math inline">\(E = 20 \cdot \frac{1}{36} + 10 \cdot \frac{5}{12} - 2 \cdot \frac{5}{9}\)</span></p>
+<p>Compute each term:</p>
+<p><span class="math inline">\(20 \cdot \frac{1}{36} = \frac{5}{9}\)</span></p>
+<p><span class="math inline">\(10 \cdot \frac{5}{12} = \frac{25}{6}\)</span></p>
+<p><span class="math inline">\(-2 \cdot \frac{5}{9} = -\frac{10}{9}\)</span></p>
+<p>So:</p>
+<p><span class="math inline">\(E = \frac{5}{9} + \frac{25}{6} - \frac{10}{9}\)</span></p>
+<p>Combine terms:</p>
+<p><span class="math inline">\(\frac{5}{9} - \frac{10}{9} = -\frac{5}{9}\)</span></p>
+<p>So:</p>
+<p><span class="math inline">\(E = \frac{25}{6} - \frac{5}{9}\)</span></p>
+<p>Common denominator <span class="math inline">\(18\)</span>:</p>
+<p><span class="math inline">\(\frac{25}{6} = \frac{75}{18}, \quad \frac{5}{9} = \frac{10}{18}\)</span></p>
+<p>So:</p>
+<p><span class="math inline">\(E = \frac{75}{18} - \frac{10}{18} = \frac{65}{18}\)</span></p>
+<hr>
+</section>
+<section id="final-answer" class="level3">
+<h3 class="anchored" data-anchor-id="final-answer">Final answer</h3>
+<p><span class="math inline">\(\boxed{\frac{65}{18} \approx 3.61}\)</span></p>
+</section>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

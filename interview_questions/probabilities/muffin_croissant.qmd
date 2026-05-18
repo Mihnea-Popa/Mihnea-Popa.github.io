@@ -1,0 +1,71 @@
+---
+title: "Muffin supply probability"
+description: " "
+order: 30
+---
+
+### Question
+
+In a bakery, each customer independently has a $70\%$ chance of ordering a croissant and a $30\%$ chance of ordering a muffin.
+
+There are $2$ muffins left and $5$ customers.
+
+What is the probability that the muffins are enough?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let $X$ be the number of customers (out of $5$) who order muffins.
+
+Then:
+
+$X \sim \text{Bin}(5, 0.3)$
+
+We want:
+
+$P(X \le 2)$
+
+---
+
+### Step 1: Break into cases
+
+$P(X \le 2) = P(X=0) + P(X=1) + P(X=2)$
+
+---
+
+### Step 2: Compute each term
+
+#### Case 1: $X=0$
+
+$P(X=0) = (0.7)^5 = 0.16807$
+
+---
+
+#### Case 2: $X=1$
+
+$P(X=1) = \binom{5}{1}(0.3)(0.7)^4$
+
+$= 5 \cdot 0.3 \cdot 0.2401 = 0.36015$
+
+---
+
+#### Case 3: $X=2$
+
+$P(X=2) = \binom{5}{2}(0.3)^2(0.7)^3$
+
+$= 10 \cdot 0.09 \cdot 0.343 = 0.3087$
+
+---
+
+### Step 3: Add probabilities
+
+$P(X \le 2) = 0.16807 + 0.36015 + 0.3087$
+
+$P(X \le 2) = 0.83692$
+
+---
+
+### Final answer
+
+$\boxed{0.83692 \approx 0.837}$
+:::

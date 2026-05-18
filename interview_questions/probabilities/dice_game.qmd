@@ -1,0 +1,96 @@
+---
+title: "Expected value of a dice game"
+description: " "
+order: 29
+---
+
+### Question
+
+We roll 3 fair six-sided dice. If all three numbers are the same, we win $20. If exactly two numbers are the same, we win $10. If all three numbers are different, we lose $2. What is the expected return per roll?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Total number of outcomes when rolling 3 dice is
+
+$6^3 = 216$
+
+---
+
+### Step 1: Compute probabilities
+
+#### Case 1: All three the same
+There are 6 outcomes: $(1,1,1)$ to $(6,6,6)$
+
+Probability:
+
+$\frac{6}{216} = \frac{1}{36}$
+
+---
+
+#### Case 2: Exactly two the same
+Choose the repeated number: $6$ ways  
+Choose the different number: $5$ ways  
+Choose position of different die: $3$ ways  
+
+Total:
+
+$6 \cdot 5 \cdot 3 = 90$
+
+Probability:
+
+$\frac{90}{216} = \frac{5}{12}$
+
+---
+
+#### Case 3: All different
+Remaining outcomes:
+
+$216 - 6 - 90 = 120$
+
+Probability:
+
+$\frac{120}{216} = \frac{5}{9}$
+
+---
+
+### Step 2: Expected value
+
+Expected return is
+
+$E = 20 \cdot \frac{1}{36} + 10 \cdot \frac{5}{12} - 2 \cdot \frac{5}{9}$
+
+Compute each term:
+
+$20 \cdot \frac{1}{36} = \frac{5}{9}$
+
+$10 \cdot \frac{5}{12} = \frac{25}{6}$
+
+$-2 \cdot \frac{5}{9} = -\frac{10}{9}$
+
+So:
+
+$E = \frac{5}{9} + \frac{25}{6} - \frac{10}{9}$
+
+Combine terms:
+
+$\frac{5}{9} - \frac{10}{9} = -\frac{5}{9}$
+
+So:
+
+$E = \frac{25}{6} - \frac{5}{9}$
+
+Common denominator $18$:
+
+$\frac{25}{6} = \frac{75}{18}, \quad \frac{5}{9} = \frac{10}{18}$
+
+So:
+
+$E = \frac{75}{18} - \frac{10}{18} = \frac{65}{18}$
+
+---
+
+### Final answer
+
+$\boxed{\frac{65}{18} \approx 3.61}$
+:::
