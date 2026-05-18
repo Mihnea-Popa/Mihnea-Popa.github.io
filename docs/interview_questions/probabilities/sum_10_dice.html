@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Triangle from a broken stick – Mihnea POPA</title>
+<title>Sum of 10 labelled dice – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question">Question</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Triangle from a broken stick</h1>
+<h1 class="title">Sum of 10 labelled dice</h1>
 </div>
 
 
@@ -152,26 +158,11 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/broken_stick.jpg" class="img-fluid" width="1"></p>
-<p>We have a stick of length 1 and it breaks. What is the probability that the broken pieces form a triangle ?</p>
+<section id="question" class="level3">
+<h3 class="anchored" data-anchor-id="question">Question</h3>
+<p>We have 10 labelled 6-sided dice. How many outcomes give a total sum equal to 16?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Parametrize the problem with the length of the broken pieces and compute the partial area corresponding to a triangle.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -180,26 +171,29 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(x\)</span> be the length of the first piece and <span class="math inline">\(y\)</span> the second piece (thus the final length is <span class="math inline">\(1-x-y\)</span>)</p>
-<p>Since all length are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0 \\ y \le 1 -x \end{cases}.\]</span></p>
-<p>The broken pieces form a triangle if and only if all length are lower than the sum of the other sides. Thus we have <span class="math display">\[\begin{cases} x \le y + 1 -x -y \\  y \le y + 1 -x -y \\ 1 -x - y \le x + y  \end{cases} \sim \begin{cases} x \le 1/2 \\  y \le 1/2 \\ y \ge 1/2 -x   \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Triangle}) = \frac{A_{tri}}{A_{tot}}=\frac{1/8}{1/2}=1/4.}\)</span></p>
-<div id="84f7d39e" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stick_triangle_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Let the values of the dice be <span class="math inline">\(x_1,x_2,\dots,x_{10},\)</span> where each die satisfies <span class="math inline">\(1 \le x_i \le 6.\)</span> We want to count the number of solutions of <span class="math inline">\(x_1+x_2+\cdots+x_{10}=16.\)</span>\</p>
+<p>Since each die is at least <span class="math inline">\(1\)</span>, we first give <span class="math inline">\(1\)</span> point to every die. This already uses <span class="math inline">\(10\)</span> points, leaving <span class="math inline">\(16-10=6\)</span> points still to distribute among the 10 dice. So the problem becomes:</p>
+<blockquote class="blockquote">
+<p>In how many ways can we distribute 6 identical extra points among 10 labelled dice?</p>
+</blockquote>
+<p>This is a classical “stars and bars” problem. We represent the 6 extra points by stars: <span class="math inline">\(******\)</span></p>
+<p>To split them among the 10 dice, we need 9 separators (bars), for example <span class="math inline">\(**|\,|***|\,|\,|*|\,|\,|\,|\)</span> means <span class="math inline">\(x_1=3,\quad x_2=1,\quad x_3=4,\quad \dots\)</span></p>
+<p>In general:</p>
+<ul>
+<li>we have (6) stars,</li>
+<li>and (9) bars to create (10) groups.</li>
+</ul>
+<p>Thus we arrange <span class="math inline">\(6+9=15\)</span> objects total. To form an arrangement, we simply choose which 9 of the 15 positions contain bars. Therefore the number of solutions is <span class="math inline">\(\binom{15}{9}.\)</span> Equivalently, we could choose the 6 positions of the stars: $ .$</p>
+<p>Hence, <span class="math inline">\(\boxed{\binom{15}{9}=5005}.\)</span></p>
+<p>Finally, note that the condition <span class="math inline">\(x_i\le 6\)</span> is automatically satisfied. Indeed, after giving 1 point to each die, only 6 extra points remain in total, so no die can receive more than 5 extra points. Therefore no die can exceed <span class="math inline">\(6\)</span>.</p>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

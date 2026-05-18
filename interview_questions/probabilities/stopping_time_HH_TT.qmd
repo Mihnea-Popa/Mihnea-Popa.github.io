@@ -1,0 +1,79 @@
+---
+title: "Stopping time for HH or TT"
+description: " "
+order: 27
+---
+
+### Question
+
+We flip a fair coin until we obtain either HH or TT for the first time. What is the probability that the total number of flips is even?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+We stop the first time we see two consecutive identical outcomes (HH or TT).
+
+Let $T$ be the stopping time.
+
+---
+
+### Step 1: Understanding the process
+
+After the first flip, each new flip behaves as follows:
+
+- with probability $1/2$, it matches the previous flip → the process stops
+- with probability $1/2$, it differs → the process continues
+
+So at each step after the first, we either stop or continue, each with probability $1/2$.
+
+---
+
+### Step 2: Probability of stopping at a given time
+
+To stop at time $2k$, we must:
+
+- survive $2k-2$ steps (always alternating)
+- then stop at step $2k$
+
+Each step of survival has probability $1/2$, and stopping also has probability $1/2$.
+
+So:
+
+- to reach time $2$: probability $1/2$
+- to reach time $4$: probability $(1/2)^3$
+- to reach time $6$: probability $(1/2)^5$
+
+In general:
+
+$\mathbb{P}(T = 2k) = (1/2)^{2k-1}$
+
+---
+
+### Step 3: Sum over even stopping times
+
+We compute:
+
+$\mathbb{P}(T \text{ is even}) = \sum_{k=1}^{\infty} (1/2)^{2k-1}$
+
+Factor out $1/2$:
+
+$= (1/2)\sum_{k=1}^{\infty} (1/4)^{k-1}$
+
+This is a geometric series:
+
+$\sum_{k=0}^{\infty} r^k = \frac{1}{1-r}$
+
+So:
+
+$= (1/2)\cdot \frac{1}{1-1/4}$
+
+$= (1/2)\cdot \frac{4}{3}$
+
+$= \frac{2}{3}$
+
+---
+
+### Final answer
+
+$\boxed{\frac{2}{3}}$
+:::

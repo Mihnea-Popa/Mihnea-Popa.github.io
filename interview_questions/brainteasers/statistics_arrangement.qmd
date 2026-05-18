@@ -1,0 +1,94 @@
+---
+title: "STATISTICS arrangements"
+description: " "
+order: 22
+---
+
+### Question 1: How many unique arrangements of STATISTICS?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+The word STATISTICS has 10 letters.
+
+We count repetitions:
+
+- S appears 3 times  
+- T appears 3 times  
+- I appears 2 times  
+- A appears 1 time  
+- C appears 1 time  
+
+If all letters were distinct, we would have $10!$ arrangements.
+
+Since some letters are identical, we divide by permutations of identical letters:
+
+$3!$ for the S's, $3!$ for the T's, and $2!$ for the I's.
+
+So the number of distinct arrangements is
+
+$\frac{10!}{3!\,3!\,2!}$.
+
+Compute:
+
+$10! = 3628800$
+
+$3!3!2! = 6 \cdot 6 \cdot 2 = 72$
+
+So:
+
+$\frac{3628800}{72} = 50400$
+
+Hence,
+
+$\boxed{50400}$.
+:::
+
+
+### Question 2: Probability that all S's are consecutive
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Total number of arrangements is $50400$.
+
+Now we count arrangements where all three S's are consecutive.
+
+We group the three S's into a single block $SSS$.
+
+Then we are arranging:
+
+- one block $SSS$
+- three T's
+- two I's
+- A and C
+
+So we have 8 objects in total.
+
+Among these 8 objects, repetitions are:
+
+- T appears 3 times
+- I appears 2 times
+
+So the number of arrangements is
+
+$\frac{8!}{3!\,2!}$.
+
+Compute:
+
+$8! = 40320$
+
+$3!2! = 6 \cdot 2 = 12$
+
+So:
+
+$\frac{40320}{12} = 3360$
+
+Thus the probability is
+
+$\frac{3360}{50400} = \frac{1}{15}$.
+
+Hence,
+
+$\boxed{\frac{1}{15}}$.
+:::

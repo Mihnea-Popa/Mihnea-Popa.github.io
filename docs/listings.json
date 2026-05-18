@@ -29,7 +29,8 @@
       "/interview_questions/brainteasers/furtive_spy.html",
       "/interview_questions/brainteasers/even_before_odd.html",
       "/interview_questions/brainteasers/highest_Roll.html",
-      "/interview_questions/brainteasers/ten_floor_building.html"
+      "/interview_questions/brainteasers/ten_floor_building.html",
+      "/interview_questions/brainteasers/statistics_arrangement.html"
     ]
   },
   {
@@ -58,7 +59,10 @@
       "/interview_questions/probabilities/first_ace.html",
       "/interview_questions/probabilities/urn_and_ball_separation.html",
       "/interview_questions/probabilities/tournament.html",
-      "/interview_questions/probabilities/poisson_distribution.html"
+      "/interview_questions/probabilities/poisson_distribution.html",
+      "/interview_questions/probabilities/circular_table.html",
+      "/interview_questions/probabilities/sum_10_dice.html",
+      "/interview_questions/probabilities/stopping_time_HH_TT.html"
     ]
   },
   {

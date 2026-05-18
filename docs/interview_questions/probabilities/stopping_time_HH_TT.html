@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Triangle from a broken stick – Mihnea POPA</title>
+<title>Stopping time for HH or TT – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,15 +127,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question">Question</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Triangle from a broken stick</h1>
+<h1 class="title">Stopping time for HH or TT</h1>
 </div>
 
 
@@ -152,26 +158,11 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/broken_stick.jpg" class="img-fluid" width="1"></p>
-<p>We have a stick of length 1 and it breaks. What is the probability that the broken pieces form a triangle ?</p>
+<section id="question" class="level3">
+<h3 class="anchored" data-anchor-id="question">Question</h3>
+<p>We flip a fair coin until we obtain either HH or TT for the first time. What is the probability that the total number of flips is even?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Parametrize the problem with the length of the broken pieces and compute the partial area corresponding to a triangle.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -180,26 +171,63 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(x\)</span> be the length of the first piece and <span class="math inline">\(y\)</span> the second piece (thus the final length is <span class="math inline">\(1-x-y\)</span>)</p>
-<p>Since all length are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0 \\ y \le 1 -x \end{cases}.\]</span></p>
-<p>The broken pieces form a triangle if and only if all length are lower than the sum of the other sides. Thus we have <span class="math display">\[\begin{cases} x \le y + 1 -x -y \\  y \le y + 1 -x -y \\ 1 -x - y \le x + y  \end{cases} \sim \begin{cases} x \le 1/2 \\  y \le 1/2 \\ y \ge 1/2 -x   \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Triangle}) = \frac{A_{tri}}{A_{tot}}=\frac{1/8}{1/2}=1/4.}\)</span></p>
-<div id="84f7d39e" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stick_triangle_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>We stop the first time we see two consecutive identical outcomes (HH or TT).</p>
+<p>Let <span class="math inline">\(T\)</span> be the stopping time.</p>
+<hr>
+<section id="step-1-understanding-the-process" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-understanding-the-process">Step 1: Understanding the process</h3>
+<p>After the first flip, each new flip behaves as follows:</p>
+<ul>
+<li>with probability <span class="math inline">\(1/2\)</span>, it matches the previous flip → the process stops</li>
+<li>with probability <span class="math inline">\(1/2\)</span>, it differs → the process continues</li>
+</ul>
+<p>So at each step after the first, we either stop or continue, each with probability <span class="math inline">\(1/2\)</span>.</p>
+<hr>
+</section>
+<section id="step-2-probability-of-stopping-at-a-given-time" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-probability-of-stopping-at-a-given-time">Step 2: Probability of stopping at a given time</h3>
+<p>To stop at time <span class="math inline">\(2k\)</span>, we must:</p>
+<ul>
+<li>survive <span class="math inline">\(2k-2\)</span> steps (always alternating)</li>
+<li>then stop at step <span class="math inline">\(2k\)</span></li>
+</ul>
+<p>Each step of survival has probability <span class="math inline">\(1/2\)</span>, and stopping also has probability <span class="math inline">\(1/2\)</span>.</p>
+<p>So:</p>
+<ul>
+<li>to reach time <span class="math inline">\(2\)</span>: probability <span class="math inline">\(1/2\)</span></li>
+<li>to reach time <span class="math inline">\(4\)</span>: probability <span class="math inline">\((1/2)^3\)</span></li>
+<li>to reach time <span class="math inline">\(6\)</span>: probability <span class="math inline">\((1/2)^5\)</span></li>
+</ul>
+<p>In general:</p>
+<p><span class="math inline">\(\mathbb{P}(T = 2k) = (1/2)^{2k-1}\)</span></p>
+<hr>
+</section>
+<section id="step-3-sum-over-even-stopping-times" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-sum-over-even-stopping-times">Step 3: Sum over even stopping times</h3>
+<p>We compute:</p>
+<p><span class="math inline">\(\mathbb{P}(T \text{ is even}) = \sum_{k=1}^{\infty} (1/2)^{2k-1}\)</span></p>
+<p>Factor out <span class="math inline">\(1/2\)</span>:</p>
+<p><span class="math inline">\(= (1/2)\sum_{k=1}^{\infty} (1/4)^{k-1}\)</span></p>
+<p>This is a geometric series:</p>
+<p><span class="math inline">\(\sum_{k=0}^{\infty} r^k = \frac{1}{1-r}\)</span></p>
+<p>So:</p>
+<p><span class="math inline">\(= (1/2)\cdot \frac{1}{1-1/4}\)</span></p>
+<p><span class="math inline">\(= (1/2)\cdot \frac{4}{3}\)</span></p>
+<p><span class="math inline">\(= \frac{2}{3}\)</span></p>
+<hr>
+</section>
+<section id="final-answer" class="level3">
+<h3 class="anchored" data-anchor-id="final-answer">Final answer</h3>
+<p><span class="math inline">\(\boxed{\frac{2}{3}}\)</span></p>
+</section>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,0 +1,35 @@
+---
+title: "Sum of 10 labelled dice"
+description: " "
+order: 26
+---
+
+### Question
+
+We have 10 labelled 6-sided dice. How many outcomes give a total sum equal to 16?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+Let the values of the dice be $x_1,x_2,\dots,x_{10},$ where each die satisfies $1 \le x_i \le 6.$ We want to count the number of solutions of $x_1+x_2+\cdots+x_{10}=16.$\\
+
+Since each die is at least $1$, we first give $1$ point to every die. This already uses $10$ points, leaving $16-10=6$ points still to distribute among the 10 dice. So the problem becomes:
+
+> In how many ways can we distribute 6 identical extra points among 10 labelled dice?
+
+This is a classical “stars and bars” problem. We represent the 6 extra points by stars: $******$
+
+To split them among the 10 dice, we need 9 separators (bars), for example $**|\,|***|\,|\,|*|\,|\,|\,|$ means $x_1=3,\quad x_2=1,\quad x_3=4,\quad \dots$
+
+In general:
+
+- we have \(6\) stars,
+- and \(9\) bars to create \(10\) groups.
+
+Thus we arrange $6+9=15$ objects total. To form an arrangement, we simply choose which 9 of the 15 positions contain bars. Therefore the number of solutions is $\binom{15}{9}.$ Equivalently, we could choose the 6 positions of the stars: $
+\binom{15}{6}.$
+
+Hence, $\boxed{\binom{15}{9}=5005}.$
+
+Finally, note that the condition $x_i\le 6$ is automatically satisfied. Indeed, after giving 1 point to each die, only 6 extra points remain in total, so no die can receive more than 5 extra points. Therefore no die can exceed $6$.
+:::

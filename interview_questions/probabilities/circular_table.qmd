@@ -1,0 +1,22 @@
+---
+title: "Circular Table"
+description: " "
+order: 25
+---
+
+
+### Question : Probability that a 3-legged circular table can stand
+
+Suppose a circular table has 3 legs placed uniformly at random on the circumference of the tabletop. What is the probability that the table can stand?
+
+::: {.callout-tip collapse="true"}
+## 💡 Solution
+
+The table stands if and only if the center of the circle lies inside the triangle formed by the three legs.
+
+For three points chosen uniformly at random on a circle, the center lies inside the triangle exactly when the three points are **not all contained in a semicircle**.
+
+A classical result states that for $n$ random points on a circle, the probability that they all lie in some semicircle is $\frac{n}{2^{n-1}}$ (Take the semicircle starting at each point the other ones have prob 1/2 to be clockwise and sum over the points to have the semicircle starting at the left most point).
+
+For $n=3$, this gives $\frac{3}{2^2}=\frac34.$ Therefore, the probability that the points are not all contained in a semicircle is $1-\frac34=\frac14.$ Hence, $\boxed{\frac14}.$
+:::
