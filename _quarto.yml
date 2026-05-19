@@ -14,8 +14,10 @@ website:
         icon: file-earmark-check
       - href: quant_research.qmd  
         text: Quantitative Research
+        icon: bar-chart-line
       - href: socio_economic_research.qmd
         text: Socio-Economic Research
+        icon: people
       - href: interview_questions.qmd  
         text: Interview Questions   
         
