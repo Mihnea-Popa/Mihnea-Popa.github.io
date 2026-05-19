@@ -1,0 +1,6 @@
+---
+title: "My Socio-Economic Research"
+listing:
+  contents: socio_economic_research  
+  type: grid          
+---

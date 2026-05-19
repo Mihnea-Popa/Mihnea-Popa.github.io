@@ -2,14 +2,34 @@
 title: "Mihnea POPA"
 image: "files/Profile_pic_Mihnea.jpg"
 about:
-  template: jolla
+  template: trestles
   links:
     - icon: envelope
-      href:  mailto:mihneapopa@ucla.edu
+      href: mailto:mihneapopa@ucla.edu
     - icon: linkedin
       href: https://linkedin.com/in/mihneapopa
       target: _blank
+toc: false
 ---
 
-Welcome to my website!
+## Current
 
+- MFE Student | UCLA Anderson
+- Aspiring Quant Researcher & Trader
+
+---
+
+## Education
+
+- MFE Financial Engineering | <br> &emsp; &emsp; UCLA Anderson, 2025-2026
+- M.S. Statistics & Quantitative Finance | <br>  &emsp; &emsp; ENSAE Paris, 2024-2026
+- B.S. Statistics & Economics | <br>  &emsp; &emsp; ENSAE Paris, 2023-2024
+- Undergrad in Theoretical Mathematics & Physics | <br>  &emsp; &emsp; Lycee Clemenceau de Nantes, 2020-2023
+
+---
+
+## Interests
+
+- FX, Equities & Commodities
+- Financial Risk Measurement & Management
+- Stochastic Calculus & Derivatives Pricing

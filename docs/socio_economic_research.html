@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mihnea POPA">
-<meta name="dcterms.date" content="2025-04-01">
 
-<title>PCA on the Pokemon stats – Mihnea POPA</title>
+<title>My Socio-Economic Research – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,20 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,9 +54,67 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../../styles.css">
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -66,9 +124,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Mihnea POPA</span>
     </a>
   </div>
@@ -78,15 +136,25 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html"> 
+    <a class="nav-link" href="./index.html"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resume.html"> <i class="bi bi-file-earmark-check" role="img">
+</i> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="./quant_research.html"> 
+<span class="menu-text">Quantitative Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../interview_questions.html"> 
+    <a class="nav-link active" href="./socio_economic_research.html" aria-current="page"> 
+<span class="menu-text">Socio-Economic Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./interview_questions.html"> 
 <span class="menu-text">Interview Questions</span></a>
   </li>  
 </ul>
@@ -100,46 +168,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The dataset</a></li>
-  <li><a href="#the-pca-pipeline" id="toc-the-pca-pipeline" class="nav-link" data-scroll-target="#the-pca-pipeline">The PCA pipeline</a></li>
-  <li><a href="#baseline-view-every-pokemon-total-coloured" id="toc-baseline-view-every-pokemon-total-coloured" class="nav-link" data-scroll-target="#baseline-view-every-pokemon-total-coloured">Baseline view: every Pokemon, Total-coloured</a></li>
-  <li><a href="#coloured-by-primary-type" id="toc-coloured-by-primary-type" class="nav-link" data-scroll-target="#coloured-by-primary-type">Coloured by primary type</a></li>
-  <li><a href="#final-evolutions-only" id="toc-final-evolutions-only" class="nav-link" data-scroll-target="#final-evolutions-only">Final evolutions only</a></li>
-  <li><a href="#legendaries-highlighted" id="toc-legendaries-highlighted" class="nav-link" data-scroll-target="#legendaries-highlighted">Legendaries highlighted</a></li>
-  <li><a href="#trying-it-yourself" id="toc-trying-it-yourself" class="nav-link" data-scroll-target="#trying-it-yourself">Trying it yourself</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PCA on the Pokemon stats</h1>
+<h1 class="title">My Socio-Economic Research</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Mihnea POPA </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 1, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -149,50 +193,36 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="pokemon.png" class="img-fluid" style="width:1.0%"></p>
-<p>In this project, I apply a <code>Principal Component Analysis (PCA)</code> to the six battle statistics of Pokemon — <code>HP, Attack, Defense, Special Attack, Special Defense and Speed</code> — and explore how the full Pokédex sits in the resulting 2D spaces. The analysis covers all <code>six generations</code> of the CSV (~721 species), with a specific pass on the subset of <code>final evolutions</code> and a final view with <code>legendaries</code> highlighted against the rest.</p>
-<p>Going from 6 dimensions to 2 is a modest reduction, so this project is really about <code>exploring structure</code> rather than dramatic compression. The interpretation comes from reading the <code>loadings</code> of each principal component and pairing the scatter with a <code>biplot</code>.</p>
-<section id="the-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="the-dataset">The dataset</h3>
-<p>The stats come from the well-known <code>Pokemon with stats</code> dataset originally published on Kaggle by Alberto Barradas and mirrored as a stable raw CSV on GitHub Gist. The CSV covers Generations 1 through 6, one row per species (plus Mega / Primal forme rows which we drop upstream). Download it directly here: <a href="https://gist.githubusercontent.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6/raw/92200bc0a673d5ce2110aaad4544ed6c4010f687/pokemon.csv" target="_blank">pokemon.csv</a>. To restrict the analysis to one or a few generations, pass <code>generations=[1]</code> (or any iterable) to <code>load_pokemon</code>.</p>
-<p>The CSV does not flag <code>final evolutions</code>, so I hand-curated the complement: a <code>NON_FINALS</code> set of every species that has a further evolution within Gen 1-6. Any Pokemon not in that set is treated as a final evolution. Cross-generational evolutions demote the earlier forms (<code>Onix</code> is non-final because of <code>Steelix</code>, <code>Magneton</code> because of <code>Magnezone</code>, and so on).</p>
-</section>
-<section id="the-pca-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="the-pca-pipeline">The PCA pipeline</h3>
-<p>The six stats share a nominal 1-255 scale but their empirical variances differ, so each stat is <code>standardized</code> (zero mean, unit variance) before the PCA is fit. The interpretation of the first three components (even though we only keep two) is:</p>
-<ul>
-<li><code>PC1</code> — sum of loadings is positive, so <code>higher PC1 means more overall power</code>.</li>
-<li><code>PC2</code> — HP + Sp. Def loading sums negative, so <code>lower PC2 means bulkier / more defensive</code>.</li>
-<li><code>PC3</code> — Attack loading is positive, so <code>higher PC3 means leans physical (vs special)</code>.</li>
-</ul>
-<p>The signs do not affect any distance or variance, only how the chart reads.</p>
-<p>On the ~721 Pokemon in the CSV, the first two components typically capture around <code>62%</code> of the total variance, with PC1 dominated by offensive and defensive stats <em>together</em> (the “size of the Pokemon”), PC2 contrasting bulk against speed. If we add the third we get 73% of total variance and PC3 is picking up physical-vs-special.</p>
-</section>
-<section id="baseline-view-every-pokemon-total-coloured" class="level3">
-<h3 class="anchored" data-anchor-id="baseline-view-every-pokemon-total-coloured">Baseline view: every Pokemon, Total-coloured</h3>
-<p>A first plain scatter of all ~721 Pokemon on PC1-PC2. Points are coloured by their <code>Total stat</code> as a sanity check — since PC1 is the overall-power axis, the colour gradient should line up neatly along PC1.</p>
-</section>
-<section id="coloured-by-primary-type" class="level3">
-<h3 class="anchored" data-anchor-id="coloured-by-primary-type">Coloured by primary type</h3>
-<p>Same points, now coloured by the Pokemon’s <code>primary type (Type 1)</code>. Dual-type Pokemon are still shown under their primary type only — the secondary type appears on hover. I am using brightened versions of the canonical type colours so everything reads well on dark.</p>
-<p>Honest expectation: types are gameplay categories, not stat-determining labels, so heavy overlap is normal. The chart is useful for spotting which types <code>skew</code> along PC1 or PC2 (e.g.&nbsp;Steel and Rock sit high on defensive stats; Flying leans offensive-fast) rather than for finding clean clusters.</p>
-</section>
-<section id="final-evolutions-only" class="level3">
-<h3 class="anchored" data-anchor-id="final-evolutions-only">Final evolutions only</h3>
-<p>Next I restrict to every final evolution across Gen 1-6 and <code>re-fit</code> the PCA on that subset. This matters: the principal axes depend on the covariance of the data they are fit on. If I only projected final evolutions using the axes learned from the full population, I would still be looking at directions that separate weak from strong Pokemon. Re-fitting means the axes now capture the variance <em>among</em> final evolutions, which is the more interesting question here.</p>
-</section>
-<section id="legendaries-highlighted" class="level3">
-<h3 class="anchored" data-anchor-id="legendaries-highlighted">Legendaries highlighted</h3>
-<p>Finally, the full population again — non-legendaries drawn dim so they act as context, legendaries in the accent colour, enlarged and labeled. PC1 tracks total stats by construction, so legendaries cluster on the high-PC1 side (that is the sanity check, not the finding). The interesting structure is PC2 and PC3: the <code>Articuno-Zapdos-Moltres</code> triad should split along the bulk-vs-speed axis, while <code>Mewtwo</code> sits out in pure offensive power, and creatures like <code>Lugia</code> or <code>Ho-Oh</code> trade offense for extreme bulk.</p>
-</section>
-<section id="trying-it-yourself" class="level3">
-<h3 class="anchored" data-anchor-id="trying-it-yourself">Trying it yourself</h3>
-<p>To run the full pipeline in one place, I aggregated every <code>.py</code> into a single Jupyter notebook. Download it here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are <code>pandas</code>, <code>scikit-learn</code> and <code>plotly</code>.</p>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1701417600000" data-listing-file-modified-sort="1779141172423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2095">
+<a href="./socio_economic_research/fiscalite/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="socio_economic_research\fiscalite\efficacite_confiance_autorites_fiscales.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Thesis on descriptive statistics on taxation in France
+</h5>
+<div class="card-text listing-description delink">
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Mihnea POPA / Tristan FABRE
+</div>
+<div class="listing-date">
+Dec 1, 2023
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mihnea POPA / Tristan FABRE">
-<meta name="dcterms.date" content="2023-12-01">
+<meta name="author" content="Mihnea POPA">
+<meta name="dcterms.date" content="2025-04-01">
 
-<title>Thesis on descriptive statistics on taxation in France – Mihnea POPA</title>
+<title>PCA on the Pokemon stats – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,12 +78,22 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html"> 
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> <i class="bi bi-file-earmark-check" role="img">
+</i> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../../quant_research.html"> 
+<span class="menu-text">Quantitative Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../socio_economic_research.html"> 
+<span class="menu-text">Socio-Economic Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../interview_questions.html"> 
@@ -105,14 +115,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#presentation-of-the-project" id="toc-presentation-of-the-project" class="nav-link active" data-scroll-target="#presentation-of-the-project">Presentation of the project</a></li>
-  <li><a href="#presentation-of-the-report" id="toc-presentation-of-the-report" class="nav-link" data-scroll-target="#presentation-of-the-report">Presentation of the report</a></li>
-  <li><a href="#presentation-of-the-code" id="toc-presentation-of-the-code" class="nav-link" data-scroll-target="#presentation-of-the-code">Presentation of the code</a>
-  <ul class="collapse">
-  <li><a href="#part-1-import-the-ess-data" id="toc-part-1-import-the-ess-data" class="nav-link" data-scroll-target="#part-1-import-the-ess-data">Part 1: Import the ESS data</a></li>
-  <li><a href="#part-2-setup-of-the-variables" id="toc-part-2-setup-of-the-variables" class="nav-link" data-scroll-target="#part-2-setup-of-the-variables">Part 2: Setup of the variables</a></li>
-  <li><a href="#part-3-make-the-plots" id="toc-part-3-make-the-plots" class="nav-link" data-scroll-target="#part-3-make-the-plots">Part 3: Make the plots</a></li>
-  </ul></li>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The dataset</a></li>
+  <li><a href="#the-pca-pipeline" id="toc-the-pca-pipeline" class="nav-link" data-scroll-target="#the-pca-pipeline">The PCA pipeline</a></li>
+  <li><a href="#baseline-view-every-pokemon-total-coloured" id="toc-baseline-view-every-pokemon-total-coloured" class="nav-link" data-scroll-target="#baseline-view-every-pokemon-total-coloured">Baseline view: every Pokemon, Total-coloured</a></li>
+  <li><a href="#coloured-by-primary-type" id="toc-coloured-by-primary-type" class="nav-link" data-scroll-target="#coloured-by-primary-type">Coloured by primary type</a></li>
+  <li><a href="#final-evolutions-only" id="toc-final-evolutions-only" class="nav-link" data-scroll-target="#final-evolutions-only">Final evolutions only</a></li>
+  <li><a href="#legendaries-highlighted" id="toc-legendaries-highlighted" class="nav-link" data-scroll-target="#legendaries-highlighted">Legendaries highlighted</a></li>
+  <li><a href="#trying-it-yourself" id="toc-trying-it-yourself" class="nav-link" data-scroll-target="#trying-it-yourself">Trying it yourself</a></li>
   </ul>
 </nav>
     </div>
@@ -121,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Thesis on descriptive statistics on taxation in France</h1>
+<h1 class="title">PCA on the Pokemon stats</h1>
 </div>
 
 
@@ -131,14 +140,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Mihnea POPA / Tristan FABRE </p>
+             <p>Mihnea POPA </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2023</p>
+      <p class="date">April 1, 2025</p>
     </div>
   </div>
   
@@ -150,422 +159,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="presentation-of-the-project" class="level1">
-<h1>Presentation of the project</h1>
-<p>This thesis corresponds to descriptive statistics established using the ESS survey and SAS language in order to examine which taxation system best suits which society. It will first study the relationship between trust in institutions and support for a given tax policy. It will then show that this support also depends on more concrete variables such as age, income, or education level. Finally, we will compare tax preferences to determine, without going as far as ideals, the strong values that govern societies. In other words, tax norms are always based on social values that need to be updated.</p>
-<p></p><div><object data="Memoire.pdf" type="application/pdf" width="1" height="1"><a href="Memoire.pdf" download="">Download PDF file.</a></object><br><a href="Memoire.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download Report</a></div><p></p>
+<p><img src="pokemon.png" class="img-fluid" style="width:1.0%"></p>
+<p>In this project, I apply a <code>Principal Component Analysis (PCA)</code> to the six battle statistics of Pokemon — <code>HP, Attack, Defense, Special Attack, Special Defense and Speed</code> — and explore how the full Pokédex sits in the resulting 2D spaces. The analysis covers all <code>six generations</code> of the CSV (~721 species), with a specific pass on the subset of <code>final evolutions</code> and a final view with <code>legendaries</code> highlighted against the rest.</p>
+<p>Going from 6 dimensions to 2 is a modest reduction, so this project is really about <code>exploring structure</code> rather than dramatic compression. The interpretation comes from reading the <code>loadings</code> of each principal component and pairing the scatter with a <code>biplot</code>.</p>
+<section id="the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="the-dataset">The dataset</h3>
+<p>The stats come from the well-known <code>Pokemon with stats</code> dataset originally published on Kaggle by Alberto Barradas and mirrored as a stable raw CSV on GitHub Gist. The CSV covers Generations 1 through 6, one row per species (plus Mega / Primal forme rows which we drop upstream). Download it directly here: <a href="https://gist.githubusercontent.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6/raw/92200bc0a673d5ce2110aaad4544ed6c4010f687/pokemon.csv" target="_blank">pokemon.csv</a>. To restrict the analysis to one or a few generations, pass <code>generations=[1]</code> (or any iterable) to <code>load_pokemon</code>.</p>
+<p>The CSV does not flag <code>final evolutions</code>, so I hand-curated the complement: a <code>NON_FINALS</code> set of every species that has a further evolution within Gen 1-6. Any Pokemon not in that set is treated as a final evolution. Cross-generational evolutions demote the earlier forms (<code>Onix</code> is non-final because of <code>Steelix</code>, <code>Magneton</code> because of <code>Magnezone</code>, and so on).</p>
 </section>
-<section id="presentation-of-the-report" class="level1">
-<h1>Presentation of the report</h1>
-<p>In this part, you can display the report and read it without downloading it.</p>
-<details>
-<summary>
-Show the report
-</summary>
-<p><object data="Memoire.pdf" type="application/pdf" width="110%" height="1200"><a href="Memoire.pdf" download="">Download PDF file.</a></object></p>
-</details>
+<section id="the-pca-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="the-pca-pipeline">The PCA pipeline</h3>
+<p>The six stats share a nominal 1-255 scale but their empirical variances differ, so each stat is <code>standardized</code> (zero mean, unit variance) before the PCA is fit. The interpretation of the first three components (even though we only keep two) is:</p>
+<ul>
+<li><code>PC1</code> — sum of loadings is positive, so <code>higher PC1 means more overall power</code>.</li>
+<li><code>PC2</code> — HP + Sp. Def loading sums negative, so <code>lower PC2 means bulkier / more defensive</code>.</li>
+<li><code>PC3</code> — Attack loading is positive, so <code>higher PC3 means leans physical (vs special)</code>.</li>
+</ul>
+<p>The signs do not affect any distance or variance, only how the chart reads.</p>
+<p>On the ~721 Pokemon in the CSV, the first two components typically capture around <code>62%</code> of the total variance, with PC1 dominated by offensive and defensive stats <em>together</em> (the “size of the Pokemon”), PC2 contrasting bulk against speed. If we add the third we get 73% of total variance and PC3 is picking up physical-vs-special.</p>
 </section>
-<section id="presentation-of-the-code" class="level1">
-<h1>Presentation of the code</h1>
-<p>This part will allow you to navigate through the SAS code made in order to have the plots in the thesis. The code is separated in three parts (Import the data, Structure the data, Use the data), each one with multiple subparts.</p>
-<section id="part-1-import-the-ess-data" class="level3">
-<h3 class="anchored" data-anchor-id="part-1-import-the-ess-data">Part 1: Import the ESS data</h3>
-<details>
-<summary>
-Import the data with the chosen variables
-</summary>
-<p><strong>Création de la libraire où se situe la base de données</strong></p>
-<pre class="sas"><code>libname ess "W:\Telechargements";</code></pre>
-<p><strong>Importation de la base de données avec les variables retenues</strong></p>
-<pre class="sas"><code>data ess;
-set ess.ess;
-keep 
-cntry /*Country*/
-gincdif /*Government should reduce differences in income levels (opinion)*/
-agea /*Age of respondent, calculated*/
-hinctnta /*Household's total net income, all sources*/
-smdfslv /*For fair society, differences in standard of living should be small*/
-sblazy /*Social benefits/services make people lazy*/
-sblwcoa /*Social benefits/services make people less willing care for one another*/
-sblwlka /*Social benefits/services make people less willing look after themselves/family*/
-txautef /*Tax authorities, how efficient in doing their job*/
-ditxssp /*Government decrease/increase taxes and social spending*/
-txearn /*Taxation for higher versus lower earners*/
-earnpen /*Higher or lower earners should get larger old age pensions*/
-earnueb /*Higher or lower earners should get larger unemployment benefits*/
-lbenent /*Many with very low incomes get less benefit than legally entitled to*/
-insfben /*Insufficient benefits in country to help people in real need*/
-trstprl /*Trust in country's parliament*/
-edulvla /*Highest level of education*/
-trstlgl /*Trust in the legal system*/
-trstplt /*Trust in politicians*/
-trstprt /*Trust in political parties*/
-imprich /*Important to be rich, have money and expensive things*/
-ipeqopt /*Important that people are treated equally and have equal opportunities*/
-impfree /*Important to make own decisions and be free*/
-iphlppl /*Important to help people and care for others well-being*/
-gvjbevn /*Job for everyone, governments' responsibility*/
-gvhlthc /*Health care for the sick, governments' responsibility*/
-gvslvol /*Standard of living for the old, governments' responsibility*/
-gvslvue /*Standard of living for the unemployed, governments' responsibility*/
-gvcldcr /*Child care services for working parents, governments' responsibility*/
-gvpdlwk /*Paid leave from work to care for sick family, governments' responsibility*/;
-RUN;</code></pre>
-</details>
+<section id="baseline-view-every-pokemon-total-coloured" class="level3">
+<h3 class="anchored" data-anchor-id="baseline-view-every-pokemon-total-coloured">Baseline view: every Pokemon, Total-coloured</h3>
+<p>A first plain scatter of all ~721 Pokemon on PC1-PC2. Points are coloured by their <code>Total stat</code> as a sanity check — since PC1 is the overall-power axis, the colour gradient should line up neatly along PC1.</p>
 </section>
-<section id="part-2-setup-of-the-variables" class="level3">
-<h3 class="anchored" data-anchor-id="part-2-setup-of-the-variables">Part 2: Setup of the variables</h3>
-<details>
-<summary>
-Add labels to the variables
-</summary>
-<p><strong>Renommage des variables avec des labels</strong></p>
-<pre class="sas"><code>data ess_label;
-set ess;
-label
-cntry = "Pays de résidence"
-agea = "Age"
-gincdif = "Le gouvernement doit prendre des mesures pour réduire les inégalités de revenu (1 = D'accord et 5 = Pas d'accord)"
-hinctnta = "Revenu"
-smdfslv = "Pour une société juste, les différences de niveau de vie doivent être faibles (1 = D'accord et 5 = Pas d'accord)"
-sblazy = "Les prestations sociales et les services sociaux rendent les personnes paresseuses (1 = Totalement d'accord et 5 = Totalement pas d'accord)"
-sblwcoa = "Les prestations sociales et les services sociaux conduisent les personnes à moins prendre soin des autres (1 = Totalement d'accord et 5 = Totalement pas d'accord)"
-sblwlka = "Les prestations sociales et les services sociaux conduisent les personnes à moins prendre soin de leurs proches (1 = Totalement d'accord et 5 = Totalement pas d'accord)"
-txautef = "Les autorités fiscales sont efficaces (10 = Très efficaces)"
-ditxssp = "Il faut augmenter les impôts et les prestations sociales "
-txearn = "Impots proportionnels (1), progressifs (2) ou égal (3) ?"
-earnpen = "Retraite en fonction du salaire (1 = Riche retraite plus élevée, 2 = Retraite égale et 3 = Riche retraite moins élevée"
-earnueb = "Les hauts salaires doivent-ils avoir une aide au chômage plus élevée (1), égale (2) ou moins élevée (3) ?"
-lbenent = "Beaucoup de personnes à très faible revenu perçoivent moins d'aides que ce dont ils ont accès"
-trstprl = "Avez-vous confiance dans votre parlement ? (0 = Pas confiance et 10 = Confiance)"
-edulvla = "Niveau éducation maximal"
-trstlgl = "Confiance dans le système légal"
-trstplt = "Confiance dans les politiciens"
-trstprt = "Confiance dans les partis politiques"
-imprich = "Importance d'être riche (1=Oui et 6=Non)"
-ipeqopt = "Importance d'être égaux (1=Oui et 6=Non)"
-impfree = "Importance d'être libre (1=Oui et 6=Non)"
-iphlppl = "Importance d'aider les autres (1=Oui et 6=Non)"
-gvjbevn = "Responsabilité du gouvernement pour les emplois pour tous"
-gvhlthc = "Resp du gouv pour le système de santé"
-gvslvol = "Resp du gouv pour le niveau de vie des personnes âgées"
-gvslvue = "Resp du gouv pour le niveau de vie des chômeurs"
-gvcldcr = "Resp du gouv pour le soin aux enfants de travailleurs"
-gvpdlwk = "Resp du gouv jour off payé afin de prendre soin famille malade";
-RUN;</code></pre>
-</details>
-<details>
-<summary>
-Add formats to the variables
-</summary>
-<p><strong>Création de formats</strong></p>
-<pre class="sas"><code>
-PROC FORMAT;
-value income
-1-5 = "Classe populaire et moyenne inférieure"
-6-8 = "Classe moyenne"
-9-10 = "Classe supérieure"
-77 = "A refusé de répondre"
-88 = "Ne sais pas"
-99 = "Pas de réponse";
-run;
-
-PROC FORMAT;
-value age
-0-&lt;15 = "Enfant ou adolescent"
-15-&lt;30 = "Moins de 30 ans"
-30-65 = "Entre 30 et 65 ans"
-65-500 = "Plus de 65 ans"
-999 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value $country
-"DK","SE","NO","FI" = "Modèle Social-Démocrate"
-"FR","BE","LU","DE","AT" = "Modèle Conservateur/Corporatiste"
-"GB","CY","IE"="Modèle Libéral"
-"AL","HR","ME","MK","SI","XK","SK","CH","NL","GE","IL","TR","EE","IS","RO","RS","BG",
-"CZ","HU","PL","RU","UA","LV","LT","ES","IT","GR","PT" = "Autre";
-RUN;
-
-PROC FORMAT;
-value presta_sociale
-1 = " Absolument d'accord"
-2 = "Plutôt d'accord"
-3 = "Indifférent"
-4 = "Plutôt pas d'accord"
-5 = "Absolument pas d'accord"
-7 = "A refusé de répondre"
-8 = "Ne sais pas"
-9 = "Pas de réponse";
-run;
-
-PROC FORMAT;
-value resp_gouv
-0-2 = "Absolument pas d'accord"
-3-4 = "Plutôt pas d'accord"
-5 = "Sans opinion"
-6-7 = "Plutôt d'accord"
-8-10 = "Absolument d'accord"
-77 = "A refusé de répondre"
-88 = "Ne sais pas"
-99 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value gouv_evolution_impot_ps
-0-2 = "Absolument pas d'accord"
-3-4 = "Plutôt pas d'accord"
-5 = "Sans opinion"
-6-7 = "Plutôt d'accord"
-8-10 = "Absolument d'accord"
-77 = "A refusé de répondre"
-88 = "Ne sais pas"
-99 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value aides
-1 = "Absolument d'accord"
-2 = "Plutôt d'accord"
-3 = "Indifférent"
-4 = "Plutôt pas d'accord"
-5 = "Absolument pas d'accord"
-7 = "A refusé de répondre"
-8 = "Ne sais pas"
-9 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value comment_taxer
-1 = "Impôt proportionnel"
-2 = "Impôt progressif"
-3 = "Impôt égal"
-4 = "Aucun de ces réponse"
-7 = "A refusé de répondre"
-8 = "Ne sais pas"
-9 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value education_ISCED
-0 = "Impossible d'harmoniser"
-1 = "Moins que secondaire"
-2-3 = "Secondaire"
-4-5 = "Supérieur"
-55 = "Autre"
-77 = "A refusé de répondre"
-88 = "Ne sais pas"
-99 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value gouv
-0-3 = "Pas d'accord"
-4-6 = "Sans opinion"
-7-10 = "D'accord"
-77 = "A refusé de répondre"
-88 = "Ne sais pas"
-99 = "Pas de réponse";
-RUN;
-
-PROC FORMAT;
-value imp
-0-2 = "Important"
-2-4 = "Neutre"
-4-6 = "Pas important"
-7 = "A refusé de répondre"
-8 = "Ne sais pas"
-9 = "Pas de réponse";
-RUN;</code></pre>
-</details>
+<section id="coloured-by-primary-type" class="level3">
+<h3 class="anchored" data-anchor-id="coloured-by-primary-type">Coloured by primary type</h3>
+<p>Same points, now coloured by the Pokemon’s <code>primary type (Type 1)</code>. Dual-type Pokemon are still shown under their primary type only — the secondary type appears on hover. I am using brightened versions of the canonical type colours so everything reads well on dark.</p>
+<p>Honest expectation: types are gameplay categories, not stat-determining labels, so heavy overlap is normal. The chart is useful for spotting which types <code>skew</code> along PC1 or PC2 (e.g.&nbsp;Steel and Rock sit high on defensive stats; Flying leans offensive-fast) rather than for finding clean clusters.</p>
 </section>
-<section id="part-3-make-the-plots" class="level3">
-<h3 class="anchored" data-anchor-id="part-3-make-the-plots">Part 3: Make the plots</h3>
-<details>
-<summary>
-Create function for the plots
-</summary>
-<p><strong>Création des macros que l’on va utiliser</strong></p>
-<pre class="sas"><code>
-%MACRO panel_var1_var2(variable1,variable2,format1,format2,maxvar1,maxvar2);/*Cette macro crée un panneau suivant les valeurs d'une variable "variable1" codée par le format "format1" et dans chaque case du panneau représente les proportions des valeurs de la variable "variable2" codée par le format "format2"*/
-
-  /*Tri de la table suivant la variable "variable1"*/
-  proc sort data=ess_label;
-    by &amp;variable1;
-  run;
-  /*Calcul des pourcentages de chaque valeur de la variable "variable2" en groupant selon les valeurs de la variable "variable1"*/
-  proc freq data=ess_label
-  (WHERE = (cntry="FR" and &amp;variable1&lt;=&amp;maxvar1 and &amp;variable2&lt;=&amp;maxvar2))
-  noprint;
-    format &amp;variable1 %scan(&amp;format1, 1, %str(%bquote(%')%str(%"))).;
-    by &amp;variable1;
-    tables &amp;variable2 / out=FreqOut;
-  run;
-  
-  /*Création du panneau suivant les valeurs de la variable "variable1" en représentant les proportions des valeurs de la variable "variable2" */
-  proc sgpanel data=FreqOut;
-    format &amp;variable1 %scan(&amp;format1, 1, %str(%bquote(%')%str(%"))).;
-    format &amp;variable2 %scan(&amp;format2, 1, %str(%bquote(%')%str(%"))).;
-    styleattrs datacontrastcolors=(red green blue) datacolors=(red green blue);
-    panelby &amp;variable1 / columns = 3 novarname noheader;
-    vbar &amp;variable2 /group=&amp;variable1 barwidth=0.5
-  response=percent datalabel ;
-  run;
-  
-%MEND;
-
-
-%MACRO barres_stack(variable);/*Cette macro permet pour une variable "variable", qui sera une variable de responsabilité du gouvernement, de faire un histogramme horizontal avec barres empilées pour représenter cette variable pour les différentes classes de revenu*/
-
-  /*Tri de la table suivant le revenu avec les observations utiles*/
-  proc sort data=ess_label (WHERE=(cntry= "FR" and hinctnta&lt;=10 and &amp;variable&lt;=10 )) out=ess_label_bis ;
-    format hinctnta income.;
-    by hinctnta;
-  run;
-  
-  /*Calcul des pourcentages de chaque valeur de la variable "variable" en groupant selon les classes de revenu*/
-
-  proc freq data=ess_label_bis noprint;
-    by hinctnta;
-    tables &amp;variable / out=FreqOut;
-  run;
-  
-  /*Création de l'histogramme horizontal avec barres empilées*/
-  proc sgplot data=FreqOut NOAUTOLEGEND;
-    styleattrs datacontrastcolors=(red green blue) datacolors=(red green blue);
-    format hinctnta income.;
-    format &amp;variable gouv.;
-    hbar hinctnta / response=Percent group=&amp;variable groupdisplay=stack barwidth=0.5 ;
-    xaxis grid values=(0 to 100 by 10);
-  run;
-  
-%MEND;
-
-
-%MACRO trust(variable1,variable2,maxvar2); /*Cette macro étudie le lien entre différentes variables de confiances "variable1" en abscisse et "variable2" en ordonnées. Elle fait une moyenne sur les pays et représente une droite de tendance*/
-
-  /*Calcule la moyenne de la variable "variable1" pour chaque pays*/
-  proc means data=ess_label (where = (&amp;variable2 &lt;=&amp;maxvar2 and &amp;variable1&lt;50)) noprint;
-    class cntry;
-    var &amp;variable1 &amp;variable2 ;
-    output out=mean_data_2 mean=;
-  run;
-  /*Représente en abscisses la variable "variable1" et en ordonnée "variable2" avec la droite de tendance*/
-  proc sgplot data=mean_data_2;
-    scatter x=&amp;variable1 y=&amp;variable2 / group=cntry;
-    keylegend / location=outside;
-    reg x=&amp;variable1 y=&amp;variable2 / lineattrs=(color=red) NOMARKERS;
-  run;
-%MEND;
-
-
-%MACRO consensus(variable, format); /*Cette macro étudie les fréquences de la variable "variable" codée par le format "format" pour voir s'il existe un consensus auprès des individus*/
-
-  /*Calcul des fréquences des valeurs de la variable "variable"*/
-  proc freq data=ess_label (WHERE=(cntry="FR" /*and 8&lt;=hinctnta&lt;=10 Pour le dernier consensus */ ));
-    tables %scan(&amp;variable, 1, %str(%bquote(%')%str(%"))) / out=FreqOut;
-  run;
-  
-/*Création del'histogramme pour voir s'il existe un consensus*/
-  proc sgplot data=FreqOut NOAUTOLEGEND;
-    styleattrs datacontrastcolors=(red orange green blue purple red) datacolors=(red orange green blue purple red);
-    VBAR %scan(&amp;variable, 1, %str(%bquote(%')%str(%"))) /response=percent group=%scan(&amp;variable, 1, %str(%bquote(%')%str(%")))
-    datalabel; format %scan(&amp;variable, 1, %str(%bquote(%')%str(%")))
-%scan(&amp;format, 1, %str(%bquote(%')%str(%"))).;
-  run;
-  
-%MEND;
-
-%MACRO vari_en_fct_pays(variable);/*Cette macro crée un graphique de points avec en abscisse la catégorie de pays (Europe Centrale, Europe du Nord, Libéral, Familialiste) et en ordonnée la moyenne de la variable "variable" pour chaque pays de chaque catégorie*/
-
-  /*Renvoit la moyenne de la variable "variable" pour chaque pays présent dans la table */
-  proc means data=ess_label (where = (&amp;variable&lt;=4)) noprint;
-    class cntry;
-    var &amp;variable;
-    output out=mean_data mean=;
-  run;
-  /*Selectionne les moyennes qui correspondent aux pays des différentes catégories étudiées*/
-  data mean_data;
-    set mean_data;
-    if cntry in ("DK","SE","NO","FI","FR","BE","LU", "DE","AT","GB","CY","IE");
-  run;
-/*Création du graphique de points en regroupant par la catégorie de pays afin d'obtenir des couleurs différentes*/
-  proc sgplot data=mean_data NOAUTOLEGEND;
-    styleattrs datacontrastcolors=(red green blue) datacolors=(red green blue);
-    format cntry $country.;
-    scatter x=cntry y=&amp;variable /group=cntry;
-  run;
-  
-%MEND;</code></pre>
-</details>
-<details>
-<summary>
-Used plots
-</summary>
-<p><strong>Graphiques utilisés</strong></p>
-<pre class="sas"><code>
-/*I.A.1*/
-    %panel_var1_var2(hinctnta,ditxssp,"income","gouv_evolution_impot_ps",10,10);
-    %panel_var1_var2(hinctnta,sblazy,"income","presta_sociale",10,5);
-    %panel_var1_var2(hinctnta,lbenent,"income","aides",10,5);
-    %panel_var1_var2(hinctnta,insfben,"income","aides",10,5);
-    
-/*I.A.2*/
-    %barres_stack(gvjbevn);
-    %barres_stack(gvhlthc);
-    %barres_stack(gvslvol);
-    %barres_stack(gvslvue);
-    %barres_stack(gvcldcr);
-    %barres_stack(gvpdlwk);
-    
-/*I.B*/
-    /*Acceptation*/
-        %trust(trstprl,ditxssp,10);
-        %trust(trstlgl,ditxssp,10);
-        %trust(trstplt,ditxssp,10);
-        %trust(trstprt,ditxssp,10);
-    /*Méthode*/
-        %trust(trstprl,txearn,3);
-        %trust(trstlgl,txearn,3);
-        %trust(trstplt,txearn,3);
-        %trust(trstprt,txearn,3);
-    /*Efficacité*/
-        %trust(trstprl,txautef,10);
-        %trust(trstlgl,txautef,10);
-        %trust(trstplt,txautef,10);
-        %trust(trstprt,txautef,10);
-
-/*I.C*/
-    %consensus("gincdif","presta_sociale");
-    %consensus("sblwcoa","presta_sociale");
-    %consensus("txearn","comment_taxer");
-    %consensus("ipeqopt","imp");
-    %consensus("smdfslv","presta_sociale");
-    
-/*II.A*/
-    %panel_var1_var2(hinctnta,ditxssp,"income", "gouv_evolution_impot_ps",10,10);
-    
-/*II.B*/
-  %panel_var1_var2(edulvla,ditxssp,"education_ISCED", "gouv_evolution_impot_ps",10,10);
-
-/*II.C*/
-    %panel_var1_var2(agea,ditxssp,"age", "gouv_evolution_impot_ps",200,10);
-    
-/*III*/
-    %vari_en_fct_pays(imprich);
-    %vari_en_fct_pays(ipeqopt);
-    %vari_en_fct_pays(impfree);
-    %vari_en_fct_pays(iphlppl);
-    %vari_en_fct_pays(earnpen);
-    %vari_en_fct_pays(earnueb);
-    %vari_en_fct_pays(sblwlka);
-    %vari_en_fct_pays(sblazy);</code></pre>
-</details>
-<p><img src="efficacite_confiance_autorites_fiscales.jpg" class="img-fluid" style="width:1.0%"></p>
-
-
+<section id="final-evolutions-only" class="level3">
+<h3 class="anchored" data-anchor-id="final-evolutions-only">Final evolutions only</h3>
+<p>Next I restrict to every final evolution across Gen 1-6 and <code>re-fit</code> the PCA on that subset. This matters: the principal axes depend on the covariance of the data they are fit on. If I only projected final evolutions using the axes learned from the full population, I would still be looking at directions that separate weak from strong Pokemon. Re-fitting means the axes now capture the variance <em>among</em> final evolutions, which is the more interesting question here.</p>
 </section>
+<section id="legendaries-highlighted" class="level3">
+<h3 class="anchored" data-anchor-id="legendaries-highlighted">Legendaries highlighted</h3>
+<p>Finally, the full population again — non-legendaries drawn dim so they act as context, legendaries in the accent colour, enlarged and labeled. PC1 tracks total stats by construction, so legendaries cluster on the high-PC1 side (that is the sanity check, not the finding). The interesting structure is PC2 and PC3: the <code>Articuno-Zapdos-Moltres</code> triad should split along the bulk-vs-speed axis, while <code>Mewtwo</code> sits out in pure offensive power, and creatures like <code>Lugia</code> or <code>Ho-Oh</code> trade offense for extreme bulk.</p>
+</section>
+<section id="trying-it-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="trying-it-yourself">Trying it yourself</h3>
+<p>To run the full pipeline in one place, I aggregated every <code>.py</code> into a single Jupyter notebook. Download it here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are <code>pandas</code>, <code>scikit-learn</code> and <code>plotly</code>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

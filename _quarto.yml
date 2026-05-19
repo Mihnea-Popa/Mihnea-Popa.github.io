@@ -6,12 +6,18 @@ website:
   title: "Mihnea POPA"
   navbar:
     left:
-      - href: resume.qmd 
+      - href: index.qmd
+        text: About
+        icon: person-circle
+      - href: resume.qmd
         text: Resume
-      - href: projects.qmd  
-        text: Projects
+        icon: file-earmark-check
+      - href: quant_research.qmd  
+        text: Quantitative Research
+      - href: socio_economic_research.qmd
+        text: Socio-Economic Research
       - href: interview_questions.qmd  
-        text: Interview Questions        
+        text: Interview Questions   
         
   search: false
 format:
