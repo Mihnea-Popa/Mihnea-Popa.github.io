@@ -122,5 +122,6 @@ plt.show()
 ```
 
 </details>
+![](coupling_normal.png){width=100%}
 
 The empirical coupling probability closely matches the theoretical integral of $\min(C \cdot p, q)$, confirming the correctness of the implementation. The marginal histograms recover $\mathcal{N}(0,1)$ and $\mathcal{N}(0,2)$ respectively, and the finite variance of the execution time reflects the controlled trade-off introduced by $C < 1$.
