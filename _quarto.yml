@@ -18,8 +18,9 @@ website:
       - href: socio_economic_research.qmd
         text: Socio-Economic Research
         icon: people
-      - href: interview_questions.qmd  
-        text: Interview Questions   
+      - href: teaching.qmd  
+        text: Teaching 
+        icon: mortarboard
         
   search: false
 format:

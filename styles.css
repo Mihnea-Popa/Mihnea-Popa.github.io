@@ -22,3 +22,10 @@ body {
   background-color: #e4eaf2;
 }
 
+/* Justified text blocks */
+.justified p {
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.4em;
+}
+

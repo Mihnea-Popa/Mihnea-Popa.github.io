@@ -1,20 +1,9 @@
 ---
 title: "Life Cycle Assessment: Electric vs. Diesel Vehicle"
-subtitle: "ENSAE Paris — Environmental Issues (OMI448)"
 author: "Mihnea Popa"
+description: " "
 order: 1
 date: "April 2024"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    toc-title: "Contents"
-    number-sections: true
-    theme: cosmo
-    code-fold: true
-    self-contained: true
-    fig-width: 8
-    fig-height: 5
 ---
 
 ## What is Life Cycle Assessment?
@@ -284,3 +273,5 @@ Across the three indicators evaluated:
 - The materials trade-off will progressively diminish as battery technology improves (higher energy density → less material per kWh) and recycling infrastructure matures.
 
 The study confirms that framing the electric vehicle debate as "zero emission" is misleading, but also confirms that the lifecycle carbon advantage of EVs is real and substantial in low-carbon electricity markets.
+
+![](image.jpg){width=1%}

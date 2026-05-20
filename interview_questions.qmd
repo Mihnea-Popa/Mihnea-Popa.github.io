@@ -1,6 +1,0 @@
----
-title: "My Interview questions"
-listing:
-  contents: "interview_questions/*/index.qmd"  
-  type: grid
----
