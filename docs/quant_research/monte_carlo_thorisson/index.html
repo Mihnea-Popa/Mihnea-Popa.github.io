@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea POPA">
+<meta name="dcterms.date" content="2025-04-01">
 
-<title>Triangle from a broken stick – Mihnea POPA</title>
+<title>Maximal Coupling: The Thorisson Algorithm – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -140,22 +177,41 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-thorisson-coupling-algorithm" id="toc-the-thorisson-coupling-algorithm" class="nav-link active" data-scroll-target="#the-thorisson-coupling-algorithm">The Thorisson Coupling Algorithm</a></li>
+  <li><a href="#application-coupling-mathcaln01-and-mathcaln02" id="toc-application-coupling-mathcaln01-and-mathcaln02" class="nav-link" data-scroll-target="#application-coupling-mathcaln01-and-mathcaln02">Application: Coupling <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Triangle from a broken stick</h1>
+<h1 class="title">Maximal Coupling: The Thorisson Algorithm</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea POPA </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -165,54 +221,110 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/broken_stick.jpg" class="img-fluid" width="1"></p>
-<p>We have a stick of length 1 and it breaks. What is the probability that the broken pieces form a triangle ?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Parametrize the problem with the length of the broken pieces and compute the partial area corresponding to a triangle.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(x\)</span> be the length of the first piece and <span class="math inline">\(y\)</span> the second piece (thus the final length is <span class="math inline">\(1-x-y\)</span>)</p>
-<p>Since all length are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0 \\ y \le 1 -x \end{cases}.\]</span></p>
-<p>The broken pieces form a triangle if and only if all length are lower than the sum of the other sides. Thus we have <span class="math display">\[\begin{cases} x \le y + 1 -x -y \\  y \le y + 1 -x -y \\ 1 -x - y \le x + y  \end{cases} \sim \begin{cases} x \le 1/2 \\  y \le 1/2 \\ y \ge 1/2 -x   \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Triangle}) = \frac{A_{tri}}{A_{tot}}=\frac{1/8}{1/2}=1/4.}\)</span></p>
-<div id="19faae2f" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stick_triangle_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<p>As part of a Monte Carlo Methods course at ENSAE Paris, this project implements a modified version of the <strong>Thorisson coupling algorithm</strong>, based on the paper <em>The Coupled Rejection Sampler</em> by Corenflos and Särkkä (2022). Given two probability distributions <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, a coupling is a joint distribution <span class="math inline">\(\Gamma\)</span> on <span class="math inline">\((X, Y)\)</span> such that <span class="math inline">\(X \sim p\)</span> and <span class="math inline">\(Y \sim q\)</span>. Among all such couplings, a <strong>maximal coupling</strong> is one that maximizes <span class="math inline">\(\mathbb{P}(X = Y)\)</span>, and a classical result shows that this maximum equals <span class="math inline">\(1 - \|p - q\|_{TV}\)</span>, or equivalently <span class="math inline">\(\int \min(p(x), q(x)) \, dx\)</span>. The algorithm constructs such a coupling via an acceptance-rejection scheme, with a tunable parameter <span class="math inline">\(C\)</span> that controls the trade-off between the coupling probability and the variance of the execution time.</p>
+<p></p><div><object data="Coupling_Report.pdf" type="application/pdf" width="1" height="1"><a href="Coupling_Report.pdf" download="">Download PDF file.</a></object><br><a href="Coupling_Report.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download the Project Report</a></div><p></p>
+<p></p><div><object data="MC_Coupling_Thorisson.pdf" type="application/pdf" width="1" height="1"><a href="MC_Coupling_Thorisson.pdf" download="">Download PDF file.</a></object><br><a href="MC_Coupling_Thorisson.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download the Original Paper</a></div><p></p>
+<section id="the-thorisson-coupling-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="the-thorisson-coupling-algorithm">The Thorisson Coupling Algorithm</h3>
+<p>The algorithm proceeds as follows. First, sample <span class="math inline">\(X \sim p\)</span> and <span class="math inline">\(U \sim \mathcal{U}(0,1)\)</span>. If</p>
+<p><span class="math display">\[U &lt; \min\!\left(\frac{q(X)}{p(X)},\, C\right),\]</span></p>
+<p>then set <span class="math inline">\(Y = X\)</span> — the two variables have met. Otherwise, sample from the residual of <span class="math inline">\(q\)</span> not dominated by <span class="math inline">\(C \cdot p\)</span>: draw <span class="math inline">\(Z \sim q\)</span> and <span class="math inline">\(U \sim \mathcal{U}(0,1)\)</span> repeatedly until</p>
+<p><span class="math display">\[U &gt; \min\!\left(1,\, \frac{C \cdot p(Z)}{q(Z)}\right),\]</span></p>
+<p>then set <span class="math inline">\(Y = Z\)</span>. The resulting pair <span class="math inline">\((X, Y)\)</span> satisfies <span class="math inline">\(X \sim p\)</span>, <span class="math inline">\(Y \sim q\)</span>, and <span class="math inline">\(\mathbb{P}(X = Y) = \int \min(C \cdot p(x), q(x))\,dx\)</span>.</p>
+<p>The parameter <span class="math inline">\(C \in (0, 1]\)</span> introduces a deliberate suboptimality: by setting <span class="math inline">\(C &lt; 1\)</span>, the coupling probability decreases, but the variance of the algorithm’s run time is kept finite even as <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> approach each other — a property the standard maximal coupling (<span class="math inline">\(C = 1\)</span>) does not enjoy.</p>
+<details>
+<summary>
+Show the implementation
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> thorisson_coupling(p_densite, p_echantillon, q_densite, q_echantillon, C<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> p_echantillon()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    U <span class="op">=</span> np.random.uniform()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> U <span class="op">&lt;</span> <span class="bu">min</span>(q_densite(X) <span class="op">/</span> p_densite(X), C):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        Y <span class="op">=</span> X</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> A <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            Z <span class="op">=</span> q_echantillon()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            U <span class="op">=</span> np.random.uniform()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> U <span class="op">&gt;</span> <span class="bu">min</span>(<span class="dv">1</span>, C <span class="op">*</span> p_densite(Z) <span class="op">/</span> q_densite(Z)):</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                A <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            Y <span class="op">=</span> Z</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, Y</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calcul_integral_min(p_densite, q_densite, C<span class="op">=</span><span class="fl">1.0</span>, limit_integrale<span class="op">=</span><span class="dv">5</span>, num_points<span class="op">=</span><span class="dv">100000</span>):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    x_vals <span class="op">=</span> np.linspace(<span class="op">-</span>limit_integrale, limit_integrale, num_points)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    min_vals <span class="op">=</span> np.minimum(C <span class="op">*</span> p_densite(x_vals), q_densite(x_vals))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> x_vals[<span class="dv">1</span>] <span class="op">-</span> x_vals[<span class="dv">0</span>]</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(min_vals) <span class="op">*</span> dx</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> erreur_egalite(X_val, Y_val, e<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(np.<span class="bu">abs</span>(X_val <span class="op">-</span> Y_val) <span class="op">&lt;=</span> e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</section>
+<section id="application-coupling-mathcaln01-and-mathcaln02" class="level3">
+<h3 class="anchored" data-anchor-id="application-coupling-mathcaln01-and-mathcaln02">Application: Coupling <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span></h3>
+<p>To validate the implementation, we couple <span class="math inline">\(p = \mathcal{N}(0,1)\)</span> and <span class="math inline">\(q = \mathcal{N}(0,2)\)</span> over 100,000 simulations with <span class="math inline">\(C = 0.99\)</span>. Three quantities are checked: the empirical coupling probability <span class="math inline">\(\mathbb{P}(X \approx Y)\)</span>, compared against the theoretical value <span class="math inline">\(\int \min(C \cdot p(x), q(x))\,dx\)</span> computed numerically; and the mean and variance of the execution time, to verify that the algorithm terminates in finite expected time.</p>
+<details>
+<summary>
+Show the simulation
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Densities and samplers</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_densite(x):      <span class="co"># N(0,1)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_echantillon():</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q_densite(x):      <span class="co"># N(0,2)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">8</span>) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q_echantillon():</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameter C</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.99</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 100,000 coupled pairs</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>X_vals, Y_vals, times <span class="op">=</span> [], [], []</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000</span>):</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    debut <span class="op">=</span> time.time()</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> thorisson_coupling(p_densite, p_echantillon, q_densite, q_echantillon, C)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    fin <span class="op">=</span> time.time()</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    X_vals.append(x)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    Y_vals.append(y)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    times.append(fin <span class="op">-</span> debut)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>X_vals <span class="op">=</span> np.array(X_vals)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>Y_vals <span class="op">=</span> np.array(Y_vals)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>times  <span class="op">=</span> np.array(times)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Results</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Empirical P(X ≈ Y)              = </span><span class="sc">{</span>erreur_egalite(X_vals, Y_vals) <span class="op">/</span> <span class="bu">len</span>(X_vals)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Theoretical ∫ min(C·p, q)       ≈ </span><span class="sc">{</span>calcul_integral_min(p_densite, q_densite, C<span class="op">=</span>C)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean execution time             = </span><span class="sc">{</span>np<span class="sc">.</span>mean(times)<span class="sc">:.6f}</span><span class="ss"> s"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of execution time      = </span><span class="sc">{</span>np<span class="sc">.</span>var(times)<span class="sc">:.2e}</span><span class="ss">"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot marginals</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">9</span>))</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.hist(X_vals, bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'X ~ p = N(0,1)'</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>plt.hist(Y_vals, bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'Y ~ q = N(0,2)'</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Marginal distributions of X and Y from the Thorisson coupling"</span>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Value"</span>)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<p><img src="coupling_normal.png" class="img-fluid" style="width:100.0%"></p>
+<p>The empirical coupling probability closely matches the theoretical integral of <span class="math inline">\(\min(C \cdot p, q)\)</span>, confirming the correctness of the implementation. The marginal histograms recover <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span> respectively, and the finite variance of the execution time reflects the controlled trade-off introduced by <span class="math inline">\(C &lt; 1\)</span>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
