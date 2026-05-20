@@ -3,7 +3,7 @@ title: "Pricing options with Black-Sholes-Merton and Monte Carlo in C++"
 author: Mihnea POPA 
 description: " "
 date: December 2024
-order: 3
+order: 4
 ---
 
 During a elective course at ENSAE Paris as an Introduction to C++, my final project was to implement vanilla options' pricing using the Black-Scholes-Merton formula and the Monte Carlo simulation approach. The main idea of the project was to use a parent class and then two derived that implemented each method.

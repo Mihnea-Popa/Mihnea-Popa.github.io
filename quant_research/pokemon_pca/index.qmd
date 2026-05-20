@@ -2,8 +2,8 @@
 title: "PCA on the Pokemon stats"
 author: Mihnea POPA
 description: " "
-date: April 2025
-order: 2
+date: March 2025
+order: 3
 resources:
   - _pokemon_pca_notebook.ipynb
 ---
