@@ -1,0 +1,89 @@
+[
+  {
+    "listing": "/teaching.html",
+    "items": [
+      "/teaching/brainteasers/index.html",
+      "/teaching/probabilities/index.html"
+    ]
+  },
+  {
+    "listing": "/teaching/probabilities/index.html",
+    "items": [
+      "/teaching/probabilities/local_minima.html",
+      "/teaching/probabilities/bayes_coin.html",
+      "/teaching/probabilities/chevalier_mere.html",
+      "/teaching/probabilities/modes_poisson.html",
+      "/teaching/probabilities/maximum_equal_bernoulli.html",
+      "/teaching/probabilities/parity_dice_sum.html",
+      "/teaching/probabilities/key_last_room.html",
+      "/teaching/probabilities/drunk_postman.html",
+      "/teaching/probabilities/selected_colors.html",
+      "/teaching/probabilities/min_max_uniform.html",
+      "/teaching/probabilities/expected_flips_different.html",
+      "/teaching/probabilities/random_boxes.html",
+      "/teaching/probabilities/stick_triangle.html",
+      "/teaching/probabilities/Bullet_cylinder.html",
+      "/teaching/probabilities/uniform_sum.html",
+      "/teaching/probabilities/uncertain_meeting.html",
+      "/teaching/probabilities/uniform_ratio.html",
+      "/teaching/probabilities/draw_replacement_values.html",
+      "/teaching/probabilities/coin_toss_agreement.html",
+      "/teaching/probabilities/left_right.html",
+      "/teaching/probabilities/first_ace.html",
+      "/teaching/probabilities/urn_and_ball_separation.html",
+      "/teaching/probabilities/tournament.html",
+      "/teaching/probabilities/poisson_distribution.html",
+      "/teaching/probabilities/circular_table.html",
+      "/teaching/probabilities/sum_10_dice.html",
+      "/teaching/probabilities/stopping_time_HH_TT.html",
+      "/teaching/probabilities/avg_integers.html",
+      "/teaching/probabilities/dice_game.html",
+      "/teaching/probabilities/muffin_croissant.html"
+    ]
+  },
+  {
+    "listing": "/quant_research.html",
+    "items": [
+      "/quant_research/serie_temp/index.html",
+      "/quant_research/monte_carlo_thorisson/index.html",
+      "/quant_research/pokemon_pca/index.html",
+      "/quant_research/bsm_monte_carlo/index.html",
+      "/quant_research/tipe_somnolence/index.html"
+    ]
+  },
+  {
+    "listing": "/socio_economic_research.html",
+    "items": [
+      "/socio_economic_research/life_cycle_analysis/index.html",
+      "/socio_economic_research/fiscalite/index.html",
+      "/socio_economic_research/transport/index.html"
+    ]
+  },
+  {
+    "listing": "/teaching/brainteasers/index.html",
+    "items": [
+      "/teaching/brainteasers/unique_lighter_coin.html",
+      "/teaching/brainteasers/time_burning_ropes.html",
+      "/teaching/brainteasers/horse_race.html",
+      "/teaching/brainteasers/one_bullet_more_prisoners.html",
+      "/teaching/brainteasers/clock_angle.html",
+      "/teaching/brainteasers/cube_explosion.html",
+      "/teaching/brainteasers/fallen_eggs.html",
+      "/teaching/brainteasers/poisened_wine.html",
+      "/teaching/brainteasers/wind_effect.html",
+      "/teaching/brainteasers/groups_equal_heads.html",
+      "/teaching/brainteasers/squares_grid.html",
+      "/teaching/brainteasers/cross_bridge.html",
+      "/teaching/brainteasers/circular_track_ratio.html",
+      "/teaching/brainteasers/invisible_hats.html",
+      "/teaching/brainteasers/average_speed.html",
+      "/teaching/brainteasers/wine_water.html",
+      "/teaching/brainteasers/polyglot.html",
+      "/teaching/brainteasers/furtive_spy.html",
+      "/teaching/brainteasers/even_before_odd.html",
+      "/teaching/brainteasers/highest_Roll.html",
+      "/teaching/brainteasers/ten_floor_building.html",
+      "/teaching/brainteasers/statistics_arrangement.html"
+    ]
+  }
+]
