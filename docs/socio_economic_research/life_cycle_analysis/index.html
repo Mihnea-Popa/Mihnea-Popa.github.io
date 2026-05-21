@@ -216,23 +216,20 @@ window.Quarto = {
 </header>
 
 
+<p><img src="image.jpg" class="img-fluid" style="width:0.01389in"></p>
 <section id="what-is-life-cycle-assessment" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-life-cycle-assessment">What is Life Cycle Assessment?</h2>
-<p>Life Cycle Assessment (LCA) is a standardized methodology (ISO 14040/14044) for quantifying the environmental impacts of a <strong>product, service, or technology across its entire life cycle</strong> — from raw material extraction to end-of-life disposal. The key principle is <em>holism</em>: no single stage is examined in isolation.</p>
-<p>The framework is inherently <strong>multi-criteria</strong>: rather than reducing environmental performance to a single metric (e.g., CO₂), it simultaneously tracks impacts across categories including climate change, resource depletion, water use, ecotoxicity, and particulate matter formation.</p>
+<p>Life Cycle Assessment (LCA) is a methodology for quantifying the environmental impacts of a product, service, or technology across its entire life cycle, from raw material extraction to end-of-life disposal. The framework is inherently multi-criteria: rather than reducing environmental performance to a single metric (e.g., CO₂), it simultaneously tracks impacts across categories including climate change, resource depletion, water use, ecotoxicity, and particulate matter formation.</p>
 <section id="why-lca-matters-for-the-electric-vehicle-debate" class="level3">
 <h3 class="anchored" data-anchor-id="why-lca-matters-for-the-electric-vehicle-debate">Why LCA matters for the electric vehicle debate</h3>
-<p>Media headlines comparing electric and diesel cars frequently contain methodological errors: they either compare only the <em>use phase</em> (ignoring production and end-of-life), or they focus on a single indicator (CO₂), or they assume a fixed electricity mix. LCA provides the rigorous counter-framework.</p>
-<p>The classic misconception: a Tesla advertised as “0 g CO₂/km” is measuring only tailpipe emissions. The battery alone requires roughly <strong>67 kg CO₂ per kWh</strong> to manufacture (EU average, 2020), and a 60 kWh battery therefore embeds ~4,020 kg CO₂ before the car travels a single kilometre.</p>
+<p>Media headlines comparing electric and diesel cars frequently contain methodological errors: they either compare only the <em>use phase</em> (ignoring production and end-of-life), or they focus on a single indicator (CO₂), or they assume a fixed electricity mix. LCA provides the rigorous counter-framework. The classic misconception: a Tesla advertised as “0 g CO₂/km” is measuring only tailpipe emissions. The battery alone requires roughly <strong>67 kg CO₂ per kWh</strong> to manufacture (EU average, 2020), and a 60 kWh battery therefore embeds ~4,020 kg CO₂ before the car travels a single kilometre.</p>
 <hr>
 </section>
 </section>
 <section id="context-and-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="context-and-objectives">Context and Objectives</h2>
-<p><strong>Instructor:</strong> Thomas Gibon, Luxembourg Institute of Science and Technology (LIST)</p>
-<p><strong>Course:</strong> ENSAE Paris — Enjeux Environnementaux (OMI448)</p>
 <p><strong>Case study objective:</strong> Compare the life-cycle environmental impacts of a <strong>diesel internal combustion engine vehicle</strong> against a <strong>battery electric vehicle (BEV)</strong>, under several electricity mix scenarios for France and Germany over 2020–2040.</p>
-<p><strong>Three impact indicators</strong> are evaluated:</p>
+<p>Three impact indicators are evaluated:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 42%">
@@ -250,17 +247,17 @@ window.Quarto = {
 <tr class="odd">
 <td>Greenhouse gas emissions</td>
 <td>kg CO₂ eq./km</td>
-<td>Climate change (GWP100)</td>
+<td>Climate change</td>
 </tr>
 <tr class="even">
 <td>Primary energy demand</td>
 <td>MJ/km</td>
-<td>Resource intensity of the energy system</td>
+<td>Resource intensity of the energy</td>
 </tr>
 <tr class="odd">
 <td>Abiotic resource depletion (minerals)</td>
 <td>kg Sb eq./km</td>
-<td>Scarcity of critical materials (Li, Cu, Fe, Al)</td>
+<td>Scarcity of materials (Li, Cu, Fe, Al)</td>
 </tr>
 </tbody>
 </table>
@@ -276,7 +273,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="phase-1-goal-and-scope-definition">Phase 1 — Goal and Scope Definition</h3>
 <p><strong>Functional unit:</strong> <em>1 km driven by a privately owned car.</em></p>
 <p>This choice of functional unit is deliberate: it captures the <em>service delivered</em> (mobility) rather than the product itself. Comparing “1 diesel car vs.&nbsp;1 electric car” would be meaningless because the two vehicles have different lifetimes and efficiencies. Normalising to 1 km places them on a common basis.</p>
-<p><strong>System boundary:</strong> Cradle-to-grave — the study includes:</p>
+<p><strong>System boundary:</strong> The study examines the whole life of the vehicles and includes:</p>
 <ul>
 <li>Raw material extraction</li>
 <li>Vehicle and battery manufacturing</li>
@@ -339,12 +336,17 @@ window.Quarto = {
 <section id="matrix-a-the-technology-matrix-technosphere" class="level4">
 <h4 class="anchored" data-anchor-id="matrix-a-the-technology-matrix-technosphere">Matrix A — The Technology Matrix (Technosphere)</h4>
 <p><strong>A</strong> is a 32×32 matrix (32 activities × 32 activities) where entry <span class="math inline">\(A_{ij}\)</span> gives the quantity of output of activity <span class="math inline">\(i\)</span> required to produce one unit of output of activity <span class="math inline">\(j\)</span>. Each column is the “recipe” for producing one unit of that activity.</p>
-<p>Examples: - <span class="math inline">\(A_{\text{diesel car, transport diesel}} = 4 \times 10^{-6}\)</span> vehicles/km means one vehicle must be manufactured per 250,000 km driven - <span class="math inline">\(A_{\text{battery production, transport EV}} = 2.4 \times 10^{-4}\)</span> kWh/km, amortising the 60 kWh battery over 250,000 km - <span class="math inline">\(A_{\text{diesel, transport diesel}} = 0.07\)</span> l/km (7 l/100 km) - <span class="math inline">\(A_{\text{maintenance, transport diesel}} = 6.67 \times 10^{-3}\)</span> h/km (100 h/yr ÷ 15,000 km/yr)</p>
-<p><strong>Critical step in the problem statement:</strong> the maintenance coefficient and the CO₂ emission factor for diesel combustion are left blank for students to compute.</p>
+<p>Examples:</p>
+<ul>
+<li><span class="math inline">\(A_{\text{diesel car, transport diesel}} = 4 \times 10^{-6}\)</span> vehicles/km means one vehicle must be manufactured per 250,000 km driven</li>
+<li><span class="math inline">\(A_{\text{battery production, transport EV}} = 2.4 \times 10^{-4}\)</span> kWh/km, amortising the 60 kWh battery over 250,000 km</li>
+<li><span class="math inline">\(A_{\text{diesel, transport diesel}} = 0.07\)</span> l/km (7 l/100 km)</li>
+<li><span class="math inline">\(A_{\text{maintenance, transport diesel}} = 6.67 \times 10^{-3}\)</span> h/km (100 h/yr ÷ 15,000 km/yr)</li>
+</ul>
 <p><strong>Diesel combustion stoichiometry:</strong></p>
 <p>The average chemical formula for road diesel is C₁₂H₂₄. The balanced combustion reaction is:</p>
 <p><span class="math display">\[\text{C}_{12}\text{H}_{24} + 18\,\text{O}_2 \rightarrow 12\,\text{CO}_2 + 12\,\text{H}_2\text{O}\]</span></p>
-<p>Molar mass of C₁₂H₂₄: <span class="math inline">\(12 \times 12 + 24 \times 1 = 168\)</span> g/mol</p>
+<p>Molar mass of C₁₂H₂₄: <span class="math inline">\(12 \times 12 + 24 \times 1 = 168\)</span> g/mol and mass density of <span class="math inline">\(0.85\)</span> kg/l.</p>
 <p>CO₂ produced per litre of diesel:</p>
 <p><span class="math display">\[\frac{850\,\text{g/l}}{168\,\text{g/mol}} \times 12 \times 44\,\text{g/mol} = \mathbf{2.671\,\text{kg CO}_2\text{/l}}\]</span></p>
 <p>This single coefficient drives the entire use-phase emission of the diesel vehicle.</p>
@@ -388,7 +390,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>The negative values in the recycling row reflect <strong>system credits</strong>: recovering lithium and cobalt from spent batteries avoids the need to mine virgin materials, which is captured as a negative impact.</p>
+<p>The negative values in the recycling row reflect system credits: recovering lithium and cobalt from spent batteries avoids the need to mine virgin materials, which is captured as a negative impact.</p>
 </section>
 <section id="the-leontief-inverse-capturing-the-full-upstream-chain" class="level4">
 <h4 class="anchored" data-anchor-id="the-leontief-inverse-capturing-the-full-upstream-chain">The Leontief Inverse — Capturing the Full Upstream Chain</h4>
@@ -396,10 +398,10 @@ window.Quarto = {
 <p><span class="math display">\[\mathbf{x} = \mathbf{y} + \mathbf{A}\mathbf{x}\]</span></p>
 <p>where <strong>x</strong> is the vector of total production outputs and <strong>y</strong> is the vector of final demand (the functional unit). Rearranging:</p>
 <p><span class="math display">\[(\mathbf{I} - \mathbf{A})\,\mathbf{x} = \mathbf{y} \implies \mathbf{x} = (\mathbf{I} - \mathbf{A})^{-1}\mathbf{y} = \mathbf{L}\,\mathbf{y}\]</span></p>
-<p><strong>L</strong> = <span class="math inline">\((\mathbf{I} - \mathbf{A})^{-1}\)</span> is the <strong>Leontief inverse</strong>, named after the Nobel Prize-winning economist Wassily Leontief who first applied this framework to economic input-output analysis. In LCA it captures all orders of upstream requirements:</p>
+<p><strong>L</strong> = <span class="math inline">\((\mathbf{I} - \mathbf{A})^{-1}\)</span> is the <strong>Leontief inverse</strong>. In LCA it captures all orders of upstream requirements:</p>
 <p><span class="math display">\[\mathbf{L} = \mathbf{I} + \mathbf{A} + \mathbf{A}^2 + \mathbf{A}^3 + \cdots\]</span></p>
-<p>Each power of <strong>A</strong> represents one additional tier of supply chain: <span class="math inline">\(\mathbf{A}\)</span> gives direct inputs, <span class="math inline">\(\mathbf{A}^2\)</span> inputs-to-inputs, and so on. This series converges when all eigenvalues of <strong>A</strong> lie strictly inside the unit circle — the physical condition that no process can require more of itself (directly or indirectly) than it produces.</p>
-<p><strong>Why this matters numerically:</strong> the simplified direct calculation gives ~228 g CO₂eq/km for the diesel car, while the Leontief calculation yields ~271 g CO₂eq/km. The additional ~43 g comes from upstream cascades — the emissions embedded in producing the steel, aluminium, rubber, electronics, and so on that compose the vehicle. These are invisible without the matrix inversion.</p>
+<p>Each power of <strong>A</strong> represents one additional tier of supply chain: <span class="math inline">\(\mathbf{A}\)</span> gives direct inputs, <span class="math inline">\(\mathbf{A}^2\)</span> inputs-to-inputs, and so on. This series converges when all eigenvalues of <strong>A</strong> lie strictly inside the unit circle, the physical condition that no process can require more of itself (directly or indirectly) than it produces.</p>
+<p><strong>Why this matters numerically:</strong> the simplified direct calculation gives ~228 g CO₂eq/km for the diesel car, while the Leontief calculation yields ~271 g CO₂eq/km. The additional ~43 g comes from upstream cascades, the emissions embedded in producing the steel, aluminium, rubber, electronics, and so on that compose the vehicle. These are invisible without the matrix inversion.</p>
 </section>
 </section>
 <section id="phase-3-impact-assessment" class="level3">
@@ -455,7 +457,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>The methane GWP of 28 (over 100 years) reflects the higher radiative forcing of CH₄ relative to CO₂. The materials indicator normalises to antimony (Sb) equivalent, reflecting geopolitical supply risk.</p>
+<p>The methane Global Warming Potential of 28 (over 100 years) reflects the higher radiative forcing of CH₄ relative to CO₂. The materials indicator normalises to antimony (Sb) equivalent, reflecting geopolitical supply risk.</p>
 </section>
 </section>
 <section id="phase-4-interpretation" class="level3">
@@ -468,7 +470,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <section id="absolute-ghg-results-germany-2020-g-co₂eqkm" class="level3">
 <h3 class="anchored" data-anchor-id="absolute-ghg-results-germany-2020-g-co₂eqkm">Absolute GHG Results (Germany 2020, g CO₂eq/km)</h3>
-<p>The stacked bar charts in the solution workbook decompose the 271 g CO₂eq/km for diesel and 205 g CO₂eq/km for the EV (Germany 2020) by contributing activity:</p>
+<p>The stacked bar charts in the excel file decompose the 271 g CO₂eq/km for diesel and 205 g CO₂eq/km for the EV (Germany 2020) by contributing activity:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -561,6 +563,7 @@ window.Quarto = {
 </tbody>
 </table>
 <p><strong>Key driver:</strong> Germany’s 2020 electricity mix is dominated by coal (~45%) and gas (~13%), yielding ~700 g CO₂/kWh. France’s mix is dominated by nuclear (~66%), yielding only ~113 g CO₂/kWh — six times lower. This single structural difference cuts the EV’s use-phase footprint by roughly 80%.</p>
+<p><img src="different_scenarios.jpg" class="img-fluid" style="width:100.0%"></p>
 </section>
 <section id="multi-criteria-view-the-materials-trade-off" class="level3">
 <h3 class="anchored" data-anchor-id="multi-criteria-view-the-materials-trade-off">Multi-Criteria View: The Materials Trade-off</h3>
@@ -610,7 +613,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="analysis-and-critical-discussion">Analysis and Critical Discussion</h2>
 <section id="what-drives-the-result-for-each-vehicle" class="level3">
 <h3 class="anchored" data-anchor-id="what-drives-the-result-for-each-vehicle">What drives the result for each vehicle?</h3>
-<p><strong>For the diesel car:</strong> the use phase dominates. The 187 g CO₂/km from combustion alone is ~69% of the total. Combustion is essentially non-negotiable for an ICE vehicle (it is physics, not a design choice), so there is little room for improvement without changing the fuel type. The remaining ~84 g come from upstream material production — reducing the vehicle’s mass or increasing recycled content offers marginal gains.</p>
+<p><strong>For the diesel car:</strong> the use phase dominates. The 187 g CO₂/km from combustion alone is ~69% of the total. Combustion is essentially non-negotiable for an ICE vehicle, so there is little room for improvement without changing the fuel type. The remaining ~84 g come from upstream material production — reducing the vehicle’s mass or increasing recycled content offers marginal gains.</p>
 <p><strong>For the electric vehicle:</strong> three factors determine the outcome:</p>
 <ol type="1">
 <li><strong>Electricity carbon intensity</strong> — the single largest lever by a wide margin. Moving from Germany 2020 (700 g CO₂/kWh) to France 2020 (113 g CO₂/kWh) saves ~117 g CO₂/km, more than the entire manufacturing footprint of either vehicle.</li>
@@ -640,8 +643,6 @@ window.Quarto = {
 <li><strong>Static electricity mixes:</strong> the model uses a single annual-average mix, not the marginal mix at the time of charging. Charging at night in Germany (when gas peakers are more common) has a higher impact than daytime charging (more wind and solar).</li>
 <li><strong>Temporal scope:</strong> 2040 projections rely on scenario modelling with significant uncertainty. The optimistic scenario assumes aggressive renewable deployment.</li>
 <li><strong>Single battery life:</strong> the study assumes the battery lasts for the full vehicle lifetime (250,000 km). If the battery degrades and requires replacement (typical for older BEV designs), the material impact roughly doubles.</li>
-<li><strong>Excluded impact categories:</strong> the study does not cover eutrophication (relevant for mining), land use, water depletion, or toxicity from mining. The lithium-ion supply chain (particularly cobalt from the DRC and lithium from Andean salt flats) raises serious concerns in these excluded categories.</li>
-<li><strong>No dynamic LCA:</strong> a temporally dynamic LCA would account for the grid decarbonising <em>during</em> the vehicle’s operating life, which would make the EV comparison progressively more favourable year by year.</li>
 </ol>
 <hr>
 </section>
@@ -656,7 +657,6 @@ window.Quarto = {
 <li>The materials trade-off will progressively diminish as battery technology improves (higher energy density → less material per kWh) and recycling infrastructure matures.</li>
 </ul>
 <p>The study confirms that framing the electric vehicle debate as “zero emission” is misleading, but also confirms that the lifecycle carbon advantage of EVs is real and substantial in low-carbon electricity markets.</p>
-<p><img src="image.jpg" class="img-fluid" style="width:1.0%"></p>
 
 
 </section>
