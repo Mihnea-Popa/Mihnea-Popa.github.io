@@ -188,8 +188,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-thorisson-coupling-algorithm" id="toc-the-thorisson-coupling-algorithm" class="nav-link active" data-scroll-target="#the-thorisson-coupling-algorithm">The Thorisson Coupling Algorithm</a></li>
-  <li><a href="#application-coupling-mathcaln01-and-mathcaln02" id="toc-application-coupling-mathcaln01-and-mathcaln02" class="nav-link" data-scroll-target="#application-coupling-mathcaln01-and-mathcaln02">Application: Coupling <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span></a></li>
+  <li><a href="#the-thorisson-algorithm-and-core-implementation" id="toc-the-thorisson-algorithm-and-core-implementation" class="nav-link active" data-scroll-target="#the-thorisson-algorithm-and-core-implementation">The Thorisson Algorithm and Core Implementation</a></li>
+  <li><a href="#systematic-testing-across-distribution-pairs" id="toc-systematic-testing-across-distribution-pairs" class="nav-link" data-scroll-target="#systematic-testing-across-distribution-pairs">Systematic Testing Across Distribution Pairs</a></li>
+  <li><a href="#the-coupled-rejection-sampler-from-the-paper" id="toc-the-coupled-rejection-sampler-from-the-paper" class="nav-link" data-scroll-target="#the-coupled-rejection-sampler-from-the-paper">The Coupled Rejection Sampler from the Paper</a></li>
+  <li><a href="#gaussian-specific-couplings" id="toc-gaussian-specific-couplings" class="nav-link" data-scroll-target="#gaussian-specific-couplings">Gaussian-Specific Couplings</a></li>
   </ul>
 </nav>
     </div>
@@ -227,107 +229,198 @@ window.Quarto = {
 </header>
 
 
-<p>As part of a Monte Carlo Methods course at ENSAE Paris, this project implements a modified version of the <strong>Thorisson coupling algorithm</strong>, based on the paper <em>The Coupled Rejection Sampler</em> by Corenflos and Särkkä (2022). Given two probability distributions <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, a coupling is a joint distribution <span class="math inline">\(\Gamma\)</span> on <span class="math inline">\((X, Y)\)</span> such that <span class="math inline">\(X \sim p\)</span> and <span class="math inline">\(Y \sim q\)</span>. Among all such couplings, a <strong>maximal coupling</strong> is one that maximizes <span class="math inline">\(\mathbb{P}(X = Y)\)</span>, and a classical result shows that this maximum equals <span class="math inline">\(1 - \|p - q\|_{TV}\)</span>, or equivalently <span class="math inline">\(\int \min(p(x), q(x)) \, dx\)</span>. The algorithm constructs such a coupling via an acceptance-rejection scheme, with a tunable parameter <span class="math inline">\(C\)</span> that controls the trade-off between the coupling probability and the variance of the execution time.</p>
+<p>As part of a Monte Carlo Methods course at ENSAE Paris, this group project implements and tests a modified version of the <strong>Thorisson coupling algorithm</strong>, based on the paper <em>The Coupled Rejection Sampler</em> by Corenflos and Särkkä (2022). Given two probability distributions <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, a coupling is a joint distribution <span class="math inline">\(\Gamma\)</span> on <span class="math inline">\((X, Y)\)</span> such that <span class="math inline">\(X \sim p\)</span> and <span class="math inline">\(Y \sim q\)</span>. Among all such couplings, a <strong>maximal coupling</strong> is one that maximizes <span class="math inline">\(\mathbb{P}(X = Y)\)</span>, and a classical result shows that this maximum equals <span class="math inline">\(1 - \|p - q\|_{TV}\)</span>, or equivalently <span class="math inline">\(\int \min(p(x), q(x)) \, dx\)</span>. The project is organized in four parts: implementation of the core algorithm, systematic testing across distribution pairs, an implementation of the coupled rejection sampler from the paper, and Gaussian-specific coupling methods.</p>
 <p></p><div><object data="Coupling_Report.pdf" type="application/pdf" width="1" height="1"><a href="Coupling_Report.pdf" download="">Download PDF file.</a></object><br><a href="Coupling_Report.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download Report</a></div><p></p>
 <p></p><div><object data="MC_Coupling_Thorisson.pdf" type="application/pdf" width="1" height="1"><a href="MC_Coupling_Thorisson.pdf" download="">Download PDF file.</a></object><br><a href="MC_Coupling_Thorisson.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download Original Paper</a></div><p></p>
-<section id="the-thorisson-coupling-algorithm" class="level3">
-<h3 class="anchored" data-anchor-id="the-thorisson-coupling-algorithm">The Thorisson Coupling Algorithm</h3>
+<section id="the-thorisson-algorithm-and-core-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="the-thorisson-algorithm-and-core-implementation">The Thorisson Algorithm and Core Implementation</h3>
 <p>The algorithm proceeds as follows. First, sample <span class="math inline">\(X \sim p\)</span> and <span class="math inline">\(U \sim \mathcal{U}(0,1)\)</span>. If</p>
 <p><span class="math display">\[U &lt; \min\!\left(\frac{q(X)}{p(X)},\, C\right),\]</span></p>
 <p>then set <span class="math inline">\(Y = X\)</span> — the two variables have met. Otherwise, sample from the residual of <span class="math inline">\(q\)</span> not dominated by <span class="math inline">\(C \cdot p\)</span>: draw <span class="math inline">\(Z \sim q\)</span> and <span class="math inline">\(U \sim \mathcal{U}(0,1)\)</span> repeatedly until</p>
 <p><span class="math display">\[U &gt; \min\!\left(1,\, \frac{C \cdot p(Z)}{q(Z)}\right),\]</span></p>
 <p>then set <span class="math inline">\(Y = Z\)</span>. The resulting pair <span class="math inline">\((X, Y)\)</span> satisfies <span class="math inline">\(X \sim p\)</span>, <span class="math inline">\(Y \sim q\)</span>, and <span class="math inline">\(\mathbb{P}(X = Y) = \int \min(C \cdot p(x), q(x))\,dx\)</span>.</p>
-<p>The parameter <span class="math inline">\(C \in (0, 1]\)</span> introduces a deliberate suboptimality: by setting <span class="math inline">\(C &lt; 1\)</span>, the coupling probability decreases, but the variance of the algorithm’s run time is kept finite even as <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> approach each other — a property the standard maximal coupling (<span class="math inline">\(C = 1\)</span>) does not enjoy.</p>
+<p>The parameter <span class="math inline">\(C \in (0, 1]\)</span> trades off coupling probability against execution time variance: increasing <span class="math inline">\(C\)</span> raises <span class="math inline">\(\mathbb{P}(X = Y)\)</span> but inflates the variance of the algorithm’s runtime, a problem the standard maximal coupling (<span class="math inline">\(C = 1\)</span>) cannot avoid when <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are close.</p>
 <details>
 <summary>
 Show the implementation
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> thorisson_coupling(p_densite, p_echantillon, q_densite, q_echantillon, C<span class="op">=</span><span class="fl">1.0</span>):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> p_echantillon()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    U <span class="op">=</span> np.random.uniform()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> U <span class="op">&lt;</span> <span class="bu">min</span>(q_densite(X) <span class="op">/</span> p_densite(X), C):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        Y <span class="op">=</span> X</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> A <span class="op">!=</span> <span class="dv">1</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            Z <span class="op">=</span> q_echantillon()</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            U <span class="op">=</span> np.random.uniform()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> U <span class="op">&gt;</span> <span class="bu">min</span>(<span class="dv">1</span>, C <span class="op">*</span> p_densite(Z) <span class="op">/</span> q_densite(Z)):</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                A <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            Y <span class="op">=</span> Z</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, Y</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calcul_integral_min(p_densite, q_densite, C<span class="op">=</span><span class="fl">1.0</span>, limit_integrale<span class="op">=</span><span class="dv">5</span>, num_points<span class="op">=</span><span class="dv">100000</span>):</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    x_vals <span class="op">=</span> np.linspace(<span class="op">-</span>limit_integrale, limit_integrale, num_points)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    min_vals <span class="op">=</span> np.minimum(C <span class="op">*</span> p_densite(x_vals), q_densite(x_vals))</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> x_vals[<span class="dv">1</span>] <span class="op">-</span> x_vals[<span class="dv">0</span>]</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(min_vals) <span class="op">*</span> dx</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> erreur_egalite(X_val, Y_val, e<span class="op">=</span><span class="fl">0.01</span>):</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(np.<span class="bu">abs</span>(X_val <span class="op">-</span> Y_val) <span class="op">&lt;=</span> e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> thorisson_coupling(p_densite, p_echantillon, q_densite, q_echantillon, C<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> p_echantillon()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    U <span class="op">=</span> np.random.uniform()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> U <span class="op">&lt;</span> <span class="bu">min</span>(q_densite(X) <span class="op">/</span> p_densite(X), C):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        Y <span class="op">=</span> X</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        A <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> A <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            Z <span class="op">=</span> q_echantillon()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            U <span class="op">=</span> np.random.uniform()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> U <span class="op">&gt;</span> <span class="bu">min</span>(<span class="dv">1</span>, C <span class="op">*</span> p_densite(Z) <span class="op">/</span> q_densite(Z)):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                A <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            Y <span class="op">=</span> Z</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, Y</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calcul_integral_min(p_densite, q_densite, C<span class="op">=</span><span class="fl">1.0</span>, limit<span class="op">=</span><span class="dv">5</span>, num_points<span class="op">=</span><span class="dv">100000</span>):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    x_vals <span class="op">=</span> np.linspace(<span class="op">-</span>limit, limit, num_points)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(np.minimum(C <span class="op">*</span> p_densite(x_vals), q_densite(x_vals))) <span class="op">*</span> (<span class="dv">2</span> <span class="op">*</span> limit <span class="op">/</span> num_points)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> erreur_egalite(X_val, Y_val, e<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(X_val <span class="op">-</span> Y_val) <span class="op">&lt;=</span> e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-</section>
-<section id="application-coupling-mathcaln01-and-mathcaln02" class="level3">
-<h3 class="anchored" data-anchor-id="application-coupling-mathcaln01-and-mathcaln02">Application: Coupling <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span></h3>
-<p>To validate the implementation, we couple <span class="math inline">\(p = \mathcal{N}(0,1)\)</span> and <span class="math inline">\(q = \mathcal{N}(0,2)\)</span> over 100,000 simulations with <span class="math inline">\(C = 0.99\)</span>. Three quantities are checked: the empirical coupling probability <span class="math inline">\(\mathbb{P}(X \approx Y)\)</span>, compared against the theoretical value <span class="math inline">\(\int \min(C \cdot p(x), q(x))\,dx\)</span> computed numerically; and the mean and variance of the execution time, to verify that the algorithm terminates in finite expected time.</p>
+<p>To validate the implementation, we couple <span class="math inline">\(p = \mathcal{N}(0,1)\)</span> and <span class="math inline">\(q = \mathcal{N}(0,2)\)</span> over 100,000 simulations with <span class="math inline">\(C = 0.99\)</span>, and check that the empirical coupling probability matches <span class="math inline">\(\int \min(C \cdot p, q)\,dx\)</span> and that the execution time variance is finite.</p>
 <details>
 <summary>
 Show the simulation
 </summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Densities and samplers</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_densite(x):      <span class="co"># N(0,1)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_echantillon():</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_densite(x): <span class="cf">return</span> np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p_echantillon(): <span class="cf">return</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q_densite(x): <span class="cf">return</span> np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">8</span>) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q_echantillon(): <span class="cf">return</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q_densite(x):      <span class="co"># N(0,2)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">8</span>) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q_echantillon():</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameter C</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.99</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 100,000 coupled pairs</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>X_vals, Y_vals, times <span class="op">=</span> [], [], []</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000</span>):</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    debut <span class="op">=</span> time.time()</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> thorisson_coupling(p_densite, p_echantillon, q_densite, q_echantillon, C)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    fin <span class="op">=</span> time.time()</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    X_vals.append(x)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    Y_vals.append(y)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    times.append(fin <span class="op">-</span> debut)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>X_vals <span class="op">=</span> np.array(X_vals)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>Y_vals <span class="op">=</span> np.array(Y_vals)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>times  <span class="op">=</span> np.array(times)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Results</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Empirical P(X ≈ Y)              = </span><span class="sc">{</span>erreur_egalite(X_vals, Y_vals) <span class="op">/</span> <span class="bu">len</span>(X_vals)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Theoretical ∫ min(C·p, q)       ≈ </span><span class="sc">{</span>calcul_integral_min(p_densite, q_densite, C<span class="op">=</span>C)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean execution time             = </span><span class="sc">{</span>np<span class="sc">.</span>mean(times)<span class="sc">:.6f}</span><span class="ss"> s"</span>)</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of execution time      = </span><span class="sc">{</span>np<span class="sc">.</span>var(times)<span class="sc">:.2e}</span><span class="ss">"</span>)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot marginals</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">9</span>))</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.hist(X_vals, bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'X ~ p = N(0,1)'</span>)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>plt.hist(Y_vals, bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'Y ~ q = N(0,2)'</span>)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Marginal distributions of X and Y from the Thorisson coupling"</span>)</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Value"</span>)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.99</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>X_vals, Y_vals, times <span class="op">=</span> [], [], []</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    t0 <span class="op">=</span> time.time()</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> thorisson_coupling(p_densite, p_echantillon, q_densite, q_echantillon, C)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    X_vals.append(x)<span class="op">;</span> Y_vals.append(y)<span class="op">;</span> times.append(time.time() <span class="op">-</span> t0)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>X_vals, Y_vals, times <span class="op">=</span> <span class="bu">map</span>(np.array, [X_vals, Y_vals, times])</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Empirical P(X ≈ Y)        = </span><span class="sc">{</span>erreur_egalite(X_vals, Y_vals) <span class="op">/</span> <span class="bu">len</span>(X_vals)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Theoretical ∫ min(C·p, q) ≈ </span><span class="sc">{</span>calcul_integral_min(p_densite, q_densite, C<span class="op">=</span>C)<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean exec time            = </span><span class="sc">{</span>np<span class="sc">.</span>mean(times)<span class="sc">:.6f}</span><span class="ss"> s"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of exec time     = </span><span class="sc">{</span>np<span class="sc">.</span>var(times)<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <p><img src="coupling_normal.png" class="img-fluid" style="width:100.0%"></p>
-<p>The empirical coupling probability closely matches the theoretical integral of <span class="math inline">\(\min(C \cdot p, q)\)</span>, confirming the correctness of the implementation. The marginal histograms recover <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span> respectively, and the finite variance of the execution time reflects the controlled trade-off introduced by <span class="math inline">\(C &lt; 1\)</span>.</p>
+<p>The empirical coupling probability closely matches the theoretical value, the marginals recover <span class="math inline">\(\mathcal{N}(0,1)\)</span> and <span class="math inline">\(\mathcal{N}(0,2)\)</span>, and the finite variance of execution time reflects the effect of setting <span class="math inline">\(C &lt; 1\)</span>.</p>
+</section>
+<section id="systematic-testing-across-distribution-pairs" class="level3">
+<h3 class="anchored" data-anchor-id="systematic-testing-across-distribution-pairs">Systematic Testing Across Distribution Pairs</h3>
+<p>The second part of the project tests the algorithm on three distribution pairs — <span class="math inline">\(\mathcal{N}(0,1)\)</span> vs <span class="math inline">\(\mathcal{N}(0,2)\)</span>, <span class="math inline">\(\mathcal{U}(0,1]\)</span> vs <span class="math inline">\(\mathcal{U}[-1,1]\)</span>, and <span class="math inline">\(\mathcal{N}(0,1)\)</span> vs <span class="math inline">\(\mathcal{U}[-1,1]\)</span> — and studies the effect of <span class="math inline">\(C\)</span> on the coupling probability, mean execution time, and execution time variance. For each pair, the analysis follows a three-step protocol: choose <span class="math inline">\(C\)</span> by sweeping from 0.01 to 1, verify sample convergence via histograms, and check independence via autocorrelation.</p>
+<p>The <span class="math inline">\(\mathcal{N}(0,1)\)</span> vs <span class="math inline">\(\mathcal{U}[-1,1]\)</span> case is the most interesting because the two densities have bounded overlap. The uniform is entirely supported on <span class="math inline">\([-1, 1]\)</span>, so <span class="math inline">\(\min(p, q)\)</span> is non-zero only on that interval, which caps the maximal coupling probability well below 1 regardless of <span class="math inline">\(C\)</span>.</p>
+<p>The sweep shows that <span class="math inline">\(C = 1\)</span> maximises the coupling probability while keeping execution time and its variance at acceptable levels. The autocorrelation of both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> samples stays within the <span class="math inline">\(\pm 0.05\)</span> band for all lags beyond 0, confirming that successive draws are effectively independent. The runtime scales linearly with sample size, as expected for an <span class="math inline">\(\mathcal{O}(n)\)</span> algorithm.</p>
+</section>
+<section id="the-coupled-rejection-sampler-from-the-paper" class="level3">
+<h3 class="anchored" data-anchor-id="the-coupled-rejection-sampler-from-the-paper">The Coupled Rejection Sampler from the Paper</h3>
+<p>Then, we implemented Algorithm 1 from Corenflos and Särkkä directly: the <strong>coupled rejection sampler</strong>. Rather than treating <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> independently, the algorithm uses a shared proposal <span class="math inline">\(\hat{\gamma}\)</span> that jointly dominates both. Two constants <span class="math inline">\(M_p\)</span> and <span class="math inline">\(M_q\)</span> bound the density ratios <span class="math inline">\(p/\hat{p}\)</span> and <span class="math inline">\(q/\hat{q}\)</span>, and a single uniform draw determines acceptance for both marginals simultaneously, maximising the chance that <span class="math inline">\(X = Y\)</span>.</p>
+<p>The high-dimensional extension replaces scalar densities with multivariate Gaussians and studies how runtime and the number of rejection attempts scale with dimension <span class="math inline">\(d\)</span>. Both grow rapidly beyond <span class="math inline">\(d \approx 20\)</span>, illustrating the well-known curse of dimensionality for rejection-based methods.</p>
+</section>
+<section id="gaussian-specific-couplings" class="level3">
+<h3 class="anchored" data-anchor-id="gaussian-specific-couplings">Gaussian-Specific Couplings</h3>
+<p>The fourth contribution focuses on coupling methods tailored to Gaussian distributions. Two approaches are implemented. The first is the <strong>reflection-maximal coupling</strong>: given <span class="math inline">\(p = \mathcal{N}(\mu_p, \Sigma)\)</span> and <span class="math inline">\(q = \mathcal{N}(\mu_q, \Sigma)\)</span> with a shared covariance, <span class="math inline">\(X\)</span> is drawn from <span class="math inline">\(p\)</span> and then either <span class="math inline">\(Y = \mu_q + \Sigma^{1/2}z\)</span> (same Gaussian noise, giving <span class="math inline">\(X = Y\)</span> with probability <span class="math inline">\(e^{-\frac{1}{2}\delta^\top\Sigma^{-1}\delta}\)</span> where <span class="math inline">\(\delta = \mu_q - \mu_p\)</span>) or <span class="math inline">\(Y\)</span> is drawn from the reflected residual. The second is a <strong>Gaussian rejection coupling</strong> for distributions with distinct covariances <span class="math inline">\(\Sigma_p \neq \Sigma_q\)</span>, using an isotropic proposal scaled by the largest eigenvalue.</p>
+<details>
+<summary>
+Show the reflection coupling
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reflection_maximal_gaussian_coupling(mu_p, mu_q, Sigma, n_samples<span class="op">=</span><span class="dv">10000</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    Sigma_inv  <span class="op">=</span> np.linalg.inv(Sigma)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    Sigma_sqrt <span class="op">=</span> np.linalg.cholesky(Sigma)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    delta      <span class="op">=</span> mu_q <span class="op">-</span> mu_p</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    alpha      <span class="op">=</span> np.exp(<span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> delta <span class="op">@</span> Sigma_inv <span class="op">@</span> delta)  <span class="co"># P(X = Y)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    samples_X, samples_Y, matches <span class="op">=</span> [], [], <span class="dv">0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span><span class="bu">len</span>(mu_p))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> mu_p <span class="op">+</span> Sigma_sqrt <span class="op">@</span> z</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> np.random.uniform() <span class="op">&lt;</span> alpha:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> mu_q <span class="op">+</span> Sigma_sqrt <span class="op">@</span> z   <span class="co"># coupled</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            matches <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            reflect_z <span class="op">=</span> z <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> ((z <span class="op">@</span> (Sigma_inv <span class="op">@</span> delta)) <span class="op">/</span> (delta <span class="op">@</span> Sigma_inv <span class="op">@</span> delta)) <span class="op">*</span> delta</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> mu_q <span class="op">+</span> Sigma_sqrt <span class="op">@</span> reflect_z</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        samples_X.append(x)<span class="op">;</span> samples_Y.append(y)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(samples_X), np.array(samples_Y), matches <span class="op">/</span> n_samples</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>mu_p  <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">0.0</span>])</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>mu_q  <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">1.0</span>])</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>Sigma <span class="op">=</span> np.array([[<span class="fl">1.0</span>, <span class="fl">0.3</span>], [<span class="fl">0.3</span>, <span class="fl">1.0</span>]])</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>X, Y, prob <span class="op">=</span> reflection_maximal_gaussian_coupling(mu_p, mu_q, Sigma)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>coupled_ref <span class="op">=</span> np.array([np.allclose(X[i], Y[i], atol<span class="op">=</span><span class="fl">1e-10</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(X))], dtype<span class="op">=</span><span class="bu">bool</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>((<span class="dv">8</span>,<span class="dv">8</span>)))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>label_p <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">X </span><span class="dv">\s</span><span class="vs">im </span><span class="dv">\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="pp">[0,0]</span><span class="vs">, </span><span class="kw">(</span><span class="vs">1 </span><span class="er">\</span><span class="vs">quad 0</span><span class="dv">.</span><span class="vs">3, 0</span><span class="dv">.</span><span class="vs">3 </span><span class="er">\</span><span class="vs">quad 1</span><span class="kw">)</span><span class="vs"> </span><span class="er">\</span><span class="vs">quad</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>label_q <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">Y </span><span class="dv">\s</span><span class="vs">im </span><span class="dv">\m</span><span class="vs">athcal{N}</span><span class="kw">(</span><span class="pp">[2,2]</span><span class="vs">, </span><span class="kw">(</span><span class="vs">1 </span><span class="er">\</span><span class="vs">quad 0</span><span class="dv">.</span><span class="vs">3, 0</span><span class="dv">.</span><span class="vs">3 </span><span class="er">\</span><span class="vs">quad 1</span><span class="kw">)</span><span class="vs"> </span><span class="er">\</span><span class="vs">quad</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[<span class="op">~</span>coupled_ref, <span class="dv">0</span>], X[<span class="op">~</span>coupled_ref, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, color<span class="op">=</span><span class="st">"blue"</span>, label<span class="op">=</span>label_p)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>plt.scatter(Y[<span class="op">~</span>coupled_ref, <span class="dv">0</span>], Y[<span class="op">~</span>coupled_ref, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.4</span>, color<span class="op">=</span><span class="st">"red"</span> , label<span class="op">=</span>label_q)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>plt.plot([mu_p[<span class="dv">0</span>], mu_q[<span class="dv">0</span>]], [mu_p[<span class="dv">1</span>], mu_q[<span class="dv">1</span>]], <span class="st">"k--"</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">"Mean shift"</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Reflection-Maximal Coupling</span><span class="ch">\n</span><span class="ss">Estimated P(X=Y) ≈ </span><span class="sc">{</span>prob<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Dim 1"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"Dim 2"</span>)<span class="op">;</span> plt.legend(markerscale<span class="op">=</span><span class="dv">4</span>)<span class="op">;</span> plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.savefig(<span class="st">"reflection_coupling.png"</span>, dpi<span class="op">=</span><span class="dv">200</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<p><img src="reflection_coupling.png" class="img-fluid" style="width:100.0%"></p>
+<p>For the unequal-covariance case, the proposal is <span class="math inline">\(\hat{p} = \mathcal{N}(\mu_p, \lambda_{\max} I)\)</span> where <span class="math inline">\(\lambda_{\max}\)</span> is the largest eigenvalue across both covariances, and the coupling constants are <span class="math inline">\(M_p = \sqrt{|\Sigma_{\max}|/|\Sigma_p|}\)</span>, <span class="math inline">\(M_q = \sqrt{|\Sigma_{\max}|/|\Sigma_q|}\)</span>. A single uniform draw then jointly accepts or rejects a proposal for both marginals, maximising the probability of <span class="math inline">\(X = Y\)</span> without the distributional restrictions of the reflection approach.</p>
+<details>
+<summary>
+Show the Gaussian rejection coupling
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> multivariate_normal</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> inv, eigvals, det</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mu_p <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">0.0</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>mu_q <span class="op">=</span> np.array([<span class="fl">2.0</span>, <span class="fl">2.0</span>])</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Sigma_p <span class="op">=</span> np.array([[<span class="fl">1.0</span>, <span class="fl">0.3</span>], [<span class="fl">0.3</span>, <span class="fl">1.0</span>]])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Sigma_q <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">0.2</span>], [<span class="fl">0.2</span>, <span class="fl">1.0</span>]])</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>lambda_max <span class="op">=</span> <span class="bu">max</span>(np.<span class="bu">max</span>(np.linalg.eigvals(Sigma_p)), np.<span class="bu">max</span>(np.linalg.eigvals(Sigma_q))) <span class="co"># As evoked in the article I take \Sigma_max that way.</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>Sigma_hat <span class="op">=</span> lambda_max <span class="op">*</span> np.eye(<span class="dv">2</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>proposal_mean <span class="op">=</span> mu_p</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute M_p and M_q from determinant ratios, formula of the article</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>M_p <span class="op">=</span> np.sqrt(det(Sigma_hat) <span class="op">/</span> det(Sigma_p))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>M_q <span class="op">=</span> np.sqrt(det(Sigma_hat) <span class="op">/</span> det(Sigma_q))</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Gaussian distributions</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>mv_p <span class="op">=</span> multivariate_normal(mean<span class="op">=</span>mu_p, cov<span class="op">=</span>Sigma_p) <span class="co"># The ones we want to couple</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>mv_q <span class="op">=</span> multivariate_normal(mean<span class="op">=</span>mu_q, cov<span class="op">=</span>Sigma_q)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>mv_hat <span class="op">=</span> multivariate_normal(mean<span class="op">=</span>proposal_mean, cov<span class="op">=</span>Sigma_hat) <span class="co"># Proposal</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gaussian_rejection_coupling():</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> mv_hat.rvs()</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        u <span class="op">=</span> np.random.uniform()</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        w_p <span class="op">=</span> mv_p.pdf(z) <span class="op">/</span> mv_hat.pdf(z)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        w_q <span class="op">=</span> mv_q.pdf(z) <span class="op">/</span> mv_hat.pdf(z)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> u <span class="op">&lt;</span> <span class="bu">min</span>(w_p <span class="op">/</span> M_p, w_q <span class="op">/</span> M_q):</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> z, z  <span class="co"># Coupled sample</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> mv_p.rvs()</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>            y <span class="op">=</span> mv_q.rvs()</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x, y  <span class="co"># Independent fallback</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>n_samples <span class="op">=</span> <span class="dv">5000</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>samples_X, samples_Y, coupled <span class="op">=</span> [], [], <span class="dv">0</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> gaussian_rejection_coupling()</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    samples_X.append(x)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    samples_Y.append(y)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.allclose(x, y, atol<span class="op">=</span><span class="fl">1e-6</span>):</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        coupled <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>samples_X, samples_Y <span class="op">=</span> np.array(samples_X), np.array(samples_Y)</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>plt.scatter(samples_X[:, <span class="dv">0</span>], samples_X[:, <span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'X ~ N(mu_p, Sigma_p)'</span>, color<span class="op">=</span><span class="st">'blue'</span>, s<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>plt.scatter(samples_Y[:, <span class="dv">0</span>], samples_Y[:, <span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Y ~ N(mu_q, Sigma_q)'</span>,  color<span class="op">=</span><span class="st">'red'</span>, s<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>plt.plot([mu_p[<span class="dv">0</span>], mu_q[<span class="dv">0</span>]], [mu_p[<span class="dv">1</span>], mu_q[<span class="dv">1</span>]], <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">'Mean shift'</span>)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Gaussian Rejection Coupling with Identity Proposal</span><span class="ch">\n</span><span class="ss">Estimated P(X = Y) ≈ </span><span class="sc">{</span>coupled <span class="op">/</span> n_samples<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Dim 1"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"Dim 2"</span>)<span class="op">;</span> plt.legend()</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"equal"</span>)<span class="op">;</span> plt.grid(<span class="va">True</span>)<span class="op">;</span> plt.tight_layout()<span class="op">;</span> plt.savefig(<span class="st">'gaussian_rejection_coupling.png'</span>, dpi<span class="op">=</span><span class="dv">200</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<p><img src="gaussian_rejection_coupling.png" class="img-fluid" style="width:100.0%"></p>
 
 
 </section>
