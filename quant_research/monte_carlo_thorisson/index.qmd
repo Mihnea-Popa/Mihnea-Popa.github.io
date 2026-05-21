@@ -9,9 +9,6 @@ order: 2
 As part of a Monte Carlo Methods course at ENSAE Paris, this project implements a modified version of the **Thorisson coupling algorithm**, based on the paper *The Coupled Rejection Sampler* by Corenflos and Särkkä (2022). Given two probability distributions $p$ and $q$, a coupling is a joint distribution $\Gamma$ on $(X, Y)$ such that $X \sim p$ and $Y \sim q$. Among all such couplings, a **maximal coupling** is one that maximizes $\mathbb{P}(X = Y)$, and a classical result shows that this maximum equals $1 - \|p - q\|_{TV}$, or equivalently $\int \min(p(x), q(x)) \, dx$. The algorithm constructs such a coupling via an acceptance-rejection scheme, with a tunable parameter $C$ that controls the trade-off between the coupling probability and the variance of the execution time.
 
 
-<a href="Coupling_Report.pdf" class="btn btn-primary btn-sm" download>⬇ Download Project Report</a>
-&emsp;
-<a href="MC_Coupling_Thorisson.pdf" class="btn btn-outline-primary btn-sm" download>⬇ Download Original Paper</a>
 
 
 ### The Thorisson Coupling Algorithm
