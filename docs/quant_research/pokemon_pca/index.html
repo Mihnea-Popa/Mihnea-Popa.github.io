@@ -120,11 +120,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The dataset</a></li>
   <li><a href="#the-pca-pipeline" id="toc-the-pca-pipeline" class="nav-link" data-scroll-target="#the-pca-pipeline">The PCA pipeline</a></li>
-  <li><a href="#baseline-view-every-pokemon-total-coloured" id="toc-baseline-view-every-pokemon-total-coloured" class="nav-link" data-scroll-target="#baseline-view-every-pokemon-total-coloured">Baseline view: every Pokemon, Total-coloured</a></li>
-  <li><a href="#coloured-by-primary-type" id="toc-coloured-by-primary-type" class="nav-link" data-scroll-target="#coloured-by-primary-type">Coloured by primary type</a></li>
+  <li><a href="#baseline-view-every-pokemon-total-colored" id="toc-baseline-view-every-pokemon-total-colored" class="nav-link" data-scroll-target="#baseline-view-every-pokemon-total-colored">Baseline view: every Pokemon, Total-colored</a></li>
+  <li><a href="#colored-by-primary-type" id="toc-colored-by-primary-type" class="nav-link" data-scroll-target="#colored-by-primary-type">colored by primary type</a></li>
   <li><a href="#final-evolutions-only" id="toc-final-evolutions-only" class="nav-link" data-scroll-target="#final-evolutions-only">Final evolutions only</a></li>
   <li><a href="#legendaries-highlighted" id="toc-legendaries-highlighted" class="nav-link" data-scroll-target="#legendaries-highlighted">Legendaries highlighted</a></li>
-  <li><a href="#trying-it-yourself" id="toc-trying-it-yourself" class="nav-link" data-scroll-target="#trying-it-yourself">Trying it yourself</a></li>
   </ul>
 </nav>
     </div>
@@ -162,12 +161,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="pokemon.png" class="img-fluid" style="width:1.0%"></p>
+<p><img src="pokemon.png" class="img-fluid" style="width:0.01389in"></p>
 <p>In this project, I apply a <code>Principal Component Analysis (PCA)</code> to the six battle statistics of Pokemon — <code>HP, Attack, Defense, Special Attack, Special Defense and Speed</code> — and explore how the full Pokédex sits in the resulting 2D spaces. The analysis covers all <code>six generations</code> of the CSV (~721 species), with a specific pass on the subset of <code>final evolutions</code> and a final view with <code>legendaries</code> highlighted against the rest.</p>
 <p>Going from 6 dimensions to 2 is a modest reduction, so this project is really about <code>exploring structure</code> rather than dramatic compression. The interpretation comes from reading the <code>loadings</code> of each principal component and pairing the scatter with a <code>biplot</code>.</p>
 <section id="the-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="the-dataset">The dataset</h3>
-<p>The stats come from the well-known <code>Pokemon with stats</code> dataset originally published on Kaggle by Alberto Barradas and mirrored as a stable raw CSV on GitHub Gist. The CSV covers Generations 1 through 6, one row per species (plus Mega / Primal forme rows which we drop upstream). Download it directly here: <a href="https://gist.githubusercontent.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6/raw/92200bc0a673d5ce2110aaad4544ed6c4010f687/pokemon.csv" target="_blank">pokemon.csv</a>. To restrict the analysis to one or a few generations, pass <code>generations=[1]</code> (or any iterable) to <code>load_pokemon</code>.</p>
+<p>The stats come from the well-known <code>Pokemon with stats</code> dataset originally published on Kaggle by Alberto Barradas and mirrored as a stable raw CSV on GitHub Gist. The CSV covers Generations 1 through 6, one row per species (plus Mega / Primal forme rows which we drop upstream). Download it directly here: <a href="https://gist.githubusercontent.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6/raw/92200bc0a673d5ce2110aaad4544ed6c4010f687/pokemon.csv" target="_blank">pokemon.csv</a>.</p>
 <p>The CSV does not flag <code>final evolutions</code>, so I hand-curated the complement: a <code>NON_FINALS</code> set of every species that has a further evolution within Gen 1-6. Any Pokemon not in that set is treated as a final evolution. Cross-generational evolutions demote the earlier forms (<code>Onix</code> is non-final because of <code>Steelix</code>, <code>Magneton</code> because of <code>Magnezone</code>, and so on).</p>
 </section>
 <section id="the-pca-pipeline" class="level3">
@@ -178,29 +177,29 @@ ul.task-list li input[type="checkbox"] {
 <li><code>PC2</code> — HP + Sp. Def loading sums negative, so <code>lower PC2 means bulkier / more defensive</code>.</li>
 <li><code>PC3</code> — Attack loading is positive, so <code>higher PC3 means leans physical (vs special)</code>.</li>
 </ul>
-<p>The signs do not affect any distance or variance, only how the chart reads.</p>
-<p>On the ~721 Pokemon in the CSV, the first two components typically capture around <code>62%</code> of the total variance, with PC1 dominated by offensive and defensive stats <em>together</em> (the “size of the Pokemon”), PC2 contrasting bulk against speed. If we add the third we get 73% of total variance and PC3 is picking up physical-vs-special.</p>
+<p>On the 721 Pokemon in the CSV, the first two components typically capture around <code>62 %</code> of the total variance, with PC1 dominated by offensive and defensive stats <em>together</em> (the “size of the Pokemon”), PC2 contrasting bulk against speed. If we add the third we get 73% of total variance and PC3 is picking up physical-vs-special.</p>
 </section>
-<section id="baseline-view-every-pokemon-total-coloured" class="level3">
-<h3 class="anchored" data-anchor-id="baseline-view-every-pokemon-total-coloured">Baseline view: every Pokemon, Total-coloured</h3>
-<p>A first plain scatter of all ~721 Pokemon on PC1-PC2. Points are coloured by their <code>Total stat</code> as a sanity check — since PC1 is the overall-power axis, the colour gradient should line up neatly along PC1.</p>
+<section id="baseline-view-every-pokemon-total-colored" class="level3">
+<h3 class="anchored" data-anchor-id="baseline-view-every-pokemon-total-colored">Baseline view: every Pokemon, Total-colored</h3>
+<p>A first plain scatter of all Pokemon on PC1-PC2. Points are colored by their <code>Total stat</code> as a sanity check — since PC1 is the overall-power axis, the color gradient should line up neatly along PC1.</p>
+<p><img src="baseline.png" class="img-fluid" style="width:100.0%"></p>
 </section>
-<section id="coloured-by-primary-type" class="level3">
-<h3 class="anchored" data-anchor-id="coloured-by-primary-type">Coloured by primary type</h3>
-<p>Same points, now coloured by the Pokemon’s <code>primary type (Type 1)</code>. Dual-type Pokemon are still shown under their primary type only — the secondary type appears on hover. I am using brightened versions of the canonical type colours so everything reads well on dark.</p>
-<p>Honest expectation: types are gameplay categories, not stat-determining labels, so heavy overlap is normal. The chart is useful for spotting which types <code>skew</code> along PC1 or PC2 (e.g.&nbsp;Steel and Rock sit high on defensive stats; Flying leans offensive-fast) rather than for finding clean clusters.</p>
+<section id="colored-by-primary-type" class="level3">
+<h3 class="anchored" data-anchor-id="colored-by-primary-type">colored by primary type</h3>
+<p>Same points, now colored by the Pokemon’s <code>primary type (Type 1)</code>. Dual-type Pokemon are still shown under their primary type only — the secondary type appears on hover.</p>
+<p>Honest expectation: types are gameplay categories, not stat-determining labels, so heavy overlap is normal. The chart is useful for spotting which types skew along PC1 or PC2 (e.g.&nbsp;Steel and Rock sit high on defensive stats; Flying leans offensive-fast) rather than for finding clean clusters.</p>
+<p><img src="primary_type.png" class="img-fluid" style="width:100.0%"> <img src="primary_type_centroid.png" class="img-fluid" style="width:100.0%"></p>
 </section>
 <section id="final-evolutions-only" class="level3">
 <h3 class="anchored" data-anchor-id="final-evolutions-only">Final evolutions only</h3>
-<p>Next I restrict to every final evolution across Gen 1-6 and <code>re-fit</code> the PCA on that subset. This matters: the principal axes depend on the covariance of the data they are fit on. If I only projected final evolutions using the axes learned from the full population, I would still be looking at directions that separate weak from strong Pokemon. Re-fitting means the axes now capture the variance <em>among</em> final evolutions, which is the more interesting question here.</p>
+<p>Next I restrict to every final evolution across Gen 1-6 and <code>re-fit</code> the PCA on that subset. This matters: the principal axes depend on the covariance of the data they are fit on. If I only projected final evolutions using the axes learned from the full population, I would still be looking at directions that separate all Pokemon.</p>
+<p><img src="final_evolutions.png" class="img-fluid" style="width:100.0%"></p>
 </section>
 <section id="legendaries-highlighted" class="level3">
 <h3 class="anchored" data-anchor-id="legendaries-highlighted">Legendaries highlighted</h3>
-<p>Finally, the full population again — non-legendaries drawn dim so they act as context, legendaries in the accent colour, enlarged and labeled. PC1 tracks total stats by construction, so legendaries cluster on the high-PC1 side (that is the sanity check, not the finding). The interesting structure is PC2 and PC3: the <code>Articuno-Zapdos-Moltres</code> triad should split along the bulk-vs-speed axis, while <code>Mewtwo</code> sits out in pure offensive power, and creatures like <code>Lugia</code> or <code>Ho-Oh</code> trade offense for extreme bulk.</p>
-</section>
-<section id="trying-it-yourself" class="level3">
-<h3 class="anchored" data-anchor-id="trying-it-yourself">Trying it yourself</h3>
-<p>To run the full pipeline in one place, I aggregated every <code>.py</code> into a single Jupyter notebook. Download it here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are <code>pandas</code>, <code>scikit-learn</code> and <code>plotly</code>.</p>
+<p>Finally, the full population again — non-legendaries drawn dim so they act as context, legendaries in the accent color, enlarged and labeled. PC1 tracks total stats by construction, so legendaries cluster on the high-PC1 side (that is the sanity check, not the finding). The interesting structure is PC2 and PC3: the <code>Articuno-Zapdos-Moltres</code> triad split along the bulk-vs-speed axis with a slight increase of overall power for the bulkiest. Creatures like <code>Raikou</code> or <code>Suicune</code> trade offense for extreme bulk; interestingly, the last one from the trio (<code>Entei</code>) has a smaller overall power and sits in the middle for the bulk-vs-speed.</p>
+<p><img src="legendaries.png" class="img-fluid" style="width:100.0%"> <img src="some_legendaries.png" class="img-fluid" style="width:100.0%"> ### Trying it yourself</p>
+<p>To run the full pipeline in one place, download the jupyter notebook here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are <code>pandas</code>, <code>scikit-learn</code> and <code>plotly</code>.</p>
 
 
 </section>

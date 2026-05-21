@@ -14,7 +14,7 @@ toc: false
 
 ## Current
 
-- MFE Student | UCLA Anderson
+- Master of Financial Engineering Student | UCLA Anderson
 - Aspiring Quant Researcher & Trader
 
 ---
