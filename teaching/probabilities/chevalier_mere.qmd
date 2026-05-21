@@ -5,7 +5,7 @@ order: 3
 ---
 
 ![](images/mere_knight.jpg){width=1px}
-What is the most probable `draw at least one 6 in 4 throws with one dice` or `draw at least a double 6 in 24 throws with two dice` ?
+What event has the highest probability `get at least one 6 in 4 rolls with one dice` or `get at least one double 6 in 24 rolls with two dice` ?
 
 ::: {.callout-tip collapse="true"}
 ## 💡 Hint
@@ -16,7 +16,7 @@ Try to go backwards by supposing one inequality and use the concavity of the log
 ::: {.callout-tip collapse="true"}
 ## 💡 Solution
 
-Let A "Have at least one 6 in 4 throws with 1 dice" and B "Have at least a double 6 in 24 throws with 2 dice". 
+Let A "Have at least one 6 in 4 rolls with 1 dice" and B "Have at least a double 6 in 24 rolls with 2 dice". 
 
 We have 
 
@@ -37,6 +37,6 @@ Now, using the concavity of the ln, we have $$\forall (x,y) \in \mathbb{R}_+^* \
 
 With $\lambda = \frac{5}{6}, x = \frac{6}{5}, y=1$, the inequality becomes $ln(\frac{5}{6} * \frac{6}{5} + \frac{1}{6}*1)= ln(\frac{7}{6}) > \frac{5}{6}ln(\frac{6}{5}) + \frac{1}{6}*ln(1).$
 
-Accordingly, thanks to the concavity inequality `drawing at least one 6 in 4 throws with one dice is more likely than drawing at least a double 6 in 24 throws with two dice.`
+Accordingly, thanks to the concavity inequality `getting at least one 6 in 4 rolls with one dice is more likely than getting at least a double 6 in 24 rolls with two dice.`
 :::
 

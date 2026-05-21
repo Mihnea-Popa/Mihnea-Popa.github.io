@@ -165,7 +165,7 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/mere_knight.jpg" class="img-fluid" width="1"> What is the most probable <code>draw at least one 6 in 4 throws with one dice</code> or <code>draw at least a double 6 in 24 throws with two dice</code> ?</p>
+<p><img src="images/mere_knight.jpg" class="img-fluid" width="1"> What event has the highest probability <code>get at least one 6 in 4 rolls with one dice</code> or <code>get at least one double 6 in 24 rolls with two dice</code> ?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -194,7 +194,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let A “Have at least one 6 in 4 throws with 1 dice” and B “Have at least a double 6 in 24 throws with 2 dice”.</p>
+<p>Let A “Have at least one 6 in 4 rolls with 1 dice” and B “Have at least a double 6 in 24 rolls with 2 dice”.</p>
 <p>We have</p>
 <p><span class="math display">\[\begin{align*}
 \mathbb{P}(A)&gt;\mathbb{P}(B)
@@ -210,7 +210,7 @@ window.Quarto = {
 \end{align*}\]</span></p>
 <p>Now, using the concavity of the ln, we have <span class="math display">\[\forall (x,y) \in \mathbb{R}_+^* \times \mathbb{R}_+^*, \forall \lambda \in (0, 1), ln(\lambda x + (1 - \lambda) y )\ge \lambda ln(x) + (1 - \lambda) ln(y).\]</span></p>
 <p>With <span class="math inline">\(\lambda = \frac{5}{6}, x = \frac{6}{5}, y=1\)</span>, the inequality becomes <span class="math inline">\(ln(\frac{5}{6} * \frac{6}{5} + \frac{1}{6}*1)= ln(\frac{7}{6}) &gt; \frac{5}{6}ln(\frac{6}{5}) + \frac{1}{6}*ln(1).\)</span></p>
-<p>Accordingly, thanks to the concavity inequality <code>drawing at least one 6 in 4 throws with one dice is more likely than drawing at least a double 6 in 24 throws with two dice.</code></p>
+<p>Accordingly, thanks to the concavity inequality <code>getting at least one 6 in 4 rolls with one dice is more likely than getting at least a double 6 in 24 rolls with two dice.</code></p>
 </div>
 </div>
 </div>
