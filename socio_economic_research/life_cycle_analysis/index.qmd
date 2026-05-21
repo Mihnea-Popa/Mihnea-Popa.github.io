@@ -179,7 +179,7 @@ Phase 4 analyses the results in light of the study's objectives and limitations.
 
 ### Absolute GHG Results (France base case, g CO₂eq/km)
 
-The stacked bar charts in the excel file decompose the 271 g CO₂eq/km for diesel and 79.2 g CO₂eq/km for the EV (France base case, D matrix G173) by contributing activity:
+The stacked bar charts in the excel file decompose the 271 g CO₂eq/km for diesel and 79.2 g CO₂eq/km for the EV by contributing activity:
 
 | Activity | Diesel car | EV (France base) |
 |----------|-----------|------------------|
