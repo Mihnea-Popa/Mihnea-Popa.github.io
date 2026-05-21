@@ -4,6 +4,16 @@ author: Mihnea POPA / Paul LEMOINE
 description: " "
 date: May 2025
 order: 1
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        p {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        </style>
 ---
 
 

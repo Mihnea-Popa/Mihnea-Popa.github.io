@@ -6,6 +6,16 @@ date: March 2025
 order: 3
 resources:
   - _pokemon_pca_notebook.ipynb
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        p {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        </style>
 ---
 
 ![](pokemon.png){width=1pt}
@@ -64,3 +74,4 @@ Finally, the full population again — non-legendaries drawn dim so they act as 
 ### Trying it yourself
 
 To run the full pipeline in one place, download the jupyter notebook here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are `pandas`, `scikit-learn` and `plotly`.
+

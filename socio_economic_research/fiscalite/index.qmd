@@ -4,6 +4,16 @@ author: Mihnea POPA / Tristan FABRE
 description: " "
 date: December 2023
 order: 2
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        p {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        </style>
 ---
 
 # Presentation of the project

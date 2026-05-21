@@ -4,6 +4,16 @@ author: Mihnea POPA
 description: " "
 date: December 2024
 order: 4
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        p {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        </style>
 ---
 
 During a elective course at ENSAE Paris as an Introduction to C++, my final project was to implement vanilla options' pricing using the Black-Scholes-Merton formula and the Monte Carlo simulation approach. The main idea of the project was to use a parent class and then two derived that implemented each method.

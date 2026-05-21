@@ -4,6 +4,16 @@ author: "Mihnea Popa"
 description: " "
 order: 1
 date: "April 2024"
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        p {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        </style>
 ---
 
 ## What is Life Cycle Assessment?

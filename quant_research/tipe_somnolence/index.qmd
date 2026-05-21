@@ -4,6 +4,16 @@ author: Mihnea POPA
 description: " "
 date: May 2022
 order: 5
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        p {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        </style>
 ---
 
 
