@@ -15,7 +15,7 @@ format:
         }
         </style>
 ---
-![](image.jpg){width=1pt}
+![](image.png){width=1pt}
 
 ## What is Life Cycle Assessment?
 
@@ -176,18 +176,19 @@ Phase 4 analyses the results in light of the study's objectives and limitations.
 
 ## Results
 
-### Absolute GHG Results (Germany 2020, g CO₂eq/km)
 
-The stacked bar charts in the excel file decompose the 271 g CO₂eq/km for diesel and 205 g CO₂eq/km for the EV (Germany 2020) by contributing activity:
+### Absolute GHG Results (France base case, g CO₂eq/km)
 
-| Activity | Diesel car | EV (Germany 2020) |
-|----------|-----------|-------------------|
-| Use phase — fuel/electricity | 187.0 | 139.4 |
+The stacked bar charts in the excel file decompose the 271 g CO₂eq/km for diesel and 79.2 g CO₂eq/km for the EV (France base case, D matrix G173) by contributing activity:
+
+| Activity | Diesel car | EV (France base) |
+|----------|-----------|------------------|
+| Use phase — fuel/electricity | 187.0 | ~18 |
 | Vehicle body production | ~41.3 | ~45.1 |
 | Battery net (production − recycling) | — | +14.4 (net) |
 | Maintenance | 0.6 | 0 |
-| Upstream cascades (Leontief) | ~42 | ~6 |
-| **Total** | **~271** | **~205** |
+| Upstream cascades (Leontief) | ~42 | ~2 |
+| **Total** | **~271** | **~79** |
 
 ### Sensitivity to Electricity Mix
 
@@ -211,9 +212,9 @@ The electricity mix is the dominant variable for the EV. Results vary dramatical
 
 The GHG picture is not the whole story. Looking across all three indicators:
 
-| Indicator | Diesel | EV (Germany 2020) | Winner |
-|-----------|--------|-------------------|--------|
-| GHG (g CO₂eq/km) | 271 | 205 | **EV** |
+| Indicator | Diesel | EV (France base) | Winner |
+|-----------|--------|------------------|--------|
+| GHG (g CO₂eq/km) | 271 | 79.2 | **EV** |
 | Primary energy (MJ/km) | 4.02 | 1.03 | **EV** |
 | Abiotic materials (µg Sb eq/km) | 0.21 | 0.51 | **Diesel** |
 
