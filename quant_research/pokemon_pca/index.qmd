@@ -5,7 +5,7 @@ description: " "
 date: March 2025
 order: 3
 resources:
-  - _pokemon_pca_notebook.ipynb
+  - pokemon_pca_notebook.ipynb
 format:
   html:
     include-in-header:
@@ -73,5 +73,5 @@ Finally, the full population again — non-legendaries drawn dim so they act as 
 ![](some_legendaries.png){width=100%}
 ### Trying it yourself
 
-To run the full pipeline in one place, download the jupyter notebook here: <a href="_pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are `pandas`, `scikit-learn` and `plotly`.
+To run the full pipeline in one place, download the jupyter notebook here: <a href="pokemon_pca_notebook.ipynb" download="pokemon_pca_notebook.ipynb">pokemon_pca_notebook.ipynb</a>. The only requirements are `pandas`, `scikit-learn` and `plotly`.
 
