@@ -5,7 +5,7 @@ description: " "
 date: April 2025
 order: 2
 resources:
-  - _code.ipynb
+  - code.ipynb
 format:
   html:
     include-in-header:
