@@ -25,7 +25,7 @@ toc: false
 - M.S. Statistics & Quantitative Finance | <br>  &emsp; &emsp; ENSAE Paris, 2024-2026
 - B.S. Statistics & Economics | <br>  &emsp; &emsp; ENSAE Paris, 2023-2024
 - Undergrad in Theoretical Mathematics & Physics | <br>  &emsp; &emsp; Lycee Clemenceau de Nantes, 2020-2023
-
+ 
 ---
 
 ## Interests

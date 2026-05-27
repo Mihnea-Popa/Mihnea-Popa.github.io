@@ -16,7 +16,7 @@ format:
         </style>
 bibliography: references.bib
 resources:
-  - _analyse_mobilites_NM_INSEE.ipynb
+  - analyse_mobilites_NM_INSEE.ipynb
 ---
 
 ![](attractivity_ratio_INSEE.png){width=1pt}
