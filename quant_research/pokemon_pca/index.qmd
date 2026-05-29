@@ -5,7 +5,7 @@ description: " "
 date: March 2025
 order: 3
 resources:
-  - pokemon_pca_notebook.ipynb
+  - _pokemon_pca_notebook.ipynb
 format:
   html:
     include-in-header:
