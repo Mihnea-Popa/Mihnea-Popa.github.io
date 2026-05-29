@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mihnea Popa">
+<meta name="dcterms.date" content="2025-06-01">
+
+<title>Residential Mobility in Nantes Métropole: A Statistical Analysis – Mihnea POPA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Mihnea POPA</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> <i class="bi bi-file-earmark-check" role="img">
+</i> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../quant_research.html"> <i class="bi bi-bar-chart-line" role="img">
+</i> 
+<span class="menu-text">Quantitative Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../socio_economic_research.html"> <i class="bi bi-people" role="img">
+</i> 
+<span class="menu-text">Socio-Economic Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> <i class="bi bi-mortarboard" role="img">
+</i> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-and-methodology" id="toc-data-and-methodology" class="nav-link" data-scroll-target="#data-and-methodology">Data and Methodology</a>
+  <ul class="collapse">
+  <li><a href="#source-fd_migcom-2020" id="toc-source-fd_migcom-2020" class="nav-link" data-scroll-target="#source-fd_migcom-2020">Source: FD_MIGCOM 2020</a></li>
+  <li><a href="#defining-nantes-métropole" id="toc-defining-nantes-métropole" class="nav-link" data-scroll-target="#defining-nantes-métropole">Defining Nantes Métropole</a></li>
+  </ul></li>
+  <li><a href="#household-size-among-movers" id="toc-household-size-among-movers" class="nav-link" data-scroll-target="#household-size-among-movers">Household Size Among Movers</a></li>
+  <li><a href="#geographic-origin-of-incoming-flows" id="toc-geographic-origin-of-incoming-flows" class="nav-link" data-scroll-target="#geographic-origin-of-incoming-flows">Geographic Origin of Incoming Flows</a>
+  <ul class="collapse">
+  <li><a href="#at-the-département-level" id="toc-at-the-département-level" class="nav-link" data-scroll-target="#at-the-département-level">At the Département Level</a></li>
+  <li><a href="#at-the-commune-level" id="toc-at-the-commune-level" class="nav-link" data-scroll-target="#at-the-commune-level">At the Commune Level</a></li>
+  </ul></li>
+  <li><a href="#geographic-destination-of-outgoing-flows" id="toc-geographic-destination-of-outgoing-flows" class="nav-link" data-scroll-target="#geographic-destination-of-outgoing-flows">Geographic Destination of Outgoing Flows</a>
+  <ul class="collapse">
+  <li><a href="#at-the-département-level-1" id="toc-at-the-département-level-1" class="nav-link" data-scroll-target="#at-the-département-level-1">At the Département Level</a></li>
+  <li><a href="#at-the-commune-level-1" id="toc-at-the-commune-level-1" class="nav-link" data-scroll-target="#at-the-commune-level-1">At the Commune Level</a></li>
+  </ul></li>
+  <li><a href="#internal-dynamics-of-nantes-métropole" id="toc-internal-dynamics-of-nantes-métropole" class="nav-link" data-scroll-target="#internal-dynamics-of-nantes-métropole">Internal Dynamics of Nantes Métropole</a>
+  <ul class="collapse">
+  <li><a href="#attractivity-ratio-by-commune" id="toc-attractivity-ratio-by-commune" class="nav-link" data-scroll-target="#attractivity-ratio-by-commune">Attractivity Ratio by Commune</a></li>
+  <li><a href="#intra-nm-flux-matrix" id="toc-intra-nm-flux-matrix" class="nav-link" data-scroll-target="#intra-nm-flux-matrix">Intra-NM Flux Matrix</a></li>
+  </ul></li>
+  <li><a href="#origin-composition-by-commune" id="toc-origin-composition-by-commune" class="nav-link" data-scroll-target="#origin-composition-by-commune">Origin Composition by Commune</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#additional-information-with-la-poste-data" id="toc-additional-information-with-la-poste-data" class="nav-link" data-scroll-target="#additional-information-with-la-poste-data">Additional Information with La Poste Data</a>
+  <ul class="collapse">
+  <li><a href="#intra-nm-mobility-at-iris-level" id="toc-intra-nm-mobility-at-iris-level" class="nav-link" data-scroll-target="#intra-nm-mobility-at-iris-level">Intra-NM Mobility at IRIS Level</a></li>
+  <li><a href="#proportion-of-parisian-arrivals-at-iris-level-in-nantes" id="toc-proportion-of-parisian-arrivals-at-iris-level-in-nantes" class="nav-link" data-scroll-target="#proportion-of-parisian-arrivals-at-iris-level-in-nantes">Proportion of Parisian Arrivals at IRIS Level in Nantes</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Residential Mobility in Nantes Métropole: A Statistical Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea Popa </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="attractivity_ratio_INSEE.png" class="img-fluid" style="width:0.01389in"></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This analysis examines residential mobility patterns in <strong>Nantes Métropole (NM)</strong>, a metropolitan authority grouping 24 communes in the Loire-Atlantique department of western France. Understanding who moves, from where, and to which part of the metropolis is central to the work of the Observatoire de la Population at Nantes Métropole’s Direction de la Géographie et de l’Observation, which produces demographic dashboards and reports for internal policy use.</p>
+<p>Two principal data sources exist for studying residential mobility in France. The first is the <strong>INSEE Recensement de la Population (RP)</strong>, a rolling survey that pools five annual waves (each covering roughly 8% of the population) to produce estimates for a given year <em>n</em> using waves from years <em>n−2</em> to <em>n+2</em>. It operates at the commune level and, for mobility, relies on the <em>Fichier Détail Migrations Communales</em> (FD_MIGCOM), which records, for each individual surveyed, their current commune and their commune of residence one year prior. The second source is the <strong>La Poste mail-forwarding contract database</strong>, which captures residential moves through official change-of-address contracts. La Poste’s data has two important advantages over INSEE: it is temporally more precise (annual rather than a five-year rolling average), and it is spatially finer — it reaches the <strong>IRIS level</strong> (<em>Îlots Regroupés pour l’Information Statistique</em>), the smallest sub-communal geographic unit in France, rather than the commune level.</p>
+<p>However, La Poste itself acknowledges that only about 60% of actual moves are captured by forwarding contracts, due to the rise of paperless administration and non-subscription. The underlying microdata of the La Poste database is confidential and cannot be shared or replicated externally. <strong>This analysis therefore relies exclusively on the INSEE RP 2020 data</strong>, which is publicly available. Where relevant, results from the La Poste source are presented as additional context in the final section, using figures from an internal study conducted at Nantes Métropole, but these cannot be reproduced independently.</p>
+<p>The analysis proceeds as follows. We first describe the data and methodology used to extract and weight the mobility flows. We then examine the distribution of household size among movers, the geographic origins of incoming flows at both the département and commune level, the geographic destinations of outgoing flows, and finally the internal dynamics of the metropolis through an attractivity ratio and an inter-communal flux matrix.</p>
+<hr>
+</section>
+<section id="data-and-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="data-and-methodology">Data and Methodology</h2>
+<section id="source-fd_migcom-2020" class="level3">
+<h3 class="anchored" data-anchor-id="source-fd_migcom-2020">Source: FD_MIGCOM 2020</h3>
+<p>The raw file used is <a href="https://www.insee.fr/fr/statistiques/fichier/7637869/RP2020_migcom_csv.zip" target="_blank">FD_MIGCOM_2020.csv</a> (<a href="https://www.insee.fr/fr/statistiques/7637869?sommaire=7637890" target="_blank">Publication link rather than direct download</a>), the detailed individual file for communal migrations from the INSEE RP 2020 rolling census. It contains approximately 3.9 million individual records (unweighted) and is roughly 2 GB in size on disk. Each record corresponds to one surveyed individual and includes:</p>
+<ul>
+<li><code>COMMUNE</code> — the commune of current residence (5-digit INSEE code)</li>
+<li><code>DCRAN</code> — the commune of residence one year prior (<code>99999</code> = abroad)</li>
+<li><code>IRAN</code> — migration type indicator: <code>1</code> = non-mover (same dwelling), <code>2</code> = intra-communal mover, <code>3</code> = inter-communal within same département, <code>4</code> = inter-communal across départements, <code>5</code> = from abroad</li>
+<li><code>IPONDI</code> — the individual survey weight, which extrapolates each record to the full French population</li>
+<li><code>NPERR</code> — household size (capped at 6 persons)</li>
+</ul>
+<p>Only records with <code>IRAN ≠ 1</code> are retained — that is, only individuals who changed dwelling in the year preceding the census. The sum of <code>IPONDI</code> over all retained records in the Nantes Métropole perimeter yields the estimated total number of residential moves, which corresponds to approximately <strong>98,672 entries</strong> into the metropolis according to the 2020 census.</p>
+</section>
+<section id="defining-nantes-métropole" class="level3">
+<h3 class="anchored" data-anchor-id="defining-nantes-métropole">Defining Nantes Métropole</h3>
+<p>Nantes Métropole comprises <strong>24 communes</strong>, identified by their INSEE codes beginning with <code>44</code>. The perimeter used in this analysis is:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Commune</th>
+<th>Code</th>
+<th>Commune</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>44009</td>
+<td>Basse-Goulaine</td>
+<td>44120</td>
+<td>Le Pellerin</td>
+</tr>
+<tr class="even">
+<td>44018</td>
+<td>Bouaye</td>
+<td>44143</td>
+<td>Rezé</td>
+</tr>
+<tr class="odd">
+<td>44020</td>
+<td>Bouguenais</td>
+<td>44150</td>
+<td>Saint-Aignan-Grandlieu</td>
+</tr>
+<tr class="even">
+<td>44024</td>
+<td>Brains</td>
+<td>44162</td>
+<td>Saint-Herblain</td>
+</tr>
+<tr class="odd">
+<td>44026</td>
+<td>Carquefou</td>
+<td>44166</td>
+<td>Saint-Jean-de-Boiseau</td>
+</tr>
+<tr class="even">
+<td>44035</td>
+<td>La Chapelle-sur-Erdre</td>
+<td>44171</td>
+<td>Saint-Léger-les-Vignes</td>
+</tr>
+<tr class="odd">
+<td>44047</td>
+<td>Couëron</td>
+<td>44172</td>
+<td>Sainte-Luce-sur-Loire</td>
+</tr>
+<tr class="even">
+<td>44074</td>
+<td>Indre</td>
+<td>44190</td>
+<td>Saint-Sébastien-sur-Loire</td>
+</tr>
+<tr class="odd">
+<td>44094</td>
+<td>Mauves-sur-Loire</td>
+<td>44194</td>
+<td>Sautron</td>
+</tr>
+<tr class="even">
+<td>44101</td>
+<td>La Montagne</td>
+<td>44198</td>
+<td>Les Sorinières</td>
+</tr>
+<tr class="odd">
+<td>44109</td>
+<td>Nantes</td>
+<td>44204</td>
+<td>Thouaré-sur-Loire</td>
+</tr>
+<tr class="even">
+<td>44114</td>
+<td>Orvault</td>
+<td>44215</td>
+<td>Vertou</td>
+</tr>
+</tbody>
+</table>
+<p>Three analytical sub-datasets are constructed:</p>
+<ul>
+<li><strong><code>NM_enter</code></strong> — flows <em>arriving</em> in NM (current commune <code>∈ NM</code>, regardless of origin)</li>
+<li><strong><code>NM_leave</code></strong> — flows <em>departing</em> from NM (previous commune <code>∈ NM</code>, regardless of destination)</li>
+<li><strong><code>NM_intra</code></strong> — flows <em>internal</em> to NM (both current and previous commune <code>∈ NM</code>)</li>
+</ul>
+<p>Given the file size, data is processed in 500,000-row chunks to avoid memory overflow, filtering by commune codes during ingestion. All flow volumes reported below are weighted sums of <code>IPONDI</code>.</p>
+<hr>
+</section>
+</section>
+<section id="household-size-among-movers" class="level2">
+<h2 class="anchored" data-anchor-id="household-size-among-movers">Household Size Among Movers</h2>
+<p>A first descriptive question is: what is the typical household size of people who move? This matters because mobility patterns differ significantly between single-person households (often younger, more mobile individuals — students, young professionals) and larger family units.</p>
+<p><img src="nperr_distribution_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>The figure shows two complementary views of the <code>NPERR</code> distribution among all entries into Nantes Métropole: the left panel counts individual persons, and the right panel counts distinct household contracts (i.e., treating each household as one unit regardless of size). The two distributions are not identical precisely because larger households contribute more individuals per move.</p>
+<p>About <strong>half of all incoming movements</strong> involve single-person households, consistent with the dominant role of young adults and students in residential mobility. Two-person households account for roughly 30% of moves, and households of three or more make up the remaining ~20%. This structure is sociologically coherent: single-person movers often correspond to life transitions (entry into higher education, professional relocation, end of a relationship), which are more frequent and less anchored to a specific territory than the moves of families, who tend to relocate less frequently and over shorter distances <span class="citation" data-cites="courdescomptes2025">(<a href="#ref-courdescomptes2025" role="doc-biblioref">Cour des comptes 2025</a>)</span>.</p>
+<p>From a data quality standpoint, this distribution also matters when comparing with the La Poste source: La Poste contracts systematically under-represent single and two-person households, capturing only about a third of their moves, while larger households are better represented (nearly half their moves are captured). This structural bias in the La Poste data is partly due to the increasing paperlessness of younger, more connected populations, who are less likely to formalise a change of address through the postal service <span class="citation" data-cites="arcep2017">(<a href="#ref-arcep2017" role="doc-biblioref">ARCEP 2017</a>)</span>.</p>
+<hr>
+</section>
+<section id="geographic-origin-of-incoming-flows" class="level2">
+<h2 class="anchored" data-anchor-id="geographic-origin-of-incoming-flows">Geographic Origin of Incoming Flows</h2>
+<section id="at-the-département-level" class="level3">
+<h3 class="anchored" data-anchor-id="at-the-département-level">At the Département Level</h3>
+<p>Where do people who move to Nantes Métropole come from? The map below shows incoming flows by département of origin, excluding internal NM moves.</p>
+<p><img src="entries_dept_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>The geographic pattern is clear and consistent with France’s territorial dynamics. The dominant sources of incoming residents are:</p>
+<ul>
+<li><strong>Île-de-France</strong> (Paris region) stands out as the most visible distant source, with Seine (75), Hauts-de-Seine (92) and Val-de-Marne (94) all showing elevated flows. This west-bound migration has been documented in the literature and is commonly attributed to lower housing costs, perceived quality of life, and the region’s economic dynamism — particularly attractive to families and young professionals priced out of the Paris market <span class="citation" data-cites="arthurloyd2021">(<a href="#ref-arthurloyd2021" role="doc-biblioref">Arthur Loyd 2021</a>)</span>.</li>
+<li><strong>Neighbouring départements</strong> in the Grand Ouest: Loire-Atlantique itself (communes outside NM), Maine-et-Loire (49), Vendée (85), Ille-et-Vilaine (35) and Morbihan (56). This reflects a strong regional mobility logic — people moving within their broader labour market area, driven by housing affordability, family ties, or professional relocation within the same economic basin <span class="citation" data-cites="observatoire2018">(<a href="#ref-observatoire2018" role="doc-biblioref">Observatoire des Territoires 2018</a>)</span>.</li>
+</ul>
+<p>The map confirms a gradient of proximity: the further from Nantes, the fewer arrivals, with the notable exception of Île-de-France.</p>
+</section>
+<section id="at-the-commune-level" class="level3">
+<h3 class="anchored" data-anchor-id="at-the-commune-level">At the Commune Level</h3>
+<p>Zooming in to the commune scale reveals the same structure in finer granularity:</p>
+<p><img src="entries_commune_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>The concentration around Nantes itself and its first ring of communes is expected — a large share of intra-NM mobility involves Nantes as either origin or destination. Beyond the metropolis, the densest corridors come from cities such as Saint-Nazaire, La Roche-sur-Yon, Angers, Rennes, and Paris, reflecting both proximity and urban connectivity.</p>
+<hr>
+</section>
+</section>
+<section id="geographic-destination-of-outgoing-flows" class="level2">
+<h2 class="anchored" data-anchor-id="geographic-destination-of-outgoing-flows">Geographic Destination of Outgoing Flows</h2>
+<section id="at-the-département-level-1" class="level3">
+<h3 class="anchored" data-anchor-id="at-the-département-level-1">At the Département Level</h3>
+<p>People leaving Nantes Métropole also follow a predominantly western orientation:</p>
+<p><img src="exits_dept_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>Outgoing flows are even more geographically concentrated than incoming ones: the great majority of leavers relocate to other communes of Loire-Atlantique or to the immediate neighbouring départements (Vendée, Maine-et-Loire, Ille-et-Vilaine). This is consistent with a pattern of <strong>territorial anchoring</strong>: people who leave the metropolis do not typically break away from their broader life context; they relocate within an area they know, for reasons of housing accessibility, family proximity, or professional reconversion in less dense environments <span class="citation" data-cites="observatoire2018">(<a href="#ref-observatoire2018" role="doc-biblioref">Observatoire des Territoires 2018</a>)</span>.</p>
+<p>The Île-de-France receives a visible but modest share of outflows — broadly symmetric to what it sends, which suggests that NM–Paris residential exchanges, while real, are relatively balanced and do not represent a systematic drain in either direction.</p>
+</section>
+<section id="at-the-commune-level-1" class="level3">
+<h3 class="anchored" data-anchor-id="at-the-commune-level-1">At the Commune Level</h3>
+<p><img src="exits_commune_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>At commune level, outflows mirror inflows in their geographic shape. The dominant destinations outside NM are the same cities that send the most arrivals: Saint-Nazaire, Angers, Rennes, and the Paris agglomeration. This reinforces the reading that Nantes Métropole is deeply integrated into a regional network of cities, exchanging residents bilaterally rather than functioning as a pure attractor.</p>
+<hr>
+</section>
+</section>
+<section id="internal-dynamics-of-nantes-métropole" class="level2">
+<h2 class="anchored" data-anchor-id="internal-dynamics-of-nantes-métropole">Internal Dynamics of Nantes Métropole</h2>
+<section id="attractivity-ratio-by-commune" class="level3">
+<h3 class="anchored" data-anchor-id="attractivity-ratio-by-commune">Attractivity Ratio by Commune</h3>
+<p>Once we focus exclusively on moves that are <strong>internal to the metropolis</strong> (both origin and destination within NM), a useful summary statistic is the <strong>attractivity ratio</strong>, defined for each commune as the number of intra-NM arrivals divided by the number of intra-NM departures. A ratio above 1 means the commune gains more residents from within the metropolis than it loses; below 1 it loses more than it gains.</p>
+<p><img src="attractivity_ratio_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>The result is counter-intuitive at first glance: <strong>Nantes, despite concentrating the largest absolute number of moves, has one of the lowest attractivity ratios in the metropolis</strong> — approximately 0.91 intra-NM entries per departure. This is a well-known urban phenomenon sometimes called <em>expulsive centrality</em> <span class="citation" data-cites="observatoire2018">(<a href="#ref-observatoire2018" role="doc-biblioref">Observatoire des Territoires 2018</a>)</span>, <span class="citation" data-cites="popsu2022">(<a href="#ref-popsu2022" role="doc-biblioref">Popsu Territoires 2022</a>)</span>: Nantes acts as the primary hub for residential mobility, receiving large external flows and generating large internal ones, but a significant share of those internal flows are outward — households pushed toward the periphery by housing costs, congestion, and the aspiration for more space.</p>
+<p>The communes that most consistently gain from internal mobility are peripheral and semi-rural: Brains, Le Pellerin, Saint-Aignan-Grandlieu, and Saint-Léger-les-Vignes show the highest ratios, often exceeding 1.5. These are exactly the communes that benefit from the diffusion of families from Nantes toward cheaper, more spacious environments — a pattern driven by real estate price pressure at the urban core, the search for individual housing among households starting a family, and improved road connectivity making longer commutes more feasible <span class="citation" data-cites="madore2022">(<a href="#ref-madore2022" role="doc-biblioref">Madoré 2022</a>)</span>.</p>
+</section>
+<section id="intra-nm-flux-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="intra-nm-flux-matrix">Intra-NM Flux Matrix</h3>
+<p>The most granular representation of intra-metropolitan mobility is the <strong>24×24 origin–destination matrix</strong>, where cell (i, j) records the weighted number of individuals who moved from commune i to commune j within a single year.</p>
+<p><img src="flux_matrix_INSEE.png" class="img-fluid" style="width:100.0%"></p>
+<p>Several patterns emerge immediately:</p>
+<ul>
+<li><strong>The diagonal is the darkest stripe in the matrix.</strong> This corresponds to <em>intra-communal</em> moves (changing dwelling within the same commune), which are by far the most frequent type of move for most communes. People overwhelmingly move short distances.</li>
+<li><strong>The Nantes row and column dominate.</strong> Nantes (row/column 9 from the left in the sorted matrix) has the highest values in nearly every direction, reflecting its role as the metropolis’s central node. It both sends and receives more residents than any other commune.</li>
+<li><strong>A cross (+) structure is visible</strong>, centred on Nantes. This is consistent with the finding that moves not involving Nantes tend to be intra-communal or between geographically adjacent communes, while Nantes is involved in nearly all longer-distance intra-NM flows.</li>
+<li><strong>Off-diagonal intensity drops sharply.</strong> Flows between peripheral communes (say, Bouaye and Mauves-sur-Loire) are essentially negligible. Residential mobility in the metropolis is strongly mediated by Nantes.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="origin-composition-by-commune" class="level2">
+<h2 class="anchored" data-anchor-id="origin-composition-by-commune">Origin Composition by Commune</h2>
+<p>Beyond the geographic maps, it is instructive to look at the <strong>composition of incoming flows</strong> for each commune — that is, what share of new arrivals come from within the same commune, from Nantes, from the rest of NM, from elsewhere in Loire-Atlantique, from Île-de-France, and from the rest of France or abroad. The six categories used are:</p>
+<ol type="1">
+<li><strong>Intra-communal</strong> (same commune, different dwelling)</li>
+<li><strong>From Nantes</strong> (to all other communes)</li>
+<li><strong>From NM</strong> (excluding Nantes and excluding the commune itself)</li>
+<li><strong>Loire-Atlantique outside NM</strong></li>
+<li><strong>Île-de-France</strong></li>
+<li><strong>Rest of France and abroad</strong></li>
+</ol>
+<iframe src="origin_distribution.html" width="100%" height="700" frameborder="0">
+</iframe>
+<p>This stacked proportion chart (produced interactively in the accompanying notebook using Plotly) reveals that for most peripheral communes, the dominant single source is Nantes — typically 30–50% of all incoming moves. This confirms the diffusion model: Nantes continuously emits residents toward the periphery, primarily families looking for space, while also attracting large flows from outside the metropolis entirely. The Île-de-France share remains modest for every commune, typically 5–10%, which is an important corrective to the public discourse around a massive “Parisian exodus” toward Nantes.</p>
+<hr>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This analysis, based on the INSEE RP 2020 FD_MIGCOM file and restricted to the 24 communes of Nantes Métropole, yields several robust findings:</p>
+<p>The mobility landscape of Nantes Métropole is fundamentally <strong>local and regional in character</strong>. The vast majority of movers come from or go to neighbouring communes and départements. Long-distance flows, including from Île-de-France, are real but quantitatively modest — their visual salience on maps is partly a cartographic effect that amplifies geographically concentrated origins.</p>
+<p><strong>Nantes plays a structurally paradoxical role</strong>: it is both the most active commune in terms of total mobility volume and one of the least attractive in the intra-metropolitan ratio. This reflects the urban economic logic of an expulsive centre, where housing costs and density push households — especially families — toward the periphery.</p>
+<p><strong>Household size is a key segmentation variable</strong> for residential mobility. Single-person movers are dominant in absolute number, driven by life transitions characteristic of younger demographics, while families move less frequently but over slightly longer distances and with greater permanence.</p>
+<p><strong>Data limitations are important to keep in mind.</strong> The INSEE RP captures a rolling five-year average rather than a single-year snapshot, and the commune is the finest spatial unit available. As shown in the additional section below, finer-grained analyses at the IRIS level are possible with the La Poste data, which, despite its lower coverage (~40% of actual moves captured), reflects the directional dynamics of the census very faithfully.</p>
+<hr>
+</section>
+<section id="additional-information-with-la-poste-data" class="level2">
+<h2 class="anchored" data-anchor-id="additional-information-with-la-poste-data">Additional Information with La Poste Data</h2>
+<p>The results presented above are based exclusively on INSEE data, which is publicly available and fully replicable. The following figures come from an internal study conducted at Nantes Métropole using the La Poste mail-forwarding contract database (2021–2024, covering <strong>82,475 persons</strong>). <strong>These figures cannot be reproduced independently</strong> as the underlying microdata is confidential and not publicly distributed.</p>
+<section id="intra-nm-mobility-at-iris-level" class="level3">
+<h3 class="anchored" data-anchor-id="intra-nm-mobility-at-iris-level">Intra-NM Mobility at IRIS Level</h3>
+<p>The La Poste data makes it possible to go beyond the commune level and examine residential flows at the <strong>IRIS level</strong> — the finest sub-communal geographic unit, typically corresponding to a few hundred to a few thousand inhabitants. The matrix below shows the residential flux between all IRIS of Nantes Métropole:</p>
+<p><img src="fig7_iris_matrix_LaPoste.jpg" class="img-fluid" style="width:100.0%"></p>
+<p>This IRIS-level matrix contains substantially more rows and columns than the 24×24 commune matrix, reflecting the several hundred IRIS within the metropolis. Several structures are visible:</p>
+<ul>
+<li><strong>A strong diagonal</strong> confirms that the most common move is within the same IRIS — ultra-local mobility driven by practical considerations (proximity to work, family, services) and social attachment to one’s neighbourhood.</li>
+<li><strong>Block structures</strong> along the diagonal correspond to the internal matrices of each commune — flows within Nantes, within Saint-Herblain, within Rezé, etc. The block for Nantes is by far the largest, consistent with its dominance in absolute volumes.</li>
+<li><strong>A clear fragmentation</strong> emerges between IRIS located within Nantes (which show more dispersed mobility patterns, including movements toward peripheral communes) and IRIS in peripheral communes (which show more localised, proximity-driven moves). This suggests that the behavioural drivers of mobility differ systematically by urban position: Nantes IRIS residents are more willing to move across the metropolis, while residents of peripheral communes tend to relocate within their immediate vicinity.</li>
+</ul>
+<p>The concentration on the diagonal, with average values around 31% of moves directed toward the same or an immediately adjacent IRIS, quantifies the extent to which residential mobility is fundamentally a local phenomenon even within an already small metropolitan area.</p>
+</section>
+<section id="proportion-of-parisian-arrivals-at-iris-level-in-nantes" class="level3">
+<h3 class="anchored" data-anchor-id="proportion-of-parisian-arrivals-at-iris-level-in-nantes">Proportion of Parisian Arrivals at IRIS Level in Nantes</h3>
+<p>A recurring public narrative in France positions Nantes as a top destination for Parisians leaving the capital. While this flow is real, the IRIS-level La Poste data allows us to put it in spatial perspective. The map below shows, for each IRIS of Nantes, the proportion of all Parisian arrivals to Nantes that land in that specific IRIS (the proportions sum to 100% across all Nantes IRIS):</p>
+<p><img src="fig13_franciliens_LaPoste.png" class="img-fluid" style="width:100.0%"></p>
+<p>The map reveals that <strong>Parisian arrivals are not uniformly distributed across Nantes — they concentrate in the wealthiest, most central IRIS</strong>. In particular, the IRIS of Monselet (south-east of the historic centre, an area with one of the highest median living standards in the city) stands out as the single most targeted destination for Franciliens. More broadly, the darkest areas correspond to the right bank of the Loire and the prosperous quarters of the centre-south of Nantes.</p>
+<p>This spatial selectivity is sociologically significant. It suggests that Parisian migrants to Nantes are not choosing arbitrarily or simply seeking cheaper housing across the board — they are seeking specific urban environments that match a socio-economic standard they are accustomed to. The literature on inter-city migration often frames this as a <em>quality of life</em> migration, but the spatial evidence points toward a more nuanced picture: it is a <strong>socially selective</strong> migration toward valorised neighbourhoods, not a diffuse spread across the metropolis.</p>
+<p>This finding reinforces the importance of working at the IRIS level when studying residential mobility: at the commune level, Nantes appears as a single destination, masking the very strong internal differentiation in where within Nantes new arrivals from distant regions choose to settle.</p>
+<hr>
+<p>To run the full pipeline in one place, download the jupyter notebook here: <a href="analyse_mobilites_NM_INSEE.ipynb" download="analyse_mobilites_NM_INSEE.ipynb">analyse_mobilites_NM_INSEE.ipynb</a>.</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-arcep2017" class="csl-entry" role="listitem">
+ARCEP. 2017. <span>“Baromètre Du Numérique 2017.”</span> ARCEP.
+</div>
+<div id="ref-arthurloyd2021" class="csl-entry" role="listitem">
+Arthur Loyd. 2021. <span>“Le Baromètre – Édition 2021 : L’appel Des Régions.”</span> Arthur Loyd.
+</div>
+<div id="ref-courdescomptes2025" class="csl-entry" role="listitem">
+Cour des comptes. 2025. <span>“Rapport Public Annuel 2025.”</span> Cour des comptes.
+</div>
+<div id="ref-madore2022" class="csl-entry" role="listitem">
+Madoré, François. 2022. <span>“La Dynamique Démographique de l’aire Urbaine Nantaise.”</span> In <em>Ouvrage Non Précisé</em>.
+</div>
+<div id="ref-observatoire2018" class="csl-entry" role="listitem">
+Observatoire des Territoires. 2018. <span>“Rapport 2018 : Les Mobilités Résidentielles En France – Tendances Et Impacts Territoriaux.”</span> CGET.
+</div>
+<div id="ref-popsu2022" class="csl-entry" role="listitem">
+Popsu Territoires. 2022. <span>“Exode Urbain ? Petits Flux, Grands Effets.”</span> PUCA / Popsu.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

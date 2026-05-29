@@ -19,7 +19,7 @@ toc: false
 
 ---
 
-## Education
+## Education 
 
 - MFE Financial Engineering | <br> &emsp; &emsp; UCLA Anderson, 2025-2026
 - M.S. Statistics & Quantitative Finance | <br>  &emsp; &emsp; ENSAE Paris, 2024-2026
