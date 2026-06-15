@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea POPA">
+<meta name="dcterms.date" content="2026-06-01">
 
-<title>My Quantitative Research – Mihnea POPA</title>
+<title>Adaptive Inventory-Aware Market Making on SOFI — AI-Assisted Development – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +25,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,35 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -114,7 +91,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -124,9 +101,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mihnea POPA</span>
     </a>
   </div>
@@ -136,27 +113,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-person-circle" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-person-circle" role="img">
 </i> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> <i class="bi bi-file-earmark-check" role="img">
+    <a class="nav-link" href="../../resume.html"> <i class="bi bi-file-earmark-check" role="img">
 </i> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./quant_research.html" aria-current="page"> <i class="bi bi-bar-chart-line" role="img">
+    <a class="nav-link" href="../../quant_research.html"> <i class="bi bi-bar-chart-line" role="img">
 </i> 
 <span class="menu-text">Quantitative Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./socio_economic_research.html"> <i class="bi bi-people" role="img">
+    <a class="nav-link" href="../../socio_economic_research.html"> <i class="bi bi-people" role="img">
 </i> 
 <span class="menu-text">Socio-Economic Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> <i class="bi bi-mortarboard" role="img">
+    <a class="nav-link" href="../../teaching.html"> <i class="bi bi-mortarboard" role="img">
 </i> 
 <span class="menu-text">Teaching</span></a>
   </li>  
@@ -171,22 +148,44 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks" id="toc-week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks" class="nav-link active" data-scroll-target="#week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks">Week 7 baseline: a textbook Avellaneda-Stoikov quoter, and where it breaks</a></li>
+  <li><a href="#week-8-six-targeted-fixes" id="toc-week-8-six-targeted-fixes" class="nav-link" data-scroll-target="#week-8-six-targeted-fixes">Week 8: six targeted fixes</a></li>
+  <li><a href="#local-self-evaluation-development-day-2024-08-01" id="toc-local-self-evaluation-development-day-2024-08-01" class="nav-link" data-scroll-target="#local-self-evaluation-development-day-2024-08-01">Local self-evaluation (development day, 2024-08-01)</a></li>
+  <li><a href="#hidden-date-results-week-7-vs-week-8" id="toc-hidden-date-results-week-7-vs-week-8" class="nav-link" data-scroll-target="#hidden-date-results-week-7-vs-week-8">Hidden-date results: Week 7 vs Week 8</a></li>
+  <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits">Limits</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Quantitative Research</h1>
+<h1 class="title">Adaptive Inventory-Aware Market Making on SOFI — AI-Assisted Development</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea POPA </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -196,204 +195,231 @@ window.Quarto = {
 </header>
 
 
+<p>This page documents the market-making assignment from <strong>MGMTMFE 412: Trading, Market Frictions, and FinTech</strong> at UCLA Anderson: maintain a two-sided quote on <code>SOFI</code> using a callback API (<code>build_strategy</code> → <code>on_market_event</code> / <code>on_fill</code>) against full L3 order-book data, graded on three hidden out-of-sample dates by</p>
+<p><span class="math display">\[
+\text{Score} = \text{NetPnL} - 0.50\,|q_{\text{end}}| - 0.20\,\overline{|q|} - 50\max(0,\, 0.30 - \text{two-sided ratio}) - 10 \times \text{market orders} - 25 \times \text{violations}.
+\]</span></p>
+<p>As with the other strategies on this site, the code was developed iteratively with <strong>Claude (Anthropic)</strong>: I supplied the assignment brief, the previous week’s code, and the instructor’s feedback, and Claude proposed and implemented the quoting logic, which I then tested locally before submission. All figures below come from the autograder’s <code>summary.json</code> outputs and the instructor’s feedback reports.</p>
+<section id="week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks" class="level3">
+<h3 class="anchored" data-anchor-id="week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks">Week 7 baseline: a textbook Avellaneda-Stoikov quoter, and where it breaks</h3>
+<p>The week-7 submission implements a linear inventory-skewed reservation price, <span class="math inline">\(r = \text{mid} - 0.10 \cdot q \cdot \text{tick}\)</span>, quoting 10 shares on each side with a 1-tick half-spread. Its main engineering contribution is a <em>safe-cancel</em> guard — only cancel an order that is provably behind the NBBO (a resting sell above the current ask, or a resting buy below the current bid) — combined with a two-level throttle: Level 1 immediately resubmits only the side that just got filled, while Level 2 refreshes both sides every 150 events. An inventory taper linearly reduces the accumulating side’s size as <span class="math inline">\(|q|\)</span> grows from 150 to 300 shares.</p>
+<p>On the hidden dates this scored an aggregate <strong>-301.9</strong>, with net PnL of <strong>-$180.02</strong>, a two-sided quote coverage of only 0.45 (below the 0.30 penalty threshold is fine, but barely), and <strong>1 violation</strong>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>PnL</th>
+<th>Drawdown</th>
+<th>Score</th>
+<th>Fills</th>
+<th>Violations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-26</td>
+<td>$58.68</td>
+<td>-$35.09</td>
+<td>24.72</td>
+<td>126</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2025-04-08</td>
+<td>$59.27</td>
+<td>-$161.22</td>
+<td>22.33</td>
+<td>291</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2025-08-26</td>
+<td>-$297.98</td>
+<td>-$307.52</td>
+<td>-348.94</td>
+<td>857</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><strong>Aggregate</strong></td>
+<td><strong>-$180.02</strong></td>
+<td><strong>-$307.52</strong></td>
+<td><strong>-301.9</strong></td>
+<td>—</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The first two dates were fine; 2025-08-26 was a collapse, single-handedly producing nearly all of the aggregate loss and the only violation. The instructor’s review traced this to three compounding issues: the safe-cancel guard prevents <em>race</em> violations but doesn’t address <em>adverse selection</em> — the actual driver of the 2025-08-26 loss; the linear skew term is effectively cosmetic because the inventory taper clamps the position near <span class="math inline">\(|q|=20\)</span> shares, well before the skew can meaningfully lean the quotes; and the fixed 150-event throttle is blind to the NBBO, so it can both refresh needlessly on a flat market and fail to react quickly enough during a fast move. The review also noted the strategy implements the <em>core</em> AS framework (reservation price, inventory skew, throttle, tapering) but is missing a microprice/OFI signal tilt (it quotes around the simple mid), implied-alpha calibration (<code>SKEW_K=0.10</code> is hand-picked), endgame flatten logic, and any markout-based toxicity filter — an Innovation score of 78/100 (Framework 19, Signal Quality 17, Originality 22, Implementation 20).</p>
+</section>
+<section id="week-8-six-targeted-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="week-8-six-targeted-fixes">Week 8: six targeted fixes</h3>
+<p>Rather than a rewrite, week 8 kept the AS skeleton and layered on six changes aimed squarely at the three diagnosed weaknesses:</p>
+<ol type="1">
+<li><strong>Move-gate throttle</strong> — the Level-2 refresh now fires only when both 150 events have passed <em>and</em> the NBBO has moved by at least one tick, eliminating churn on flat markets while staying responsive to real price moves.</li>
+<li><strong>Stronger, non-cosmetic skew</strong> — a regime-dependent <code>extra_skew</code> adds up to 2 ticks (Warning regime: a fraction of 2 ticks; Critical regime: a flat 2 ticks) on top of the linear <code>SKEW_K</code> term, and the inventory clamp that previously bound at <span class="math inline">\(|q|=20\)</span> was raised from 2 to 4 ticks.</li>
+<li><strong>Multi-regime inventory guard</strong> — Normal (<span class="math inline">\(|q|\le180\)</span>), Warning (<span class="math inline">\(180&lt;|q|\le250\)</span>), and Critical (<span class="math inline">\(|q|&gt;250\)</span>, hard cap at <code>MAX_INVENTORY=300</code>) each get distinct tapering and quote-sending logic, rather than one linear taper across the whole range.</li>
+<li><strong>Microprice reference</strong> — the reservation price is now anchored to a queue-weighted microprice, <span class="math inline">\(\text{microprice} = \frac{P_{\text{ask}} \cdot Q_{\text{bid}} + P_{\text{bid}} \cdot Q_{\text{ask}}}{Q_{\text{bid}} + Q_{\text{ask}}}\)</span>, rather than the simple mid — systematically reducing adverse selection.</li>
+<li><strong>Endgame flatten</strong> — in the final 7% of the session, the skew multiplier jumps to <span class="math inline">\(4\times\)</span>, aggressively pushing the strategy back toward a flat position before the close.</li>
+<li><strong>Fill-rate monitor + directional fill signal</strong> — a 300-event rolling window that widens both sides by 1 tick if 3+ fills occur in the window (a trending-regime detector), plus a <em>directional</em> signal: if 3+ consecutive fills land on the same side, that side’s quote is pushed back by 1 tick — asymmetrically, so the unwinding side stays competitive. The instructor’s review called this “the single most effective adverse-selection defense in the submission.”</li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>QUOTE_SIZE</code></td>
+<td>5</td>
+<td><code>FILL_RATE_WINDOW</code></td>
+<td>300</td>
+</tr>
+<tr class="even">
+<td><code>SOFT_INVENTORY</code></td>
+<td>80</td>
+<td><code>FILL_RATE_THRESH</code></td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td><code>NORMAL_INV</code></td>
+<td>180</td>
+<td><code>VOL_EXTRA_TICKS</code></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><code>CRITICAL_INV</code></td>
+<td>250</td>
+<td><code>ENDGAME_PCT</code></td>
+<td>0.07</td>
+</tr>
+<tr class="odd">
+<td><code>MAX_INVENTORY</code></td>
+<td>300</td>
+<td><code>ENDGAME_SKEW_MULT</code></td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<td><code>SKEW_K</code></td>
+<td>0.10</td>
+<td><code>DIRECTIONAL_THRESH</code></td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td><code>EXTRA_SKEW_TICKS</code></td>
+<td>2</td>
+<td><code>DIRECTIONAL_TICKS</code></td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><code>MIN_EVENTS_BETWEEN_REFRESH</code></td>
+<td>150</td>
+<td><code>CANCEL_TICKS</code></td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>A separate change worth calling out on its own: halving <code>QUOTE_SIZE</code> from 10 to 5 shares was, by itself, the single highest-leverage tweak across both weeks, since it directly halves the per-fill adverse-selection exposure that drives the inventory swings on volatile days. One idea that was tried and <em>rejected</em>: posting one tick behind the touch (to reduce fill probability on the wrong side) made things worse on the local self-evaluation day, taking the score from -17.76 to -59.26 — fewer, more lopsided fills hurt more than they helped.</p>
+</section>
+<section id="local-self-evaluation-development-day-2024-08-01" class="level3">
+<h3 class="anchored" data-anchor-id="local-self-evaluation-development-day-2024-08-01">Local self-evaluation (development day, 2024-08-01)</h3>
+<p>On the development day used for local iteration, the final week-8 strategy posted a net PnL of <strong>-$1.42</strong>, max drawdown -$3.25, 350 fills across 473 orders, a maker fill ratio of 0.91 (320 maker / 29 taker fills), a mean two-sided quote ratio of 0.73, and <strong>zero violations</strong>, for a self-eval score of <strong>-3.36</strong>. The score decomposition is informative: <span class="math inline">\(-3.36 = (-1.42) - 0.50|q_{\text{end}}| - 0.20\,\overline{|q|}\)</span>, with the end-of-day inventory term at zero (the strategy finished flat) and the mean-absolute-inventory penalty contributing the remaining -1.94 — i.e., on this particular day, the strategy’s PnL was nearly break-even and the score was dominated by the cost of simply <em>carrying</em> inventory throughout the session, not by any blow-up.</p>
+<p><img src="pnl_curve.png" class="img-fluid" style="width:100.0%"></p>
+<p><img src="inventory_path.png" class="img-fluid" style="width:100.0%"></p>
+<p>The inventory path stayed within roughly ±25-30 shares all day — comfortably inside the ±80 soft-taper threshold and nowhere near the Warning (180) or Critical (250) regime boundaries. That’s a useful sanity check on the <em>mechanics</em> (safe-cancel, move-gate, microprice reference all functioning with zero violations), but it also means <strong>this particular development day never stress-tested the multi-regime guard, the endgame flatten, or the directional fill signal</strong> — those three features only matter on the kind of high-fill-rate, trending day that 2025-08-26 turned out to be in the hidden set.</p>
+</section>
+<section id="hidden-date-results-week-7-vs-week-8" class="level3">
+<h3 class="anchored" data-anchor-id="hidden-date-results-week-7-vs-week-8">Hidden-date results: Week 7 vs Week 8</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>W7 PnL</th>
+<th>W8 PnL</th>
+<th>ΔPnL</th>
+<th>W7 Score</th>
+<th>W8 Score</th>
+<th>ΔScore</th>
+<th>Violations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-26</td>
+<td>$58.68</td>
+<td>$46.09</td>
+<td>-$12.59</td>
+<td>24.72</td>
+<td>24.84</td>
+<td>+0.12</td>
+<td>0 → 0</td>
+</tr>
+<tr class="even">
+<td>2025-04-08</td>
+<td>$59.27</td>
+<td>$54.19</td>
+<td>-$5.08</td>
+<td>22.33</td>
+<td>32.91</td>
+<td>+10.59</td>
+<td>0 → 0</td>
+</tr>
+<tr class="odd">
+<td>2025-08-26</td>
+<td>-$297.98</td>
+<td>-$85.79</td>
+<td>+$212.18</td>
+<td>-348.94</td>
+<td>-102.59</td>
+<td>+246.35</td>
+<td>1 → 0</td>
+</tr>
+<tr class="even">
+<td><strong>Weighted</strong></td>
+<td><strong>-$180.02</strong></td>
+<td><strong>$14.48</strong></td>
+<td><strong>+$194.50</strong></td>
+<td><strong>-301.9</strong></td>
+<td><strong>-44.83</strong></td>
+<td><strong>+257.07</strong></td>
+<td><strong>1 → 0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img src="comparison.png" class="img-fluid" style="width:100.0%"></p>
+<p>The pattern is exactly the trade-off you’d hope for from a <em>risk-control</em> iteration: on the two calm days, week 8 gives up a little PnL (-$12.59 and -$5.08) — the price of carrying a tighter regime guard and a slightly wider directional-signal quote — while on the volatile day (2025-08-26), the directional fill signal fired early and often during a trending regime with 800 fills, cutting the loss from -$297.98 to -$85.79 and eliminating the violation entirely. Net effect: aggregate PnL flips from -$180.02 to <strong>+$14.48</strong>, and the aggregate score improves by +257 points (-301.9 → -44.83). The instructor’s review marked this “Clear improvement vs Week 7” and raised the Innovation score from 78/100 to <strong>99/100</strong> (Framework 25, Signal Quality 24, Originality 25, Implementation 25), with 58.2% code similarity to week 7 — i.e., a targeted iteration, not a rewrite.</p>
+</section>
+<section id="limits" class="level3">
+<h3 class="anchored" data-anchor-id="limits">Limits</h3>
+<p>The honest summary is: <strong>week 8 turned a catastrophic day into a merely bad one, not a good one.</strong> 2025-08-26 still loses -$85.79 and is still the single worst day by a wide margin — the directional fill signal helps, but <code>DIRECTIONAL_TICKS=1</code> may simply be too small a pushback for a market trending 5+ ticks in one direction, and the Critical regime’s response is to pull one side of the quote entirely, causing temporary one-sided dropout that drags the two-sided ratio down to 0.52 (above the 0.30 penalty threshold, but with little room left). The fill-rate monitor also widens <em>both</em> sides symmetrically when the trending-regime trigger fires, which reduces spread capture on the side that’s actually helping the strategy unwind — an avoidable cost. And the aggregate score, while dramatically improved, is still <strong>negative</strong> (-44.83): this is a strategy that has gotten much less bad, not one that is profitable on a risk-adjusted basis across the hidden set.</p>
+<p>The instructor’s suggestions for a further iteration are concrete and worth recording here as the natural next steps: add a markout-based toxicity diagnostic — an EWMA of <span class="math inline">\(-\text{sign}(\text{fill side})\times(\text{mid}_{t+1s} - \text{fill price})\)</span> — and <em>pause</em> quoting for 10-20 events when it crosses a threshold, rather than only widening; scale <code>DIRECTIONAL_TICKS</code> adaptively (2 ticks at 5+ consecutive same-side fills, pull the accumulating side entirely for 50 events at 7+); make the fill-rate widening asymmetric (apply it only to the side that’s been filling); add hysteresis to the Critical-regime side-pull (restore the pulled side once <span class="math inline">\(|q|\)</span> drops back below 240, rather than waiting to fully exit Critical); and finally, implement the implied-alpha calibration suggested back in week 7 — fitting <code>SKEW_K</code> from observed NBBO spreads via an inverted AS formula, rather than hand-picking 0.10 — which has now been an open suggestion across both rounds of feedback.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1781546823841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1162">
-<a href="./quant_research/trader_strategy_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\trader_strategy_ai\l1_hidden_dates.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — AI-Assisted Development
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1781547036556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
-<a href="./quant_research/execution_strategy_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\execution_strategy_ai\is_progression.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Adaptive Optimal Execution for a $10M AAPL Buy Order — AI-Assisted Development
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1781547135241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1664">
-<a href="./quant_research/market_maker_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\market_maker_ai\pnl_curve.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Adaptive Inventory-Aware Market Making on SOFI — AI-Assisted Development
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1777618800000" data-listing-file-modified-sort="1781543587014" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1024">
-<a href="./quant_research/economic_weather_rotation/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\economic_weather_rotation\cumulative_returns.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Economic Weather Industry Rotation
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Zhihuan Zhang / Zehao Li / Cheng Wei-Chung
-</div>
-<div class="listing-date">
-May 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1746082800000" data-listing-file-modified-sort="1779335887166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
-<a href="./quant_research/serie_temp/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\serie_temp\index_files\figure-html\unnamed-chunk-1-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Modelling a linear time series by an ARIMA model and prediction
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Paul LEMOINE
-</div>
-<div class="listing-date">
-May 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1743490800000" data-listing-file-modified-sort="1780021703105" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1728">
-<a href="./quant_research/monte_carlo_thorisson/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\monte_carlo_thorisson\coupling_normal.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Maximal Coupling: The Thorisson Algorithm
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Apr 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1740816000000" data-listing-file-modified-sort="1780021696742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
-<a href="./quant_research/pokemon_pca/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\pokemon_pca\pokemon.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-PCA on the Pokemon stats
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Mar 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1733040000000" data-listing-file-modified-sort="1779335874751" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1460">
-<a href="./quant_research/bsm_monte_carlo/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\bsm_monte_carlo\simulation.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Pricing options with Black-Sholes-Merton and Monte Carlo in C++
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1651388400000" data-listing-file-modified-sort="1779335891980" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
-<a href="./quant_research/tipe_somnolence/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\tipe_somnolence\neural_network_arch.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Detecting the drowsiness at the wheel
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-May 1, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

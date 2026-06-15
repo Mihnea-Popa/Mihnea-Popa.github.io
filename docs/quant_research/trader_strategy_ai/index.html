@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea POPA">
+<meta name="dcterms.date" content="2026-06-01">
 
-<title>My Quantitative Research – Mihnea POPA</title>
+<title>L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — AI-Assisted Development – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +25,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,35 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -114,7 +91,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -124,9 +101,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mihnea POPA</span>
     </a>
   </div>
@@ -136,27 +113,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-person-circle" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-person-circle" role="img">
 </i> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> <i class="bi bi-file-earmark-check" role="img">
+    <a class="nav-link" href="../../resume.html"> <i class="bi bi-file-earmark-check" role="img">
 </i> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./quant_research.html" aria-current="page"> <i class="bi bi-bar-chart-line" role="img">
+    <a class="nav-link" href="../../quant_research.html"> <i class="bi bi-bar-chart-line" role="img">
 </i> 
 <span class="menu-text">Quantitative Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./socio_economic_research.html"> <i class="bi bi-people" role="img">
+    <a class="nav-link" href="../../socio_economic_research.html"> <i class="bi bi-people" role="img">
 </i> 
 <span class="menu-text">Socio-Economic Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> <i class="bi bi-mortarboard" role="img">
+    <a class="nav-link" href="../../teaching.html"> <i class="bi bi-mortarboard" role="img">
 </i> 
 <span class="menu-text">Teaching</span></a>
   </li>  
@@ -171,22 +148,42 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#weeks-1-2-an-l1-sniper-on-aapl-then-a-regime-aware-rewrite" id="toc-weeks-1-2-an-l1-sniper-on-aapl-then-a-regime-aware-rewrite" class="nav-link active" data-scroll-target="#weeks-1-2-an-l1-sniper-on-aapl-then-a-regime-aware-rewrite">Weeks 1-2: an L1 sniper on AAPL, then a regime-aware rewrite</a></li>
+  <li><a href="#weeks-3-4-extending-to-l2-depth-of-book-on-tsla" id="toc-weeks-3-4-extending-to-l2-depth-of-book-on-tsla" class="nav-link" data-scroll-target="#weeks-3-4-extending-to-l2-depth-of-book-on-tsla">Weeks 3-4: extending to L2 depth-of-book on TSLA</a></li>
+  <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits">Limits</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Quantitative Research</h1>
+<h1 class="title">L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — AI-Assisted Development</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea POPA </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -196,204 +193,103 @@ window.Quarto = {
 </header>
 
 
+<p>This page documents the four-week trading-strategy sequence from <strong>MGMTMFE 412: Trading, Market Frictions, and FinTech</strong> at UCLA Anderson, run against a course autograder that replays real Databento order-book data (<code>AAPL</code> at L1 for weeks 1-2, <code>TSLA</code> at L2 for weeks 3-4) and scores submissions on three <em>hidden</em> out-of-sample dates each week. Every week’s code was written and revised together with <strong>Claude (Anthropic)</strong>: I provided the assignment brief, the previous week’s code, and the instructor’s feedback, and Claude proposed the signal logic, implemented it, and helped debug it against the local simulator before submission. All numbers below — PnL, drawdowns, scores — are taken directly from the autograder’s <code>summary.json</code> files and the instructor’s feedback reports; nothing here is re-simulated for the writeup.</p>
+<section id="weeks-1-2-an-l1-sniper-on-aapl-then-a-regime-aware-rewrite" class="level3">
+<h3 class="anchored" data-anchor-id="weeks-1-2-an-l1-sniper-on-aapl-then-a-regime-aware-rewrite">Weeks 1-2: an L1 sniper on AAPL, then a regime-aware rewrite</h3>
+<p>The week-1 strategy is a high-conviction <em>sniper</em>: it trades only when the volume-weighted micro-price diverges from the mid-price by more than a threshold equivalent to a 90% order-book imbalance, and only when the spread is already at its minimum tick. The signal has a clean closed form, <span class="math inline">\(\text{signal} = \frac{S}{2}\rho\)</span>, where <span class="math inline">\(S\)</span> is the spread and <span class="math inline">\(\rho\)</span> is the size-imbalance ratio — a relationship the instructor’s feedback specifically praised as “genuinely impressive… you didn’t just use a formula, you understood and explained its economic content.” Tight inventory caps and sparse sampling kept violations at zero on all three hidden dates, but the strategy itself proved fragile: on 2025-04-09 it lost $244.15 with a -$336.24 drawdown (score -328.21), dragging the weighted hidden-date score to -80.31 even though the other two dates were fine.</p>
+<p>Week 2 was a near-complete rewrite (11% code similarity to week 1) built around two ideas: a session-level <em>regime classifier</em> that adapts the entry threshold to the prevailing volatility/trend regime, and tighter, adaptive thresholds that no longer fire on the kind of move that produced the 2025-04-09 blow-up. The effect on the hidden dates was dramatic:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Hidden date (weight)</th>
+<th>Week 1 PnL</th>
+<th>Week 2 PnL</th>
+<th>Δ PnL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-18 (25%)</td>
+<td>$12.66</td>
+<td>$4.71</td>
+<td>-$7.95</td>
+</tr>
+<tr class="even">
+<td>2025-04-09 (25%)</td>
+<td>-$244.15</td>
+<td>-$0.78</td>
+<td>+$243.37</td>
+</tr>
+<tr class="odd">
+<td>2025-07-28 (50%)</td>
+<td>$3.88</td>
+<td>$3.25</td>
+<td>-$0.63</td>
+</tr>
+<tr class="even">
+<td><strong>Weighted total</strong></td>
+<td><strong>-$55.93</strong></td>
+<td><strong>$2.61</strong></td>
+<td><strong>+$58.54</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img src="l1_hidden_dates.png" class="img-fluid" style="width:100.0%"></p>
+<p>The hidden weighted score moved from -80.31 to -0.13 — essentially flat — while the Risk Score rose from 67.2/100 to 70.1/100 and the Innovation score from 90/100 to 93/100, and the instructor’s review labeled the change a “CLEAR” improvement. The fix worked precisely where it needed to: it gave up a little PnL on the two calm dates (-$7.95 and -$0.63) in exchange for almost entirely closing out a -$244 tail event. The remaining gap flagged in the feedback is structural rather than parametric: the regime classifier and the trading logic still don’t share a single position-state object — a latent gross-exposure risk if both modules ever tried to act independently — and the regime is classified once at session open rather than re-evaluated intraday.</p>
+</section>
+<section id="weeks-3-4-extending-to-l2-depth-of-book-on-tsla" class="level3">
+<h3 class="anchored" data-anchor-id="weeks-3-4-extending-to-l2-depth-of-book-on-tsla">Weeks 3-4: extending to L2 depth-of-book on TSLA</h3>
+<p>Weeks 3-4 moved to <code>TSLA</code> with full L2 (10-level) order-book access. Porting the week-1/2 AAPL logic directly to TSLA — different tick size, different volatility profile — produced only -$18.85 PnL across 11 orders, confirming that the L1 layer needed re-calibration before any L2 signal could help. Re-tuning the L1 parameters for TSLA (<code>MOM_THRESHOLD_BPS</code> 10 → 20, <code>BB_N_STD</code> 2.0 → 2.5, <code>MAX_SPREAD</code> widened from $0.01 to $0.02-0.03, <code>SIGNAL_THRESHOLD</code> 0.0045 → 0.0135) produced an L1-only TSLA baseline of $20.30 PnL, -$5.46 max drawdown, and 44 fills — the reference point for everything that follows.</p>
+<p>The week-3 submission added two more modules on top of that recalibrated L1 base: a depth-weighted L2 microprice (aggregating cross-weighted price/size across the top 5 levels, with a dynamic threshold of <span class="math inline">\(\max(1.5\,\sigma_{\text{roll}},\ 0.0135)\)</span>), and an order-count-imbalance (OCI) filter that suppresses the size-based signal whenever order <em>counts</em> across the book disagree with order <em>sizes</em> — a spoofing-resistant check the instructor’s review called “a nuanced design choice that reflects genuine understanding of what count vs.&nbsp;size each measure.” On the training dates this scored 97.7/100, but the hidden dates told a different story: weighted PnL of -$7.34 and score -11.62, with <strong>one hidden date (2024-12-26) producing zero orders at all</strong> and another (2025-03-10) losing $36.10 — a textbook sign of overfitting to the training dates.</p>
+<p>Week 4 kept the three-module architecture but fixed the position-management gap directly: a single <code>run_combined_strategy()</code> owns the <em>only</em> position variable in the system, and consumes <code>get_regime_signals()</code>, <code>get_l2_microprice_signals()</code>, and <code>get_order_count_signals()</code> via <code>.asof()</code> joins rather than letting each module manage its own state. The combined decision logic became a small truth table — if the L1 regime signal and the L2 microprice signal agree, enter or hold; if one is neutral, enter on the other; if they actively <em>contradict</em>, veto the trade or flatten the position — backed by an exit hierarchy of stop-loss (30 bps) → Bollinger-band mean-reversion exit → contradiction exit → partial unwind. Risk limits were <code>MAX_POSITION=50</code>, <code>ORDER_QTY=10</code>, <code>MAX_SPREAD=\$0.03</code>, <code>MAX_ORDERS=100</code>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Hidden date</th>
+<th>Week 3 PnL</th>
+<th>Week 4 PnL</th>
+<th>Δ PnL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-26</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>+0.00</td>
+</tr>
+<tr class="even">
+<td>2025-03-10</td>
+<td>-$36.10</td>
+<td>-$10.10</td>
+<td>+26.00</td>
+</tr>
+<tr class="odd">
+<td>2025-08-26</td>
+<td>$14.09</td>
+<td>$16.75</td>
+<td>+2.66</td>
+</tr>
+<tr class="even">
+<td><strong>Weighted total</strong></td>
+<td><strong>-$7.34</strong></td>
+<td><strong>$2.22</strong></td>
+<td><strong>+9.56</strong></td>
+</tr>
+</tbody>
+</table>
+<p><img src="l2_hidden_dates.png" class="img-fluid" style="width:100.0%"></p>
+<p>The hidden weighted score improved from -11.62 to +0.46. Code similarity to week 3 was 62.6% — a substantial but not wholesale rewrite — and the Innovation score rose to 92/100, again flagged as a “CLEAR” improvement. On the current in-repo evaluation (three local dates: 2024-05-02, 2024-10-11, and a 2025-06-24 test date), the final combined strategy produces $47.20 net PnL, -$32.30 max drawdown, 0 violations, and 121 fills across 120 orders, for a local score of 29.03 — versus $20.30 PnL / -$5.46 drawdown / 44 fills for the L1-only TSLA baseline on the same dates.</p>
+<p><img src="l2_pnl_curve.png" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="limits" class="level3">
+<h3 class="anchored" data-anchor-id="limits">Limits</h3>
+<p>Three issues are worth being honest about. First, <strong>2024-12-26 still produces zero orders in both week 3 and week 4</strong> — the combined filter hierarchy (regime + L2 microprice + OCI, all required to align before a trade fires) is apparently never satisfied under that date’s conditions, and neither iteration diagnosed why. Second, the L2 overlay’s PnL gain comes with a real risk cost: max drawdown roughly <em>sextupled</em> (-$5.46 → -$32.30) while PnL grew by only about 130% locally — more signals firing means more trades, higher turnover ($280k), and a noticeably rockier equity curve, which the cumulative-PnL chart above shows clearly in the choppier test-date segment (2025-06-24). Third, the hidden-date weighted score of +0.46 is barely above zero — a genuine improvement over -11.62, but still close to “ties a flat position” rather than a demonstrated edge. The regime classifier in both the L1 and L2 strategies is still computed once at session open rather than updated intraday, a gap the instructor flagged after week 2 that neither week 3 nor week 4 addressed; re-evaluating the regime on a rolling window so the filter hierarchy can react to intraday regime shifts — not just the opening one — would be the natural next iteration.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1781546823841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1162">
-<a href="./quant_research/trader_strategy_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\trader_strategy_ai\l1_hidden_dates.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — AI-Assisted Development
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1781547036556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
-<a href="./quant_research/execution_strategy_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\execution_strategy_ai\is_progression.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Adaptive Optimal Execution for a $10M AAPL Buy Order — AI-Assisted Development
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1781547135241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1664">
-<a href="./quant_research/market_maker_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\market_maker_ai\pnl_curve.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Adaptive Inventory-Aware Market Making on SOFI — AI-Assisted Development
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1777618800000" data-listing-file-modified-sort="1781543587014" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1024">
-<a href="./quant_research/economic_weather_rotation/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\economic_weather_rotation\cumulative_returns.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Economic Weather Industry Rotation
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Zhihuan Zhang / Zehao Li / Cheng Wei-Chung
-</div>
-<div class="listing-date">
-May 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1746082800000" data-listing-file-modified-sort="1779335887166" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
-<a href="./quant_research/serie_temp/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\serie_temp\index_files\figure-html\unnamed-chunk-1-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Modelling a linear time series by an ARIMA model and prediction
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Paul LEMOINE
-</div>
-<div class="listing-date">
-May 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1743490800000" data-listing-file-modified-sort="1780021703105" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1728">
-<a href="./quant_research/monte_carlo_thorisson/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\monte_carlo_thorisson\coupling_normal.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Maximal Coupling: The Thorisson Algorithm
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Apr 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1740816000000" data-listing-file-modified-sort="1780021696742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
-<a href="./quant_research/pokemon_pca/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\pokemon_pca\pokemon.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-PCA on the Pokemon stats
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Mar 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1733040000000" data-listing-file-modified-sort="1779335874751" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1460">
-<a href="./quant_research/bsm_monte_carlo/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\bsm_monte_carlo\simulation.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Pricing options with Black-Sholes-Merton and Monte Carlo in C++
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1651388400000" data-listing-file-modified-sort="1779335891980" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
-<a href="./quant_research/tipe_somnolence/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\tipe_somnolence\neural_network_arch.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Detecting the drowsiness at the wheel
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-May 1, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
