@@ -44,6 +44,7 @@
   {
     "listing": "/quant_research.html",
     "items": [
+      "/quant_research/economic_weather_rotation/index.html",
       "/quant_research/serie_temp/index.html",
       "/quant_research/monte_carlo_thorisson/index.html",
       "/quant_research/pokemon_pca/index.html",
