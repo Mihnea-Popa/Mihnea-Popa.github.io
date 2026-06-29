@@ -9,7 +9,7 @@
 <meta name="author" content="Mihnea POPA">
 <meta name="dcterms.date" content="2026-06-01">
 
-<title>Adaptive Optimal Execution for a $10M AAPL Buy Order — AI-Assisted Development – Mihnea POPA</title>
+<title>Adaptive Optimal Execution for a $10M AAPL Buy Order —   AI-Assisted Development – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,7 +166,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Adaptive Optimal Execution for a $10M AAPL Buy Order — AI-Assisted Development</h1>
+<h1 class="title">Adaptive Optimal Execution for a $10M AAPL Buy Order — <br> AI-Assisted Development</h1>
 </div>
 
 
@@ -204,7 +204,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="v1-segment-voting-momentum-with-ifelif-branching">V1: segment-voting momentum with if/elif branching</h3>
 <p>V1 is a 5-minute clock-bucket executor. At each checkpoint it computes a <em>segment-voting momentum</em> signal — the 15-minute lookback is split into three independent 5-minute sub-windows, each compared against a smoothed mid-price anchor, and a trade direction is confirmed only if at least 2 of 3 sub-windows agree (with a <code>min_valid_segments=3</code> guard to avoid false signals in the first 15 minutes). This vote is combined with an L1 book-imbalance multiplier and a spread-aware limit/market order selector, on top of a geometric-decay base schedule (<code>remaining_qty × dynamic_frac</code>) that naturally front-loads execution.</p>
 <p>On the training date this scored <strong>1.80 bps</strong> — a huge improvement over TWAP’s 7.80 bps, since front-loading is exactly the right thing to do on an uptrend day (buy before the price rises further). But the decision logic was a stack of hard-coded <code>if/elif</code> branches with discrete multipliers (2x / 1.3x / 0.6x), which the instructor’s feedback flagged as the strategy’s central weakness: “what is missing is the guide’s unified urgency score… the student uses separate if/elif branches… rather than a single linear combination that allows all signals to interact continuously.”</p>
-<p>Before committing to V1’s signal set, I (with Claude) ran an empirical accuracy comparison of L1 vs.&nbsp;L2 directional signals on the training date, at both 1-minute and 5-minute horizons:</p>
+<p>Before committing to V1’s signal set, I ran an empirical accuracy comparison of L1 vs.&nbsp;L2 directional signals on the training date, at both 1-minute and 5-minute horizons:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -236,7 +236,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>L2 signals were <em>worse than random</em> at the 5-minute checkpoint horizon for AAPL — the instructor’s read is that “HFT market-maker quoting dominates levels 1-9,” so depth beyond the top of book is mostly noise for a 5-minute decision cadence. That result is why both V1 and V2 stayed L1-only by design, in contrast to the L2-heavy trader strategies on the other pages of this site.</p>
+<p>L2 signals were <em>worse than random</em> at the 5-minute checkpoint horizon for AAPL — the instructor’s read is that “HFT market-maker quoting dominates levels 1-9,” so depth beyond the top of book is mostly noise for a 5-minute decision cadence. That result is why both V1 and V2 stayed L1-only by design.</p>
 <p>Two alternatives were tried and rejected before settling on the geometric-decay + signal-multiplier design. A pure VWAP-tracking schedule gave <strong>9.70 bps</strong> — <em>worse</em> than TWAP, because on an uptrend day VWAP “back-loads into peak prices.” A fixed-fraction schedule (<code>BASE_FRACTION=0.07</code> applied uniformly, no signals at all) gave <strong>1.05 bps</strong> — the best in-sample number of any variant — but was rejected as overfit to a single uptrend training day with no adaptive mechanism for a different regime.</p>
 </section>
 <section id="v2-a-unified-urgency-score" class="level3">

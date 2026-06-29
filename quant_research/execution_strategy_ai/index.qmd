@@ -1,5 +1,5 @@
 ---
-title: "Adaptive Optimal Execution for a $10M AAPL Buy Order — AI-Assisted Development"
+title: "Adaptive Optimal Execution for a $10M AAPL Buy Order — <br> AI-Assisted Development"
 author: Mihnea POPA
 description: " "
 date: June 2026
@@ -28,7 +28,7 @@ V1 is a 5-minute clock-bucket executor. At each checkpoint it computes a *segmen
 
 On the training date this scored **1.80 bps** — a huge improvement over TWAP's 7.80 bps, since front-loading is exactly the right thing to do on an uptrend day (buy before the price rises further). But the decision logic was a stack of hard-coded `if/elif` branches with discrete multipliers (2x / 1.3x / 0.6x), which the instructor's feedback flagged as the strategy's central weakness: "what is missing is the guide's unified urgency score... the student uses separate if/elif branches... rather than a single linear combination that allows all signals to interact continuously."
 
-Before committing to V1's signal set, I (with Claude) ran an empirical accuracy comparison of L1 vs. L2 directional signals on the training date, at both 1-minute and 5-minute horizons:
+Before committing to V1's signal set, I ran an empirical accuracy comparison of L1 vs. L2 directional signals on the training date, at both 1-minute and 5-minute horizons:
 
 | Signal | 1-min accuracy | 5-min accuracy |
 |---|---|---|
@@ -37,7 +37,7 @@ Before committing to V1's signal set, I (with Claude) ran an empirical accuracy 
 | L2 depth-weighted microprice | 32.8% | 45.3% |
 | Multi-level order-flow imbalance (Cont et al., 2014) | **47.7%** | — |
 
-L2 signals were *worse than random* at the 5-minute checkpoint horizon for AAPL — the instructor's read is that "HFT market-maker quoting dominates levels 1-9," so depth beyond the top of book is mostly noise for a 5-minute decision cadence. That result is why both V1 and V2 stayed L1-only by design, in contrast to the L2-heavy trader strategies on the other pages of this site.
+L2 signals were *worse than random* at the 5-minute checkpoint horizon for AAPL — the instructor's read is that "HFT market-maker quoting dominates levels 1-9," so depth beyond the top of book is mostly noise for a 5-minute decision cadence. That result is why both V1 and V2 stayed L1-only by design.
 
 Two alternatives were tried and rejected before settling on the geometric-decay + signal-multiplier design. A pure VWAP-tracking schedule gave **9.70 bps** — *worse* than TWAP, because on an uptrend day VWAP "back-loads into peak prices." A fixed-fraction schedule (`BASE_FRACTION=0.07` applied uniformly, no signals at all) gave **1.05 bps** — the best in-sample number of any variant — but was rejected as overfit to a single uptrend training day with no adaptive mechanism for a different regime.
 

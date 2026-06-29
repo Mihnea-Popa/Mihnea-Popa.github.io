@@ -14,7 +14,7 @@ toc: false
 
 ## Current
 
-- Master of Financial Engineering Student | UCLA Anderson
+- Master of Financial Engineering Student | <br> UCLA Anderson
 - Aspiring Quant Researcher & Trader
 
 ---
@@ -33,3 +33,4 @@ toc: false
 - FX, Equities & Commodities
 - Financial Risk Measurement & Management
 - Stochastic Calculus & Derivatives Pricing
+- Data Science & Statistical Analytics

@@ -35,7 +35,7 @@ $$
 \hat{\mu}_{i,t} = \tilde{\alpha}_{i,t} + \hat{\beta}_{i,t}'\tilde{f}_t + 0.012\, z(\text{MOM}_{i,t}) + \omega_{i,t}^{\text{weather}}.
 $$
 
-Here $\tilde{\alpha}_{i,t}$ is the industry's factor-model intercept after cross-sectional shrinkage, so a handful of noisy outlier alphas can't dominate the ranking. $\tilde{f}_t$ is a forecast of next month's factor premia, blending historical factor means with ridge regressions on lagged FRED macro variables — the term spread, unemployment, industrial production growth, and inflation. $\text{MOM}_{i,t}$ is the industry's 12-month return skipping the most recent month, entered as a `cross-sectional z-score`. The last term, $\omega_{i,t}^{\text{weather}}$, is the Economic Weather overlay described next.
+Here $\tilde{\alpha}_{i,t}$ is the industry's factor-model intercept after cross-sectional shrinkage, so a handful of noisy outlier alphas can't dominate the ranking. $\tilde{f}_t$ is a forecast of next month's factor premia, blending historical factor means with ridge regressions on lagged FRED macro variables — the term spread, unemployment, industrial production growth, and inflation. $\text{MOM}_{i,t}$ is the industry's 12-month return skipping the most recent month, entered as a cross-sectional z-score. The last term, $\omega_{i,t}^{\text{weather}}$, is the Economic Weather overlay described next.
 
 ### The economic weather overlay
 

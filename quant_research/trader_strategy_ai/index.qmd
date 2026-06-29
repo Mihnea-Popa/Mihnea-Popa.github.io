@@ -1,5 +1,5 @@
 ---
-title: "L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — AI-Assisted Development"
+title: "L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — <br>  AI-Assisted Development"
 author: Mihnea POPA
 description: " "
 date: June 2026
@@ -15,6 +15,8 @@ format:
         }
         </style>
 ---
+
+![](l2_pnl_curve.png){width=1pt}
 
 This page documents the four-week trading-strategy sequence from **MGMTMFE 412: Trading, Market Frictions, and FinTech** at UCLA Anderson, run against a course autograder that replays real Databento order-book data (`AAPL` at L1 for weeks 1-2, `TSLA` at L2 for weeks 3-4) and scores submissions on three *hidden* out-of-sample dates each week. Every week's code was written and revised together with **Claude (Anthropic)**: I provided the assignment brief, the previous week's code, and the instructor's feedback, and Claude proposed the signal logic, implemented it, and helped debug it against the local simulator before submission. All numbers below — PnL, drawdowns, scores — are taken directly from the autograder's `summary.json` files and the instructor's feedback reports; nothing here is re-simulated for the writeup.
 

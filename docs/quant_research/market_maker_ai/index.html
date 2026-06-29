@@ -153,7 +153,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks" id="toc-week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks" class="nav-link active" data-scroll-target="#week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks">Week 7 baseline: a textbook Avellaneda-Stoikov quoter, and where it breaks</a></li>
+  <li><a href="#week-7-baseline-a-avellaneda-stoikov-quoter-and-where-it-breaks" id="toc-week-7-baseline-a-avellaneda-stoikov-quoter-and-where-it-breaks" class="nav-link active" data-scroll-target="#week-7-baseline-a-avellaneda-stoikov-quoter-and-where-it-breaks">Week 7 baseline: a Avellaneda-Stoikov quoter, and where it breaks</a></li>
   <li><a href="#week-8-six-targeted-fixes" id="toc-week-8-six-targeted-fixes" class="nav-link" data-scroll-target="#week-8-six-targeted-fixes">Week 8: six targeted fixes</a></li>
   <li><a href="#local-self-evaluation-development-day-2024-08-01" id="toc-local-self-evaluation-development-day-2024-08-01" class="nav-link" data-scroll-target="#local-self-evaluation-development-day-2024-08-01">Local self-evaluation (development day, 2024-08-01)</a></li>
   <li><a href="#hidden-date-results-week-7-vs-week-8" id="toc-hidden-date-results-week-7-vs-week-8" class="nav-link" data-scroll-target="#hidden-date-results-week-7-vs-week-8">Hidden-date results: Week 7 vs Week 8</a></li>
@@ -197,11 +197,16 @@ window.Quarto = {
 
 <p>This page documents the market-making assignment from <strong>MGMTMFE 412: Trading, Market Frictions, and FinTech</strong> at UCLA Anderson: maintain a two-sided quote on <code>SOFI</code> using a callback API (<code>build_strategy</code> → <code>on_market_event</code> / <code>on_fill</code>) against full L3 order-book data, graded on three hidden out-of-sample dates by</p>
 <p><span class="math display">\[
-\text{Score} = \text{NetPnL} - 0.50\,|q_{\text{end}}| - 0.20\,\overline{|q|} - 50\max(0,\, 0.30 - \text{two-sided ratio}) - 10 \times \text{market orders} - 25 \times \text{violations}.
+\text{Score}
+= \text{NetPnL}
+- 0.20\,\overline{\lvert q \rvert}
+- 50\,(0.30 - \text{two-sided ratio})^{+}
+- 10\,\text{market orders}
+- 25\,\text{violations}.
 \]</span></p>
-<p>As with the other strategies on this site, the code was developed iteratively with <strong>Claude (Anthropic)</strong>: I supplied the assignment brief, the previous week’s code, and the instructor’s feedback, and Claude proposed and implemented the quoting logic, which I then tested locally before submission. All figures below come from the autograder’s <code>summary.json</code> outputs and the instructor’s feedback reports.</p>
-<section id="week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks" class="level3">
-<h3 class="anchored" data-anchor-id="week-7-baseline-a-textbook-avellaneda-stoikov-quoter-and-where-it-breaks">Week 7 baseline: a textbook Avellaneda-Stoikov quoter, and where it breaks</h3>
+<p>As with the other strategies, the code was developed iteratively with <strong>Claude (Anthropic)</strong>: I supplied the assignment brief, the previous week’s code, and the instructor’s feedback, and Claude proposed and implemented the quoting logic, which I then tested locally before submission. All figures below come from the autograder’s <code>summary.json</code> outputs and the instructor’s feedback reports.</p>
+<section id="week-7-baseline-a-avellaneda-stoikov-quoter-and-where-it-breaks" class="level3">
+<h3 class="anchored" data-anchor-id="week-7-baseline-a-avellaneda-stoikov-quoter-and-where-it-breaks">Week 7 baseline: a Avellaneda-Stoikov quoter, and where it breaks</h3>
 <p>The week-7 submission implements a linear inventory-skewed reservation price, <span class="math inline">\(r = \text{mid} - 0.10 \cdot q \cdot \text{tick}\)</span>, quoting 10 shares on each side with a 1-tick half-spread. Its main engineering contribution is a <em>safe-cancel</em> guard — only cancel an order that is provably behind the NBBO (a resting sell above the current ask, or a resting buy below the current bid) — combined with a two-level throttle: Level 1 immediately resubmits only the side that just got filled, while Level 2 refreshes both sides every 150 events. An inventory taper linearly reduces the accumulating side’s size as <span class="math inline">\(|q|\)</span> grows from 150 to 300 shares.</p>
 <p>On the hidden dates this scored an aggregate <strong>-301.9</strong>, with net PnL of <strong>-$180.02</strong>, a two-sided quote coverage of only 0.45 (below the 0.30 penalty threshold is fine, but barely), and <strong>1 violation</strong>:</p>
 <table class="caption-top table">
@@ -264,7 +269,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="week-8-six-targeted-fixes">Week 8: six targeted fixes</h3>
 <p>Rather than a rewrite, week 8 kept the AS skeleton and layered on six changes aimed squarely at the three diagnosed weaknesses:</p>
 <ol type="1">
-<li><strong>Move-gate throttle</strong> — the Level-2 refresh now fires only when both 150 events have passed <em>and</em> the NBBO has moved by at least one tick, eliminating churn on flat markets while staying responsive to real price moves.</li>
+<li><strong>Move-gate throttle</strong> — the Level-2 refresh now fires only when both 150 events have passed <em>and</em> the NBBO has moved by at least one tick, eliminating churn on flat markets while staying responsive to price moves.</li>
 <li><strong>Stronger, non-cosmetic skew</strong> — a regime-dependent <code>extra_skew</code> adds up to 2 ticks (Warning regime: a fraction of 2 ticks; Critical regime: a flat 2 ticks) on top of the linear <code>SKEW_K</code> term, and the inventory clamp that previously bound at <span class="math inline">\(|q|=20\)</span> was raised from 2 to 4 ticks.</li>
 <li><strong>Multi-regime inventory guard</strong> — Normal (<span class="math inline">\(|q|\le180\)</span>), Warning (<span class="math inline">\(180&lt;|q|\le250\)</span>), and Critical (<span class="math inline">\(|q|&gt;250\)</span>, hard cap at <code>MAX_INVENTORY=300</code>) each get distinct tapering and quote-sending logic, rather than one linear taper across the whole range.</li>
 <li><strong>Microprice reference</strong> — the reservation price is now anchored to a queue-weighted microprice, <span class="math inline">\(\text{microprice} = \frac{P_{\text{ask}} \cdot Q_{\text{bid}} + P_{\text{bid}} \cdot Q_{\text{ask}}}{Q_{\text{bid}} + Q_{\text{ask}}}\)</span>, rather than the simple mid — systematically reducing adverse selection.</li>
