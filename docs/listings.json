@@ -44,6 +44,7 @@
   {
     "listing": "/quant_research.html",
     "items": [
+      "/quant_research/closing_auction_trading/index.html",
       "/quant_research/market_maker_ai/index.html",
       "/quant_research/execution_strategy_ai/index.html",
       "/quant_research/gnn_portfolio/index.html",

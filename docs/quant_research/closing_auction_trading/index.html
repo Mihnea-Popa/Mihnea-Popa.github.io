@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea POPA / Anikesh BHUVANESHWARAM / Nicolas CID / Yilin CHEN / Katherine JIN">
+<meta name="dcterms.date" content="2026-06-01">
 
-<title>My Quantitative Research – Mihnea POPA</title>
+<title>Closing Auction Trading on AAPL   (AI-Assisted) – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +25,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -54,35 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -114,7 +91,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -124,9 +101,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Mihnea POPA</span>
     </a>
   </div>
@@ -136,27 +113,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-person-circle" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-person-circle" role="img">
 </i> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> <i class="bi bi-file-earmark-check" role="img">
+    <a class="nav-link" href="../../resume.html"> <i class="bi bi-file-earmark-check" role="img">
 </i> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./quant_research.html" aria-current="page"> <i class="bi bi-bar-chart-line" role="img">
+    <a class="nav-link" href="../../quant_research.html"> <i class="bi bi-bar-chart-line" role="img">
 </i> 
 <span class="menu-text">Quantitative Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./socio_economic_research.html"> <i class="bi bi-people" role="img">
+    <a class="nav-link" href="../../socio_economic_research.html"> <i class="bi bi-people" role="img">
 </i> 
 <span class="menu-text">Socio-Economic Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> <i class="bi bi-mortarboard" role="img">
+    <a class="nav-link" href="../../teaching.html"> <i class="bi bi-mortarboard" role="img">
 </i> 
 <span class="menu-text">Teaching</span></a>
   </li>  
@@ -171,22 +148,47 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-economic-idea" id="toc-the-economic-idea" class="nav-link active" data-scroll-target="#the-economic-idea">The Economic Idea</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#the-5-features" id="toc-the-5-features" class="nav-link" data-scroll-target="#the-5-features">The 5 Features</a></li>
+  <li><a href="#the-model" id="toc-the-model" class="nav-link" data-scroll-target="#the-model">The Model</a></li>
+  <li><a href="#trade-mechanics" id="toc-trade-mechanics" class="nav-link" data-scroll-target="#trade-mechanics">Trade Mechanics</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#beta-analysis" id="toc-beta-analysis" class="nav-link" data-scroll-target="#beta-analysis">Beta Analysis</a></li>
+  <li><a href="#risk-and-limitations" id="toc-risk-and-limitations" class="nav-link" data-scroll-target="#risk-and-limitations">Risk and Limitations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Quantitative Research</h1>
+<h1 class="title">Closing Auction Trading on AAPL <br> (AI-Assisted)</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea POPA / Anikesh BHUVANESHWARAM / Nicolas CID / Yilin CHEN / Katherine JIN </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -196,266 +198,213 @@ window.Quarto = {
 </header>
 
 
+<p>This page presents the final group project for <strong>MGMTMFE 412 Trading, Market Frictions and FinTech</strong> at UCLA Anderson. The project builds a short-term trading strategy around the NASDAQ closing auction on Apple (AAPL), using Level 2 order-book data to predict the direction of the price move in the last 12 minutes before the auction prints.</p>
+<p></p><div><object data="report.pdf" type="application/pdf" width="1" height="1"><a href="report.pdf" download="">Download PDF file.</a></object><br><a href="report.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download Report</a></div> <div><object data="slides.pdf" type="application/pdf" width="1" height="1"><a href="slides.pdf" download="">Download PDF file.</a></object><br><a href="slides.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download Slides</a></div><p></p>
+<section id="the-economic-idea" class="level3">
+<h3 class="anchored" data-anchor-id="the-economic-idea">The Economic Idea</h3>
+<p>Every trading day at 4:00 PM, NASDAQ sets a single official closing price by matching all Market-on-Close (MOC) orders in a batch auction. Between 25% and 30% of the entire day’s volume in a stock like AAPL can clear in this one event. Institutions accumulate MOC orders throughout the day, but the official net imbalance figure is not published until 3:50 PM. Before that, the pressure from those orders has to go somewhere — and it leaves a trace in the continuous Level 2 (L2) order book.</p>
+<p>The strategy is built on this observation. If you can read the pre-auction order-book dynamics between 3:15 and 3:45 PM — detecting which side (buy or sell) is building up more pressure — you can make a short-term directional bet in the 12-minute window before the auction clears. The trade enters at 3:45 PM and exits no later than 3:57 PM, always before the 4:00 PM print. This keeps holding time short, avoids overnight risk, and targets a structural friction rather than a news or momentum signal.</p>
+</section>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<p>The raw data is AAPL Level 2 market-by-price (MBP-10) data from <strong>Databento — XNAS.ITCH</strong>, covering the top 10 bid and ask levels. The sample runs from September 27, 2024 to May 15, 2025, giving 158 trading days. The split is 90 days for training and 68 days for out-of-sample testing. AAPL is chosen specifically because of its tight spread (around 1¢ on a $220 stock, so the round-trip cost is roughly 0.9 bps) and its deep order book, both of which make a short-term L2 strategy feasible.</p>
+</section>
+<section id="the-5-features" class="level3">
+<h3 class="anchored" data-anchor-id="the-5-features">The 5 Features</h3>
+<p>At each trading day, five signals are computed from the 3:15–3:45 PM window and fed into the model:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Window</th>
+<th>What it captures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>imb_early</code></td>
+<td>3:15 – 3:35 PM</td>
+<td>Exponential-decay depth imbalance — sustained pre-auction positioning</td>
+</tr>
+<tr class="even">
+<td><code>imb_late</code></td>
+<td>3:35 – 3:45 PM</td>
+<td>Same measure, last 10 minutes — where late MOC flow concentrates</td>
+</tr>
+<tr class="odd">
+<td><code>mom_30</code></td>
+<td>Full 30 min</td>
+<td>Microprice return over the window (in bps) — the directional anchor</td>
+</tr>
+<tr class="even">
+<td><code>mom_accel</code></td>
+<td>Last 15 min</td>
+<td>Late momentum minus full-window momentum — is the move speeding up?</td>
+</tr>
+<tr class="odd">
+<td><code>cancel_imb</code></td>
+<td>Full 30 min</td>
+<td>Ask cancellations minus bid cancellations — liquidity being pulled before the auction</td>
+</tr>
+</tbody>
+</table>
+<p>All five features are standardized to zero mean and unit variance on training days only, so the model never sees future information during the OOS period.</p>
+</section>
+<section id="the-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-model">The Model</h3>
+<p>The model is a <strong>Ridge regression</strong> with regularization parameter <span class="math inline">\(\alpha = 15\)</span>:</p>
+<p><span class="math display">\[
+\hat{y}_t = \beta_0 + \beta_{ie}\, z(\texttt{imb\_early}) + \beta_{il}\, z(\texttt{imb\_late}) + \beta_{30}\, z(\texttt{mom\_30}) + \beta_{ac}\, z(\texttt{mom\_accel}) + \beta_{ci}\, z(\texttt{cancel\_imb}).
+\]</span></p>
+<p>The target <span class="math inline">\(\hat{y}_t\)</span> is the predicted 12-minute microprice return in basis points. Ridge is used instead of plain OLS because with only 90 training days and 5 correlated features, OLS tends to produce very unstable coefficients. The <span class="math inline">\(\alpha = 15\)</span> penalty keeps all coefficients modest (max absolute value 3.5) and reduces the risk of overfitting the training set.</p>
+<p>The fitted coefficients and their interpretation:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Coefficient</th>
+<th>Sign</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intercept</td>
+<td>+0.46</td>
+<td></td>
+<td>Slight upward drift in the pre-close window</td>
+</tr>
+<tr class="even">
+<td><code>imb_early</code></td>
+<td>+0.46</td>
+<td>↑</td>
+<td>More bid depth early → price tends to go up</td>
+</tr>
+<tr class="odd">
+<td><code>imb_late</code></td>
+<td>−0.78</td>
+<td>↓</td>
+<td>Heavy late bid depth absorbs sell-MOC flow — bearish signal</td>
+</tr>
+<tr class="even">
+<td><code>mom_30</code></td>
+<td>+3.52</td>
+<td>↑↑</td>
+<td>Dominant feature: price trending into the close tends to continue</td>
+</tr>
+<tr class="odd">
+<td><code>mom_accel</code></td>
+<td>+2.99</td>
+<td>↑↑</td>
+<td>Late acceleration reinforces the trend signal</td>
+</tr>
+<tr class="even">
+<td><code>cancel_imb</code></td>
+<td>−0.21</td>
+<td>↓</td>
+<td>More ask cancellations → market makers pulling liquidity → bearish</td>
+</tr>
+</tbody>
+</table>
+<p>The in-sample <span class="math inline">\(R^2\)</span> is 0.096 (hit rate 55.6%), which is modest but meaningful for a 12-minute microstructure signal. The model is not trying to explain most of the price move — it only needs to get the sign right more often than not.</p>
+</section>
+<section id="trade-mechanics" class="level3">
+<h3 class="anchored" data-anchor-id="trade-mechanics">Trade Mechanics</h3>
+<p>A trade is triggered at <strong>3:45 PM</strong> only if two conditions are met: (1) the predicted signal <span class="math inline">\(|\hat{y}_t| \geq 1.5\)</span> bps, which clears the transaction cost buffer; and (2) the bid-ask spread is <span class="math inline">\(\leq 3\)</span>¢, confirming the market is liquid enough to fill at a reasonable price. If the signal is positive the strategy buys at the ask; if negative it sells at the bid. Orders are flat by 3:57 PM every day — no overnight exposure.</p>
+<p>Position size is scaled by signal strength: <span class="math inline">\(\text{qty} = \text{round}(|\hat{y}_t| / 3) \in [1, 5]\)</span> shares. A weak signal of 1.5 bps gives 1 share; a strong signal above 13 bps gives 5 shares.</p>
+<p>Exits are adaptive, checked every 15 seconds: - <strong>Stop-loss</strong>: exit immediately if the position moves 12 bps against you. - <strong>Take-profit</strong>: exit immediately if the position gains 22 bps. - <strong>Scheduled exit</strong>: otherwise, close at 3:57 PM.</p>
+<p>The asymmetric payoff — take-profit 22 bps vs.&nbsp;stop-loss 12 bps (ratio 1.83) — means the break-even win rate is 35.3%, well below the model’s 55%+ hit rate.</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>The strategy was tested over the full 158-day sample (90 in-sample / 68 out-of-sample). The model was trained only on the in-sample period and never touched again before the OOS evaluation.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>In-Sample (90 days)</th>
+<th>Out-of-Sample (68 days)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Net return (% of notional)</td>
+<td>+2.93%</td>
+<td>+5.18%</td>
+</tr>
+<tr class="even">
+<td>Annualized return</td>
+<td>+8.21%/yr</td>
+<td>+19.19%/yr</td>
+</tr>
+<tr class="odd">
+<td>Annualized volatility</td>
+<td>2.22%/yr</td>
+<td>3.80%/yr</td>
+</tr>
+<tr class="even">
+<td>Sharpe ratio</td>
+<td>3.70</td>
+<td>5.05</td>
+</tr>
+<tr class="odd">
+<td>Win rate</td>
+<td>54.5% (36/66)</td>
+<td>59.5% (25/42)</td>
+</tr>
+<tr class="even">
+<td>Max drawdown</td>
+<td>−0.56%</td>
+<td>−1.38%</td>
+</tr>
+<tr class="odd">
+<td>Days traded / total</td>
+<td>66/90</td>
+<td>42/68</td>
+</tr>
+</tbody>
+</table>
+<p>Statistical significance: IS <span class="math inline">\(t\)</span>-stat = 2.20 (<span class="math inline">\(p\)</span> = 0.014); OOS <span class="math inline">\(t\)</span>-stat = 2.61 (<span class="math inline">\(p\)</span> = 0.005). The OOS Sharpe exceeds IS because the March–April 2025 tariff sell-off created large intraday moves in AAPL — the signal fired on high-conviction days and the per-trade PnL was larger than during the calmer training period. The 95% confidence interval on the OOS Sharpe is wide ([1.15, 8.88]), so a realistic long-run estimate of the true edge is 2–4.</p>
+<p>The charts below show cumulative PnL, rolling Sharpe, and daily inventory for both the in-sample and out-of-sample periods:</p>
+<p><strong>In-Sample Strategy Diagnostics:</strong></p>
+<p><img src="strategy_plots_IS.png" class="img-fluid" style="width:100.0%"></p>
+<p><strong>Out-of-Sample Strategy Diagnostics:</strong></p>
+<p><img src="strategy_plots_OOS.png" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="beta-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="beta-analysis">Beta Analysis</h3>
+<p>The strategy is designed to be market-neutral by construction: a 12-minute hold barely gives the market time to move, there is no overnight exposure, and positions are flat every day at 3:57 PM.</p>
+<p>The regression of daily strategy PnL on SPX daily returns (on trading days only) confirms this:</p>
+<ul>
+<li><strong>In-sample</strong>: <span class="math inline">\(\beta = +2.36\)</span>, <span class="math inline">\(p = 0.667\)</span> — not statistically different from zero, as expected.</li>
+<li><strong>Out-of-sample</strong>: <span class="math inline">\(\beta = +12.50\)</span>, <span class="math inline">\(p = 0.033\)</span>, <span class="math inline">\(R^2 = 8.9%\)</span> — significantly positive, but this is a regime artifact, not a design flaw. During the March–April 2025 tariff sell-off, AAPL moved sharply ($250 → $170), and on those days the auction-flow signal and market direction happened to point the same way. The remaining 91% of OOS PnL variance is idiosyncratic alpha.</li>
+</ul>
+<p><img src="beta_scatter.png" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="risk-and-limitations" class="level3">
+<h3 class="anchored" data-anchor-id="risk-and-limitations">Risk and Limitations</h3>
+<p>The main risks the strategy faces are:</p>
+<p><strong>Macro events during 3:45–3:57 PM.</strong> An FOMC announcement, earnings release, or large block print after entry can overwhelm the signal and trigger the stop-loss. This is the hardest risk to hedge in a 12-minute window.</p>
+<p><strong>Late MOC flip.</strong> If a large opposing MOC order arrives late and reverses the book imbalance, the signal becomes stale. The strategy has no way to update once it enters.</p>
+<p><strong>Signal decay.</strong> The model uses a fixed set of training weights. A decay monitor flags when the trailing 30-day <span class="math inline">\(R^2\)</span> falls below 5% or the hit rate approaches the 35.3% break-even level, triggering a quarterly retrain.</p>
+<p><strong>Capacity.</strong> At the current 1–5 share size, market impact is negligible. At $10M deployment (~45K shares per trade), impact is less than 0.5 bps. The capacity wall sits at approximately $50–100M, where market impact at entry reaches the 1.5 bps signal threshold and begins eroding the edge.</p>
+<p><strong>Sample size.</strong> The OOS period is 42 trading days — enough to compute statistics, but a single historical path. The confidence intervals on Sharpe differences are wide, and generalisation to other tickers has not been tested.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1782776975916" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1384">
-<a href="./quant_research/closing_auction_trading/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/closing_auction_trading/strategy_plots_IS.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Closing Auction Trading on AAPL <br> (AI-Assisted)
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Anikesh BHUVANESHWARAM / Nicolas CID / Yilin CHEN / Katherine JIN
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1780297200000" data-listing-file-modified-sort="1782771859249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1650">
-<a href="./quant_research/market_maker_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/market_maker_ai/pnl_curve.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Adaptive Inventory Market Making on SOFI <br> (AI-Assisted)
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1777618800000" data-listing-file-modified-sort="1782772894519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1380">
-<a href="./quant_research/execution_strategy_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/execution_strategy_ai/is_progression.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Optimal Execution for a $10M AAPL Buy Order <br> (AI-Assisted)
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-May 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1777618800000" data-listing-file-modified-sort="1782772869811" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1935">
-<a href="./quant_research/gnn_portfolio/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/gnn_portfolio/fig5_final_cumret.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Graph Neural Network for S&amp;P 500 Portfolio Construction
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Anikesh BHUVANESHWARAM / Ali MOAZZAMI / Jakob ARONSSON
-</div>
-<div class="listing-date">
-May 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1775026800000" data-listing-file-modified-sort="1782772856694" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1162">
-<a href="./quant_research/trader_strategy_ai/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/trader_strategy_ai/l2_pnl_curve.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-L1/L2 Trading Strategies for AAPL and TSLA <br> (AI-Assisted)
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Apr 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1775026800000" data-listing-file-modified-sort="1782772833916" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1024">
-<a href="./quant_research/economic_weather_rotation/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/economic_weather_rotation/weather_performance.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Economic Weather-Based Industry Rotation Portfolio
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Zhihuan Zhang / Zehao Li / Cheng Wei-Chung
-</div>
-<div class="listing-date">
-Apr 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1746082800000" data-listing-file-modified-sort="1782771634423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="109">
-<a href="./quant_research/serie_temp/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="quant_research\serie_temp\index_files\figure-html\unnamed-chunk-1-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Modelling a linear time series by an ARIMA model and prediction
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA / Paul LEMOINE
-</div>
-<div class="listing-date">
-May 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1743490800000" data-listing-file-modified-sort="1782771552421" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1728">
-<a href="./quant_research/monte_carlo_thorisson/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/monte_carlo_thorisson/coupling_normal.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Maximal Coupling: The Thorisson Algorithm
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Apr 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1740816000000" data-listing-file-modified-sort="1782771598459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
-<a href="./quant_research/pokemon_pca/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/pokemon_pca/pokemon.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-PCA on the Pokemon stats
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Mar 1, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="9" data-listing-date-sort="1733040000000" data-listing-file-modified-sort="1782771395388" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1460">
-<a href="./quant_research/bsm_monte_carlo/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/bsm_monte_carlo/simulation.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Pricing options with Black-Sholes-Merton and Monte Carlo in C++
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-Dec 1, 2024
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="10" data-listing-date-sort="1651388400000" data-listing-file-modified-sort="1782771660983" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
-<a href="./quant_research/tipe_somnolence/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./quant_research/tipe_somnolence/neural_network_arch.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Detecting the drowsiness at the wheel
-</h5>
-<div class="card-text listing-description delink">
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Mihnea POPA
-</div>
-<div class="listing-date">
-May 1, 2022
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
