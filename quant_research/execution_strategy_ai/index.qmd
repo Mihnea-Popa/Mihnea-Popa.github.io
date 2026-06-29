@@ -1,9 +1,10 @@
 ---
-title: "Adaptive Optimal Execution for a $10M AAPL Buy Order — <br> AI-Assisted Development"
+title: "Optimal Execution for a $10M AAPL Buy Order <br> (AI-Assisted) "
 author: Mihnea POPA
 description: " "
 date: June 2026
 order: -3
+image: is_progression.png
 format:
   html:
     include-in-header:

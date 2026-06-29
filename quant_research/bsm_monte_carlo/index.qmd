@@ -4,6 +4,7 @@ author: Mihnea POPA
 description: " "
 date: December 2024
 order: 4
+image: simulation.jpg
 format:
   html:
     include-in-header:

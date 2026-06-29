@@ -22,6 +22,11 @@ body {
   background-color: #e4eaf2;
 }
 
+/* Hid the authors names */
+.quarto-grid-item .listing-author {
+    display: none;
+}
+
 /* Justified text blocks */
 .justified p {
   text-align: justify;

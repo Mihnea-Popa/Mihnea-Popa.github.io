@@ -4,6 +4,7 @@ author: "Mihnea Popa"
 description: " "
 order: 1
 date: "June 2025"
+image: attractivity_ratio_INSEE.png
 format:
   html:
     include-in-header:
@@ -19,7 +20,6 @@ resources:
   - _analyse_mobilites_NM_INSEE.ipynb
 ---
 
-![](attractivity_ratio_INSEE.png){width=1pt}
 
 ## Introduction
 

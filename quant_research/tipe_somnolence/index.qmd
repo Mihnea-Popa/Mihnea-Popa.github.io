@@ -4,6 +4,7 @@ author: Mihnea POPA
 description: " "
 date: May 2022
 order: 5
+image: neural_network_arch.png
 format:
   html:
     include-in-header:

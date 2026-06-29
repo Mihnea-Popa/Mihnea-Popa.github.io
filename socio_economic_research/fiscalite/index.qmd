@@ -4,6 +4,7 @@ author: Mihnea POPA / Tristan FABRE
 description: " "
 date: December 2023
 order: 3
+image: efficacite_confiance_autorites_fiscales.jpg
 format:
   html:
     include-in-header:
@@ -434,6 +435,3 @@ RUN;
     %vari_en_fct_pays(sblazy);
 ```
 </details>
-
-
-![](efficacite_confiance_autorites_fiscales.jpg){width=1%}

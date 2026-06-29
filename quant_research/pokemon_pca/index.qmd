@@ -4,6 +4,7 @@ author: Mihnea POPA
 description: " "
 date: March 2025
 order: 3
+image: pokemon.png
 resources:
   - _pokemon_pca_notebook.ipynb
 format:
@@ -17,8 +18,6 @@ format:
         }
         </style>
 ---
-
-![](pokemon.png){width=1pt}
 
 In this project, I apply a `Principal Component Analysis (PCA)` to the six battle statistics of Pokemon — `HP, Attack, Defense, Special Attack, Special Defense and Speed` — and explore how the full Pokédex sits in the resulting 2D spaces. The analysis covers all `six generations` of the CSV (~721 species), with a specific pass on the subset of `final evolutions` and a final view with `legendaries` highlighted against the rest.
 

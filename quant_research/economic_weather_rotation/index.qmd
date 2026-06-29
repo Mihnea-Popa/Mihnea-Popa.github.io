@@ -1,9 +1,10 @@
 ---
-title: "Economic Weather Industry Rotation"
+title: "Economic Weather-Based Industry Rotation Portfolio"
 author: Mihnea POPA / Zhihuan Zhang / Zehao Li / Cheng Wei-Chung
 description: " "
 date: May 2026
 order: 0
+image: weather_performance.png
 format:
   html:
     include-in-header:

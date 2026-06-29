@@ -6,6 +6,7 @@ date: April 2025
 order: 2
 resources:
   - _code.ipynb
+image: coupling_normal.png
 format:
   html:
     include-in-header:

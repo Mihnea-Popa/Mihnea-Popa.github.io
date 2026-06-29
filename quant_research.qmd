@@ -2,5 +2,5 @@
 title: "My Quantitative Research"
 listing:
   contents: quant_research  
-  type: grid          
+  type: grid
 ---

@@ -4,6 +4,7 @@ author: Mihnea Popa, Imane Bayoub, Lila Ransinangue, Oscar Zaidan
 description: " "
 date: November 2023
 order: 4
+image: transport_offer_chart.png
 format:
   html:
     include-in-header:
@@ -29,7 +30,3 @@ Drawing on French institutional data (Cerema, CITEPA, INSEE, Senate reports) and
 
 
 {{< pdf Memoire_Economie_Transport_English.pdf width=110% height=1200 >}}
-
-
-
-![](transport_offer_chart.png){width=1%}

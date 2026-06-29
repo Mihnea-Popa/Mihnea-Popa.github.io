@@ -1,9 +1,10 @@
 ---
-title: "Adaptive Inventory-Aware Market Making on SOFI — <br> AI-Assisted Development"
+title: "Adaptive Inventory Market Making on SOFI <br> (AI-Assisted)"
 author: Mihnea POPA
 description: " "
 date: June 2026
 order: -4
+image: pnl_curve.png
 format:
   html:
     include-in-header:
