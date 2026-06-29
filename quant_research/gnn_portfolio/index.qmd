@@ -15,6 +15,7 @@ format:
         }
         </style>
 ---
+![](fig5_final_cumret.png){width=1pt}
 
 This page presents a group project from the **Machine Learning and Data Analytics** course at UCLA Anderson. The central question is whether graph neural networks can improve portfolio construction on a dynamic S&P 500 universe. The data come from WRDS/CRSP daily stock files and historical S&P 500 membership records, covering 1,110 distinct PERMNOs over 4,788,231 daily rows. The investable universe is rebuilt every month from *active* index constituents (499–506 stocks per month), so the study mitigates the survivor-only bias that would arise from selecting today's index members and backfilling them through history. The out-of-sample period runs from 2015-01-30 to 2024-11-29, spanning 119 monthly rebalances — enough for a meaningful but still single-path evaluation.
 

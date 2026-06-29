@@ -197,6 +197,7 @@ window.Quarto = {
 </header>
 
 
+<p><img src="fig5_final_cumret.png" class="img-fluid" style="width:0.01389in"></p>
 <p>This page presents a group project from the <strong>Machine Learning and Data Analytics</strong> course at UCLA Anderson. The central question is whether graph neural networks can improve portfolio construction on a dynamic S&amp;P 500 universe. The data come from WRDS/CRSP daily stock files and historical S&amp;P 500 membership records, covering 1,110 distinct PERMNOs over 4,788,231 daily rows. The investable universe is rebuilt every month from <em>active</em> index constituents (499–506 stocks per month), so the study mitigates the survivor-only bias that would arise from selecting today’s index members and backfilling them through history. The out-of-sample period runs from 2015-01-30 to 2024-11-29, spanning 119 monthly rebalances — enough for a meaningful but still single-path evaluation.</p>
 <p>The research design unfolds in three stages. Stage 1 asks whether a GNN score alone can rank stocks well enough to build a competitive portfolio. Stage 2 changes the role of the GNN: rather than a direct portfolio model, the GCN is used as a graph-aware feature extractor whose outputs are fed into a Random Forest rank model. Stage 3 freezes the best configuration found in Stage 2 — before OOS evaluation, with no annual model switching — and reports the final result.</p>
 <p>The headline OOS numbers (119 monthly rebalances, 10 bps transaction cost per unit of turnover) are:</p>
