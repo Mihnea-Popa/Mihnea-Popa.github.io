@@ -4,6 +4,7 @@ author: Mihnea POPA et al.
 description: " "
 date: May 2026
 order: -1
+image: fig5_final_cumret.png
 format:
   html:
     include-in-header:
