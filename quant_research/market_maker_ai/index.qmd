@@ -1,9 +1,9 @@
 ---
-title: "Adaptive Inventory-Aware Market Making on SOFI — AI-Assisted Development"
+title: "Adaptive Inventory-Aware Market Making on SOFI — <br> AI-Assisted Development"
 author: Mihnea POPA
 description: " "
 date: June 2026
-order: -1
+order: -4
 format:
   html:
     include-in-header:

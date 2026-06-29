@@ -1,0 +1,15 @@
+{
+  "listing": "/quant_research.html",
+  "items": [
+    "/quant_research/market_maker_ai/index.html",
+    "/quant_research/execution_strategy_ai/index.html",
+    "/quant_research/gnn_portfolio/index.html",
+    "/quant_research/trader_strategy_ai/index.html",
+    "/quant_research/economic_weather_rotation/index.html",
+    "/quant_research/serie_temp/index.html",
+    "/quant_research/monte_carlo_thorisson/index.html",
+    "/quant_research/pokemon_pca/index.html",
+    "/quant_research/bsm_monte_carlo/index.html",
+    "/quant_research/tipe_somnolence/index.html"
+  ]
+}

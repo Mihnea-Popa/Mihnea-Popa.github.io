@@ -3,7 +3,7 @@ title: "L1/L2 Limit-Order-Book Trading Strategies for AAPL and TSLA — <br>  AI
 author: Mihnea POPA
 description: " "
 date: June 2026
-order: -3
+order: -1
 format:
   html:
     include-in-header:

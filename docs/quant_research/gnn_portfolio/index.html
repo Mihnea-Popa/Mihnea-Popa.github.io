@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea POPA et al.">
+<meta name="dcterms.date" content="2026-05-01">
 
-<title>Uniform Ratio – Mihnea POPA</title>
+<title>Graph Neural Network Features for Dynamic S&amp;P 500 Portfolio Construction – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,6 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -140,22 +148,46 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-and-dynamic-graph-construction" id="toc-data-and-dynamic-graph-construction" class="nav-link active" data-scroll-target="#data-and-dynamic-graph-construction">Data and dynamic graph construction</a></li>
+  <li><a href="#gnn-message-passing-models" id="toc-gnn-message-passing-models" class="nav-link" data-scroll-target="#gnn-message-passing-models">GNN message-passing models</a></li>
+  <li><a href="#walk-forward-backtest-protocol" id="toc-walk-forward-backtest-protocol" class="nav-link" data-scroll-target="#walk-forward-backtest-protocol">Walk-forward backtest protocol</a></li>
+  <li><a href="#stage-1-direct-gnn-portfolio-models" id="toc-stage-1-direct-gnn-portfolio-models" class="nav-link" data-scroll-target="#stage-1-direct-gnn-portfolio-models">Stage 1: direct GNN portfolio models</a></li>
+  <li><a href="#stage-2-gcn-as-a-feature-extractor-for-random-forest" id="toc-stage-2-gcn-as-a-feature-extractor-for-random-forest" class="nav-link" data-scroll-target="#stage-2-gcn-as-a-feature-extractor-for-random-forest">Stage 2: GCN as a feature extractor for Random Forest</a></li>
+  <li><a href="#stage-3-frozen-rf-gcn-final-strategy" id="toc-stage-3-frozen-rf-gcn-final-strategy" class="nav-link" data-scroll-target="#stage-3-frozen-rf-gcn-final-strategy">Stage 3: frozen RF + GCN final strategy</a></li>
+  <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits">Limits</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uniform Ratio</h1>
+<h1 class="title">Graph Neural Network Features for Dynamic S&amp;P 500 Portfolio Construction</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea POPA et al. </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 1, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -165,71 +197,248 @@ window.Quarto = {
 </header>
 
 
-<p><img src="images/ratio_uniform.png" class="img-fluid" width="1"></p>
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span>, what is <span class="math inline">\(\mathbb{P}(1 \le X/Y \le2)\)</span> ?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Compute the partial area corresponding to the meeting.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} 0 \le x \le 1 \\ 0\le y \le 1\end{cases}.\]</span></p>
-<p>The condition if fulfilled if<br>
-<span class="math display">\[\begin{cases} x / y\le 2\\  x/y \ge 1  \end{cases} \sim \begin{cases} y \le x \\  y \le x/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(1 \le X/Y \le2) = \frac{1-\frac{1*1}{2}-\frac{1*1/2}{2}}{1}= 1/4.}\)</span></p>
-<div id="caea9ecb" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uniform_ratio_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>What if we wanted a ratio between p and q ?</p>
-<p>Thus, <span class="math display">\[\boxed{\mathbb{P}(p \le X/Y \le q) = 1-\frac{1*p}{2} -\frac{1*1/q}{2} = 1-\frac{p+1/q}{2}.}\]</span></p>
-</div>
-</div>
-</div>
+<p>This page presents a group project from the <strong>Machine Learning and Data Analytics</strong> course at UCLA Anderson. The central question is whether graph neural networks can improve portfolio construction on a dynamic S&amp;P 500 universe. The data come from WRDS/CRSP daily stock files and historical S&amp;P 500 membership records, covering 1,110 distinct PERMNOs over 4,788,231 daily rows. The investable universe is rebuilt every month from <em>active</em> index constituents (499–506 stocks per month), so the study mitigates the survivor-only bias that would arise from selecting today’s index members and backfilling them through history. The out-of-sample period runs from 2015-01-30 to 2024-11-29, spanning 119 monthly rebalances — enough for a meaningful but still single-path evaluation.</p>
+<p>The research design unfolds in three stages. Stage 1 asks whether a GNN score alone can rank stocks well enough to build a competitive portfolio. Stage 2 changes the role of the GNN: rather than a direct portfolio model, the GCN is used as a graph-aware feature extractor whose outputs are fed into a Random Forest rank model. Stage 3 freezes the best configuration found in Stage 2 — before OOS evaluation, with no annual model switching — and reports the final result.</p>
+<p>The headline OOS numbers (119 monthly rebalances, 10 bps transaction cost per unit of turnover) are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>Ann. Return</th>
+<th>Ann. Vol.</th>
+<th>Sharpe</th>
+<th>Max DD</th>
+<th>Turnover</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RF + GCN Final</td>
+<td>12.33%</td>
+<td>18.24%</td>
+<td>0.676</td>
+<td>-24.99%</td>
+<td>1.60</td>
+</tr>
+<tr class="even">
+<td>RF Base</td>
+<td>10.44%</td>
+<td>18.28%</td>
+<td>0.571</td>
+<td>-29.25%</td>
+<td>1.71</td>
+</tr>
+<tr class="odd">
+<td>EqualWeight</td>
+<td>10.66%</td>
+<td>18.06%</td>
+<td>0.590</td>
+<td>-31.48%</td>
+<td>0.02</td>
+</tr>
+<tr class="even">
+<td>Momentum60</td>
+<td>5.50%</td>
+<td>20.14%</td>
+<td>0.273</td>
+<td>-34.10%</td>
+<td>1.29</td>
+</tr>
+</tbody>
+</table>
+<p>The main conclusion is not that GNNs universally beat tabular models. It is more specific: <em>direct</em> GNN portfolios are mixed and do not consistently dominate EqualWeight, but GCN <em>representations</em> — a scalar score plus a 64-dimensional embedding per stock — add useful relational information to a conventional RF model, improving Sharpe and maximum drawdown relative to RF Base, EqualWeight, and Momentum60.</p>
+<section id="data-and-dynamic-graph-construction" class="level3">
+<h3 class="anchored" data-anchor-id="data-and-dynamic-graph-construction">Data and dynamic graph construction</h3>
+<p>At each monthly rebalance date <span class="math inline">\(t\)</span>, the investable set is reconstructed from active S&amp;P 500 constituents. Stocks are identified by CRSP PERMNO rather than ticker, avoiding look-ahead from ticker changes and share-class reuse. The universe size stays close to 500 names throughout the sample, with minor variation from entries, deletions, and share-class mechanics:</p>
+<p><img src="fig1_universe_size.png" class="img-fluid" style="width:100.0%"></p>
+<p>Each stock’s node feature vector contains six price-volume signals known at date <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+x_{i,t} = [\text{Mom}_{20},\, \text{Mom}_{60},\, \text{Vol}_{20},\, \text{Vol}_{60},\, \Delta\text{Volume}_{20},\, \beta_{\text{MKT},60}].
+\]</span></p>
+<p>Momentum is computed from adjusted prices, volatility is the rolling standard deviation of daily returns, volume change captures short-run trading attention, and beta is estimated against an equal-weight market proxy in a leave-one-out style so that a stock’s own return does not mechanically enter its benchmark. All signals are standardized cross-sectionally at each rebalance date. The prediction target is the next-20-trading-day forward return with a one-day execution lag:</p>
+<p><span class="math display">\[
+y_{i,t} = \frac{P_{i,t+21}}{P_{i,t+1}} - 1.
+\]</span></p>
+<p>The one-day lag avoids using the signal-date close as both the information set and the execution price. At each rebalance date, the correlation graph <span class="math inline">\(G_t = (V_t, E_t, A_t)\)</span> is rebuilt from the most recent 60 daily returns. Each stock keeps its top <span class="math inline">\(k = 10\)</span> positively correlated neighbors:</p>
+<p><span class="math display">\[
+A_{ij,t} = \begin{cases} \rho_{ij,t}^{(60)}, &amp; j \in \text{TopK}_{10}^+(i,t), \\ 0, &amp; \text{otherwise.} \end{cases}
+\]</span></p>
+<p>The graph is therefore sparse, dynamic, and entirely data-driven — it captures changing market relationships (sector rotation, crowding, macro regime) rather than a fixed industry taxonomy.</p>
+</section>
+<section id="gnn-message-passing-models" class="level3">
+<h3 class="anchored" data-anchor-id="gnn-message-passing-models">GNN message-passing models</h3>
+<p>Four GNN architectures are evaluated as direct portfolio models. Let <span class="math inline">\(H_t^{(0)} = X_t \in \mathbb{R}^{N_t \times F}\)</span> be the node feature matrix and <span class="math inline">\(G_t\)</span> the dynamic stock graph. Each model outputs one score per stock used for cross-sectional ranking.</p>
+<p><strong>GCN</strong> adds self-loops <span class="math inline">\(\tilde{A} = A + I\)</span> and normalizes by degree <span class="math inline">\(\tilde{D}_{ii} = \sum_j \tilde{A}_{ij}\)</span>:</p>
+<p><span class="math display">\[
+H^{(\ell+1)} = \phi\!\left(\tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2}H^{(\ell)}W^{(\ell)}\right).
+\]</span></p>
+<p>GCN performs conservative neighborhood smoothing, which is valuable in a low signal-to-noise environment: noisy individual stock labels are averaged over correlated neighbors that share sector, style, or macro exposures, reducing variance at the cost of some per-stock expressiveness.</p>
+<p><strong>GraphSAGE</strong> separates a stock’s own representation from an aggregated neighbor mean, making it naturally suited to a dynamic universe where the node set changes every month:</p>
+<p><span class="math display">\[
+m_i^{(\ell)} = \frac{1}{|\mathcal{N}(i)|}\sum_{j \in \mathcal{N}(i)} h_j^{(\ell)}, \qquad h_i^{(\ell+1)} = \phi(W_s h_i^{(\ell)} + W_n m_i^{(\ell)}).
+\]</span></p>
+<p><strong>GAT</strong> learns neighbor-specific attention weights from feature similarities, allowing the model to up-weight the most informative neighbors. It is more expressive than GCN but carries higher estimation risk from noisy monthly labels.</p>
+<p><strong>APPNP</strong> decouples feature transformation from graph propagation: it first computes an MLP seed <span class="math inline">\(Z = f_\theta(X)\)</span>, then performs personalized PageRank-style diffusion <span class="math inline">\(H^{(r+1)} = (1-\alpha)\hat{A}H^{(r)} + \alpha Z\)</span>. The teleport term <span class="math inline">\(\alpha Z\)</span> prevents excessive drift from the per-stock signal.</p>
+<p>All four architectures are trained with a pairwise ranking loss <span class="math inline">\(\mathcal{L} = \frac{1}{|\mathcal{P}|}\sum_{(i,j)\in\mathcal{P}}\log(1 + \exp[-s_{ij}(\hat{y}_{i,t} - \hat{y}_{j,t})])\)</span> where <span class="math inline">\(s_{ij} = \text{sign}(y_{i,t} - y_{j,t})\)</span>. Validation uses cross-sectional rank IC (Spearman correlation between predicted scores and realized forward returns).</p>
+</section>
+<section id="walk-forward-backtest-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="walk-forward-backtest-protocol">Walk-forward backtest protocol</h3>
+<p>The backtest uses yearly walk-forward retraining. For test year <span class="math inline">\(Y\)</span>, models train on historical snapshots through <span class="math inline">\(Y-2\)</span>, validate on <span class="math inline">\(Y-1\)</span>, and test on <span class="math inline">\(Y\)</span>. This prevents using future validation information to choose a model for an earlier test year. Monthly returns are non-overlapping: the portfolio enters one trading day after the signal date and exits at the next rebalance entry date. All model-based strategies hold long-only top 20 stocks, equal-weight, with 10 bps transaction cost per unit of absolute turnover. EqualWeight holds all 500 active constituents; Momentum60 ranks by 60-day past return and also takes the top 20. The validation IC traces by test year show modest but consistent signals for GCN and GraphSAGE, with a notable dip around 2021 — the post-COVID regime shift — across all architectures:</p>
+<p><img src="fig2_validation_ic.png" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="stage-1-direct-gnn-portfolio-models" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-direct-gnn-portfolio-models">Stage 1: direct GNN portfolio models</h3>
+<p>The first experiment asks whether GNNs alone are reliable enough as portfolio managers. The answer is mixed:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>Ann. Return</th>
+<th>Ann. Vol.</th>
+<th>Sharpe</th>
+<th>Max DD</th>
+<th>Turnover</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GCN</td>
+<td>10.31%</td>
+<td>18.99%</td>
+<td>0.543</td>
+<td>-26.54%</td>
+<td>1.64</td>
+</tr>
+<tr class="even">
+<td>GraphSAGE</td>
+<td>10.14%</td>
+<td>17.16%</td>
+<td>0.591</td>
+<td>-29.56%</td>
+<td>1.66</td>
+</tr>
+<tr class="odd">
+<td>GAT</td>
+<td>7.65%</td>
+<td>18.59%</td>
+<td>0.411</td>
+<td>-28.62%</td>
+<td>1.60</td>
+</tr>
+<tr class="even">
+<td>APPNP</td>
+<td>4.95%</td>
+<td>24.19%</td>
+<td>0.204</td>
+<td>-43.88%</td>
+<td>1.61</td>
+</tr>
+<tr class="odd">
+<td>EqualWeight</td>
+<td>10.66%</td>
+<td>18.06%</td>
+<td>0.590</td>
+<td>-31.48%</td>
+<td>0.02</td>
+</tr>
+<tr class="even">
+<td>Momentum60</td>
+<td>5.50%</td>
+<td>20.14%</td>
+<td>0.273</td>
+<td>-34.10%</td>
+<td>1.29</td>
+</tr>
+</tbody>
+</table>
+<p>GCN and GraphSAGE produce positive OOS Sharpe ratios and competitive returns, but neither clearly dominates EqualWeight — GraphSAGE matches its Sharpe at 0.591 vs 0.590 while running 1.66 monthly turnover versus EqualWeight’s near-zero 0.02. GAT is weaker, and APPNP collapses to a Sharpe of 0.204 and a -43.88% maximum drawdown. The cumulative return chart makes the instability concrete: APPNP’s 2020 drawdown is severe enough to permanently impair the strategy’s trajectory:</p>
+<p><img src="fig3_stage1_cumret.png" class="img-fluid" style="width:100.0%"></p>
+<p>Adding 10 more features (medium- and long-term momentum, downside volatility, idiosyncratic volatility, a 126-day beta, and volume surge) does not fix the problem. GCN deteriorates sharply to 0.193 Sharpe; GraphSAGE also falls; only GAT improves slightly. The “more features solves it” hypothesis does not hold here. The Stage 1 conclusion is that direct GNN scores are architecture-sensitive, subject to high turnover, and not reliable enough as a standalone portfolio engine. This motivates a role change: use GNNs to create relational representations, then let a tabular model perform the final ranking.</p>
+</section>
+<section id="stage-2-gcn-as-a-feature-extractor-for-random-forest" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-gcn-as-a-feature-extractor-for-random-forest">Stage 2: GCN as a feature extractor for Random Forest</h3>
+<p>Stage 2 keeps the GCN but changes what it delivers. After training, the GCN produces two outputs per stock at each rebalance: a scalar ranking score <span class="math inline">\(\hat{y}_{i,t}^{\text{GCN}}\)</span> and a 64-dimensional hidden embedding <span class="math inline">\(h_{i,t}^{\text{GCN}}\)</span>. These are concatenated with the original six stock features to form an augmented input:</p>
+<p><span class="math display">\[
+z_{i,t} = \left[x_{i,t} \,\|\, \hat{y}_{i,t}^{\text{GCN}} \,\|\, h_{i,t}^{\text{GCN}}\right], \qquad \hat{s}_{i,t}^{\text{RF}} = f_{\text{RF}}(z_{i,t}).
+\]</span></p>
+<p>The RF target is the within-month rank transform of realized forward returns, <span class="math inline">\(q_{i,t} = \text{rank}_{i \in V_t}(y_{i,t})/N_t - 0.5\)</span>, which matches the ranking objective without requiring calibrated return forecasts. RF handles nonlinear feature interactions and threshold effects that a GCN’s linear message-passing cannot model; the GCN contributes a denoised, graph-smoothed summary of each stock’s relational context.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>Ann. Return</th>
+<th>Ann. Vol.</th>
+<th>Sharpe</th>
+<th>Max DD</th>
+<th>Turnover</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RF Base</td>
+<td>8.97%</td>
+<td>18.87%</td>
+<td>0.475</td>
+<td>-29.79%</td>
+<td>1.69</td>
+</tr>
+<tr class="even">
+<td>RF + GCN Features</td>
+<td>10.07%</td>
+<td>18.10%</td>
+<td>0.557</td>
+<td>-26.32%</td>
+<td>1.61</td>
+</tr>
+<tr class="odd">
+<td>GCN Direct</td>
+<td>10.31%</td>
+<td>18.99%</td>
+<td>0.543</td>
+<td>-26.54%</td>
+<td>1.64</td>
+</tr>
+<tr class="even">
+<td>EqualWeight</td>
+<td>10.66%</td>
+<td>18.06%</td>
+<td>0.590</td>
+<td>-31.48%</td>
+<td>0.02</td>
+</tr>
+<tr class="odd">
+<td>Momentum60</td>
+<td>5.50%</td>
+<td>20.14%</td>
+<td>0.273</td>
+<td>-34.10%</td>
+<td>1.29</td>
+</tr>
+</tbody>
+</table>
+<p>RF + GCN Features raises Sharpe from 0.475 to 0.557 — a +0.082 lift — and reduces maximum drawdown by 3.47 percentage points relative to RF Base. In the expanded 10-feature setting, the RF standalone reaches only Sharpe 0.370, while RF + GCN Features reaches 0.606, reinforcing the interpretation that the extra tabular features introduce noise when used independently but that GCN graph-smoothing can partially denoise and contextualize them. Nevertheless, the 10-feature final strategy does not beat the 6-feature final strategy, so the project keeps the original six features for robustness and interpretability:</p>
+<p><img src="fig4_stage2_cumret.png" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="stage-3-frozen-rf-gcn-final-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="stage-3-frozen-rf-gcn-final-strategy">Stage 3: frozen RF + GCN final strategy</h3>
+<p>The final strategy is deliberately frozen before OOS evaluation. The pipeline is fixed as: six original features → GCN score and 64-dimensional embeddings → five-seed RF ensemble → long-only equal-weight top 20 selection → 10 bps transaction costs. The five-seed ensemble averages RF predictions across five random draws, reducing sensitivity to a single bootstrap sample:</p>
+<p><span class="math display">\[
+\hat{s}_{i,t}^{\text{ens}} = \frac{1}{M}\sum_{m=1}^{M} \hat{s}_{i,t}^{(m)}, \qquad M = 5.
+\]</span></p>
+<p>Freezing means no annual hyperparameter selection, no monthly rule switching, and no after-the-fact model choice across the OOS period. Three implementation variants were also tested (EqualTop20, BufferTop20 with a 30-name holding buffer, and VolTop20 with inverse-volatility weights) but none of them improved the return-risk trade-off enough to replace the seed-ensemble design.</p>
+<p><img src="fig5_final_cumret.png" class="img-fluid" style="width:100.0%"></p>
+<p>The final strategy achieves 12.33% annualized return, 0.676 Sharpe, and -24.99% maximum drawdown — improvements of +1.89 pp return, +0.105 Sharpe, and +4.26 pp on maximum drawdown relative to RF Base. GCN-derived variables are prominent in the RF’s feature importance: <code>gcn_score</code> is the single most important input (mean impurity importance 0.07), followed by <code>gcn_emb_51</code>, <code>beta_mkt_60</code>, <code>gcn_emb_35</code>, and <code>vol_60</code>. Multiple GCN embedding dimensions rank alongside traditional price-volume signals, supporting the interpretation that the graph representation adds information not already contained in momentum, volatility, and beta alone:</p>
+<p><img src="fig6_feature_importance.png" class="img-fluid" style="width:100.0%"></p>
+</section>
+<section id="limits" class="level3">
+<h3 class="anchored" data-anchor-id="limits">Limits</h3>
+<p>Several important caveats apply. The OOS period covers 119 monthly rebalances, which is useful but still one historical path: the confidence intervals on Sharpe ratio differences at this sample size are wide, and the outperformance relative to EqualWeight at 10 bps transaction costs becomes fragile at 20 bps — RF + GCN Final falls to Sharpe 0.560 while EqualWeight barely moves to 0.589. The active strategy runs average monthly turnover of 1.60 versus EqualWeight’s near-zero turnover, so implementation costs matter more than they appear in a headline Sharpe comparison.</p>
+<p>The graph structure itself is limited to rolling pairwise correlations. Sector classifications, fundamentals, macro variables, and options information are all excluded; the correlation edges can change rapidly across regimes, and expressive attention mechanisms like GAT may overfit short-lived co-movement patterns rather than structural dependencies. Market impact, borrow constraints, and shorting costs are not modeled — the strategy is long-only, but its portfolio concentration (top 20 names) and turnover rate would generate non-trivial impact costs in live trading that the 10 bps flat-rate assumption does not capture.</p>
+<p>Finally, EqualWeight is a genuinely hard benchmark because it has near-zero turnover and broad market exposure. The RF + GCN strategy improves Sharpe and maximum drawdown relative to it, but the cost-adjusted return advantage over a simple buy-and-hold of the S&amp;P 500 equal-weight index is modest enough that the project is best read as academic evidence for graph-aware representation value rather than a production-ready trading system.</p>
+<p>The full derivations, architecture specifications, and extended robustness tables are in the <a href="GNN_Portfolio_Report_v3.pdf">report</a>; the <a href="GNN_Portfolio_Presentation.pdf">slides</a> walk through the three-stage design and key results in presentation form.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
