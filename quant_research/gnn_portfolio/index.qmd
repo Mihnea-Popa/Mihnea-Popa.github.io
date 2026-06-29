@@ -152,4 +152,3 @@ The graph structure itself is limited to rolling pairwise correlations. Sector c
 
 Finally, EqualWeight is a genuinely hard benchmark because it has near-zero turnover and broad market exposure. The RF + GCN strategy improves Sharpe and maximum drawdown relative to it, but the cost-adjusted return advantage over a simple buy-and-hold of the S&P 500 equal-weight index is modest enough that the project is best read as academic evidence for graph-aware representation value rather than a production-ready trading system.
 
-The full derivations, architecture specifications, and extended robustness tables are in the [report](GNN_Portfolio_Report_v3.pdf); the [slides](GNN_Portfolio_Presentation.pdf) walk through the three-stage design and key results in presentation form.
