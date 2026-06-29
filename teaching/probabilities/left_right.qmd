@@ -2,8 +2,8 @@
 title: "Left or Right ?"
 description: " "
 order: 20
+image: images/left_right.png
 ---
-![](images/left_right.png){width=1px}
 
 Let's start at the position 0 and suppose you have two integers $a$ and $b$. You can go by one unit to the left or to the right with the same probability and the game ends when you reach one of the two position $a$ or $-b$. What is the probability that you end in a ?
 

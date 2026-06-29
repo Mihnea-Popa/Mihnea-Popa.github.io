@@ -2,8 +2,9 @@
 title: "Polya's urn"
 description: " "
 order: 9
+image: images/polya_urn.png
 ---
-![](images/polya_urn.png){width=1px}
+
 
 An urn initially contains `b white` balls and `r red` balls. The following experiment is carried out:
 * A ball is drawn from the urn at random, and its color is noted.

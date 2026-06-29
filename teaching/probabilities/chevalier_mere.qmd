@@ -2,9 +2,8 @@
 title: "Knight of Mere"
 description: " "
 order: 3
+image: images/mere_knight.jpg
 ---
-
-![](images/mere_knight.jpg){width=1px}
 What event has the highest probability `get at least one 6 in 4 rolls with one dice` or `get at least one double 6 in 24 rolls with two dice` ?
 
 ::: {.callout-tip collapse="true"}

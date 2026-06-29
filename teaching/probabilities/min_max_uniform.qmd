@@ -2,8 +2,8 @@
 title: "Operation on Uniform distributions"
 description: " "
 order: 10
+image: images/unifrom_operations.png
 ---
-![](images/unifrom_operations.png){width=1px}
 
 Let's suppose that we have two fair dices ( $U_1 \sim \mathcal{U}(\{1,...,6\}), U_2 \sim \mathcal{U}(\{1,...,6\}), U_1 \perp U_2$). Let $X = min(U_1, U_2) \; \text{and} \; Y = max(U_1, U_2).$
 

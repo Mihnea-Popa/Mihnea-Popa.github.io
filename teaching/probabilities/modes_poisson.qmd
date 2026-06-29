@@ -2,8 +2,9 @@
 title: "Modes of a Poisson distribution"
 description: " "
 order: 4
+image: images/poisson_mode.png
 ---
-![](images/poisson_mode.png){width=1px}
+
 
 What is the mode of $\mathcal{P}(\lambda)$?
 

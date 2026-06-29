@@ -2,8 +2,8 @@
 title: "Local minima in a permutation"
 description: " "
 order: 1
+image: images/minimum_permutation.jpg
 ---
-![](images/minimum_permutation.jpg){width=1px}
 
 What is the expected number of local minima in a random permutation ?
 

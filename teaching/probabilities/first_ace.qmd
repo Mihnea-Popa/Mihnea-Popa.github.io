@@ -2,8 +2,8 @@
 title: "Where are the Aces ?"
 description: " "
 order: 21
+image: images/first_ace.png
 ---
-![](images/first_ace.png){width=1px}
 
 What is the expected number of cards that we need to draw from a standard card pack before the first ace to appear (including that ace) ?
 

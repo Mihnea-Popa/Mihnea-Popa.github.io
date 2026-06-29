@@ -1,6 +1,7 @@
 ---
 title: "Determining the angle at 3:15"
 description: " "
+image: images/clocks.png
 order: 6
 ---
 

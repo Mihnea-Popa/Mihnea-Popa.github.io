@@ -2,9 +2,8 @@
 title: "Cube explosion"
 description: " "
 order: 7
+image: images/shattercube.jpg
 ---
-
-![](images/shattercube.jpg){width=1px}
 
 Let's suppose that we `paint a cube` on all of its faces. Then we decompose this cube into `27 small cubes. How many small cubes have two faces painted ?`
 

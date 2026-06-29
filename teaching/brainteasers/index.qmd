@@ -1,5 +1,6 @@
 ---
 title: "Brainteasers"
+image: image.jpg
 listing:
   contents: .  
   type: grid
@@ -7,6 +8,3 @@ listing:
 ---
 
 Let's discover some interview questions labelled as brain teasers
-
-
-![](image.jpg){width=1px}

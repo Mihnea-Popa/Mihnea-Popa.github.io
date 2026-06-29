@@ -2,9 +2,8 @@
 title: "Finding a lighter coin with minimum weightings "
 description: " "
 order: 1
+image: images/coins_balance.jpg
 ---
-
-![](images/coins_balance.jpg){width=1px}
 
 Let's suppose that we have `100 coins but one is lighter that the others`. Find the `minimum number of weightings` to identify this fake coin.
 

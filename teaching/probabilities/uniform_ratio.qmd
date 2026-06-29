@@ -2,8 +2,8 @@
 title: "Uniform Ratio"
 description: " "
 order: 17
+image: images/ratio_uniform.png
 ---
-![](images/ratio_uniform.png){width=1px}
 
 Let $X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y$, what is $\mathbb{P}(1 \le X/Y \le2)$ ?
 

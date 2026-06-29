@@ -2,8 +2,8 @@
 title: "Random boxes"
 description: " "
 order: 12
+image: images/random_box.jpg
 ---
-![](images/random_box.jpg){width=1px}
 
 We have 100 people each assigned a box. Create a strategy where each person can open 50 boxes that has at least 30 % chance of success.
 

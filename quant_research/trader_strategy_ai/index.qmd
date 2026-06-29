@@ -1,9 +1,9 @@
 ---
-title: "L1/L2 LOB Trading Strategies for AAPL and TSLA <br>  (AI-Assisted)"
+title: "L1/L2 Trading Strategies for AAPL and TSLA <br>  (AI-Assisted)"
 author: Mihnea POPA
 description: " "
-date: June 2026
-order: -2
+date: April 2026
+order: -1
 image: l2_pnl_curve.png
 format:
   html:

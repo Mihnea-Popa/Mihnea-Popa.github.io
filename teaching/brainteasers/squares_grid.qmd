@@ -2,8 +2,8 @@
 title: "Counting squares in a grid"
 description: " "
 order: 11
+image: images/grid.png
 ---
-![](images/grid.png){width=1px}
 
 Assume we have a $n\times n$ grid, `how many squares are there ?`
 

@@ -2,8 +2,8 @@
 title: "Drunk postman"
 description: " "
 order: 8
+image: images/drunk_postman.jpg
 ---
-![](images/drunk_postman.jpg){width=1px}
 
 This problem studies the case of a drunk postman who has to deliver $n$ letter and $n$ boxes but assigns each letter randomly.
 

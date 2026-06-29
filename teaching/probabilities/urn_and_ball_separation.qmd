@@ -2,8 +2,8 @@
 title: "Separation of the balls into urns"
 description: " "
 order: 22
+image: images/urn_ball.jpg
 ---
-![](images/urn_ball.jpg){width=1px}
 
 Suppose we have r balls indiscernible and n urns ($r \le n$). 
 

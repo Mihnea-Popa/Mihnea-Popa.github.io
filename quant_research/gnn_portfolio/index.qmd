@@ -3,7 +3,7 @@ title: "Graph Neural Network for S&P 500 Portfolio Construction"
 author: Mihnea POPA / Anikesh BHUVANESHWARAM / Ali MOAZZAMI / Jakob ARONSSON
 description: " "
 date: May 2026
-order: -1
+order: -2
 image: fig5_final_cumret.png
 format:
   html:

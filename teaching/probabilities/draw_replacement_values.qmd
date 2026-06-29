@@ -2,8 +2,8 @@
 title: "Different values from a replacement draw"
 description: " "
 order: 18
+image: images/replacement_draw.png
 ---
-![](images/replacement_draw.png){width=1px}
 
 What is the expected number of different values when we draw n times with replacement from the set {1, ..., n} ?
 
