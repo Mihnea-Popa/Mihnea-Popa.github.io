@@ -19,7 +19,6 @@ format:
 
 This page presents the main technical work from my internship at the **Direction des Politiques Européennes (DPE)** of the **Conseil Régional des Pays de la Loire**, in Nantes, from June to September 2024. The mission was to build a statistical pricing grid — a *Barème Standard de Coûts Unitaires* (BSCU) — for the vocational training programs organized inside the six prisons of the Pays de la Loire region.
 
-{{< pdf report.pdf button="Download Internship Report (French)" width=1 height=1 >}}
 
 ### Why This Matters: European Funds and the Audit Problem
 
