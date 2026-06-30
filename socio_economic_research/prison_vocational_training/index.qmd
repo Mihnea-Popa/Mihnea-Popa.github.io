@@ -4,7 +4,7 @@ author: Mihnea Popa
 description: " "
 date: Summer 2024
 order: 5
-image: bscu_barchart.png
+image: tree_plot.png
 format:
   html:
     include-in-header:
@@ -77,37 +77,43 @@ Once the key variables are identified, the next question is: what is the best wa
 
 CART is a decision-tree algorithm that recursively splits the data into groups to minimise a cost function — here, the weighted sum of squared differences between the actual cost per trainee and the group mean. The weights are the number of trainees, so a training action with 30 participants counts 30 times more than one with a single trainee.
 
-The full tree is first grown to its maximum complexity, then **pruned** using a cost-complexity parameter: branches that contribute only a tiny improvement in fit are removed. The result is a tree with **6 distinct price groups**, which balances statistical precision with practical simplicity.
+The full tree is first grown to its maximum complexity, then **pruned** using a cost-complexity parameter: branches that contribute only a tiny improvement in fit are removed. The result is a tree with **8 distinct price groups**, which balances statistical precision with practical simplicity.
 
-The 6 groups and their estimated cost per trainee (in 2022 euros) are:
+The pruned decision tree is shown below. The first split separates **Nantes** from the five other facilities: its cost structure is sufficiently different that the algorithm immediately sets it apart. Within the non-Nantes branch, a second split on training type distinguishes short, high-turnover modules (H, K, O, T) from longer, more skills-intensive programs (D, E, S, X). Within the Nantes branch, a split on training type separates low-cost insertion and hygiene programs (T, X) from the full technical certifications. The final refinements isolate **Le Mans** as its own sub-group: its per-trainee costs for both the H/K/O/T cluster and the X (insertion) cluster are noticeably different from the other *maisons d'arrêt*, reflecting differences in training provider contracts specific to that facility.
+
+![](tree_plot.png){width=100%}
+
+The 8 groups and their estimated cost per trainee (in 2022 euros) are:
 
 | Group | Facilities | Training types | Estimated cost / trainee (€, 2022 base) |
 |---|---|---|---|
-| 1 | La Roche / Fontenay | Food production (K) | 235 € |
-| 2 | Région (CACES only) | Transport / Forklift (O) | 394 € |
-| 3 | All centers | Hygiene & Security (T), Insertion training (X) | 1,415 € |
-| 4 | Angers, Laval, Le Mans | Construction (D), Metal (E), Electricity (H) | 2,339 € |
-| 5 | Angers, Le Mans | Transport & Logistics (O), Hospitality (S) | 2,645 € |
-| 6 | Nantes | Agriculture (A), Construction (D), Metal (E), Electricity (H) | 4,237 € |
+| 1 | Angers, La Roche/Fontenay, Laval, Région | Catering (K), Electricity (H), Transport (O), Hygiene (T) | 693 € |
+| 2 | Le Mans | Insertion training (X) | 1,253 € |
+| 3 | Nantes | Hygiene & Security (T), Insertion training (X) | 1,502 € |
+| 4 | Le Mans | Hygiene & Security (T) | 1,554 € |
+| 5 | La Roche/Fontenay | Insertion training (X) | 2,076 € |
+| 6 | Angers, Laval, Le Mans | Construction (D), Metal (E), Services (S) | 2,491 € |
+| 7 | Nantes | Construction (D), Transport & Logistics (O) | 3,614 € |
+| 8 | Nantes | Agriculture (A), Metal (E), Electricity (H) | 4,484 € |
 
-The same result visualised by facility and training type:
+The same result visualised by group:
 
 ![](bscu_barchart.png){width=100%}
 
-A few patterns are worth noting. First, **Nantes consistently costs more** for technical trades: the facility operates full-length professional certification programs (often 600+ hours) versus the shorter modules run at remand prisons, and the training provider charges higher hourly rates for these more intensive programs. Second, **cleaning and insertion training (T and X) are cheap across all centers** because these programs are short, high-density sessions where many trainees attend with minimal equipment or instruction cost per person. Third, **the regional CACES forklift training** is extremely cheap per trainee because a single instructor certifies trainees from multiple facilities simultaneously — a classic economy of scale that the CART algorithm correctly identifies as its own group.
+Several patterns are worth noting. **Nantes consistently costs more** for technical trades: the facility operates full-length professional certification programs (often 600+ hours) with highly qualified instructors, whereas remand prisons run shorter modules for a more transient population. **Insertion and hygiene training (T and X) are cheap** across all centers because these programs are short, high-density sessions with minimal per-trainee equipment cost — though even here, Nantes's structured format (1,502€) costs roughly twice what the same type of training costs at the other maisons d'arrêt (693€ for H/K/O/T programs). The **Le Mans anomaly** is one of the more interesting findings: for insertion training (X), Le Mans is the cheapest non-Nantes center at 1,253€, while La Roche/Fontenay runs the same type of training at 2,076€ — a factor of nearly 1.7. For hygiene training (T), Le Mans is conversely the most expensive maison d'arrêt at 1,554€ versus 693€ at the other centers. Both effects point to provider-specific contract structures at Le Mans rather than any structural difference in what trainees need.
 
 ### Step 3 — Measuring the Estimation Error
 
-A BSCU is only useful if it is reasonably accurate. The total actual expenditure across all 148 training actions is **6,719,644 €**. The BSCU with 6 groups estimates **6,584,096 €**, a global difference of **−135,548 € (−2.0%)**. This slight under-estimation is primarily driven by the cost inflation of 2022–2024 (new public procurement contracts were repriced upward post-COVID), which the 2022-base normalisation does not fully absorb for 2023 and 2024 actions.
+A BSCU is only useful if it is reasonably accurate. The total actual expenditure across all 148 training actions is **6,719,644 €**. The BSCU with 8 groups estimates **6,735,390 €**, a global difference of **+15,746 € (+0.23%)**. This near-perfect aggregate accuracy — a 0.23% over-estimation — is a significant improvement over a coarser segmentation, and demonstrates that the eight-group grid captures the true cost structure of the program with high fidelity.
 
 The scatter plot below compares actual and estimated costs action by action (each point is one training action; point size reflects the number of trainees):
 
 ![](actual_vs_estimated.png){width=100%}
 
-Most points sit close to the red dashed line of perfect estimation. The main sources of error are a handful of actions with unusually small or large cohorts in 2024, where the per-trainee cost deviates significantly from the group average — exactly the kind of outlier that a flat-rate system is not designed to handle but that is acceptable for the purposes of EU reimbursement, as long as the global error over a program period remains low.
+Most points sit close to the red dashed line of perfect estimation. The main sources of error are a handful of actions with unusually small or large cohorts in 2024, where the per-trainee cost deviates significantly from the group average — exactly the kind of outlier that a flat-rate system is not designed to handle but that is acceptable for the purposes of EU reimbursement, as long as the global error over a program period remains low. The 8-group model reduces the estimation variance relative to a coarser segmentation, in particular by isolating Le Mans and by splitting Nantes's technical programs into two sub-groups (D/O versus A/E/H).
 
 ### Broader Context
 
 This work sits at the intersection of **public economics** and **social policy**. From a public finance perspective, the BSCU is a tool for reducing transaction costs in a principal-agent relationship: the European Commission (principal) cannot directly observe how regional funds are spent in each prison, and verifying every invoice is expensive. A pre-validated flat rate changes the contract structure — it shifts the risk of under- or over-spending from the EU to the region, but in exchange removes the verification burden. This is a well-studied mechanism in the economics of public contracts and is broadly similar to prospective payment systems used in healthcare (e.g., DRGs in French hospitals).
 
-From a **social science** perspective, the variation in costs across facilities reflects deeper structural inequalities in the prison system. The Centre de détention in Nantes, which holds long-sentence inmates, can offer sustained, accrediting programs and invest in qualified instructors precisely because the population is stable enough to complete a 600-hour program. Remand prisons face constant turnover, shorter stays, and less predictable enrollment — which constrains what kind of training is feasible and pushes providers toward shorter, cheaper modules. The BSCU, by pricing these differences into a grid, implicitly acknowledges that meaningful vocational training for prisoners serving longer sentences genuinely costs more — and that the European co-financing system should fund that difference rather than penalise it through uniform pricing.
+From a **social science** perspective, the variation in costs across facilities reflects deeper structural inequalities in the prison system. The Centre de détention in Nantes, which holds long-sentence inmates, can offer sustained, accrediting programs and invest in qualified instructors precisely because the population is stable enough to complete a 600-hour program. Remand prisons face constant turnover, shorter stays, and less predictable enrollment — which constrains what kind of training is feasible and pushes providers toward shorter, cheaper modules. The BSCU, by pricing these differences into a grid of 8 groups, implicitly acknowledges that meaningful vocational training for prisoners serving longer sentences genuinely costs more — and that the European co-financing system should fund that difference rather than penalise it through uniform pricing. The fact that Le Mans emerges as its own sub-group within the maisons d'arrêt is a further reminder that even within the same institutional category, procurement history and provider relationships create cost structures that a single flat rate would obscure.
