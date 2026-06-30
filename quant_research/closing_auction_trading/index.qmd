@@ -4,7 +4,7 @@ author: Mihnea POPA / Anikesh BHUVANESHWARAM / Nicolas CID / Yilin CHEN / Kather
 description: " "
 date: June 2026
 order: -5
-image: strategy_plots_IS.png
+image: cover.png
 format:
   html:
     include-in-header:

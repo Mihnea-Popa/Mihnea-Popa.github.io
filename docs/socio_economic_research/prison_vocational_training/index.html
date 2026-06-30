@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea Popa">
+<meta name="dcterms.date" content="2024-01-01">
 
-<title>Uncertain Meeting – Mihnea POPA</title>
+<title>Standard Unit Cost Benchmarks for Prison Vocational Training – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,6 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -140,22 +148,46 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-this-matters-european-funds-and-the-audit-problem" id="toc-why-this-matters-european-funds-and-the-audit-problem" class="nav-link active" data-scroll-target="#why-this-matters-european-funds-and-the-audit-problem">Why This Matters: European Funds and the Audit Problem</a></li>
+  <li><a href="#the-prison-vocational-training-program" id="toc-the-prison-vocational-training-program" class="nav-link" data-scroll-target="#the-prison-vocational-training-program">The Prison Vocational Training Program</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
+  <li><a href="#step-1-identifying-the-relevant-variables" id="toc-step-1-identifying-the-relevant-variables" class="nav-link" data-scroll-target="#step-1-identifying-the-relevant-variables">Step 1 — Identifying the Relevant Variables</a></li>
+  <li><a href="#step-2-building-the-groups-with-cart" id="toc-step-2-building-the-groups-with-cart" class="nav-link" data-scroll-target="#step-2-building-the-groups-with-cart">Step 2 — Building the Groups with CART</a></li>
+  <li><a href="#step-3-measuring-the-estimation-error" id="toc-step-3-measuring-the-estimation-error" class="nav-link" data-scroll-target="#step-3-measuring-the-estimation-error">Step 3 — Measuring the Estimation Error</a></li>
+  <li><a href="#broader-context" id="toc-broader-context" class="nav-link" data-scroll-target="#broader-context">Broader Context</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uncertain Meeting</h1>
+<h1 class="title">Standard Unit Cost Benchmarks for Prison Vocational Training</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea Popa </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 1, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -165,71 +197,165 @@ window.Quarto = {
 </header>
 
 
-<p>Two people agreed to meet between 1 PM and 2 PM. Each one comes randomly in this interval and stays for 30 minutes. What is the probability that they actually meet ?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Parametrize the problem using two uniform distributions and compute the partial area corresponding to the meeting.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span> be the time or arrival of the two people. We want to compute <span class="math inline">\(\mathbb{P}(|X-Y| \le 1/2)\)</span></p>
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} x \ge 0 \\ y \ge 0\end{cases}.\]</span></p>
-<p>The meeting happens if<br>
-<span class="math display">\[\begin{cases} x - y\le 1/2\\  y -x \le 1/2  \end{cases} \sim \begin{cases} y \ge x-1/2 \\  y \le x +1/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(\text{Meet}) = \frac{1-2*\frac{1/2*1/2}{2}}{1}= 3/4.}\)</span></p>
-<div id="a0daeb84" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uncertain_meeting_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>What if instead of staying 30 minutes they stay for 15 minutes ? For an amount dt ?</p>
-<p>We need to be sure that dt is in hour and we just need to change 1/2 by dt in the system. The two triangles make a square of side (1-dt). Thus, <span class="math display">\[\boxed{\mathbb{P}(\text{Meet}) = 1-(1-dt)^2.}\]</span></p>
-</div>
-</div>
-</div>
+<p>This page presents the main technical work from my internship at the <strong>Direction des Politiques Européennes (DPE)</strong> of the <strong>Conseil Régional des Pays de la Loire</strong>, in Nantes, from June to September 2024. The mission was to build a statistical pricing grid — a <em>Barème Standard de Coûts Unitaires</em> (BSCU) — for the vocational training programs organized inside the six prisons of the Pays de la Loire region.</p>
+<p></p><div><object data="report.pdf" type="application/pdf" width="1" height="1"><a href="report.pdf" download="">Download PDF file.</a></object><br><a href="report.pdf" download="" style="display:inline-block; padding:10px 18px; background-color:#007acc; color:white; font-size:15px; border:none; border-radius:6px; cursor:pointer; text-decoration:none; transition:background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#005fa3';" onmouseout="this.style.backgroundColor='#007acc';">Download Internship Report (French)</a></div><p></p>
+<section id="why-this-matters-european-funds-and-the-audit-problem" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-matters-european-funds-and-the-audit-problem">Why This Matters: European Funds and the Audit Problem</h3>
+<p>The European Union co-finances regional development projects through several funds. In Pays de la Loire, the 2021–2027 European program mobilises <strong>625 million euros</strong>, of which 64.5M€ comes from the <strong>European Social Fund (FSE+)</strong>. The FSE+ focuses on employment, training, and social inclusion.</p>
+<p>When public money is spent on a project — say, a training program for prisoners — the spending authority must prove to the European Commission that every euro was justified. In practice, this means auditors check every invoice, every timesheet, and every attendance record for every trainee in every training session. For a region managing dozens of training contracts across six prison facilities over multiple years, this is an enormous administrative burden.</p>
+<p>The EU allows a way out through <strong>Simplified Cost Options (Options de Coûts Simplifiés, OCS)</strong>. Instead of verifying each actual expense, the region can pre-agree on a standard flat rate per trainee and per type of training. Once that rate is validated by the European Commission, reimbursement becomes automatic: if 20 trainees completed a welding program at Nantes, the region gets reimbursed <span class="math inline">\(20 \times \text{rate}\)</span> without needing to justify each individual hour. This makes audits dramatically faster and more reliable. Building such a rate table from historical data is exactly what a BSCU does.</p>
+</section>
+<section id="the-prison-vocational-training-program" class="level3">
+<h3 class="anchored" data-anchor-id="the-prison-vocational-training-program">The Prison Vocational Training Program</h3>
+<p>Since the <strong>Law of 5 March 2014</strong>, French regions are responsible for funding and organising vocational training inside public penitentiary establishments. The rationale is straightforward: giving prisoners a certified trade or skill during their sentence significantly improves their chances of finding employment after release — which in turn reduces recidivism. Training therefore serves a dual purpose: it provides individual social mobility and generates a broader public safety benefit.</p>
+<p>The Pays de la Loire region funds training in six facilities:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Facility</th>
+<th>City</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Centre de détention</td>
+<td>Nantes</td>
+<td>Long sentences (CD)</td>
+</tr>
+<tr class="even">
+<td>Maison d’arrêt</td>
+<td>Angers</td>
+<td>Remand / Short sentences</td>
+</tr>
+<tr class="odd">
+<td>Maison d’arrêt</td>
+<td>Le Mans</td>
+<td>Remand / Short sentences</td>
+</tr>
+<tr class="even">
+<td>Maison d’arrêt</td>
+<td>Laval</td>
+<td>Remand / Short sentences</td>
+</tr>
+<tr class="odd">
+<td>Maison d’arrêt</td>
+<td>La Roche-sur-Yon / Fontenay-le-Comte</td>
+<td>Remand / Short sentences</td>
+</tr>
+<tr class="even">
+<td>Régional (CACES)</td>
+<td>All sites</td>
+<td>Forklift certification, multi-site</td>
+</tr>
+</tbody>
+</table>
+<p>This program falls under <strong>EU priority 4 “A more social region”</strong>, specific objective ESO4.7: <em>promoting lifelong learning and flexible upskilling</em>. Because the FSE+ co-finances these training sessions, the BSCU would replace expensive per-receipt audits with a simple per-trainee flat rate, saving significant administrative time on both the regional and European sides.</p>
+</section>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The Data</h3>
+<p>The dataset covers <strong>148 training actions</strong> carried out from 2019 to 2024 across the six facilities, representing <strong>2,891 trainees</strong> and a total expenditure of approximately <strong>6.7 million euros</strong>. Each row in the data is one training action (a contract between the region and a training provider for a specific type of program at a specific facility in a given year). The key variables are:</p>
+<ul>
+<li><strong><code>Centre_final</code></strong>: which of the six facilities hosted the training</li>
+<li><strong><code>code_gfe</code></strong>: a letter code classifying the type of training (the <em>Groupe Formation Emploi</em>, or GFE — agriculture, construction, metalwork, transport, etc.)</li>
+<li><strong><code>nb_stag</code></strong>: number of trainees who attended</li>
+<li><strong><code>cout_tot</code></strong>: total cost of the action (in euros)</li>
+<li><strong><code>prix_h</code></strong> and <strong><code>nb_h</code></strong>: hourly rate and number of hours (from which the total cost is derived)</li>
+</ul>
+<p>The target variable is the <strong>cost per trainee</strong>, computed as total cost divided by number of trainees. To make costs comparable across years, all amounts are normalised to a <strong>2022 base</strong> using the Syntec price index published by INSEE (which tracks price changes in the training services sector): 2021 values are deflated by a factor of 275/277.5, and all other years by 287.9/277.5.</p>
+<p>The cost distribution by facility is quite spread out, reflecting real structural differences between centers:</p>
+<p><img src="boxplot_centre.png" class="img-fluid" style="width:100.0%"></p>
+<p>Nantes stands out with the highest median cost per trainee. This makes economic sense: the Nantes detention center runs longer, full-certification programs (300–700 hours leading to a <em>Titre Professionnel</em>) with more qualified instructors, whereas remand prisons like Laval or La Roche run shorter modules for a more transient population. The regional CACES forklift program has very low per-trainee costs because a single session serves trainees from multiple facilities at once, spreading fixed costs across many participants.</p>
+</section>
+<section id="step-1-identifying-the-relevant-variables" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-identifying-the-relevant-variables">Step 1 — Identifying the Relevant Variables</h3>
+<p>The first question is: what actually drives the cost per trainee? The answer matters because it determines which variables should go into the BSCU. An ordinary least squares (OLS) linear regression of the cost per trainee on all available variables — facility, year, number of trainees, total cost, hourly rate, hours, training provider, and training type (code GFE) — gives a first picture.</p>
+<p>The regression reveals that the most informative predictors are the <strong>facility</strong> (<code>Centre_final</code>), the <strong>training type</strong> (<code>code_gfe</code>), and the <strong>training provider</strong> (<code>org_form</code>). A weighted OLS using just <code>Centre_final</code> and <code>code_gfe</code> already explains <strong>R² = 0.584</strong> of the variance in cost per trainee, meaning these two variables alone account for about 58% of the cost differences across training actions. Adding the provider (<code>org_form</code>) improves fit further but at the cost of practical usability, since auditors would then need to verify the provider identity for each reimbursement — partially defeating the simplification goal.</p>
+<p>A <strong>Fisher test</strong> on the facility variable confirms that the differences in average costs between the six centers are statistically significant and not random noise: the between-group variance is large relative to the within-group variance, so the facility genuinely matters for predicting the cost.</p>
+</section>
+<section id="step-2-building-the-groups-with-cart" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-building-the-groups-with-cart">Step 2 — Building the Groups with CART</h3>
+<p>Once the key variables are identified, the next question is: what is the best way to group the 54 possible (facility × code GFE) combinations into a small number of groups, each with a single flat rate? A CART model (<strong>Classification and Regression Trees</strong>) does exactly this.</p>
+<p>CART is a decision-tree algorithm that recursively splits the data into groups to minimise a cost function — here, the weighted sum of squared differences between the actual cost per trainee and the group mean. The weights are the number of trainees, so a training action with 30 participants counts 30 times more than one with a single trainee.</p>
+<p>The full tree is first grown to its maximum complexity (one leaf per data point), then <strong>pruned</strong> using a cost-complexity parameter (cp = 0.0072 in the original R implementation): branches that contribute only a tiny improvement in fit are removed. The result is a tree with <strong>6 distinct price groups</strong>, which balances statistical precision with practical simplicity.</p>
+<p>The 6 groups and their estimated cost per trainee (in 2022 euros) are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Facilities</th>
+<th>Training types</th>
+<th>Estimated cost / trainee (€, 2022 base)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>La Roche / Fontenay</td>
+<td>Food production (K)</td>
+<td>235 €</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Région (CACES only)</td>
+<td>Transport / Forklift (O)</td>
+<td>394 €</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>All centers</td>
+<td>Hygiene &amp; Security (T), Insertion training (X)</td>
+<td>1,415 €</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Angers, Laval, Le Mans</td>
+<td>Construction (D), Metal (E), Electricity (H)</td>
+<td>2,339 €</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Angers, Le Mans</td>
+<td>Transport &amp; Logistics (O), Hospitality (S)</td>
+<td>2,645 €</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Nantes</td>
+<td>Agriculture (A), Construction (D), Metal (E), Electricity (H)</td>
+<td>4,237 €</td>
+</tr>
+</tbody>
+</table>
+<p>The same result visualised by facility and training type:</p>
+<p><img src="bscu_barchart.png" class="img-fluid" style="width:100.0%"></p>
+<p>A few patterns are worth noting. First, <strong>Nantes consistently costs more</strong> for technical trades: the facility operates full-length professional certification programs (often 600+ hours) versus the shorter modules run at remand prisons, and the training provider (Presqu’île) charges higher hourly rates for these more intensive programs. Second, <strong>cleaning and insertion training (T and X) are cheap across all centers</strong> because these programs are short, high-density sessions where many trainees attend with minimal equipment or instruction cost per person. Third, <strong>the regional CACES forklift training</strong> is extremely cheap per trainee because a single instructor certifies trainees from multiple facilities simultaneously — a classic economy of scale that the CART algorithm correctly identifies as its own group.</p>
+</section>
+<section id="step-3-measuring-the-estimation-error" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-measuring-the-estimation-error">Step 3 — Measuring the Estimation Error</h3>
+<p>A BSCU is only useful if it is reasonably accurate. The total actual expenditure across all 148 training actions is <strong>6,719,644 €</strong>. The BSCU with 6 groups estimates <strong>6,584,096 €</strong>, a global difference of <strong>−135,548 € (−2.0%)</strong>. This slight under-estimation is primarily driven by the cost inflation of 2022–2024 (new public procurement contracts were repriced upward post-COVID), which the 2022-base normalisation does not fully absorb for 2023 and 2024 actions.</p>
+<p>The scatter plot below compares actual and estimated costs action by action (each point is one training action; point size reflects the number of trainees):</p>
+<p><img src="actual_vs_estimated.png" class="img-fluid" style="width:100.0%"></p>
+<p>Most points sit close to the red dashed line of perfect estimation. The main sources of error are a handful of actions with unusually small or large cohorts in 2024, where the per-trainee cost deviates significantly from the group average — exactly the kind of outlier that a flat-rate system is not designed to handle but that is acceptable for the purposes of EU reimbursement, as long as the global error over a program period remains low.</p>
+</section>
+<section id="broader-context" class="level3">
+<h3 class="anchored" data-anchor-id="broader-context">Broader Context</h3>
+<p>This work sits at the intersection of <strong>public economics</strong> and <strong>social policy</strong>. From a public finance perspective, the BSCU is a tool for reducing transaction costs in a principal-agent relationship: the European Commission (principal) cannot directly observe how regional funds are spent in each prison, and verifying every invoice is expensive. A pre-validated flat rate changes the contract structure — it shifts the risk of under- or over-spending from the EU to the region, but in exchange removes the verification burden. This is a well-studied mechanism in the economics of public contracts and is broadly similar to prospective payment systems used in healthcare (e.g., DRGs in French hospitals).</p>
+<p>From a <strong>social science</strong> perspective, the variation in costs across facilities reflects deeper structural inequalities in the prison system. The Centre de détention in Nantes, which holds long-sentence inmates, can offer sustained, accrediting programs and invest in qualified instructors precisely because the population is stable enough to complete a 600-hour program. Remand prisons face constant turnover, shorter stays, and less predictable enrollment — which constrains what kind of training is feasible and pushes providers toward shorter, cheaper modules. The BSCU, by pricing these differences into a grid, implicitly acknowledges that meaningful vocational training for prisoners serving longer sentences genuinely costs more — and that the European co-financing system should fund that difference rather than penalise it through uniform pricing.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
