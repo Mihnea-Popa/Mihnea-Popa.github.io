@@ -3,7 +3,7 @@ title: "Research Paper on Financing Public Transport"
 author: Mihnea Popa, Imane Bayoub, Lila Ransinangue, Oscar Zaidan
 description: " "
 date: November 2023
-order: 4
+order: 6
 image: transport_offer_chart.png
 format:
   html:

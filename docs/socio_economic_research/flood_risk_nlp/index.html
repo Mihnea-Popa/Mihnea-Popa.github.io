@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mihnea Popa / Sophie Emefa Monsi / Khawla Ed-Dazazi / Lysa Rudy">
+<meta name="dcterms.date" content="2025-06-01">
 
-<title>Uniform Ratio – Mihnea POPA</title>
+<title>Identifying Uncounted Floods with NLP and Machine Learning – Mihnea POPA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,6 +54,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -86,7 +94,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -140,22 +148,32 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uniform Ratio</h1>
+<h1 class="title">Identifying Uncounted Floods with NLP and Machine Learning</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mihnea Popa / Sophie Emefa Monsi / Khawla Ed-Dazazi / Lysa Rudy </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -165,70 +183,127 @@ window.Quarto = {
 </header>
 
 
-<p>Let <span class="math inline">\(X\sim \mathbb{U}([0,1]), Y\sim \mathbb{U}([0,1]), X \perp Y\)</span>, what is <span class="math inline">\(\mathbb{P}(1 \le X/Y \le2)\)</span> ?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Compute the partial area corresponding to the meeting.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>💡 Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Since the two uniforms are positive, the possible region is <span class="math display">\[\begin{cases} 0 \le x \le 1 \\ 0\le y \le 1\end{cases}.\]</span></p>
-<p>The condition if fulfilled if<br>
-<span class="math display">\[\begin{cases} x / y\le 2\\  x/y \ge 1  \end{cases} \sim \begin{cases} y \le x \\  y \le x/2  \end{cases}.\]</span></p>
-<p>We can plot the regions and we find <span class="math inline">\(\boxed{\mathbb{P}(1 \le X/Y \le2) = \frac{1-\frac{1*1}{2}-\frac{1*1/2}{2}}{1}= 1/4.}\)</span></p>
-<div id="e07c8737" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
+<p>This page presents a project carried out as part of the <strong>Statistiques Appliquées (Statapp)</strong> course at ENSAE Paris, in partnership with <strong>Addactis France</strong> (supervised by Margaux Regnault and Mulah Moriah, and academically by Prof.&nbsp;Thierry Kamionka). The goal was to improve the measurement of flood risk in France by detecting floods that never made it into the official statistics — and then to model the risk at the level of individual municipalities.</p>
+<hr>
+<section id="the-problem-many-floods-are-never-officially-counted" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-many-floods-are-never-officially-counted">The Problem: Many Floods Are Never Officially Counted</h3>
+<p>In France, the main database for natural disasters is called <strong>GASPAR</strong> (Base nationale de Gestion ASsistée des Procédures Administratives relatives aux Risques). It records events that have been officially recognized as <em>catastrophes naturelles</em> by the French state. The problem is how that recognition works: after a flood, residents must report damages to their insurer and to the municipality. The mayor then has 18 months to request a formal declaration from the prefect, who forwards it to the Ministry of the Interior. The minister can approve, reject, or delay the request. Only approved events make it into GASPAR.</p>
+<p>This administrative chain has an obvious consequence: floods that are real but localized, where residents don’t claim, or where the political will to file is absent, are simply missing from the data. From a statistical perspective, the database is <strong>right-biased toward severe and well-documented events</strong>. Any risk model trained on it will underestimate frequency and mischaracterize the spatial distribution of flood risk.</p>
+<p>Our project tried to fix this by building an enriched database that captures as many of those missing events as possible.</p>
+<hr>
+</section>
+<section id="step-1-mining-text-with-nlp-the-météo-paris-chronicles" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-mining-text-with-nlp-the-météo-paris-chronicles">Step 1 — Mining Text with NLP: the Météo-Paris Chronicles</h3>
+<p>The first source of additional data was the website <strong>Météo-Paris</strong>, which has published detailed weather chronicles since the 19th century. These texts describe meteorological events for each period, often mentioning floods by location and date. We processed two dictionaries of these texts: one organized by quarter-year (from 1850 to Q3 2024) and one by article title (covering 2014–2025).</p>
+<p>The NLP pipeline worked in three stages. First, we <strong>cleaned the raw text</strong>: removed recurring boilerplate phrases, cut off page footers, and standardized formatting. Second, we <strong>extracted all dates</strong> from each text using both pattern matching (e.g., “du 3 au 7 janvier”) and a specialized medical NLP module (EDS-NLP, developed by AP-HP) repurposed for date detection. Third, we <strong>classified paragraphs</strong> as flood-related or not. For this, we used the SentenceTransformer model <code>paraphrase-MiniLM-L6-v2</code> to convert each paragraph into a vector embedding, then trained a logistic classifier on a selection of manually labeled years. We further filtered results using keyword patterns (“submerger”, “crue”, “déborder” for floods; “déluge”, “inondation” for confirmation). Finally, we <strong>located the events</strong> using spaCy’s named-entity recognition to detect place names (GPE and LOC entities), which we matched against an official INSEE database of French communes.</p>
+<p>After cleaning and deduplication, this NLP pipeline produced <strong>3,148 flood events</strong> that were not in GASPAR.</p>
+</section>
+<section id="step-2-a-second-alternative-source-the-ccr-database" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-a-second-alternative-source-the-ccr-database">Step 2 — A Second Alternative Source: the CCR Database</h3>
+<p>The second source came from the <strong>Caisse Centrale de Réassurance (CCR)</strong>, which provided a database of claims that were submitted but not officially recognized as natural disasters. This database contained <strong>5,565 unrecognized events</strong>. We merged it with the NLP output, removing overlapping events (defined as the same commune with overlapping time windows), which left us <strong>8,039 new events</strong> not present in GASPAR.</p>
+<p>Merging these with GASPAR’s 146,628 events gave a <strong>final enriched database of 154,667 events</strong> — about 5.5% more data than GASPAR alone. The pie chart below shows the breakdown.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="uniform_ratio_files/figure-html/cell-2-output-1.png" width="522" height="523" class="figure-img"></p>
+<p><img src="fig_pie.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
+<p>The three sources have quite different geographic footprints. The maps below compare which departments are most affected under each source — and they do not always agree.</p>
+<p><img src="fig_three_maps.png" class="img-fluid" style="width:100.0%"></p>
+<p>A striking example is the <strong>Hérault</strong> department in the south of France, which is prone to <em>épisodes cévenols</em> (intense Mediterranean rainfall events). The officially recognized data understates its risk, while both the CCR and NLP sources rank it among the most flood-affected departments in France.</p>
+<p><img src="fig_herault_maps.png" class="img-fluid" style="width:100.0%"></p>
+<hr>
+</section>
+<section id="step-3-clustering-departments-by-flood-exposure" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-clustering-departments-by-flood-exposure">Step 3 — Clustering Departments by Flood Exposure</h3>
+<p>Once the enriched database was assembled, we computed two summary statistics per department: the <strong>weighted flood frequency</strong> (number of events divided by number of communes) and the <strong>average flood duration</strong> in days. These two variables were standardized and used as inputs to a <strong>K-Means clustering</strong> algorithm.</p>
+<p>We tested cluster counts from <span class="math inline">\(k=2\)</span> to <span class="math inline">\(k=19\)</span> using three classic validation scores: the elbow method (WCSS), the silhouette score, and the Davies-Bouldin score. We settled on <strong><span class="math inline">\(k=5\)</span> clusters</strong> as the best trade-off between within-cluster compactness and between-cluster separation.</p>
+<p>The five clusters capture departments with similar historical flood profiles. We then compared our clustering to the <strong>official risk zones</strong> from GASPAR’s AZI (Arrêtés de Zones d’Information sur les risques) records. The comparison is informative: some departments we classify as high-exposure match the official high-risk zones, validating the approach. But others that appear in our high-exposure clusters are not flagged by official zonage — potential evidence of under-reporting in the administrative system.</p>
+<p><img src="fig_kmeans.png" class="img-fluid" style="width:100.0%"></p>
+<hr>
+</section>
+<section id="step-4-building-the-predictive-features" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-building-the-predictive-features">Step 4 — Building the Predictive Features</h3>
+<p>The objective of the modeling part was to predict, for each commune and each quarter, whether a flood occurred. The target variable is binary: 1 if the enriched database records an event for that commune–quarter pair, 0 otherwise.</p>
+<p>We enriched the data with four types of explanatory variables:</p>
+<p><strong>River water height.</strong> From HydroPortail, we obtained water level measurements from <strong>3,209 hydrometric stations</strong> across France, covering 2010–2023 (over 11.5 million data points). For each commune, we identified the <strong>5 nearest stations</strong> and computed, per quarter, the maximum number of days where the station’s water level exceeded various quantile thresholds (Q90, Q95, Q99, Q99.5, Q99.9). This gives a signal of extreme river conditions upstream or nearby.</p>
+<p><strong>Precipitation.</strong> Similarly, from daily precipitation data available since 1950 for all pluviometric stations in France, we assigned each commune its 5 nearest stations and counted quarterly exceedances of rainfall thresholds (Q90, Q95, Q99, Q99.5, Q99.9), measuring both the sum and the maximum across the 5 stations.</p>
+<p><strong>Altitude, population, area.</strong> Communes at low altitude, with larger populations, and with smaller surface areas tend to flood more. These structural variables were gathered from an open data repository and matched by INSEE code.</p>
+<p><strong>River network.</strong> We used a GIS database of 142,410 watercourses in France to compute, for each commune, the <strong>number of distinct rivers crossing it</strong> and their <strong>total length</strong> inside the commune’s boundaries. More rivers crossing a commune means higher hydrological pressure.</p>
+<p><strong>Historical flood count.</strong> For communes with hydrometric data starting in 2010, we would lose all pre-2010 flood history. We therefore created a variable <code>nb_inondations_avant_2010</code> counting the number of recognized floods per commune before 2010. This acts as a long-run exposure proxy.</p>
+<p>After analyzing correlation matrices to remove redundant variables (the precipitation and water-level threshold series are heavily correlated with each other), the final set of predictors selected for modeling was:</p>
+<ul>
+<li><code>hauteur_max_depassement_q990</code> — max days above the Q99 water-height threshold across nearest stations</li>
+<li><code>precip_max_depassement_q995</code> — max days above the Q99.5 precipitation threshold</li>
+<li><code>nb_inondations_avant_2010</code> — historical flood count before 2010</li>
+<li><code>nombre_cours_eau</code> — number of rivers crossing the commune</li>
+<li><code>Population</code> — municipal population (capped at 500,000)</li>
+</ul>
+<hr>
+</section>
+<section id="step-5-two-models-logistic-regression-and-xgboost" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-two-models-logistic-regression-and-xgboost">Step 5 — Two Models: Logistic Regression and XGBoost</h3>
+<p>The dataset is highly <strong>imbalanced</strong>: floods are rare events, so the vast majority of commune–quarter observations are non-flood periods (class 0). We trained on a stratified train/test split and evaluated primarily on two metrics: the <strong>CSI</strong> (Critical Success Index, which penalizes both false positives and false negatives) and the <strong>log-loss</strong> (which measures calibration quality of predicted probabilities).</p>
+<section id="logistic-regression" class="level4">
+<h4 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h4>
+<p>Logistic regression models the log-odds of a flood as a linear combination of the predictors. All variables were standardized before fitting (logistic regression is scale-sensitive). We tested three variants:</p>
+<ul>
+<li><strong>Baseline</strong> — no handling of class imbalance</li>
+<li><strong>SMOTE</strong> — synthetic minority oversampling to generate artificial flood examples in the training set</li>
+<li><strong><code>class_weight="balanced"</code></strong> — the loss function is reweighted by inverse class frequency</li>
+</ul>
+<p>The baseline and class-weight variants produced very low predicted probabilities (often between 0 and 0.1), making class discrimination essentially impossible in practice. The <strong>SMOTE version</strong> produced much better-spread probability distributions, with flood events assigned meaningfully higher scores than non-flood periods. Despite a modest precision of 9%, it achieved a recall of 67% — meaning it correctly flags the majority of actual floods, which is the priority in a risk detection context. We retained this version for all subsequent analyses.</p>
+</section>
+<section id="xgboost" class="level4">
+<h4 class="anchored" data-anchor-id="xgboost">XGBoost</h4>
+<p>XGBoost is a gradient-boosted decision tree ensemble. Each tree corrects the residual errors of the previous one, and the ensemble can capture <strong>non-linear interactions</strong> between variables that logistic regression cannot. We again tested a baseline and a SMOTE variant, optimizing over F1, F2, recall, and log-loss via grid search. The baseline XGBoost achieved an F1-score of <strong>24%</strong> (versus 16% for logistic SMOTE), with a CSI of 0.174 and a recall of 57%. Its probability distributions are better separated between the two classes.</p>
+</section>
+<section id="calibration" class="level4">
+<h4 class="anchored" data-anchor-id="calibration">Calibration</h4>
+<p>Both models were found to systematically overestimate the probability of flooding: the mean predicted probability was higher than the actual flood rate in the test set. This is a known issue when using SMOTE or when the training set artificially overrepresents the minority class. We applied a simple <strong>multiplicative recalibration</strong>: each predicted probability was multiplied by the ratio of the actual flood frequency to the mean predicted probability. This brings the average score back to the correct level without changing the ordering of predictions.</p>
+<hr>
+</section>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p><strong>Time series comparison.</strong> The graph below shows the number of observed floods per quarter (blue), alongside the recalibrated predictions of the logistic model (orange) and XGBoost (green). Both models track the temporal dynamics well — they pick up the major flood surges and quiet periods. The two prediction curves are very similar and often overlapping, which suggests that the relevant signal is being captured by both approaches. The main limitation is on the peaks: the two major spikes (around 600 events) are underestimated by both models, which is expected given the rarity of those extreme quarters in the training data.</p>
+<p><img src="fig_obs_pred.png" class="img-fluid" style="width:100.0%"></p>
+<p><strong>Class separation.</strong> A key test of a risk model is whether it assigns higher scores to events that truly are floods. The density plot below shows the distribution of recalibrated probabilities separately for flood (class 1) and non-flood (class 0) observations, for both models. All four distributions are shifted: flood observations receive systematically higher probabilities. The separation is more pronounced for <strong>XGBoost</strong> — its flood and non-flood distributions are less overlapping — confirming its stronger discriminative power.</p>
+<p><img src="fig_density.png" class="img-fluid" style="width:100.0%"></p>
+<p><strong>Logistic regression: odds ratios.</strong> In a logistic model, the effect of each variable can be summarized by its <strong>odds ratio</strong> — the multiplicative change in the odds of flooding for a one-unit increase in the variable (on the standardized scale). The most influential variable is river water height above Q99 (odds ratio ≈ 2.22): a commune where nearby rivers exceeded their 99th percentile water level has more than twice the odds of flooding compared to a commune where they did not. Population also matters (OR ≈ 1.61), as do extreme precipitation (OR ≈ 1.52) and historical flood history (OR ≈ 1.40). The number of rivers crossing the commune has a smaller but positive effect (OR ≈ 1.03).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig_odds_ratios.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:55.0%"></p>
+</figure>
 </div>
+<p><strong>XGBoost: SHAP values.</strong> For XGBoost, we used <strong>SHAP (SHapley Additive exPlanations)</strong> values to understand the contribution of each variable to each prediction. The beeswarm plot below shows, for each observation, the SHAP value of each variable (horizontal position = contribution to the prediction; color = value of the variable, red = high). High water-height exceedances (red dots pushed right) strongly increase the predicted risk, while low values (blue dots) push it down. Population and historical flood count have similar patterns. Crucially, the effect of a variable is <strong>not constant</strong> — it depends on the values of the other variables, which is exactly what XGBoost can model and logistic regression cannot.</p>
+<p><img src="fig_shap_beeswarm.png" class="img-fluid" style="width:100.0%"></p>
+<hr>
+</section>
+<section id="spatial-predictions-mapping-flood-risk-at-municipality-level" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-predictions-mapping-flood-risk-at-municipality-level">Spatial Predictions: Mapping Flood Risk at Municipality Level</h3>
+<p>The two models produce, for each commune and each quarter, an estimated probability of flooding. By averaging across time, we can produce a static risk map for the whole country.</p>
+<p>The <strong>logistic regression map</strong> (below left) shows a coherent spatial pattern: the south-east stands out as the highest-risk region, consistent with the prevalence of Mediterranean extreme rainfall events. Some pockets of risk appear in the centre and north, reflecting river systems and urban density.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig_logreg_map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
 </div>
+<p>The <strong>XGBoost map</strong> (below) picks up more spatial heterogeneity. It identifies additional high-risk zones in the south-west and the north that the logistic model smooth over, thanks to its ability to capture local interactions between variables. This finer-grained geography makes the XGBoost map more useful for targeted prevention or premium-setting at the commune level.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig_xgboost_map_crop.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🚨 Generalisation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>What if we wanted a ratio between p and q ?</p>
-<p>Thus, <span class="math display">\[\boxed{\mathbb{P}(p \le X/Y \le q) = 1-\frac{1*p}{2} -\frac{1*1/q}{2} = 1-\frac{p+1/q}{2}.}\]</span></p>
-</div>
-</div>
-</div>
+<hr>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This project demonstrates that it is possible to significantly improve the measurement of flood risk in France by combining three complementary approaches: <strong>NLP extraction</strong> from weather chronicles, <strong>administrative non-recognition data</strong> from the CCR, and <strong>quantitative hydroclimatic features</strong> derived from river height and precipitation records. The enriched database adds about 8,000 events to GASPAR — modest in relative terms but potentially decisive for the communes that are systematically missed by the official system.</p>
+<p>On the modelling side, the comparison between logistic regression and XGBoost illustrates a classic trade-off: logistic regression offers interpretability through its odds ratios and coefficients, but its linearity limits what it can capture. XGBoost is more flexible, achieves a better F1-score (24% vs 16%), and produces richer spatial predictions via SHAP values. Neither model is perfect — the recall of 57–67% means that roughly a third of actual floods are missed — but both are well-calibrated and provide a meaningful probabilistic ranking of flood risk at the commune level.</p>
+<p>The methodology developed here is not specific to floods. The same pipeline — text mining to recover missing events, merging with administrative and physical data, binary modelling with class-imbalance handling — could be applied to wildfires, windstorms, or droughts. In a world where extreme weather events are becoming more frequent and more severe, building more complete historical databases is as important as choosing the right model.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
