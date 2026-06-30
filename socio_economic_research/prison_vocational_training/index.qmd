@@ -66,19 +66,19 @@ Nantes stands out with the highest median cost per trainee. This makes economic 
 
 ### Step 1 — Identifying the Relevant Variables
 
-The first question is: what actually drives the cost per trainee? The answer matters because it determines which variables should go into the BSCU. An ordinary least squares (OLS) linear regression of the cost per trainee on all available variables — facility, year, number of trainees, total cost, hourly rate, hours, training provider, and training type (code GFE) — gives a first picture.
+The first question is: what actually drives the cost per trainee? An ordinary least squares (OLS) linear regression of the cost per trainee on all available variables — facility, year, number of trainees, total cost, hourly rate, hours, training provider, and training type (code GFE) — gives a first picture of which factors matter.
 
-The regression reveals that the most informative predictors are the **facility** (`Centre_final`), the **training type** (`code_gfe`), and the **training provider** (`org_form`). A weighted OLS using just `Centre_final` and `code_gfe` already explains **R² = 0.584** of the variance in cost per trainee, meaning these two variables alone account for about 58% of the cost differences across training actions. Adding the provider (`org_form`) improves fit further but at the cost of practical usability, since auditors would then need to verify the provider identity for each reimbursement — partially defeating the simplification goal.
+The regression reveals that the most informative predictors are the **facility** (`Centre_final`), the **training type** (`code_gfe`), and the **training provider** (`org_form`). A weighted OLS using just `Centre_final` and `code_gfe` already explains **R² = 0.584** of the variance in cost per trainee, meaning these two variables alone account for about 58% of the cost differences across training actions. Adding the provider improves fit further but at the cost of practical usability, since auditors would then need to verify the provider identity for each reimbursement — partially defeating the simplification goal.
 
 A **Fisher test** on the facility variable confirms that the differences in average costs between the six centers are statistically significant and not random noise: the between-group variance is large relative to the within-group variance, so the facility genuinely matters for predicting the cost.
 
 ### Step 2 — Building the Groups with CART
 
-Once the key variables are identified, the next question is: what is the best way to group the 54 possible (facility × code GFE) combinations into a small number of groups, each with a single flat rate? A CART model (**Classification and Regression Trees**) does exactly this.
+Once the key variables are identified, the next question is: what is the best way to group the possible (facility × training type) combinations into a small number of groups, each with a single flat rate? A CART model (**Classification and Regression Trees**) does exactly this.
 
 CART is a decision-tree algorithm that recursively splits the data into groups to minimise a cost function — here, the weighted sum of squared differences between the actual cost per trainee and the group mean. The weights are the number of trainees, so a training action with 30 participants counts 30 times more than one with a single trainee.
 
-The full tree is first grown to its maximum complexity (one leaf per data point), then **pruned** using a cost-complexity parameter (cp = 0.0072 in the original R implementation): branches that contribute only a tiny improvement in fit are removed. The result is a tree with **6 distinct price groups**, which balances statistical precision with practical simplicity.
+The full tree is first grown to its maximum complexity, then **pruned** using a cost-complexity parameter: branches that contribute only a tiny improvement in fit are removed. The result is a tree with **6 distinct price groups**, which balances statistical precision with practical simplicity.
 
 The 6 groups and their estimated cost per trainee (in 2022 euros) are:
 
@@ -95,7 +95,7 @@ The same result visualised by facility and training type:
 
 ![](bscu_barchart.png){width=100%}
 
-A few patterns are worth noting. First, **Nantes consistently costs more** for technical trades: the facility operates full-length professional certification programs (often 600+ hours) versus the shorter modules run at remand prisons, and the training provider (Presqu'île) charges higher hourly rates for these more intensive programs. Second, **cleaning and insertion training (T and X) are cheap across all centers** because these programs are short, high-density sessions where many trainees attend with minimal equipment or instruction cost per person. Third, **the regional CACES forklift training** is extremely cheap per trainee because a single instructor certifies trainees from multiple facilities simultaneously — a classic economy of scale that the CART algorithm correctly identifies as its own group.
+A few patterns are worth noting. First, **Nantes consistently costs more** for technical trades: the facility operates full-length professional certification programs (often 600+ hours) versus the shorter modules run at remand prisons, and the training provider charges higher hourly rates for these more intensive programs. Second, **cleaning and insertion training (T and X) are cheap across all centers** because these programs are short, high-density sessions where many trainees attend with minimal equipment or instruction cost per person. Third, **the regional CACES forklift training** is extremely cheap per trainee because a single instructor certifies trainees from multiple facilities simultaneously — a classic economy of scale that the CART algorithm correctly identifies as its own group.
 
 ### Step 3 — Measuring the Estimation Error
 
