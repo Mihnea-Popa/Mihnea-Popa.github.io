@@ -183,7 +183,7 @@ window.Quarto = {
 </header>
 
 
-<p>This page presents a project carried out as part of the <strong>Statistiques Appliquées (Statapp)</strong> course at ENSAE Paris, in partnership with <strong>Addactis France</strong> (supervised by Margaux Regnault and Mulah Moriah, and academically by Prof.&nbsp;Thierry Kamionka). The goal was to improve the measurement of flood risk in France by detecting floods that never made it into the official statistics — and then to model the risk at the level of individual municipalities.</p>
+<p>This page presents a project carried out as part of the <strong>Statistiques Appliquées (Statapp)</strong> course at ENSAE Paris, in partnership with <strong>Addactis France</strong>. The goal was to improve the measurement of flood risk in France by detecting floods that never made it into the official statistics — and then to model the risk at the level of individual municipalities.</p>
 <hr>
 <section id="the-problem-many-floods-are-never-officially-counted" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-many-floods-are-never-officially-counted">The Problem: Many Floods Are Never Officially Counted</h3>
@@ -201,12 +201,7 @@ window.Quarto = {
 <section id="step-2-a-second-alternative-source-the-ccr-database" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-a-second-alternative-source-the-ccr-database">Step 2 — A Second Alternative Source: the CCR Database</h3>
 <p>The second source came from the <strong>Caisse Centrale de Réassurance (CCR)</strong>, which provided a database of claims that were submitted but not officially recognized as natural disasters. This database contained <strong>5,565 unrecognized events</strong>. We merged it with the NLP output, removing overlapping events (defined as the same commune with overlapping time windows), which left us <strong>8,039 new events</strong> not present in GASPAR.</p>
-<p>Merging these with GASPAR’s 146,628 events gave a <strong>final enriched database of 154,667 events</strong> — about 5.5% more data than GASPAR alone. The pie chart below shows the breakdown.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="fig_pie.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
+<p>Merging these with GASPAR’s 146,628 events gave a <strong>final enriched database of 154,667 events</strong> — about 5.5% more data than GASPAR alone.</p>
 <p>The three sources have quite different geographic footprints. The maps below compare which departments are most affected under each source — and they do not always agree.</p>
 <p><img src="fig_three_maps.png" class="img-fluid" style="width:100.0%"></p>
 <p>A striking example is the <strong>Hérault</strong> department in the south of France, which is prone to <em>épisodes cévenols</em> (intense Mediterranean rainfall events). The officially recognized data understates its risk, while both the CCR and NLP sources rank it among the most flood-affected departments in France.</p>

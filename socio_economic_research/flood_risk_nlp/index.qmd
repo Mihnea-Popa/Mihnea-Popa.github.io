@@ -18,7 +18,7 @@ format:
 toc: false
 ---
 
-This page presents a project carried out as part of the **Statistiques Appliquées (Statapp)** course at ENSAE Paris, in partnership with **Addactis France** (supervised by Margaux Regnault and Mulah Moriah, and academically by Prof. Thierry Kamionka). The goal was to improve the measurement of flood risk in France by detecting floods that never made it into the official statistics — and then to model the risk at the level of individual municipalities.
+This page presents a project carried out as part of the **Statistiques Appliquées (Statapp)** course at ENSAE Paris, in partnership with **Addactis France**. The goal was to improve the measurement of flood risk in France by detecting floods that never made it into the official statistics — and then to model the risk at the level of individual municipalities.
 
 ---
 
@@ -44,9 +44,7 @@ After cleaning and deduplication, this NLP pipeline produced **3,148 flood event
 
 The second source came from the **Caisse Centrale de Réassurance (CCR)**, which provided a database of claims that were submitted but not officially recognized as natural disasters. This database contained **5,565 unrecognized events**. We merged it with the NLP output, removing overlapping events (defined as the same commune with overlapping time windows), which left us **8,039 new events** not present in GASPAR.
 
-Merging these with GASPAR's 146,628 events gave a **final enriched database of 154,667 events** — about 5.5% more data than GASPAR alone. The pie chart below shows the breakdown.
-
-![](fig_pie.png){width=70% fig-align="center"}
+Merging these with GASPAR's 146,628 events gave a **final enriched database of 154,667 events** — about 5.5% more data than GASPAR alone.
 
 The three sources have quite different geographic footprints. The maps below compare which departments are most affected under each source — and they do not always agree.
 
