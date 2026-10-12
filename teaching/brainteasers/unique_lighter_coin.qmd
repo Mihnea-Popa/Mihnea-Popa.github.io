@@ -47,3 +47,93 @@ So the minimum number of weighting to be sure to identify the fake coin in `n = 
 We can try to generalise this strategy. Let's assume that there are $N$ coins with one fake. Then since each weighting leads to $3$ different outcomes, we can identify the fake coins with $n$ weightings if $3^n>N$. We want the minimum number of weightings to be sure to identify the coin, thus $$3^{n-1}<N \le 3^n.$$ Accordingly, we have $$n = \lfloor \frac {ln(N)}{ln(3)} \rfloor + 1 .$$
 With $N=100$, we find indeed $n=5$.
 :::
+
+::: {.callout-tip collapse="true"}
+## 🚨 Harder Generalisation
+
+What if we don't know whether the counterfeit coin is lighter or heavier?
+
+In this case, we must identify both the counterfeit coin and whether it is lighter or heavier than the genuine coins. This makes the problem more difficult than the previous version.
+
+### 1. Counting the possible patterns
+
+With $n$ weighings, each coin can follow $3^n$ different patterns, since at each weighing it can be placed on the left pan (L), on the right pan (R), or left aside ($-$).
+
+However, two restrictions apply:
+
+- Two coins cannot have the same pattern, since we would not be able to distinguish them.
+- Two coins cannot have opposite patterns, since a heavier coin with one pattern would be indistinguishable from a lighter coin with the opposite pattern.
+
+Since the pattern consisting entirely of dashes is useless, we initially have at most
+
+$$
+\frac{3^n-1}{2}
+$$
+
+possible coins.
+
+### 2. Accounting for the balance constraint
+
+There is an additional restriction: each weighing must place the same number of coins on the left and right pans.
+
+Consider the first weighing. There are $3^{n-1}$ pairs of opposite patterns whose first letter is either L or R. This is because we fix the first letter and have $3$ choices for each of the remaining $n-1$ letters.
+
+Since $3^{n-1}$ is odd, we cannot use one pattern from every pair and still have the same number of coins on both pans. At least one additional pair must be excluded.
+
+Consequently, the maximum number of coins that can be handled in $n$ weighings is bounded by
+
+$$
+\boxed{N_n\leq\frac{3^n-3}{2}}.
+$$
+
+This bound is attainable with a suitable weighing strategy, so the maximum is
+
+$$
+\boxed{N_n=\frac{3^n-3}{2}}.
+$$
+
+### 3. Example: 100 coins
+
+With $4$ weighings, we can handle at most
+
+$$
+N_4=\frac{3^4-3}{2}=39
+$$
+
+coins.
+
+With $5$ weighings, we can handle at most
+
+$$
+N_5=\frac{3^5-3}{2}=120
+$$
+
+coins.
+
+Since $39<100\leq120$, the minimum number of weighings required to identify the counterfeit coin and determine whether it is lighter or heavier is
+
+$$
+\boxed{n_{\text{optimal}}=5}.
+$$
+
+More generally, for $N$ coins, we seek the smallest integer $n$ satisfying
+
+$$
+\frac{3^n-3}{2}\geq N.
+$$
+
+Equivalently,
+
+$$
+3^n\geq 2N+3.
+$$
+
+Therefore,
+
+$$
+\boxed{n_{\text{optimal}}=
+\left\lceil\frac{\ln(2N+3)}{\ln(3)}\right\rceil}.
+$$
+
+Note that the formula gives the optimal number of weighings, but constructing the actual sequence of weighings requires a strategy that respects the balance constraint at every step.
+:::
