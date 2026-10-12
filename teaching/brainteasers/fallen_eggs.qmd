@@ -31,3 +31,66 @@ This optimal strategy would be that at the first drop we try the floor $n$. If i
 
 `Therefore, we are trying the floors 14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99 and the number of total drops in the worst-case scenario is always 14.`
 :::
+
+::: {.callout-tip collapse="true"}
+## 💡 Generalisation
+
+What if we have more than 2 eggs?
+
+The key idea is that, with each drop, we have two possible outcomes:
+
+- If the egg breaks, we have one fewer egg and must investigate the floors below.
+- If the egg survives, we keep the same number of eggs and investigate the floors above.
+
+Let $F(k,e)$ denote the maximum number of floors for which we can determine the critical floor using at most $k$ drops and $e$ eggs.
+
+By considering the two possible outcomes of a drop, we obtain the recurrence relation
+
+$$
+F(k,e)=F(k-1,e-1)+1+F(k-1,e).
+$$
+
+The boundary conditions are
+
+$$
+F(k,1)=k, \qquad F(0,e)=0.
+$$
+
+With only one egg, we must test the floors sequentially. With zero drops, we cannot test any floors.
+
+Using Pascal's identity, the recurrence can be written as
+
+$$
+F(k,e)=\sum_{i=1}^{e}\binom{k}{i}.
+$$
+
+Therefore, the minimum number of drops required for a building with $N$ floors and $e$ eggs is the smallest integer $k$ satisfying
+
+$$
+\boxed{\sum_{i=1}^{e}\binom{k}{i}\ge N.}
+$$
+
+### Example: 100 floors and 3 eggs
+
+For 3 eggs, the maximum number of floors we can handle with $k$ drops is
+
+$$
+F(k,3)=\binom{k}{1}+\binom{k}{2}+\binom{k}{3}.
+$$
+
+Testing a few values gives
+
+$$
+F(8,3)=8+28+56=92<100,
+$$
+
+whereas
+
+$$
+F(9,3)=9+36+84=129\ge100.
+$$
+
+Thus, **9 drops are sufficient and optimal**, compared with 14 drops when we have only 2 eggs.
+
+With more eggs, we can narrow down the critical floor more efficiently. If we have enough eggs, the problem approaches binary search, requiring $\lceil\log_2(N+1)\rceil$ drops in the worst case.
+:::

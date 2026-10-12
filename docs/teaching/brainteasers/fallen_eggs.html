@@ -217,6 +217,62 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Generalisation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>What if we have more than 2 eggs?</p>
+<p>The key idea is that, with each drop, we have two possible outcomes:</p>
+<ul>
+<li>If the egg breaks, we have one fewer egg and must investigate the floors below.</li>
+<li>If the egg survives, we keep the same number of eggs and investigate the floors above.</li>
+</ul>
+<p>Let <span class="math inline">\(F(k,e)\)</span> denote the maximum number of floors for which we can determine the critical floor using at most <span class="math inline">\(k\)</span> drops and <span class="math inline">\(e\)</span> eggs.</p>
+<p>By considering the two possible outcomes of a drop, we obtain the recurrence relation</p>
+<p><span class="math display">\[
+F(k,e)=F(k-1,e-1)+1+F(k-1,e).
+\]</span></p>
+<p>The boundary conditions are</p>
+<p><span class="math display">\[
+F(k,1)=k, \qquad F(0,e)=0.
+\]</span></p>
+<p>With only one egg, we must test the floors sequentially. With zero drops, we cannot test any floors.</p>
+<p>Using Pascal’s identity, the recurrence can be written as</p>
+<p><span class="math display">\[
+F(k,e)=\sum_{i=1}^{e}\binom{k}{i}.
+\]</span></p>
+<p>Therefore, the minimum number of drops required for a building with <span class="math inline">\(N\)</span> floors and <span class="math inline">\(e\)</span> eggs is the smallest integer <span class="math inline">\(k\)</span> satisfying</p>
+<p><span class="math display">\[
+\boxed{\sum_{i=1}^{e}\binom{k}{i}\ge N.}
+\]</span></p>
+<section id="example-100-floors-and-3-eggs" class="level3">
+<h3 class="anchored" data-anchor-id="example-100-floors-and-3-eggs">Example: 100 floors and 3 eggs</h3>
+<p>For 3 eggs, the maximum number of floors we can handle with <span class="math inline">\(k\)</span> drops is</p>
+<p><span class="math display">\[
+F(k,3)=\binom{k}{1}+\binom{k}{2}+\binom{k}{3}.
+\]</span></p>
+<p>Testing a few values gives</p>
+<p><span class="math display">\[
+F(8,3)=8+28+56=92&lt;100,
+\]</span></p>
+<p>whereas</p>
+<p><span class="math display">\[
+F(9,3)=9+36+84=129\ge100.
+\]</span></p>
+<p>Thus, <strong>9 drops are sufficient and optimal</strong>, compared with 14 drops when we have only 2 eggs.</p>
+<p>With more eggs, we can narrow down the critical floor more efficiently. If we have enough eggs, the problem approaches binary search, requiring <span class="math inline">\(\lceil\log_2(N+1)\rceil\)</span> drops in the worst case.</p>
+</section>
+</div>
+</div>
+</div>
 
 
 
